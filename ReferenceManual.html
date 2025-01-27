@@ -960,7 +960,7 @@ end main
 <p>Each block may be rendered as a solid colour. Each block may alternatively hold a symbol: either one of the standard text characters or any Unicode symbol and, in each case, with specified foreground and background colours. For specifying colours, see <a href="#Colour">Colour</a>.</p>
 <p>An example of block graphics to produce a rapidly changing pattern of coloured blocks:</p>
 
-<el-code>
+<el-code-block>
 <main class="ok multiline" id="main1" tabindex="0">
 <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
 <el-statement class="ok" id="var3" tabindex="0"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>gr</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>BlockGraphics</el-type>()</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
@@ -975,7 +975,7 @@ end main
 </el-statement>
 <el-kw>end main</el-kw>
 </main>
-</el-code>
+</el-code-block>
 
 <p>Notes</p>
 <li>Making changes to the instance of <el-code>BlockGraphics</el-code> (<el-code>gr</el-code> above) &#8211; for example by calling <el-code>withBlock </el-code>above &#8211; does not of itself result in anything appearing in the Graphics screen. The Graphics screen changes only when the <el-code>display()</el-code> procedure is called. This is so that you can make many changes to the graphics and then have them appear all at once (when <el-code>display</el-code> is called). It is even possible to create and modify, multiple instances of <el-code>BlockGraphics</el-code>, and switch instantly between them by calling <el-code>display</el-code> on different instances. </li>
@@ -1189,24 +1189,24 @@ name
 <el-code>waitForAnyKey</el-code><br>
 <p>pauses the execution of the program until the user presses any single key. The identity of the key is not captured though. Example of use:</p>
 
-<el-code>
+<el-code-block>
     <el-statement class="ok" id="print3" tabindex="0"><el-kw>print </el-kw><el-field id="expr4" class="optional ok" tabindex="0"><el-txt>"<el-lit>Press any key to continue..</el-lit>"</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
     <el-statement class="ok" id="call5" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident6" class="ok" tabindex="0"><el-txt><el-method>waitForAnyKey</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args7" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>3</el-fr></el-top></el-statement>
     <el-statement class="ok" id="call8" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident9" class="ok" tabindex="0"><el-txt><el-method>clearConsole</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args10" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>4</el-fr></el-top></el-statement>
     <el-statement class="ok" id="print11" tabindex="0"><el-kw>print </el-kw><el-field id="expr12" class="optional ok" tabindex="0"><el-txt>"<el-lit>Next page</el-lit>"</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-statement>
-</el-code><br>
+</el-code-block>
 
 <h2>Reading textual data from a file</h2>
 <p>Reading a whole file in one go:</p>
-<el-code>
+<el-code-block>
   <el-statement class="ok" id="let3" tabindex="0"><el-kw>let </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>file</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-method>openFileForReading</el-method>()</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
   <el-statement class="ok" id="let6" tabindex="0"><el-kw>let </el-kw><el-field id="var7" class="ok" tabindex="0"><el-txt><el-id>text</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-id>file</el-id>.<el-method>readWholeFile</el-method>()</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement>
   <el-statement class="ok" id="call9" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident10" class="ok" tabindex="0"><el-txt><el-id>file</el-id>.<el-method>close</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args11" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>4</el-fr></el-top></el-statement>
   <el-statement class="ok" id="print12" tabindex="0"><el-kw>print </el-kw><el-field id="expr13" class="optional ok" tabindex="0"><el-txt><el-id>text</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-statement>
-</el-code>
+</el-code-block>
 
 <p>Reading a file line by line:</p>
-<el-code>
+<el-code-block>
   <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
   <el-statement class="ok" id="let3" tabindex="0"><el-kw>let </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>file</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-method>openFileForReading</el-method>()</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
   <el-statement class="ok" id="var6" tabindex="0"><el-kw>variable </el-kw><el-field id="var7" class="ok" tabindex="0"><el-txt><el-id>lines</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-kw>empty</el-kw> <el-type>Array</el-type>&lt;<el-kw>of</el-kw> <el-type>String</el-type>&gt;</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement>
@@ -1217,7 +1217,7 @@ name
   <el-kw>end while</el-kw>
   </el-statement>
   <el-statement class="ok" id="call18" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident19" class="ok" tabindex="0"><el-txt><el-id>file</el-id>.<el-method>close</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args20" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>7</el-fr></el-top></el-statement>
-</el-code>
+</el-code-block>
 
 <p>Notes</p>
 <li><el-code>openFileForReading</el-code> will present the user with a dialog to select the file.</li>
@@ -1228,12 +1228,10 @@ name
 
 <h2>Writing textual data to a file</h2>
 <p>Writing a whole file in one go:</p>
-<el-code>
-    <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
+<el-code-block>
     <el-statement class="ok" id="let3" tabindex="0"><el-kw>let </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>f</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-method>createFileForWriting</el-method>("<el-lit>myFile.txt</el-lit>")</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
     <el-statement class="ok" id="call6" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident7" class="ok" tabindex="0"><el-txt><el-id>f</el-id>.<el-method>writeWholeFile</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args8" class="optional ok" tabindex="0"><el-txt>"<el-lit>this is\nmyText</el-lit>"</el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>3</el-fr></el-top></el-statement>
-    <el-kw>end main</el-kw>
-</el-code><br>
+</el-code-block>
 
 <p>Writing a file line by line:</p>
 <el-code>
@@ -1254,12 +1252,16 @@ name
 <li><el-code>writeWholeFile</el-code> puts the string it is given into the file and then automatically saves the file, so the user will be presented with the same dialog as if <el-code>saveAndClose</el-code> had been called.</li>
 <li>Calling any method on a file that has already been closed (by calling either <el-code>saveAndClose</el-code> or by <el-code>writeWholeFile</el-code>) will result in a runtime error.</li>
 <li>If the user were to hit Cancel on the save dialog, then the program will exit with an error. If you want to guard against this possibility (if, for example, it might mean the loss of important data) then you should perform the save and close within a <el-code>try..catch</el-code> like this:</li>
-<el-code>try</el-code><br>
-<el-code>  call file.saveAndClose()</el-code><br>
-<el-code>catch exception in e</el-code><br>
-<el-code>  print "File save cancelled"</el-code><br>
-<el-code>end try</el-code><br>
-<br>
+
+<el-code-block>
+  <el-statement class="ok multiline" id="try3" tabindex="0">
+  <el-top><el-expand>+</el-expand><el-kw>try </el-kw><el-msg></el-msg><el-fr>3</el-fr></el-top>
+  <el-statement class="ok" id="call8" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident9" class="ok" tabindex="0"><el-txt><el-id>file</el-id>.<el-method>saveAndClose</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args10" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>4</el-fr></el-top></el-statement>
+  <el-statement class="ok outdent" id="catch5" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>catch exception in </el-kw><el-field id="ident6" class="ok" tabindex="0"><el-txt><el-id>e</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top></el-statement>
+  <el-statement class="ok" id="print11" tabindex="0"><el-kw>print </el-kw><el-field id="expr12" class="optional ok" tabindex="0"><el-txt>"<el-lit>File save cancelled</el-lit>"</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-statement>
+  <el-kw>end try</el-kw>
+  </el-statement>
+</el-code-block>
 <p>or you could make the code offer the user options: to save again, or to continue without saving.</p>
 
 <h1 id="h61">Procedural programming</h1>
@@ -1271,11 +1273,16 @@ name
 <p>The <el-code>main</el-code> method does not have to be at the top of the file, but this is a good convention to follow.</p>
 <p>There may not be more than one <el-code>main</el-code> method in a file &#8211; and the global selector (above) will not show the <el-code>main</el-code> option when one already exists in the file.</p>
 <p>Example:</p>
-<el-code>main</el-code><br>
-<el-code>  variable li set to [3, 6, 1, 0, 99, 4, 67]</el-code><br>
-<el-code>  call inPlaceRippleSort(li)</el-code><br>
-<el-code>  print li</el-code><br>
-<el-code>end main</el-code><br>
+
+<el-code-block>
+<main class="multiline" id="main1" tabindex="0">
+  <el-top><el-expand>+</el-expand><el-kw>main</el-kw> <el-msg class="warning"></el-msg><el-fr>1</el-fr></el-top>
+  <el-statement class="ok" id="var3" tabindex="0"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt>[<el-lit>3</el-lit>, <el-lit>6</el-lit>, <el-lit>1</el-lit>, <el-lit>0</el-lit>, <el-lit>99</el-lit>, <el-lit>4</el-lit>, <el-lit>67</el-lit>]</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+  <el-statement class="warning" id="call6" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident7" class="ok" tabindex="0"><el-txt><el-method>inPlaceRippleSort</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args8" class="optional ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-fr>3</el-fr></el-top></el-statement>
+  <el-statement class="ok" id="print9" tabindex="0"><el-kw>print </el-kw><el-field id="expr10" class="optional ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>4</el-fr></el-statement>
+  <el-kw>end main</el-kw>
+</main>
+</el-code-block>
 
 <h2 id="Defining_named_values">Defining named values</h2>
 <p>There are several kinds of name value in Elan, defined by:</p>
@@ -1290,15 +1297,17 @@ name
 <p>The name of a <el-code>constant</el-code> follows the rules for an <a href="#Identifier">Identifier</a>.</p>
 <p>The value to which a constant is set must be a <span class="Link">Literal value</span>, of one of the following Types: <span class="Link">Int</span>, <span class="Link">Float</span>, <span class="Link">Boolean</span>, <span class="Link">String</span>, <a href="#Dictionary">Dictionary</a>, or <a href="#DictionaryImmutable">DictionaryImmutable.</a></p>
 <p>Examples:</p>
-<el-code>constant phi set to 1.618</el-code><br>
-<el-code>constant maxHits set to 10</el-code><br>
-<el-code>constant warningMsg set to "Limit reached"</el-code><br>
-<el-code>constant fruit set to {"apple", "orange", "banana"}</el-code><br>
-<el-code>constant black set to 0x000000</el-code><br>
-<el-code>constant red set to 0xff0000</el-code><br>
-<el-code>constant scrabbleValues set to {"A":1, "B":3, "C":3, "D":2, "E":1, "F":4, "G":2, "H":4, "I":1, "J":8, "K":5, "L":1, "M":3, "N":1, "O":1, "P":3, "Q":10, "R":1, "S":1, "T":1, "U":1, "V":4, "W":4, "X":8, "Y":4, "Z":10}</el-code><br>
-<el-code>constant colours set to {Suit.clubs:black, Suit.diamonds:red, Suit.hearts:red, Suit.spades:black}</el-code><br>
 
+<el-code-block>
+<el-const class="ok multiline" id="const1" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>constant </el-kw><el-field id="ident2" class="ok" tabindex="0"><el-txt><el-id>phi</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-top><el-kw> set to </el-kw><el-field id="text3" class="ok" tabindex="0"><el-txt><el-lit><el-lit>1</el-lit>.618</el-lit></el-txt><el-place><i>literal value or data structure</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A literal value (such as a number or string), or a literal List or Dictionary (consult documentation for format).">?</el-help></el-field><el-msg></el-msg><el-fr>1</el-fr></el-const>
+  <el-const class="ok multiline" id="const4" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>constant </el-kw><el-field id="ident5" class="ok" tabindex="0"><el-txt><el-id>maxHits</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-top><el-kw> set to </el-kw><el-field id="text6" class="ok" tabindex="0"><el-txt><el-lit>10</el-lit></el-txt><el-place><i>literal value or data structure</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A literal value (such as a number or string), or a literal List or Dictionary (consult documentation for format).">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-const>
+  <el-const class="ok multiline" id="const7" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>constant </el-kw><el-field id="ident8" class="ok" tabindex="0"><el-txt><el-id>warningMsg</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-top><el-kw> set to </el-kw><el-field id="text9" class="ok" tabindex="0"><el-txt>"<el-lit>Limit reached</el-lit>"</el-txt><el-place><i>literal value or data structure</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A literal value (such as a number or string), or a literal List or Dictionary (consult documentation for format).">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-const>
+  <el-const class="ok multiline" id="const10" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>constant </el-kw><el-field id="ident11" class="ok" tabindex="0"><el-txt><el-id>fruit</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-top><el-kw> set to </el-kw><el-field id="text12" class="ok" tabindex="0"><el-txt>{"<el-lit>apple</el-lit>", "<el-lit>orange</el-lit>", "<el-lit>banana</el-lit>"}</el-txt><el-place><i>literal value or data structure</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A literal value (such as a number or string), or a literal List or Dictionary (consult documentation for format).">?</el-help></el-field><el-msg></el-msg><el-fr>4</el-fr></el-const>
+  <el-const class="ok multiline" id="const13" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>constant </el-kw><el-field id="ident14" class="ok" tabindex="0"><el-txt><el-id>black</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-top><el-kw> set to </el-kw><el-field id="text15" class="ok" tabindex="0"><el-txt><el-lit>0x000000</el-lit></el-txt><el-place><i>literal value or data structure</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A literal value (such as a number or string), or a literal List or Dictionary (consult documentation for format).">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-const>
+  <el-const class="ok multiline" id="const16" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>constant </el-kw><el-field id="ident17" class="ok" tabindex="0"><el-txt><el-id>red</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-top><el-kw> set to </el-kw><el-field id="text18" class="ok" tabindex="0"><el-txt><el-lit>0xff0000</el-lit></el-txt><el-place><i>literal value or data structure</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A literal value (such as a number or string), or a literal List or Dictionary (consult documentation for format).">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-const>
+  <el-const class="ok multiline" id="const19" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>constant </el-kw><el-field id="ident20" class="ok" tabindex="0"><el-txt><el-id>scrabbleValues</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-top><el-kw> set to </el-kw><el-field id="text21" class="ok" tabindex="0"><el-txt>{"<el-lit>A</el-lit>":<el-lit>1</el-lit>, "<el-lit>B</el-lit>":<el-lit>3</el-lit>, "<el-lit>C</el-lit>":<el-lit>3</el-lit>, "<el-lit>D</el-lit>":<el-lit>2</el-lit>, "<el-lit>E</el-lit>":<el-lit>1</el-lit>, "<el-lit>F</el-lit>":<el-lit>4</el-lit>, "<el-lit>G</el-lit>":<el-lit>2</el-lit>, "<el-lit>H</el-lit>":<el-lit>4</el-lit>, "<el-lit>I</el-lit>":<el-lit>1</el-lit>, "<el-lit>J</el-lit>":<el-lit>8</el-lit>, "<el-lit>K</el-lit>":<el-lit>5</el-lit>, "<el-lit>L</el-lit>":<el-lit>1</el-lit>, "<el-lit>M</el-lit>":<el-lit>3</el-lit>, "<el-lit>N</el-lit>":<el-lit>1</el-lit>, "<el-lit>O</el-lit>":<el-lit>1</el-lit>, "<el-lit>P</el-lit>":<el-lit>3</el-lit>, "<el-lit>Q</el-lit>":<el-lit>10</el-lit>, "<el-lit>R</el-lit>":<el-lit>1</el-lit>, "<el-lit>S</el-lit>":<el-lit>1</el-lit>, "<el-lit>T</el-lit>":<el-lit>1</el-lit>, "<el-lit>U</el-lit>":<el-lit>1</el-lit>, "<el-lit>V</el-lit>":<el-lit>4</el-lit>, "<el-lit>W</el-lit>":<el-lit>4</el-lit>, "<el-lit>X</el-lit>":<el-lit>8</el-lit>, "<el-lit>Y</el-lit>":<el-lit>4</el-lit>, "<el-lit>Z</el-lit>":<el-lit>10</el-lit>}</el-txt><el-place><i>literal value or data structure</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A literal value (such as a number or string), or a literal List or Dictionary (consult documentation for format).">?</el-help></el-field><el-msg></el-msg><el-fr>7</el-fr></el-const>
+  <el-const class="focused multiline" id="const22" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>constant </el-kw><el-field id="ident23" class="ok" tabindex="0"><el-txt><el-id>colours</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-top><el-kw> set to </el-kw><el-field id="text24" class="" tabindex="0"><el-txt>{<el-type>Suit</el-type>.<el-id>clubs</el-id>:<el-id>black</el-id>, <el-type>Suit</el-type>.<el-id>diamonds</el-id>:<el-id>red</el-id>, <el-type>Suit</el-type>.<el-id>hearts</el-id>:<el-id>red</el-id>, <el-type>Suit</el-type>.<el-id>spades</el-id>:<el-id>black</el-id>}</el-txt><el-place><i>literal value or data structure</i></el-place><el-compl></el-compl> <el-msg class="warning">'Suit' is not defined</el-msg><el-help title="A literal value (such as a number or string), or a literal List or Dictionary (consult documentation for format).">?</el-help></el-field> <el-msg class="warning"></el-msg><el-fr>8</el-fr></el-const></div>
+</el-code-block>
 <p>(In the last example above, <el-code>Suit</el-code> is an <a href="#Enum_1">Enum</a>).</p>
 
 <h3 id="Let_statement">Let statement</h3>
@@ -1306,12 +1315,10 @@ name
 <li>To avoid duplicating code, where the same sub-expression would otherwise be written more than one</li>
 <li>To break up a complex expression just for clarity or readability</li>
 <p>Here are examples of <el-code>let</el-code> statements in use:</p>
-<el-code><br>
-let wordCounts be allRemainingWordCounts(possAnswers)<br>
-<br>
-let best be wordCounts.reduce(wordCounts.head(), lambda bestSoFar as WordCount, <br>
-&nbsp;&nbsp;newWord as WordCount =&gt; betterOf(bestSoFar, newWord, possAnswers
-</el-code><br>
+<el-code-block>
+  <el-statement class="selected focused ok" id="let460" tabindex="0"><el-kw>let </el-kw><el-field id="var461" class="ok" tabindex="0"><el-txt><el-id>wordCounts</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr462" class="ok" tabindex="0"><el-txt><el-method>allRemainingWordCounts</el-method>(<el-id>possAnswers</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>143</el-fr></el-statement>
+  <el-statement class="ok" id="let463" tabindex="0"><el-kw>let </el-kw><el-field id="var464" class="ok" tabindex="0"><el-txt><el-id>best</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr465" class="ok" tabindex="0"><el-txt><el-id>wordCounts</el-id>.<el-method>reduce</el-method>(<el-id>wordCounts</el-id>.<el-method>head</el-method>(), <el-kw>lambda</el-kw> <el-id>bestSoFar</el-id> <el-kw>as</el-kw> <el-type>WordCount</el-type>, <el-id>newWord</el-id> <el-kw>as</el-kw> <el-type>WordCount</el-type> =&gt; <el-method>betterOf</el-method>(<el-id>bestSoFar</el-id>, <el-id>newWord</el-id>, <el-id>possAnswers</el-id>))</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>144</el-fr></el-statement>
+</el-code-block>
 
 <p>You are never required to use a <el-code>let</el-code> statement: you may always use a <el-code>variable </el-code>instead. But if you are willing to use <el-code>let</el-code> where you can, it is considered a good practice in functional programming. <el-code>let</el-code> may be thought of as somewhere between a <a href="#Constant">Constant</a> and a <span class="Link">Variable statement</span> but also has unique characteristics:</p>
 <li>Like a variable and a constant, a <el-code>let</el-code> statement defines a new named value.</li>
@@ -1333,13 +1340,16 @@ let best be wordCounts.reduce(wordCounts.head(), lambda bestSoFar as WordCount, 
 <h3>If statement</h3>
 <p>Example1:</p>
 
-<el-code><br>
-if head is apple then<br>
-&nbsp;&nbsp;call setAppleToRandomPosition(apple, body)<br>
-else<br>
-&nbsp;&nbsp;call body.removeAt(0)<br>
-end if
-</el-code><br>
+<el-code-block
+  <el-statement class="multiline" id="if3" tabindex="0">
+    <el-top><el-expand>+</el-expand><el-kw>if </el-kw><el-field id="expr5" class="" tabindex="0"><el-txt><el-id>head</el-id><el-kw> is </el-kw><el-id>apple</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl> <el-msg class="">Cannot do equality operations on Procedures or Functions</el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-kw> then</el-kw><el-fr>2</el-fr></el-top> <el-msg class=""></el-msg>
+    <el-statement class=""" id="call6" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident7" class="ok" tabindex="0"><el-txt><el-method>setAppleToRandomPosition</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args8" class="optional " tabindex="0"><el-txt><el-id>apple</el-id>, <el-id>body</el-id></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg class="">'apple' is not defined</el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>) <el-msg class="">'setAppleToRandomPosition' is not defined</el-msg><el-fr>3</el-fr></el-top></el-statement>
+    <el-statement class="ok outdent" id="else9" tabindex="0"><el-top>
+        <el-kw>else </el-kw><el-field id="elif11" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i>if</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Type 'i' to add an 'if condition' to this 'else clause'.">?</el-help></el-field></el-top><el-msg></el-msg><el-fr>4</el-fr></el-statement>
+    <el-statement class="" id="call12" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident13" class="" tabindex="0"><el-txt><el-id>body</el-id>.<el-method>removeAt</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl> <el-msg class="">'body' is not defined</el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args14" class="optional ok" tabindex="0"><el-txt><el-lit>0</el-lit></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>) <el-msg class=""></el-msg><el-fr>5</el-fr></el-top></el-statement>
+    <el-kw>end if</el-kw>
+    </el-statement>
+  </el-code-block>
 
 <p>Example 2:</p>
 <el-code><br>

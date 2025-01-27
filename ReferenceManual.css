@@ -29,4 +29,5 @@ p.List_Paragraph_2,li.List_Paragraph_2,td.List_Paragraph_2,th.List_Paragraph_2,h
   { text-indent:-17pt; margin-left:74.5pt; line-height:1.33; }
 
 /* code */
-el-code * {font-family: Consolas, Courier, monospace;}
+el-code *, el-code-block * {font-family: Consolas, Courier, monospace;}
+el-code-block {display:block; margin-top:12pt; margin-bottom:12pt; }
