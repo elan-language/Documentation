@@ -89,7 +89,7 @@
 </tr>
 <tr><td>[ ]</td>
 <td>square brackets</td>
-<td class="List1" colspan="2" bgcolor="#E8E8E8">used to delimit a literal <code>Array</code> or <code>Dictionary</code>, or for an index or<br>
+<td colspan="2">used to delimit a literal <code>Array</code> or <code>Dictionary</code>, or for an index or<br>
 index-range
 </td>
 </tr>
@@ -546,23 +546,23 @@ end procedure
 </tr>
 <tr><td>Tab</td>
 <td>First field in frame.</td>
-<td bgcolor="#D1D1D1">Select next field within frame or, if from last field in a frame, select the frame itself.<br>
+<td>Select next field within frame or, if from last field in a frame, select the frame itself.<br>
 (If the field has a selected option in the auto-complete popup list then Tab will use that option &#8211; the same as Enter)
 </td>
 </tr>
 <tr><td>_</td>
-<td bgcolor="#E8E8E8">Select previous frame <br>
+<td>Select previous frame <br>
 (within peer-level only).
 </td>
-<td bgcolor="#E8E8E8">Select previous frame<br>
+<td>Select previous frame<br>
 &nbsp;(in tab order).
 </td>
 </tr>
 <tr><td>_</td>
-<td bgcolor="#D1D1D1">Select next frame<br>
+<td>Select next frame<br>
 (within peer-level only).
 </td>
-<td bgcolor="#D1D1D1">Select next frame<br>
+<td>Select next frame<br>
 &nbsp;(in tab order).
 </td>
 </tr>
@@ -589,7 +589,7 @@ end procedure
 <td>Toggle (expand/collapse) outlining on selected frame.</td>
 <td>Toggle (expand/collapse) outlining on the frame enclosing this field.</td>
 </tr>
-<tr><td align="center" bgcolor="#E8E8E8">Ctrl-O <br>
+<tr><td align="center">Ctrl-O <br>
 (Ctrl-Shift-o)
 </td>
 <td>Toggle (expand/collapse) outlining on all frames.</td>
@@ -605,13 +605,13 @@ end procedure
 <td>On a selected Field</td>
 </tr>
 <tr><td>Alt-t</td>
-<td align="center" colspan="2" bgcolor="#D1D1D1">Remove all &#8216;new code&#8217; selections that can be removed.<br>
+<td align="center" colspan="2">Remove all &#8216;new code&#8217; selections that can be removed.<br>
 This is equivalent to clicking on the Trim button. <br>
 (This cannot be Ctrl-t as that is defined and executed by the browser).
 </td>
 </tr>
 <tr><td>Backspace</td>
-<td bgcolor="#E8E8E8">On any &#8216;new code&#8217; selector: delete the selector. (Note that all &#8216;new code&#8217; selectors can be removed with the +/- button above the code pane).<br>
+<td>On any &#8216;new code&#8217; selector: delete the selector. (Note that all &#8216;new code&#8217; selectors can be removed with the +/- button above the code pane).<br>
 <br>
 On a new, unmodified, frame, or from any unedited field within that new frame: delete the whole frame and go back to the selector. This capability is to facilitate deleting a frame created unintentionally. As soon as any field has been edited, or any child frame added &#8211; the frame can only be deleted using Ctrl-Delete (see below).
 </td>
@@ -621,7 +621,7 @@ On a new, unmodified, frame, or from any unedited field within that new frame: d
 <td></td>
 <td>Delete the character to the right of the cursor.</td>
 </tr>
-<tr><td align="center" bgcolor="#E8E8E8">Ctrl-Delete or<br>
+<tr><td align="center">Ctrl-Delete or<br>
 Ctrl-d
 </td>
 <td>Delete the selected frame, including any frames within it.</td>
@@ -629,7 +629,7 @@ Ctrl-d
 </tr>
 <tr><td>Enter</td>
 <td>Insert a selector-frame (&#8216;new code&#8217;) below selected, at peer level &#8211; if permissible.</td>
-<td bgcolor="#D1D1D1">If auto-complete options are offered (as a drop-down list), enter the selected option into the field.<br>
+<td>If auto-complete options are offered (as a drop-down list), enter the selected option into the field.<br>
 <br>
 Otherwise, move to the next field (in the same frame) &#8211; like Tab. <br>
 <br>
@@ -662,20 +662,20 @@ For last field in frame only: insert &#8216;new code&#8217; after this field.
 </tr>
 <tr><td>Ctrl-v</td>
 <td>-</td>
-<td bgcolor="#E8E8E8">Paste text from the clipboard into the field, at the cursor.<br>
+<td>Paste text from the clipboard into the field, at the cursor.<br>
 <br>
 On a selected &#8216;new code&#8217; field: Paste the frame(s) added to the scratchpad in place of the &#8216;new code&#8217; field. If any of the frames to be added is not compatible with the content of the &#8216;new code&#8217; field then no action will take place.
 </td>
 </tr>
 <tr><td>Ctrl-z</td>
-<td bgcolor="#D1D1D1">Undo last edit<br>
+<td>Undo last edit<br>
 Takes you back to the next most recent version <span>that parsed successfully.<br>
 </span>Any changes made that did not result in a successful parse will be lost.
 </td>
 <td></td>
 </tr>
 <tr><td>Ctrl-y</td>
-<td bgcolor="#E8E8E8">Redo last undo<br>
+<td>Redo last undo<br>
 provided that the code you undid from was parsing successfully
 </td>
 <td></td>
@@ -1090,16 +1090,16 @@ Where a colour can be specified, it is a value of Type <code>Int</code> in the r
 <p>Elan has a small number of standard named colours:</p>
 <p>
 <table class="Table_Style">
-<tr><td align="center" width="77" bgcolor="#005577">Integer<br>
+<tr><td align="center" width="77">Integer<br>
 decimal
 </td>
-<td align="center" width="89" bgcolor="#005577">R G B<br>
+<td align="center" width="89">R G B<br>
 decimal
 </td>
-<td align="center" width="81" bgcolor="#005577">R G B<br>
+<td align="center" width="81">R G B<br>
 hexadecimal
 </td>
-<td align="center" width="74" bgcolor="#005577">Colour<br>
+<td align="center" width="74">Colour<br>
 name
 </td>
 </tr>
@@ -2200,7 +2200,7 @@ List&lt;of List&lt;of Int&gt;&gt;</code> for a List of  Lists of Type </ode>Int<
 <td>d["a"]</td>
 <td>d{"a"}</td>
 </tr>
-<tr><td bgcolor="#D1D1D1">Get all keys<br>
+<tr><td>Get all keys<br>
 Get all values
 </td>
 <td>and</span> d.values() <br>
