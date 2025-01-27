@@ -36,3 +36,4 @@ code.method { color: var(--method); }
 code.type { color: var(--type); }
 code.namedValue { color: var(--namedValue); }
 code.symbol { color: var(--namedValue); }
+code.elan, code.elan * {font-family: Consolas, Courier, monospace;}

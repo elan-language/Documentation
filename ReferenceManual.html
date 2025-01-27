@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="referenceManual.css" rel="stylesheet">
 <link href="colourScheme.css" rel="stylesheet">
+<link href="elanStyle.css" rel="stylesheet">
 <title>Elan Reference Manual</title>
 </head>
 <body>
@@ -958,16 +959,23 @@ end main
 <p>Block graphics<code> </code>provides a simple way to create low resolution graphics, ideal for simple but engaging games for example. The graphics are displayed on a grid that is 40 blocks wide by 30 blocks high.</p>
 <p>Each block may be rendered as a solid colour. Each block may alternatively hold a symbol: either one of the standard text characters or any Unicode symbol and, in each case, with specified foreground and background colours. For specifying colours, see <a href="#Colour">Colour</a>.</p>
 <p>An example of block graphics to produce a rapidly changing pattern of coloured blocks:</p>
-<code>main</code><br>
-<code>  variable gr set to new BlockGraphics()</code><br>
-<code>  while true</code><br>
-<code>    let x be randomInt(0, 39)</code><br>
-<code>    let y be randomInt(0, 29)</code><br>
-<code>    let colour be randomInt(0, 2^24 - 1)</code><br>
-<code>    set gr to gr.withBlock(x, y, colour)</code><br>
-<code>    call gr.display()</code><br>
-<code>  end while</code><br>
-<code>end main</code><br>
+
+<code class="elan">
+<main class="ok multiline" id="main1" tabindex="0">
+<el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
+<el-statement class="ok" id="var3" tabindex="0"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>gr</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>BlockGraphics</el-type>()</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+<el-statement class="ok multiline" id="while6" tabindex="0">
+<el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-top>
+<el-statement class="ok" id="let9" tabindex="0"><el-kw>let </el-kw><el-field id="var10" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr11" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>39</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>4</el-fr></el-statement>
+<el-statement class="ok" id="let12" tabindex="0"><el-kw>let </el-kw><el-field id="var13" class="ok" tabindex="0"><el-txt><el-id>y</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>29</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-statement>
+<el-statement class="ok" id="let15" tabindex="0"><el-kw>let </el-kw><el-field id="var16" class="ok" tabindex="0"><el-txt><el-id>colour</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>2</el-lit>^<el-lit>24</el-lit> - <el-lit>1</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-statement>
+<el-statement class="ok" id="set18" tabindex="0"><el-kw>set </el-kw><el-field id="ident19" class="ok" tabindex="0"><el-txt><el-id>gr</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr20" class="ok" tabindex="0"><el-txt><el-id>gr</el-id>.<el-method>withBlock</el-method>(<el-id>x</el-id>, <el-id>y</el-id>, <el-id>colour</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>7</el-fr></el-statement>
+<el-statement class="ok" id="call21" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident22" class="ok" tabindex="0"><el-txt><el-id>gr</el-id>.<el-method>display</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args23" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>8</el-fr></el-top></el-statement>
+<el-kw>end while</el-kw>
+</el-statement>
+<el-kw>end main</el-kw>
+</main>
+</code>
 
 <p>Notes</p>
 <li>Making changes to the instance of <code>BlockGraphics</code> (<code>gr</code> above) &#8211; for example by calling <code>withBlock </code>above &#8211; does not of itself result in anything appearing in the Graphics screen. The Graphics screen changes only when the <code>display()</code> procedure is called. This is so that you can make many changes to the graphics and then have them appear all at once (when <code>display</code> is called). It is even possible to create and modify, multiple instances of <code>BlockGraphics</code>, and switch instantly between them by calling <code>display</code> on different instances. </li>
