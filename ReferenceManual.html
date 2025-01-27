@@ -80,8 +80,8 @@
 <h2>Symbols, Keywords, Constants, Methods and Types</h2>
 
 <p>
-<table class="Table_Style">
-<tr><td>Punctuation symbols recognised by Elan</td>
+<table>
+<tr><th colspan="3">Punctuation symbols recognised by Elan</th>
 </tr>
 <tr><td>( )</td>
 <td>brackets</td>
@@ -507,7 +507,7 @@ index-range
 <li>The name given to a <code>class</code> must follow the rules for any Type name i.e. it must start with an upper-case letter.</li>
 <li>Every (concrete) class has a <code>constructor</code>, which is automatically added when you define a <code>class</code>. But it is not essential to define any code within that constructor. </li>
 <li>A property may be assigned (set) a new value within the <code>constructor</code>, or within a <code>procedure</code> method defined on the class or the sub-class. But a property may never be assigned by code outside the class. If you require this capability, you can write your own <code>procedure</code> methods (commonly called &#8216;setter&#8217; methods) to do this. A <code>function</code> method may read properties, but not write to them.</li>
-<p class="List_Paragraph">
+<p>
 Whenever you wish to access a property from within a method (or from within the constructor) on the same class, then the name of the property must be prefixed with the &#8216;qualifier&#8217; <code>property. </code>(&#8216;property-dot&#8217;). This applies whether you are reading or setting the property. By this means you can have a method parameter with the same name as a property, but they are unambiguous because the property must be prefixed. A common pattern is to use the same name in a &#8216;setter&#8217; method, for example:<br>
 <code><br>
 procedure setName(name as String)<br>
@@ -531,10 +531,10 @@ end procedure
 <h2 id="h43">Navigation &#8211; using the keyboard</h2>
 <p>Note: For Apple Mac users: commands use of the Ctrl key in this reference, should be replaced by the macOS Cmd key.</p>
 <p>
-<table class="Table_Style">
-<tr><td>Keystroke</td>
-<td>On a selected Frame</td>
-<td>On a selected Field</td>
+<table>
+<tr><th>Keystroke</th>
+<th>On a selected Frame</th>
+<th>On a selected Field</th>
 </tr>
 <tr><td>Home</td>
 <td>First peer-level frame.</td>
@@ -599,10 +599,10 @@ end procedure
 
 <h2 id="h44">Editing &#8211; using the keyboard</h2>
 <p>
-<table class="Table_Style">
-<tr><td>Keystroke</td>
-<td>On a selected Frame</td>
-<td>On a selected Field</td>
+<table>
+<tr><th>Keystroke</th>
+<th>On a selected Frame</th>
+<th>On a selected Field</th>
 </tr>
 <tr><td>Alt-t</td>
 <td align="center" colspan="2">Remove all &#8216;new code&#8217; selections that can be removed.<br>
@@ -700,7 +700,6 @@ provided that the code you undid from was parsing successfully
 <p>NOT YET IMPLEMENTED</p>
 <li>To move selected frame, or frames, up or down within the same peer level hold down the Ctrl key and drag the mouse, or move the scroll wheel</li>
 <li>Scrolling of options within the &#8216;autocomplete&#8217; popup using the mouse wheel.</li>
-<li></li>
 
 <h1 id="h46">Expressions</h1>
 <p>One of the most important constructs in programming is the &#8216;expression&#8217;. An expression is evaluated to return a value. An expression is made up of the following possible elements:</p>
@@ -733,7 +732,7 @@ provided that the code you undid from was parsing successfully
 <code>print a[4..]</code><br>
 <code>print a[..5]</code><br>
 <code>print a[0..4]</code><br>
-<li></li>
+
 <p>See also: <a href="#Using_an_Array">Using an Array</a>, <a href="#Using_a_Dictionary">Using a Dictionary</a></p>
 <p>Important: unlike in many languages, indexes in Elan (whether, single, multiple, or a range) are only ever used for reading values. Writing a value to a specific index location is done through a method such as:</p>
 <p>
@@ -835,7 +834,6 @@ end Function
 <p>Notes</p>
 <li>The third example above is not strictly a function call, but is a &#8216;system method&#8217;<span class="Link">Error! Reference source not found.</span> call. System methods may only be used within the <span class="Link">Main routine</span> or a Functions and procedure, because they have external dependencies or side effects.</li>
 <li>In the fourth example, <code>upperCase</code> is a &#8216;dot method&#8217; that may be applied to any instance (variable or literal) of Type <code>String</code>. See <span class="Link">Dot methods on a String</span>.</li>
-<li></li>
 
 <h1 id="Input/Output">Input/Output</h1>
 
@@ -977,13 +975,13 @@ end main
 <li>Colour is always specified as an integer: see <a href="#Colour">Colour</a>.</li>
 <li>The <code>withBlock</code> method does not change the instance of <code>BlockGraphics</code> on which it is called, but returns a new instance of <code>BlockGraphics</code> based on the original with the change specified. This new instance may, however, be re-assigned to the same variable &#8211; as is the case in the code above.</li>
 <li>In addition to <code>withBlock</code>, there are these three function methods for updating the graphics:</li>
-<p class="List_Paragraph_2">
+<p>
 <code>withText(x as Int, y as Int, text as String, foreground as Int, background as Int) returns BlockGraphics</code><br>
 If the text argument is more than one character long, the characters will be placed in successive blocks, wrapping onto the next line if necessary. (If the string is too long to fit, from the starting coordinates specified, you will get a runtime error). Use only ASCII characters with values in the range 32 space) through 254 lower-case thorn).</p>
-<p class="List_Paragraph_2">
+<p>
 <code>withUnicode(x as Int, y as Int, unicode as Int, foreground as Int, background as Int) returns BlockGraphics</code><br>
 is used to specify a single symbol or character using its Unicode codepoint value.</p>
-<p class="List_Paragraph_2">
+<p>
 <code>withBackground(backgroundColour as Int) returns BlockGraphics</code><br>
 will paint the background colour for the whole grid, leaving any existing characters (and their foreground colours) unchanged.</p>
 <p>There are also function methods on a <code>BlockGraphics</code> instance for reading the existing character and colours of a specified block:</p>
@@ -1066,7 +1064,7 @@ will paint the background colour for the whole grid, leaving any existing charac
 <li>As with the way that SVG works within Html, the shapes are drawn in the order in which they are added into the <code>VectorGraphics</code> instance, with later shapes positioned over earlier shapes.</li>
 <li>The colour (for <code>stroke</code> and <code>fill</code> properties) may be specified as described at <a href="#Colour">Colour</a>. The <code>fill</code> colour only may also be specified as &#8216;transparent&#8217; by giving it a negative value; we suggest using <code>fill to -1</code></li>
 <li><code>VectorGraphics</code> also has methods <code>removeLast</code> (no parameters), <code>remove</code> (which takes a shape as a parameter, and <code>replace</code> which takes an existing shape and a new shape as parameters. The new shape may be a modified version of an existing shape (created using <code>copy .. with</code>), thereby enabling animation. The following simple example creates a circle that changes between red and green every second:</li>
-<li></li>
+
 <code>main</code><br>
 <code>  variable vg set to new VectorGraphics()</code><br>
 <code>  let greenCirc be new CircleVG() with cx to 50, cy to 37, r to 30, fill to green</code><br>
@@ -1089,19 +1087,19 @@ Where a colour can be specified, it is a value of Type <code>Int</code> in the r
 <p>As in Html, a colour number is made up of the values from 0 to 255 for each of the three components: red (R), green (G) and blue (B). So a colour value may be described by its integer value, or by three decimal values (R, G, B), or by a 6-digit hexadecimal number (<code>0xrrggbb</code>).</p>
 <p>Elan has a small number of standard named colours:</p>
 <p>
-<table class="Table_Style">
-<tr><td align="center" width="77">Integer<br>
+<table>
+<tr><th>Integer<br>
 decimal
-</td>
-<td align="center" width="89">R G B<br>
+</th>
+<th>R G B<br>
 decimal
-</td>
-<td align="center" width="81">R G B<br>
+</th>
+<th>R G B<br>
 hexadecimal
-</td>
-<td align="center" width="74">Colour<br>
+</th>
+<th>Colour<br>
 name
-</td>
+</th>
 </tr>
 <tr><td>0</td>
 <td>  0    0    0</td>
@@ -1147,11 +1145,11 @@ name
 
 <p>You can use these colour names directly in an <code>Int</code>. If you want to define other colours, you put any of the 16,777,215 colour numbers into literals, constants or variables either as a decimal integer or, more conveniently, in the hexadecimal form shown in the table. For example you might define <code>lightBlue</code> and <code>deepPink</code> using these hex values:</p>
 <p>
-<table class="Table_Style">
-<tr><td>8421504</td>
-<td>128  171  255</td>
-<td><code>0x80abff</code></td>
-<td>lightBlue</td>
+<table>
+<tr><th>8421504</th>
+<th>128  171  255</th>
+<th><code>0x80abff</code></th>
+<th>lightBlue</th>
 </tr>
 <tr><td>16206720</td>
 <td>247   75  128</td>
@@ -1342,7 +1340,7 @@ end if
 <p>Notes</p>
 <li>The three defining values (<code>from</code>, <code>to</code>, and <code>step</code>) must all be integers &#8211; positive or negative.</li>
 <li>They may be defined by literal integers, variables of integer Type, or expressions that evaluate to an integer. </li>
-<p class="List_Paragraph">
+<p>
 However, if you require a negative step then the literal value, variable, or expression must start with a negative sign &#8211; as this is needed at compile time to determine the nature of the exit condition. So if you have a variable <code>s</code> that holds a negative value to be used as the step, then you will need to write something like the following:<br>
 <code><br>
 variable s set to -3<br>
@@ -1364,8 +1362,7 @@ end for
 <p>The <code>main</code> routine may delegate work to one or more <code>function</code>s or <code>procedure</code>s.</p>
 
 <h3>Function</h3>
-<li></li>
-<li></li>
+
 <li>Parameter passing</li>
 
 <h3>Procedure</h3>
@@ -1399,7 +1396,6 @@ end for
 
 <p>Notes</p>
 <li>Parameters for a procedure are defined in exactly the same way as for a function; each parameter definition takes the form &lt;name&gt; <code>as</code> &lt;Type&gt;, for example <code>age as Int</code>.<a name="Parameter_passing"></a></li>
-<li></li>
 
 <h3 id="Parameter_passing_1">Parameter passing</h3>
 <p>The arguments provided to a method (function or procedure) are passed &#8216;by value&#8217; and not &#8216;by reference&#8217;. If you wish to be able to re-assign the value associated with a parameter, such that that change would be visible to the code that calls the procedure, then you can precede the parameter definition with the keyword <code>out</code>. This is useful when you are passing in, say, an <code>Int</code> that refers to an index, and you want the procedure to update the index number it is pointing to.</p>
@@ -1477,7 +1473,6 @@ end for
 <li>always start with a <code>#</code> followed by a space and then free-form text. The text field may be left empty</li>
 <li>are a single line, though if the text is long enough the line may be wrapped within the editor</li>
 <li>are always on their own line. It is it not possible to add a comment after, or within, a line of code.</li>
-<li></li>
 
 <h1>Object-oriented programming</h1>
 
@@ -1567,7 +1562,7 @@ If you wish to have several sub-classes of an <code>abstract class</code> that s
 <li>A <code>property</code> may be marked <code>private</code>, in which case it is visible only to code within the class and, if defined on an <code>abstract class</code>, within its sub-classes. This is done by selecting the property frame and pressing Ctrl-p. (Pressing these keys again will remove the <code>private</code> modifier).</li>
 <li>If not marked <code>private</code>, a property may be read but not be written to. Properties may only be modified from outside the class by means of a <span class="Link">Procedure method</span>.</li>
 <li>A property may be given an initial value in the <code>constructor</code>.</li>
-<p class="List_Paragraph">
+<p>
 If the <code>property</code> is not initialised within the constructor then it will automatically be given the <code>empty</code> value for that Type. You may test whether a property contains this default value by writing e.g.:<br>
 <code>if head is empty Square</code></p>
 <li>Whenever you wish to access a property from within a method (or from within the constructor) on the same class, then the name of the property must be prefixed with the &#8216;qualifier&#8217;: <code>property. </code>(&#8216;property-dot&#8217;). This applies whether you are reading or setting the property. By this means you can have a method parameter with the same name as a property, but they are unambiguous, because the property must be prefixed. A common pattern is to use the same name in a &#8216;setter&#8217; method, for example:</li>
@@ -1853,11 +1848,11 @@ end main<br>
 <li>Minimum value: approximately 5 &times; 10-324</li>
 <p>For greater detail, refer to the official JavaScript documentation</p>
 <p>Notes</p>
-<p class="List_Paragraph">
+<p>
 A variable that has been defined as being of Type <code>Float</code> may not be passed as an argument into a method that requires an <code>Int</code>, nor as an index into an <code>Array</code>, even if the variable contains no fractional part. However, it may be converted into an <code>Int</code> before passing, using the functions <code>floor()</code> or <code>ceiling()</code>:<br>
 <code>floor()</code> returns the integer value left by removing any fractional part, and<br>
 <code>ceiling()</code> returns the lowest integer greater than the <code>Float</code> value if does have a fractional part.</p>
-<p class="List_Paragraph">
+<p>
 If you wish to define a variable to be of Type <code>Float</code> but initialise it with an integer value then add <code>.0</code> on the end of the whole number, for example:<br>
 <code>variable a set to 3.0</code>. </p>
 
@@ -1888,19 +1883,19 @@ If you wish to define a variable to be of Type <code>Float</code> but initialise
 <p><code>""</code>, known as &#8216;the empty string&#8217;.</p>
 <p>Notes</p>
 <li>As in most programming languages, strings are immutable. When you apply any operation or function with the intent of modifying an existing string, the existing string is never modified. Instead, the operation or function will return a new string that is based on the original, but with the specified differences.</li>
-<p class="List_Paragraph">
+<p>
 <code>String</code>s may be appended to using the plus operator, for example<br>
 <code>print</code> <code>"Hello" + " " + "World"</code></p>
-<p class="List_Paragraph">
+<p>
 A newline may be inserted within a string as <code>\n</code>, for example:<br>
 <code>print "Hello\nWorld"</code></p>
 <li>You may insert single-quotes  <code>' </code>within a string. </li>
 
 <h3>Interpolated string</h3>
-<p class="List_Paragraph">
+<p>
 Elan strings are automatically interpolated. This means that you may insert the values of variables or simple expressions within a string by enclosing them in curly braces. For example (assuming that the variables <code>a</code> and <code>b</code> are already defined as integers) :<br>
 <code>print "{a} times {b} equals {a*b}"</code></p>
-<p class="List_Paragraph">
+<p>
 You cannot include the characters <code>"</code>,<code> {</code>, or<code> }</code> directly within a literal string because of their special meanings. Instead, you use the constants <code>quotes</code>, <code>leftBrace</code> and <code>rightBrace</code> respectively:<br>
 <code>print "This is double quote mark: " + quotes</code><br>
 Alternatively, you can insert their Unicode codepoints by means of the <code>unicode()</code> standalone function:<br>
@@ -1940,10 +1935,10 @@ print a.contains("ello")
 
 <h3>Quick reference</h3>
 <p>
-<table class="Table_Style">
-<tr><td></td>
-<td>Array</td>
-<td>List</td>
+<table>
+<tr><th></th>
+<th>Array</th>
+<th>List</th>
 </tr>
 <tr><td>Type form</td>
 </tr<code>Array&lt;of String&gt;<br>
@@ -2179,10 +2174,10 @@ List&lt;of List&lt;of Int&gt;&gt;</code> for a List of  Lists of Type </ode>Int<
 
 <h3>Quick reference</h3>
 <p>
-<table class="Table_Style">
-<tr><td></td>
-<td>Dictionary</td>
-<td>DictionaryImmutable</td>
+<table>
+<tr><th></th>
+<th>Dictionary</th>
+<th>DictionaryImmutable</th>
 </tr>
 <tr><td>Type form</td>
 <td> Dictionary&lt;of String, Int&gt;</td>
@@ -2365,7 +2360,7 @@ parseAsFloat(inp as String) returns (Boolean, Float)</span></p>
 <p>Notes</p>
 <li>Any string that parses as an Int will also parse as a Float.</li>
 <li>If the parse fails, the second value will become zero, so you should always check the first value to see if the second value is a correct parse or just the default. </li>
-<p class="List_Paragraph">
+<p>
 You can &#8216;deconstruct&#8217; the tuple into two variables:<br>
 variable outcome, value set to parseAsInt(myString)</p>
 <li>One use of these parsing methods is for validating user input, but note that there is an easier way to do this.</li>
@@ -2384,12 +2379,12 @@ variable outcome, value set to parseAsInt(myString)</p>
 
 <h3>Maths functions</h3>
 <p>
-<table class="Table_Style">
-<tr><td>Function</td>
-<td>Argument</td>
-<td>Input unit</td>
-<td>Returns</td>
-<td>Output unit</td>
+<table>
+<tr><th>Function</th>
+<th>Argument</th>
+<th>Input unit</th>
+<th>Returns</th>
+<th>Output unit</th>
 </tr>
 <tr><td><code>pi</code></td>
 <td>(none)</td>
@@ -2589,10 +2584,10 @@ variable outcome, value set to parseAsInt(myString)</p>
 <li><code>Stack</code> and <code>Queue</code> have some methods in common: <code>length()</code>, and <code>peek()</code> which allows you to read the next item that would be removed, without actually removing it.</li>
 <li>The names of the methods for adding or removing an item are different for <code>Stac</code>k and <code>Queue</code>, as summarised in this table:</li>
 <p>
-<table class="Table_Style">
-<tr><td></td>
-<td>Stack</td>
-<td>Queue</td>
+<table>
+<tr><th></th>
+<th>Stack</th>
+<th>Queue</th>
 </tr>
 <tr><td>Create a new instance</td>
 <td>let s be new Stack&lt;of Int&gt;()</td>
@@ -2664,7 +2659,7 @@ variable outcome, value set to parseAsInt(myString)</p>
 <code>end main</code><br>
 
 <p>Notes</p>
-<p class="List_Paragraph">
+<p>
 When creating a <code>Set</code>, the Type of the elements must be specified in the form<br>
 <code>Set&lt;of String&gt;</code>. This applies both when creating a new, empty set and when defining the Type of a parameter to be a <code>Set</code>.</p>
 <li>You can add elements: individually with <code>add</code>, or multiple elements with <code>addFromList</code> and <code>addFromArray</code>.</li>
