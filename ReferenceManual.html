@@ -476,11 +476,11 @@ index-range
 <li>A property may be assigned (set) a new value within the <code>constructor</code>, or within a <code>procedure</code> method defined on the class or the sub-class. But a property may never be assigned by code outside the class. If you require this capability, you can write your own <code>procedure</code> methods (commonly called &#8216;setter&#8217; methods) to do this. A <code>function</code> method may read properties, but not write to them.</li>
 <p class="List_Paragraph">
 Whenever you wish to access a property from within a method (or from within the constructor) on the same class, then the name of the property must be prefixed with the &#8216;qualifier&#8217; <code>property. </code>(&#8216;property-dot&#8217;). This applies whether you are reading or setting the property. By this means you can have a method parameter with the same name as a property, but they are unambiguous because the property must be prefixed. A common pattern is to use the same name in a &#8216;setter&#8217; method, for example:<br>
-<code>
+<code><br>
 procedure setName(name as String)<br>
-  set property.name to name<br>
+&nbsp;&nbsp;set property.name to name<br>
 end procedure
-</code>
+</code><br>
 <li>The <code>property.</code> qualifier is neither required, nor allowed, when accessing a property on an instance of the class, because the instance name acts as the qualifier.</li>
 <li>A concrete <code>class</code> may inherit from one or more <code>abstract</code> <code>class</code>es, but may not inherit from another concrete <code>class</code>. This enforces the widely-recognised OOP design principle that &#8216;all classes should be abstract or final (not inheritable)&#8217;.</li>
 <li>An <code>abstract class</code> may define abstract members (<code>property</code>, <code>function</code>, <code>procedure</code>), which must always be implemented by any concrete sub-class. It may also define private members (<code>property</code>, <code>function</code>, <code>procedure</code>), which are visible to any concrete sub-class, but not visible from code outside the class hierarchy. </li>
@@ -521,7 +521,7 @@ end procedure
 (within peer-level only).
 </td>
 <td bgcolor="#E8E8E8">Select previous frame<br>
- (in tab order).
+&nbsp;(in tab order).
 </td>
 </tr>
 <tr><td>_</td>
@@ -529,7 +529,7 @@ end procedure
 (within peer-level only).
 </td>
 <td bgcolor="#D1D1D1">Select next frame<br>
- (in tab order).
+&nbsp;(in tab order).
 </td>
 </tr>
 <tr><td>_</td>
@@ -678,7 +678,7 @@ provided that the code you undid from was parsing successfully
 <h2><a name="_Ref172621519">Literal value</a></h2>
 <p>A literal value is where a value is written &#8216;literally&#8217; in the code, such as <code>3.142</code> &#8211; in contrast to a value that is referred to by a name.</p>
 <p>The following data Types may be written as literal values (follow the links to view the form of each literal value):</p>
-<code><a href="#_Int">Int</a>, <a href="#_Float">Float</a>, <a href="#_Boolean">Boolean</a>, <a href="#_String">String</a>, <a href="#_Array">Array</a>, <a href="#_List">List</a>, <a href="#_Dictionary">Dictionary</a>, <a href="#_DictionaryImmutable">DictionaryImmutable</a>, <a href="#_Tuple">Tuple</a></code>
+<code><a href="#_Int">Int</a>, <a href="#_Float">Float</a>, <a href="#_Boolean">Boolean</a>, <a href="#_String">String</a>, <a href="#_Array">Array</a>, <a href="#_List">List</a>, <a href="#_Dictionary">Dictionary</a>, <a href="#_DictionaryImmutable">DictionaryImmutable</a>, <a href="#_Tuple">Tuple</a></code><br>
 <p><a name="_Ref172621531"></a></p>
 
 <h2>Named value</h2>
@@ -691,19 +691,19 @@ provided that the code you undid from was parsing successfully
 <p>Elan allows local named values to be defined with the same name as a constant, function, or procedure defined at global level or defined in the standard library. In such cases, when the name is used within the same method, then it will refer to the local definition. If you have done this, but then need to access the <code>constant</code>, <code>function</code>, or <code>procedure</code> with the same name, then you can simply prefix the use of the name with a &#8216;qualifier&#8217; of either <code>global.</code> or <code>library.</code> as appropriate.</p>
 <h3><a name="_Ref172622765">Index</a>ed Value</h3>
 <p>If a variable is of an indexable Type, then an index or index range may be applied to the variable within an expression. For example:</p>
-<code>variable a set to "Hello World!"</code>
-<code>print a[4]</code>
-<code>print a[4..]</code>
-<code>print a[..5]</code>
-<code>print a[0..4]</code>
+<code>variable a set to "Hello World!"</code><br>
+<code>print a[4]</code><br>
+<code>print a[4..]</code><br>
+<code>print a[..5]</code><br>
+<code>print a[0..4]</code><br>
 <li></li>
 <p>See also: <a href="#_Using_an_Array">Using an Array</a>, <a href="#_Using_a_Dictionary">Using a Dictionary</a></p>
 <p>Important: unlike in many languages, indexes in Elan (whether, single, multiple, or a range) are only ever used for reading values. Writing a value to a specific index location is done through a method such as:</p>
 <p>
 <code>putAt</code> on an	<code>Array</code><br>
-<code></code>withPutAt</code>	on a	<code>List</code><br>
-<code></code>putAtKey</code>	on a	<code>Dictionary</code><br>
-<code></code>withPutAtKey</code>	on a	<code>DictionaryImmutable</code></p>
+<code>withPutAt</code>	on a	<code>List</code><br>
+<code>putAtKey</code>	on a	<code>Dictionary</code><br>
+<code>withPutAtKey</code>	on a	<code>DictionaryImmutable</code></p>
 
 <p><a name="_Enum"></a></p>
 <h3><a name="_Enum_1">E</a>num</h3>
@@ -712,14 +712,14 @@ provided that the code you undid from was parsing successfully
 <p>The name given to an <code>enum</code> (see below), which must begin with an upper-case letter, is used as the Type name when passing a value to or from a procedure or function.<a name="_Toc170738549"> </a></p>
 <h4>Defining an enum</h4>
 <p>For example, this <code>enum</code> defines the possible String values of <code>Status</code>:</p>
-<code>enum Status incomplete, ready, running, stopped, invalid</code>
+<code>enum Status incomplete, ready, running, stopped, invalid</code><br>
 
 <p>and this defines the possible String values of <code>Suit</code>:</p>
-<code>enum Suit clubs, diamonds, hearts, spades</code>
+<code>enum Suit clubs, diamonds, hearts, spades</code><br>
 
 <h4><a name="_Toc170738550">Using an enum</a></h4>
 <p>The value is specified by the Type name for the specified <code>enum</code>, followed by a dot and the value name, for example:</p>
-<code>variable x set to Status.ready</code>
+<code>variable x set to Status.ready</code><br>
 
 <h4><a name="_Toc170738551">Note</a></h4>
 <li><code>enum</code>s are read-only: once they have been defined it is not possible to add, remove, or update their values.</li>
@@ -738,7 +738,7 @@ provided that the code you undid from was parsing successfully
 </p>
 <p>Arithmetic operators follow the conventional rules for precedence i.e. &#8216;BIDMAS&#8217; (or &#8216;BODMAS&#8217;)</p>
 <p>Note: When combining <code>div</code> or <code>mod</code> with any other operators within an expression, insert brackets to avoid ambiguity e.g.:</p>
-<code>(5 + 6) mod 3</code>
+<code>(5 + 6) mod 3</code><br>
 
 <p>The minus sign may also be used as a unary operator, and this takes precedence over binary operators so:</p>
 <p><code>2*-3</code> 	_	-6</p>
@@ -747,15 +747,15 @@ provided that the code you undid from was parsing successfully
 <p>Logical operators are applied to <code>Boolean</code> arguments and return a <code>Boolean</code> result.</p>
 <p>
 <code>and</code> and <code>or</code> are binary operators<br>
- <code>not</code> is a unary operator. </p>
+<code>not</code> is a unary operator. </p>
 <p>The operator precedence is <code>not</code> _ <code>and</code> _ <code>or</code>. </p>
 <p>Example that implements an &#8216;exclusive or&#8217;.</p>
 <p>
-<code>
+<code><br>
 function xor(a as Boolean, b as Boolean) returns Boolean<br>
-  return a and not b or b and not a<br>
+&nbsp;&nbsp;return a and not b or b and not a<br>
 end functio
-</code>
+</code><br>
 <h3><a name="_Ref172627059">Equality testing</a></h3>
 <p>Equality testing uses the <code>is</code> and <code>isnt</code> keywords with two arguments. The arguments may be of any Type. </p>
 <li><code>a is b</code> returns <code>true</code>, if <code>a</code> and <code>b</code> are both of the same Type and their values are equal. The only exception is that if one argument is of Type <code>Float</code> and the other is of Type <code>Int</code>, then <code>is</code> will return <code>true</code> if their values are the same, i.e. are the same whole number.</li>
@@ -777,15 +777,15 @@ end functio
 <li>Where a binary operator is expected, as soon as you type <code>&lt; </code>or <code>&gt;</code> the editor will automatically insert a space after it. To enter <code>&lt;=</code> or <code>&gt;=</code> you need to delete the space (using the Backspace key) and then type <code>=</code>.</li>
 <h3>Combining operators </h3>
 <p>You can combine operators of different kinds, e.g. combining numeric comparison with logical operators in a single expression. However the rules of precedence between operators of different kinds are complex. It is strongly recommend that you always use brackets to disambiguate such expressions, for example:</p>
-<code>(a &gt; b) and (b &lt; c)</code>
-<code>(a + b) &gt; (c -d)</code>
+<code>(a &gt; b) and (b &lt; c)</code><br>
+<code>(a + b) &gt; (c -d)</code><br>
 
 <h2><a name="_Ref172621637">Function </a>call</h2>
 <p>An expression may simply be a function call, or it may include one or more function calls within it. Examples:</p>
-<code>print sinDeg(30)</code>
-<code>variable x set to sinDeg(30)^2 + cosDeg(30)^2</code>
-<code>variable name set to inputString("Your name")</code>
-<code>print name.upperCase()</code>
+<code>print sinDeg(30)</code><br>
+<code>variable x set to sinDeg(30)^2 + cosDeg(30)^2</code><br>
+<code>variable name set to inputString("Your name")</code><br>
+<code>print name.upperCase()</code><br>
 
 <p>Notes</p>
 <li>The third example above is not strictly a function call, but is a &#8216;system method&#8217;<span class="Link">Error! Reference source not found.</span> call. System methods may only be used within the <span class="Link">Main routine</span> or a Functions and procedure, because they have external dependencies or side effects.</li>
@@ -798,60 +798,60 @@ end functio
 <h2><a name="_Ref182465461">Printing plain text to the Console</a></h2>
 <p><a href="https://www.youtube.com/watch?v=NGYQQeAuKAg">Explanatory YouTube video</a>: Elan input/output 1 - Printing to the Console</p>
 <p>The simplest way to print is with the <code>print</code> statement. For example</p>
-<code>
+<code><br>
 print "Hello"<br>
 let a be 3<br>
 let b be 4<br>
 print a * b<br>
 print "{a} times {b} equals {a*b}"
-</code>
+</code><br>
 
 <p>Note</p>
 <li>The last line in the example above uses an &#8216;interpolated string&#8217;. Arguments placed within curly braces are evaluated before printing, and these may be separated by literal text and punctuation as needed. This is one recommended way to print more than one value on a line. The other way is to use print procedures.</li>
 <h3><a name="_Toc170738570">print </a>procedures</h3>
 <p>If you wish to have more control over printing then, as an alternative to using a <code>print</code> statement, you may <code>call</code> any of these three standard library procedures:</p>
-<code>printLine(arg as String)</code>
-<code>printNoLine(arg as String)</code>
-<code>printTab(tabPosition as Int, arg as String)</code>
+<code>printLine(arg as String)</code><br>
+<code>printNoLine(arg as String)</code><br>
+<code>printTab(tabPosition as Int, arg as String)</code><br>
 
 <p>for example:</p>
-<code>
+<code><br>
 for i from 1 to 10 step 1<br>
-  call printNoLine("{i}")<br>
+&nbsp;&nbsp;call printNoLine("{i}")<br>
 end for
-</code>
+</code><br>
 
 <p>Notes</p>
 <li>For all three methods, the item to be printed must be a <code>String</code> , but you can convert other Types into a <code>String</code> by using the dot method .<code>asString()</code></li>
 <li><code>printLine</code> prints the item with a newline afterwards, in the same way that the ordinary print statement does. (The only purpose of having this procedure is so that you may choose to do all printing via these methods rather than mixing them in with <code>print</code> statements).</li>
 <li><code>printNoLine</code> does not automatically add a newline at the end, so you may subsequently print something else on the same line (unless you choose to include a newline <code>\n</code> within the string).</li>
 <li><code>printTab</code> helps in the layout of information printed to the console, in particular, when printing columns of data. <code>printTab</code> requires an additional argument specifying the tab position which is number of characters from the left of the display. For example:</li>
-<code>
+<code><br>
 call printTab(0, "No.")<br>
 call printTab(10, "Square")<br>
 call printTab(20, "Cube\n")<br>
 for x from 1 to 10 step 1<br>
-  call printTab(0, x.asString()<br>
-  call printTab(10, "{x^2}")<br>
-  call printTab(20, "{x^3}\n")<br>
+&nbsp;&nbsp;call printTab(0, x.asString()<br>
+&nbsp;&nbsp;call printTab(10, "{x^2}")<br>
+&nbsp;&nbsp;call printTab(20, "{x^3}\n")<br>
 end for
-</code>
+</code><br>
 
 <p>or, to right-align numeric output:</p>
-<code>variable tab set to 10</code>
-<code>variable i set to 0</code>
-<code>for i from 1 to (tab &#8211; 1) step 1</code>
-<code>  variable j set to 10^i </code>
-<code>  call printTab(tab - digits(j), "{j}\n")</code>
+<code>variable tab set to 10</code><br>
+<code>variable i set to 0</code><br>
+<code>for i from 1 to (tab &#8211; 1) step 1</code><br>
+<code>  variable j set to 10^i </code><br>
+<code>  call printTab(tab - digits(j), "{j}\n")</code><br>
 
-<code>function digits(number as Int) returns Int</code>
-<code>  return number.asString().length()</code>
-<code>end function</code>
+<code>function digits(number as Int) returns Int</code><br>
+<code>  return number.asString().length()</code><br>
+<code>end function</code><br>
 
 <h2><a name="toc53">Print Html to the Console</a></h2>
 <p>As well as plain text, it is also possible to print Html to the console, which will be correctly formatted. For example:</p>
-<code>print "&lt;h1 style='color: blue;'&gt;A heading&lt;/h1&gt;"</code>
-<code>print "&lt;p&gt;some text&lt;/p&gt;"</code>
+<code>print "&lt;h1 style='color: blue;'&gt;A heading&lt;/h1&gt;"</code><br>
+<code>print "&lt;p&gt;some text&lt;/p&gt;"</code><br>
 
 <p>Will produce:</p>
 <p><img SRC="Images/ReferenceManual/Pic25.png" ALT="" ALIGN="MIDDLE" height="153" width="374"></p>
@@ -860,42 +860,42 @@ end for
 <li>It is not necessary to put individual lines of Html into separate <code>print</code> statements &#8211; you can print a string of any length &#8211; but putting tags into separate <code>print</code> statements can improve the readability of your code. </li>
 <h3>Using an embedded stylesheet</h3>
 <p>If you want styles to be applied to multiple tags you can embed a stylesheet. For example, the following stylesheet will set the font for all text, and some further details for all &lt;h1&gt; headings:</p>
-<code>&lt;style&gt;</code>
-<code>  h1 {</code>
-<code>    color: blue;</code>
-<code>    font-size: 24pt;</code>
-<code>  }</code>
-<code>  p {</code>
-<code>    font-family: Helvetica;</code>
-<code>    }</code>
-<code>&lt;/style&gt;</code>
+<code>&lt;style&gt;</code><br>
+<code>  h1 {</code><br>
+<code>    color: blue;</code><br>
+<code>    font-size: 24pt;</code><br>
+<code>  }</code><br>
+<code>  p {</code><br>
+<code>    font-family: Helvetica;</code><br>
+<code>    }</code><br>
+<code>&lt;/style&gt;</code><br>
 
 <p>This may be safely coalesced into a single line and many spaces removed:</p>
-<code>&lt;style&gt;h1{color:blue;font-size:24pt;}p{font-family:Helvetica;}&lt;/style&gt;</code>
+<code>&lt;style&gt;h1{color:blue;font-size:24pt;}p{font-family:Helvetica;}&lt;/style&gt;</code><br>
 
 <p>The only problem is with the curly braces <code>{}</code> since within a literal string Elan will interpret these as defining an &#8216;interpolation&#8217; clause (see <span class="Link">Interpolated string</span>). This can best be overcome by using the interpolated constants <code>{openBrace}</code> and <code>{closeBrace}</code> instead of <code>{</code> and <code>}</code>:</p>
 
-<code>main</code>
-<code>  let stylesheet be "&lt;style&gt;h1{openBrace}color:blue;font-size:24pt;{closeBrace}p{openBrace}font-family:Helvetica;{closeBrace}&lt;/style&gt;"</code>
-<code>  print stylesheet</code>
-<code>  print "&lt;h1&gt;A heading&lt;/h1&gt;"</code>
-<code>  print "&lt;p&gt;plain text&lt;/p&gt;"</code>
-<code>end main</code>
+<code>main</code><br>
+<code>  let stylesheet be "&lt;style&gt;h1{openBrace}color:blue;font-size:24pt;{closeBrace}p{openBrace}font-family:Helvetica;{closeBrace}&lt;/style&gt;"</code><br>
+<code>  print stylesheet</code><br>
+<code>  print "&lt;h1&gt;A heading&lt;/h1&gt;"</code><br>
+<code>  print "&lt;p&gt;plain text&lt;/p&gt;"</code><br>
+<code>end main</code><br>
 
 <p>Here is the result:</p>
 <p><img SRC="Images/ReferenceManual/Pic26.png" ALT="" ALIGN="MIDDLE" height="226" width="316"></p>
 <p>Alternatively you could put, say, <code>[</code> and <code>]</code> in the original Html stylesheet instead of <code>{</code> and <code>}</code>, and use a function to replace the square brackets with curly braces (defined by their Unicode codepoint values) before use, and get the same result:</p>
 <code>main<br>
-  let stylesheet be "&lt;style&gt; h1[color:blue;font-size:24pt;],p[font-family:Helvetica;] h1&lt;/style&gt;"<br>
-  print replaceBrackets(stylesheet)<br>
-  print "&lt;h1&gt;A heading&lt;/h1&gt;"<br>
-  print "&lt;p&gt;plain text&lt;/p&gt;"<br>
+&nbsp;&nbsp;let stylesheet be "&lt;style&gt; h1[color:blue;font-size:24pt;],p[font-family:Helvetica;] h1&lt;/style&gt;"<br>
+&nbsp;&nbsp;print replaceBrackets(stylesheet)<br>
+&nbsp;&nbsp;print "&lt;h1&gt;A heading&lt;/h1&gt;"<br>
+&nbsp;&nbsp;print "&lt;p&gt;plain text&lt;/p&gt;"<br>
 end main
-</code>
+</code><br>
 
-<code>function replaceBrackets(original as String) returns String</code>
-<code>  return original.replace("[", unicode(123)).replace("]", unicode(125))</code>
-<code>end function</code>
+<code>function replaceBrackets(original as String) returns String</code><br>
+<code>  return original.replace("[", unicode(123)).replace("]", unicode(125))</code><br>
+<code>end function</code><br>
 
 <p>Notes</p>
 <li>If you define an embedded stylesheet in the manner described above, then this should be printed first, and will then be applied to any subsequent printing of Html within the program. However &#8230;</li>
@@ -912,16 +912,16 @@ end main
 <p>Block graphics<code> </code>provides a simple way to create low resolution graphics, ideal for simple but engaging games for example. The graphics are displayed on a grid that is 40 blocks wide by 30 blocks high.</p>
 <p>Each block may be rendered as a solid colour. Each block may alternatively hold a symbol: either one of the standard text characters or any Unicode symbol and, in each case, with specified foreground and background colours. For specifying colours, see <a href="#_Colour">Colour</a>.</p>
 <p>An example of block graphics to produce a rapidly changing pattern of coloured blocks:</p>
-<code>main</code>
-<code>  variable gr set to new BlockGraphics()</code>
-<code>  while true</code>
-<code>    let x be randomInt(0, 39)</code>
-<code>    let y be randomInt(0, 29)</code>
-<code>    let colour be randomInt(0, 2^24 - 1)</code>
-<code>    set gr to gr.withBlock(x, y, colour)</code>
-<code>    call gr.display()</code>
-<code>  end while</code>
-<code>end main</code>
+<code>main</code><br>
+<code>  variable gr set to new BlockGraphics()</code><br>
+<code>  while true</code><br>
+<code>    let x be randomInt(0, 39)</code><br>
+<code>    let y be randomInt(0, 29)</code><br>
+<code>    let colour be randomInt(0, 2^24 - 1)</code><br>
+<code>    set gr to gr.withBlock(x, y, colour)</code><br>
+<code>    call gr.display()</code><br>
+<code>  end while</code><br>
+<code>end main</code><br>
 
 <p>Notes</p>
 <li>Making changes to the instance of <code>BlockGraphics</code> (<code>gr</code> above) &#8211; for example by calling <code>withBlock </code>above &#8211; does not of itself result in anything appearing in the Graphics screen. The Graphics screen changes only when the <code>display()</code> procedure is called. This is so that you can make many changes to the graphics and then have them appear all at once (when <code>display</code> is called). It is even possible to create and modify, multiple instances of <code>BlockGraphics</code>, and switch instantly between them by calling <code>display</code> on different instances. </li>
@@ -939,24 +939,24 @@ is used to specify a single symbol or character using its Unicode codepoint valu
 <code>withBackground(backgroundColour as Int) returns BlockGraphics</code><br>
 will paint the background colour for the whole grid, leaving any existing characters (and their foreground colours) unchanged.</p>
 <p>There are also function methods on a <code>BlockGraphics</code> instance for reading the existing character and colours of a specified block:</p>
-<code>getChar(x as Int, y as Int) returns String </code>
-<code>getForeground(x as Int, y as Int) returns Int</code>
-<code>getBackground x as Int, y as Int) returns Int</code>
+<code>getChar(x as Int, y as Int) returns String </code><br>
+<code>getForeground(x as Int, y as Int) returns Int</code><br>
+<code>getBackground x as Int, y as Int) returns Int</code><br>
 
 <h2><a name="_Ref181258350">Turtle graphics</a></h2>
 <p>Example code:</p>
-<code>main</code>
-<code>  let t be new Turtle()</code>
-<code>  call t.show()</code>
-<code>  for i from 1 to 4 step 1</code>
-<code>    call t.turn(90)</code>
-<code>    call t.move(100)</code>
-<code>    call t.pause(500)</code>
-<code>  end for</code>
-<code>end main</code>
+<code>main</code><br>
+<code>  let t be new Turtle()</code><br>
+<code>  call t.show()</code><br>
+<code>  for i from 1 to 4 step 1</code><br>
+<code>    call t.turn(90)</code><br>
+<code>    call t.move(100)</code><br>
+<code>    call t.pause(500)</code><br>
+<code>  end for</code><br>
+<code>end main</code><br>
 
 <p>Output:</p>
-<code><img SRC="Images/ReferenceManual/Pic30.png" ALT="" ALIGN="MIDDLE" height="173" width="318"></code>
+<code><img SRC="Images/ReferenceManual/Pic30.png" ALT="" ALIGN="MIDDLE" height="173" width="318"></code><br>
 
 
 
@@ -972,42 +972,42 @@ will paint the background colour for the whole grid, leaving any existing charac
 <li>There is no difference in effect between <code>call t.pause(500)</code> and the standalone <code>call pause(500)</code>: the former option is provided as a convenience, because most instructions in a <code>Turtle</code> program take the form <code>call t.something</code>. Both versions take an integer argument, being the length of the pause in milliseconds.</li>
 <li>Apart from the <code>penColour</code> and <code>pause</code> methods, both of which require an integer value, all other procedure methods on the <code>Turtle</code> can take integer or floating-point values.</li>
 <p>Here is a more sophisticated example, using a procedure and recursion, that produces a fractal snowflake:</p>
-<code>main</code>
-<code>  variable t set to new Turtle()</code>
-<code>  call t.placeAt(10, 60)</code>
-<code>  call t.turn(90)</code>
-<code>  call t.show()</code>
-<code>  for i from 1 to 3 step 1</code>
-<code>    call drawSide(160, t)</code>
-<code>    call t.turn(120)</code>
-<code>  end for</code>
-<code>end main</code>
+<code>main</code><br>
+<code>  variable t set to new Turtle()</code><br>
+<code>  call t.placeAt(10, 60)</code><br>
+<code>  call t.turn(90)</code><br>
+<code>  call t.show()</code><br>
+<code>  for i from 1 to 3 step 1</code><br>
+<code>    call drawSide(160, t)</code><br>
+<code>    call t.turn(120)</code><br>
+<code>  end for</code><br>
+<code>end main</code><br>
 
-<code>procedure drawSide(length as Float, out t as Turtle)</code>
-<code>  if (length &gt; 3) then</code>
-<code>    let third be length/3</code>
-<code>    call drawSide(third, t)</code>
-<code>    call t.turn(-60)</code>
-<code>    call drawSide(third, t)</code>
-<code>    call t.turn(120)</code>
-<code>    call drawSide(third, t)</code>
-<code>    call t.turn(-60)</code>
-<code>    call drawSide(third, t)</code>
-<code>  else</code>
-<code>    call t.move(length)</code>
-<code>  end if</code>
-<code>end procedure</code>
+<code>procedure drawSide(length as Float, out t as Turtle)</code><br>
+<code>  if (length &gt; 3) then</code><br>
+<code>    let third be length/3</code><br>
+<code>    call drawSide(third, t)</code><br>
+<code>    call t.turn(-60)</code><br>
+<code>    call drawSide(third, t)</code><br>
+<code>    call t.turn(120)</code><br>
+<code>    call drawSide(third, t)</code><br>
+<code>    call t.turn(-60)</code><br>
+<code>    call drawSide(third, t)</code><br>
+<code>  else</code><br>
+<code>    call t.move(length)</code><br>
+<code>  end if</code><br>
+<code>end procedure</code><br>
 
 <p><img SRC="Images/ReferenceManual/Pic31.png" ALT="" ALIGN="MIDDLE" height="133" width="134"></p>
 
 <h2><a name="_Ref181258365">Vector graphics</a></h2>
 <p>Example:</p>
-<code>main</code>
-<code>&nbsp; variable vg set to new VectorGraphics()</code>
-<code>&nbsp; let circ be new CircleVG() with cx to 35, cy to 35, r to 5, stroke to red, strokeWidth to 2, fill to green</code>
-<code>&nbsp; set vg to vg.add(circ)</code>
-<code>&nbsp; call vg.display()</code>
-<code>end main</code>
+<code>main</code><br>
+<code>&nbsp; variable vg set to new VectorGraphics()</code><br>
+<code>&nbsp; let circ be new CircleVG() with cx to 35, cy to 35, r to 5, stroke to red, strokeWidth to 2, fill to green</code><br>
+<code>&nbsp; set vg to vg.add(circ)</code><br>
+<code>&nbsp; call vg.display()</code><br>
+<code>end main</code><br>
 
 <p>Output:</p>
 <p><img SRC="Images/ReferenceManual/Pic33.png" ALT="" ALIGN="MIDDLE" height="152" width="554"></p>
@@ -1021,20 +1021,20 @@ will paint the background colour for the whole grid, leaving any existing charac
 <li>The colour (for <code>stroke</code> and <code>fill</code> properties) may be specified as described at <a href="#_Colour">Colour</a>. The <code>fill</code> colour only may also be specified as &#8216;transparent&#8217; by giving it a negative value; we suggest using <code>fill to -1</code></li>
 <li><code>VectorGraphics</code> also has methods <code>removeLast</code> (no parameters), <code>remove</code> (which takes a shape as a parameter, and <code>replace</code> which takes an existing shape and a new shape as parameters. The new shape may be a modified version of an existing shape (created using <code>copy .. with</code>), thereby enabling animation. The following simple example creates a circle that changes between red and green every second:</li>
 <li></li>
-<code>main</code>
-<code>  variable vg set to new VectorGraphics()</code>
-<code>  let greenCirc be new CircleVG() with cx to 50, cy to 37, r to 30, fill to green</code>
-<code>  let redCirc be copy greenCirc with fill to red</code>
-<code>  set vg to vg.add(greenCirc)</code>
-<code>  while true</code>
-<code>    call vg.display()</code>
-<code>    call pause(1000)</code>
-<code>    set vg to vg.replace(greenCirc, redCirc)</code>
-<code>    call vg.display()</code>
-<code>    call pause(1000)</code>
-<code>    set vg to vg.replace(redCirc, greenCirc)</code>
-<code>  end while</code>
-<code>end main</code>
+<code>main</code><br>
+<code>  variable vg set to new VectorGraphics()</code><br>
+<code>  let greenCirc be new CircleVG() with cx to 50, cy to 37, r to 30, fill to green</code><br>
+<code>  let redCirc be copy greenCirc with fill to red</code><br>
+<code>  set vg to vg.add(greenCirc)</code><br>
+<code>  while true</code><br>
+<code>    call vg.display()</code><br>
+<code>    call pause(1000)</code><br>
+<code>    set vg to vg.replace(greenCirc, redCirc)</code><br>
+<code>    call vg.display()</code><br>
+<code>    call pause(1000)</code><br>
+<code>    set vg to vg.replace(redCirc, greenCirc)</code><br>
+<code>  end while</code><br>
+<code>end main</code><br>
 
 <h2><a name="_Colour">C</a>olour</h2>
 <p>
@@ -1115,16 +1115,16 @@ name
 </p>
 
 <p>and then use a variable or a constant to hold those values:</p>
-<code>variable lightBlue set to 0x80abff</code>
-<code>constant deepPink set to 0xf74b80</code>
+<code>variable lightBlue set to 0x80abff</code><br>
+<code>constant deepPink set to 0xf74b80</code><br>
 
 <p>Note that in Elan code a hexadecimal colour value is preceded by <code>0x</code>, whereas in an Html stylesheet it is preceded by <code>#</code>. Also, the standard colour names may not correspond exactly.</p>
 
 <h2>Reading keys &#8216;on the fly&#8217;</h2>
 <p>In some applications &#8211; especially in games, for example &#8211; you want the program to react to a key pressed by the user, but without holding up the program to wait for value to be input. </p>
 <p>Whether your application makes use graphics, or just uses the Console for text, reading keystrokes &#8216;on the fly&#8217; is done via one of two methods:</p>
-<code>let key be getKey()</code>
-<code>let key, modifier be getKeyWithModifier()</code>
+<code>let key be getKey()</code><br>
+<code>let key, modifier be getKeyWithModifier()</code><br>
 
 <p>Notes</p>
 <li>When the <code>getKey</code> is called, the system does not wait for a response. If a key has been pressed then that will be returned as a <code>String</code> e.g. <code>"a"</code>.</li>
@@ -1134,30 +1134,30 @@ name
 <li>getKeyWithModifier</code> which returns a 2-tuple containing  the key pressed plus any &#8216;modifier&#8217; key such a <code>Shift</code>, <code>Ctrl</code>, or <code>Alt</code> (or the empty string if no modifier key is pressed).</li>
 <li>Both of these <code>getKey</code> methods are <a href="#_System_methods">System methods</a> because they have a dependency on the system and so may only be used within a <code>procedure</code> or in <code>main</code>.</li>
 <p>Use the procedure method <code>clearKeyBuffer()</code> if you want to enforce that the user cannot get too far ahead of the program by hitting keys in very rapid succession.</p>
-<code>waitForAnyKey</code>
+<code>waitForAnyKey</code><br>
 <p>pauses the execution of the program until the user presses any single key. The identity of the key is not captured though. Example of use:</p>
-<code>
+<code><br>
 print "Press any key to continue.."<br>
 call waitForAnyKey()<br>
 call clearConsole()<br>
 print "Next page"
-</code>
+</code><br>
 
 <h2><a name="_Ref181258312">Reading textual data from a file</a></h2>
 <p>Reading a whole file in one go:</p>
-<code>let file be openFileForReading()</code>
-<code>let text be file.readWholeFile()</code>
-<code>call file.close()</code>
-<code>print text</code>
+<code>let file be openFileForReading()</code><br>
+<code>let text be file.readWholeFile()</code><br>
+<code>call file.close()</code><br>
+<code>print text</code><br>
 
 <p>Reading a file line by line:</p>
-<code>let file be openFileForReading()</code>
-<code>variable lines set to empty Array&lt;of String&gt;</code>
-<code>while not file.endOfFile()</code>
-<code>  let line be file.readLine()</code>
-<code>  call lines.append(line)</code>
-<code>end while</code>
-<code>call file.close()</code>
+<code>let file be openFileForReading()</code><br>
+<code>variable lines set to empty Array&lt;of String&gt;</code><br>
+<code>while not file.endOfFile()</code><br>
+<code>  let line be file.readLine()</code><br>
+<code>  call lines.append(line)</code><br>
+<code>end while</code><br>
+<code>call file.close()</code><br>
 
 <p>Notes</p>
 <li><code>openFileForReading</code> will present the user with a dialog to select the file.</li>
@@ -1168,15 +1168,15 @@ print "Next page"
 
 <h2><a name="_Ref181258319">Writing textual data to a file</a></h2>
 <p>Writing a whole file in one go:</p>
-<code>let f be createFileForWriting("myFile.txt")</code>
-<code>call f.writeWholeFile("this is\nmyText")</code>
+<code>let f be createFileForWriting("myFile.txt")</code><br>
+<code>call f.writeWholeFile("this is\nmyText")</code><br>
 
 <p>Writing a file line by line:</p>
-<code>let file be createFileForWriting("squares.txt")</code>
-<code>for i from 1 to 100 step 1</code>
-<code>  call file.writeLine("{i} {i*i}")</code>
-<code>end for</code>
-<code>call file.saveAndClose()</code>
+<code>let file be createFileForWriting("squares.txt")</code><br>
+<code>for i from 1 to 100 step 1</code><br>
+<code>  call file.writeLine("{i} {i*i}")</code><br>
+<code>end for</code><br>
+<code>call file.saveAndClose()</code><br>
 
 <p>Notes</p>
 <li><code>writeLine</code> adds the string it is passed onto the end of any data previously written, with a newline character (<code>\n</code>) automatically appended.</li>
@@ -1184,12 +1184,12 @@ print "Next page"
 <li><code>writeWholeFile</code> puts the string it is given into the file and then automatically saves the file, so the user will be presented with the same dialog as if <code>saveAndClose</code> had been called.</li>
 <li>Calling any method on a file that has already been closed (by calling either <code>saveAndClose</code> or by <code>writeWholeFile</code>) will result in a runtime error.</li>
 <li>If the user were to hit Cancel on the save dialog, then the program will exit with an error. If you want to guard against this possibility (if, for example, it might mean the loss of important data) then you should perform the save and close within a <code>try..catch</code> like this:</li>
-<code>try</code>
-<code>  call file.saveAndClose()</code>
-<code>catch exception in e</code>
-<code>  print "File save cancelled"</code>
-<code>end try</code>
-<code></code>
+<code>try</code><br>
+<code>  call file.saveAndClose()</code><br>
+<code>catch exception in e</code><br>
+<code>  print "File save cancelled"</code><br>
+<code>end try</code><br>
+<br>
 <p>or you could make the code offer the user options: to save again, or to continue without saving.</p>
 
 <h1><a name="toc61">Procedural programming</a></h1>
@@ -1201,11 +1201,11 @@ print "Next page"
 <p>The <code>main</code> method does not have to be at the top of the file, but this is a good convention to follow.</p>
 <p>There may not be more than one <code>main</code> method in a file &#8211; and the global selector (above) will not show the <code>main</code> option when one already exists in the file.</p>
 <p>Example:</p>
-<code>main</code>
-<code>  variable li set to [3, 6, 1, 0, 99, 4, 67]</code>
-<code>  call inPlaceRippleSort(li)</code>
-<code>  print li</code>
-<code>end main</code>
+<code>main</code><br>
+<code>  variable li set to [3, 6, 1, 0, 99, 4, 67]</code><br>
+<code>  call inPlaceRippleSort(li)</code><br>
+<code>  print li</code><br>
+<code>end main</code><br>
 
 <h2><a name="_Defining_named_values">D</a>efining named values</h2>
 <p>There are several kinds of name value in Elan, defined by:</p>
@@ -1219,14 +1219,14 @@ print "Next page"
 <p>The name of a <code>constant</code> follows the rules for an <a href="#_Identifier">Identifier</a>.</p>
 <p>The value to which a constant is set must be a <span class="Link">Literal value</span>, of one of the following Types: <span class="Link">Int</span>, <span class="Link">Float</span>, <span class="Link">Boolean</span>, <span class="Link">String</span>, <a href="#_Dictionary">Dictionary</a>, or <a href="#_DictionaryImmutable">DictionaryImmutable.</a></p>
 <p>Examples:</p>
-<code>constant phi set to 1.618</code>
-<code>constant maxHits set to 10</code>
-<code>constant warningMsg set to "Limit reached"</code>
-<code>constant fruit set to {"apple", "orange", "banana"}</code>
-<code>constant black set to 0x000000</code>
-<code>constant red set to 0xff0000</code>
-<code>constant scrabbleValues set to {"A":1, "B":3, "C":3, "D":2, "E":1, "F":4, "G":2, "H":4, "I":1, "J":8, "K":5, "L":1, "M":3, "N":1, "O":1, "P":3, "Q":10, "R":1, "S":1, "T":1, "U":1, "V":4, "W":4, "X":8, "Y":4, "Z":10}</code>
-<code>constant colours set to {Suit.clubs:black, Suit.diamonds:red, Suit.hearts:red, Suit.spades:black}</code>
+<code>constant phi set to 1.618</code><br>
+<code>constant maxHits set to 10</code><br>
+<code>constant warningMsg set to "Limit reached"</code><br>
+<code>constant fruit set to {"apple", "orange", "banana"}</code><br>
+<code>constant black set to 0x000000</code><br>
+<code>constant red set to 0xff0000</code><br>
+<code>constant scrabbleValues set to {"A":1, "B":3, "C":3, "D":2, "E":1, "F":4, "G":2, "H":4, "I":1, "J":8, "K":5, "L":1, "M":3, "N":1, "O":1, "P":3, "Q":10, "R":1, "S":1, "T":1, "U":1, "V":4, "W":4, "X":8, "Y":4, "Z":10}</code><br>
+<code>constant colours set to {Suit.clubs:black, Suit.diamonds:red, Suit.hearts:red, Suit.spades:black}</code><br>
 
 <p>(In the last example above, <code>Suit</code> is an <a href="#_Enum_1">Enum</a>).</p>
 <h3><a name="_Let_statement">L</a>et statement</h3>
@@ -1234,12 +1234,12 @@ print "Next page"
 <li>To avoid duplicating code, where the same sub-expression would otherwise be written more than one</li>
 <li>To break up a complex expression just for clarity or readability</li>
 <p>Here are examples of <code>let</code> statements in use:</p>
-<code>
+<code><br>
 let wordCounts be allRemainingWordCounts(possAnswers)<br>
 <br>
 let best be wordCounts.reduce(wordCounts.head(), lambda bestSoFar as WordCount, <br>
-  newWord as WordCount =&gt; betterOf(bestSoFar, newWord, possAnswers
-</code>
+&nbsp;&nbsp;newWord as WordCount =&gt; betterOf(bestSoFar, newWord, possAnswers
+</code><br>
 
 <p>You are never required to use a <code>let</code> statement: you may always use a <code>variable </code>instead. But if you are willing to use <code>let</code> where you can, it is considered a good practice in functional programming. <code>let</code> may be thought of as somewhere between a <a href="#_Constant">Constant</a> and a <span class="Link">Variable statement</span> but also has unique characteristics:</p>
 <li>Like a variable and a constant, a <code>let</code> statement defines a new named value.</li>
@@ -1258,24 +1258,24 @@ let best be wordCounts.reduce(wordCounts.head(), lambda bestSoFar as WordCount, 
 <h3><a name="_Ref172626815">If statement</a></h3>
 <p>Example1:</p>
 
-<code>
+<code><br>
 if head is apple then<br>
-  call setAppleToRandomPosition(apple, body)<br>
+&nbsp;&nbsp;call setAppleToRandomPosition(apple, body)<br>
 else<br>
-  call body.removeAt(0)<br>
+&nbsp;&nbsp;call body.removeAt(0)<br>
 end if
-</code>
+</code><br>
 
 <p>Example 2:</p>
-<code>
+<code><br>
 if item is value then<br>
-  set result to true<br>
+&nbsp;&nbsp;set result to true<br>
 >else if item.isBefore(value) then<br>
-  set result to binarySearch(list[..mid], item)<br>
+&nbsp;&nbsp;set result to binarySearch(list[..mid], item)<br>
 else<br>
-  set result to binarySearch(list[mid + 1..], item)<br>
+&nbsp;&nbsp;set result to binarySearch(list[mid + 1..], item)<br>
 end if
-</code>
+</code><br>
 
 <p>Notes</p>
 <li>The <code>else</code> clause is optional</li>
@@ -1293,12 +1293,12 @@ end if
 <li>They may be defined by literal integers, variables of integer Type, or expressions that evaluate to an integer. </li>
 <p class="List_Paragraph">
 However, if you require a negative step then the literal value, variable, or expression must start with a negative sign &#8211; as this is needed at compile time to determine the nature of the exit condition. So if you have a variable <code>s</code> that holds a negative value to be used as the step, then you will need to write something like the following:<br>
-<code>
+<code><br>
 variable s set to -3<br>
 for i from 100 to 0 step -(-s)<br>
-  ..<br>
+&nbsp;&nbsp;..<br>
 end for
-</code>
+</code><br>
 <h3><a name="_Ref172626814">Each loop</a></h3>
 <p><a href="https://www.youtube.com/watch?v=kTMfiH7wXOs">Explanatory YouTube video</a>: Elan language constructs 7 - 'each' loop</p>
 <h3><a name="_Ref172627488">While loop</a></h3>
@@ -1319,28 +1319,28 @@ end for
 <li>include<code> input</code> methods or other &#8216;system&#8217; methods (such as a random number generation).</li>
 <li><code>call </code>other procedures (or itself if &#8216;recursion&#8217; is required).</li>
 <li>Re-assign a parameter, provided that parameter definition is preceded by the keyword <code>out</code> Example:</li>
-<code>procedure inPlaceRippleSort(out list as Array&lt;of Int&gt;)</code>
-<code>  variable lastComp set to list.length() - 2</code>
-<code>  repeat</code>
-<code>    set changes to false</code>
-<code>    for i from 0 to lastComp step 1</code>
-<code>      if list[i] &gt; list[i + 1] then</code>
-<code>        variable temp set to list[i]</code>
-<code>        set list[i] to list[i + 1]</code>
-<code>        set list[i + 1] to temp</code>
-<code>        set changes to true</code>
-<code>      end if</code>
-<code>    end for</code>
-<code>    set lastComp to lastComp - 1</code>
-<code>  end repeat when not changes</code>
-<code>end procedure</code>
+<code>procedure inPlaceRippleSort(out list as Array&lt;of Int&gt;)</code><br>
+<code>  variable lastComp set to list.length() - 2</code><br>
+<code>  repeat</code><br>
+<code>    set changes to false</code><br>
+<code>    for i from 0 to lastComp step 1</code><br>
+<code>      if list[i] &gt; list[i + 1] then</code><br>
+<code>        variable temp set to list[i]</code><br>
+<code>        set list[i] to list[i + 1]</code><br>
+<code>        set list[i + 1] to temp</code><br>
+<code>        set changes to true</code><br>
+<code>      end if</code><br>
+<code>    end for</code><br>
+<code>    set lastComp to lastComp - 1</code><br>
+<code>  end repeat when not changes</code><br>
+<code>end procedure</code><br>
 
 <p>Procedures are executed within a <code>call</code> statement, for example:</p>
-<code>main</code>
-<code>  variable li set to [3, 6, 1, 0, 99, 4, 67]</code>
-<code>  call inPlaceRippleSort(li)</code>
-<code>  print li</code>
-<code>end main</code>
+<code>main</code><br>
+<code>  variable li set to [3, 6, 1, 0, 99, 4, 67]</code><br>
+<code>  call inPlaceRippleSort(li)</code><br>
+<code>  print li</code><br>
+<code>end main</code><br>
 
 <p>Notes</p>
 <li>Parameters for a procedure are defined in exactly the same way as for a function; each parameter definition takes the form &lt;name&gt; <code>as</code> &lt;Type&gt;, for example <code>age as Int</code>.<a name="_Parameter_passing"></a></li>
@@ -1354,22 +1354,22 @@ end for
 <li>that Type is mutable such as an <code>Array</code>, <code>Dictionary</code>, <code>Stack</code>, <code>Queue</code>, or a user-defined <code>class</code></li>
 <p>then it is possible to mutate the parameter that holds that argument within the procedure, such that any reference to the argument outside the procedure will &#8216;see&#8217; the changes. </p>
 <p>A good example of this is an &#8216;in-place sort&#8217; procedure. In the following code the <code>arr</code> parameter is mutated in the two highlighted lines:</p>
-<code>procedure inPlaceRippleSort(arr as Array&lt;of Int&gt;)</code>
-<code>  variable changes set to true</code>
-<code>  variable lastComp set to arr.length() - 2</code>
-<code>  repeat</code>
-<code>    set changes to false</code>
-<code>    for i from 0 to lastComp step 1</code>
-<code>      if arr [i] &gt; arr [i + 1] then</code>
-<code>        variable temp set to arr [i]</code>
-<code>        set arr[i] to arr[i + 1]</code>
-<code>        set arr[i + 1] to temp</code>
-<code>        set changes to true</code>
-<code>      end if</code>
-<code>    end for</code>
-<code>    set lastComp to lastComp - 1</code>
-<code>  end repeat when not changes</code>
-<code>end procedure</code>
+<code>procedure inPlaceRippleSort(arr as Array&lt;of Int&gt;)</code><br>
+<code>  variable changes set to true</code><br>
+<code>  variable lastComp set to arr.length() - 2</code><br>
+<code>  repeat</code><br>
+<code>    set changes to false</code><br>
+<code>    for i from 0 to lastComp step 1</code><br>
+<code>      if arr [i] &gt; arr [i + 1] then</code><br>
+<code>        variable temp set to arr [i]</code><br>
+<code>        set arr[i] to arr[i + 1]</code><br>
+<code>        set arr[i + 1] to temp</code><br>
+<code>        set changes to true</code><br>
+<code>      end if</code><br>
+<code>    end for</code><br>
+<code>    set lastComp to lastComp - 1</code><br>
+<code>  end repeat when not changes</code><br>
+<code>end procedure</code><br>
 
 <p>Note however that:</p>
 <li>In a <code>function</code> you may not mutate any parameter</li>
@@ -1377,38 +1377,38 @@ end for
 
 <h2><a name="_Ref181783230">Catching and throwing exceptions</a></h2>
 <p>You can deliberately generate, or &#8216;throw&#8217;, an exception when a specific circumstance is identified with a <code>throw</code> statement, for example:</p>
-<code>throw exception "something has happened"</code>
+<code>throw exception "something has happened"</code><br>
 <h3><a name="_Try_statement">T</a>ry statement</h3>
 <p>Where another piece of code might throw an exception, for example when calling a <a href="#_System_methods">System method</a> that is dependent upon external conditions, it may be executed within a <code>try</code> statement, for example:</p>
-<code>  try</code>
-<code>    call foo()</code>
-<code>    print "not caught"</code>
-<code>  catch exception in e</code>
-<code>    print e</code>
-<code>  end try</code>
+<code>  try</code><br>
+<code>    call foo()</code><br>
+<code>    print "not caught"</code><br>
+<code>  catch exception in e</code><br>
+<code>    print e</code><br>
+<code>  end try</code><br>
 
 <p>The variable holding the exception (by default named <code>e</code>, but this may be changed by you) is of Type <code>String</code>. You may compare the exception message to one or more expected messages and, if the message does not match an expected exception, you may choose to throw the exception &#8216;up&#8217;, as in this example:</p>
-<code>  try</code>
-<code>    call foo()</code>
-<code>    print "not caught"</code>
-<code>  catch exception in e</code>
-<code>    if e isnt "An expected message" then</code>
-<code>      throw exception e</code>
-<code>    end if</code>
-<code>  end try</code>
+<code>  try</code><br>
+<code>    call foo()</code><br>
+<code>    print "not caught"</code><br>
+<code>  catch exception in e</code><br>
+<code>    if e isnt "An expected message" then</code><br>
+<code>      throw exception e</code><br>
+<code>    end if</code><br>
+<code>  end try</code><br>
 
 <h2><a name="_Ref186900105">Generating random numbers</a></h2>
 <p>Random numbers may be created by calling one of these two standard methods:</p>
 <li><code>random() returns</code>s a <code>Float</code> in the range 0 &#8230; 1</li>
 <li><code>randomInt(min, max) returns</code>s an <code>Int</code> in the range <code>min</code> to <code>max</code> inclusive</li>
 <p>For example:</p>
-<code>
+<code><br>
 let probability be random()<br>
 print probability</p>
 for i from 1 to 10 step 1<br>
-  print randomInt(1, 6)<br>
+&nbsp;&nbsp;print randomInt(1, 6)<br>
 end for
-</code>
+</code><br>
 <p>Notes</p>
 <li>These two methods are both <a href="#_System_methods">System methods</a>, so they may be used only within <code>main</code> or a <code>procedure</code>.  A resulting <span class="Hyperlink"><a href="#_System_methods">Int</a></span> or <code>Float</code> may then be used as an argument to pass into a <code>function</code>.</li>
 <li>Elan provides a separate mechanism for generating random numbers within a <code>function</code>: See <a href="#_Generating_random_numbers">Generating random numbers within a function</a>.</li>
@@ -1428,27 +1428,27 @@ end for
 <p>(A <code>record</code> is in some ways similar to a <code>class</code> but simpler: it defines properties, but has no constructor and no methods. See <span class="Link">Working with records</span>).</p>
 <h3>Definition</h3>
 <p>Here is an example of <code>class</code> definition, taken from the Snake OOP demo program:</p>
-<code>class Apple</code>
-<code>  constructor(board as Board)</code>
-<code>    set property.board to board</code>
-<code>  end constructor</code>
+<code>class Apple</code><br>
+<code>  constructor(board as Board)</code><br>
+<code>    set property.board to board</code><br>
+<code>  end constructor</code><br>
 
-<code>  property board as Board</code>
+<code>  property board as Board</code><br>
 
-<code>  property location as Square</code>
+<code>  property location as Square</code><br>
 
-<code>  procedure newRandomPosition(snake as Snake)</code>
-<code>    repeat</code>
-<code>      variable ranX set to randomInt(0, board.width - 1)</code>
-<code>      variable ranY set to randomInt(0, board.height - 1)</code>
-<code>      set location to new Square(ranX, ranY)</code>
-<code>    end repeat when not snake.bodyCovers(location)</code>
-<code>  end procedure</code>
+<code>  procedure newRandomPosition(snake as Snake)</code><br>
+<code>    repeat</code><br>
+<code>      variable ranX set to randomInt(0, board.width - 1)</code><br>
+<code>      variable ranY set to randomInt(0, board.height - 1)</code><br>
+<code>      set location to new Square(ranX, ranY)</code><br>
+<code>    end repeat when not snake.bodyCovers(location)</code><br>
+<code>  end procedure</code><br>
 
-<code>  function updateGraphics(gr as BlockGraphics) returns BlockGraphics</code>
-<code>    return gr.withBlock(location.x, location.y, red)</code>
-<code>  end function</code>
-<code>end class</code>
+<code>  function updateGraphics(gr as BlockGraphics) returns BlockGraphics</code><br>
+<code>    return gr.withBlock(location.x, location.y, red)</code><br>
+<code>  end function</code><br>
+<code>end class</code><br>
 
 <p>Notes</p>
 <p>A <code>class</code> must have:</p>
@@ -1460,10 +1460,10 @@ end for
 <li>A <code>constructor</code> which may be used for setting up the values of properties. The <code>constructor</code> may optionally define parameters to force the calling code to provide initial values. However, it is not necessary to add a <code>constructor</code> if you have no need to initialise properties. Code in the constructor may make use of any functions, and follows the same constraints as a <code>function</code> (i.e. may not call any <code>procedure</code>, whether defined on the <code>class</code> or outside).</li>
 <h3><a name="_Ref172626842">Using a class</a></h3>
 <p>A <code>class</code> is instantiated using the keyword new followed by the class name and brackets, which should enclose the comma-separated arguments required to match the parameters (if any) defined on the constructor for that <code>class</code>. For example (also from the Snake OOP demo):</p>
-<code>  variable board set to new Board(40, 30)</code>
-<code>  variable currentDirection set to Direction.up</code>
-<code>  variable snake set to new Snake(board, currentDirection)</code>
-<code>  variable apple set to new Apple(board)</code>
+<code>  variable board set to new Board(40, 30)</code><br>
+<code>  variable currentDirection set to Direction.up</code><br>
+<code>  variable snake set to new Snake(board, currentDirection)</code><br>
+<code>  variable apple set to new Apple(board)</code><br>
 
 <p>The created instance may then be used within expressions, like any other variable.</p>
 
@@ -1475,7 +1475,7 @@ end for
 <p>As with a concrete class, any of these members may be made <code>private</code> after the corresponding frame has been added, by selecting that member frame and pressing Ctrl_p.</p>
 <p>These concrete members are automatically inherited by any sub-class, but they may not be overridden (re-defined) by the sub-class. Therefore you should define concrete members only if they are intended to work identically on every sub-class.</p>
 <p>You may also define abstract methods on an abstract classes i.e. <code>abstract property</code>, <code>abstract function</code>, <code>abstract procedure</code>. Such methods define only the signature of the method, not the implementation (body). Therefore they have no <code>end</code> statement. For example:</p>
-<code>abstract function calculateDiscount() as Float</code>
+<code>abstract function calculateDiscount() as Float</code><br>
 <p>
 <br>
 If you wish to have several sub-classes of an <code>abstract class</code> that share a common implementation for a method, but require that some of the sub-classes can define a different implementation, then you should:</p>
@@ -1498,10 +1498,10 @@ If you wish to have several sub-classes of an <code>abstract class</code> that s
 
 <h2><a name="_Property">P</a>roperty</h2>
 <p>Examples:</p>
-<code>property height as Int</code>
-<code>property board as Board</code>
-<code>property head as Square</code>
-<code>property body as [Square]</code>
+<code>property height as Int</code><br>
+<code>property board as Board</code><br>
+<code>property head as Square</code><br>
+<code>property body as [Square]</code><br>
 
 <li>A <code>property</code> is defined on a <span class="Link">Class</span> and must <code>specify</code> a name (conforming to the rules for an <a href="#_Identifier">Identifier</a> and a Type.</li>
 <li>A <code>property</code> may be marked <code>private</code>, in which case it is visible only to code within the class and, if defined on an <code>abstract class</code>, within its sub-classes. This is done by selecting the property frame and pressing Ctrl-p. (Pressing these keys again will remove the <code>private</code> modifier).</li>
@@ -1511,13 +1511,13 @@ If you wish to have several sub-classes of an <code>abstract class</code> that s
 If the <code>property</code> is not initialised within the constructor then it will automatically be given the <code>empty</code> value for that Type. You may test whether a property contains this default value by writing e.g.:<br>
 <code>if head is empty Square</code></p>
 <li>Whenever you wish to access a property from within a method (or from within the constructor) on the same class, then the name of the property must be prefixed with the &#8216;qualifier&#8217;: <code>property. </code>(&#8216;property-dot&#8217;). This applies whether you are reading or setting the property. By this means you can have a method parameter with the same name as a property, but they are unambiguous, because the property must be prefixed. A common pattern is to use the same name in a &#8216;setter&#8217; method, for example:</li>
-<code>constructor(board as Board)</code>
-<code>  set property.board to board</code>
-<code>end constructor</code>
-<code></code>
-<code>procedure setHeight(height as Int)</code>
-<code>  set property.height to height</code>
-<code>end procedure</code>
+<code>constructor(board as Board)</code><br>
+<code>  set property.board to board</code><br>
+<code>end constructor</code><br>
+<br>
+<code>procedure setHeight(height as Int)</code><br>
+<code>  set property.height to height</code><br>
+<code>end procedure</code><br>
 
 <h2><a name="_Ref172556016">Function method</a> </h2>
 <p>A function method follows the same syntax and rules as a free-standing (global) <code>function</code>. The differences are:</p>
@@ -1542,29 +1542,29 @@ If the <code>property</code> is not initialised within the constructor then it w
 <li>to keep both main and procedures &#8216;as thin as possible&#8217;.</li>
 <p>Elan&#8217;s built-in support for character-mapped <code>BlockGraphics</code> is a good example of this pattern: almost all the work can be done using the built-in functions, such as <code>withBlock</code>, which may be used within your own user-defined functions. Only the <code>draw</code> method (the only one that actually changes the display) is a <code>procedure</code>, and this must be called from within <code>main</code> or a <code>procedure</code>.</p>
 <p>Although it is not a requirement to do so, adopting the functional programming paradigm also means that, wherever possible, functions should avoid using procedural code constructs: sequence, loop, and branch. Here are some examples of functions that don&#8217;t use any of those procedural code constructs:</p>
-<code>function w(c as Int) returns Int</code>
-<code>  return if (c mod 40) &gt; 0 then c - 1 else c + 39</code>
-<code>end function</code>
+<code>function w(c as Int) returns Int</code><br>
+<code>  return if (c mod 40) &gt; 0 then c - 1 else c + 39</code><br>
+<code>end function</code><br>
 
-<code>function possibleAnswersAfterAttempt(prior as List&lt;of String&gt;, attempt as String, mark as String) returns List&lt;of String&gt;</code>
-<code>  return prior.filter(lambda w as String =&gt; markAttempt(attempt, w) is mark).asList()</code>
-<code>end function</code>
+<code>function possibleAnswersAfterAttempt(prior as List&lt;of String&gt;, attempt as String, mark as String) returns List&lt;of String&gt;</code><br>
+<code>  return prior.filter(lambda w as String =&gt; markAttempt(attempt, w) is mark).asList()</code><br>
+<code>end function</code><br>
 
-<code>function nextGeneration(cells as [Boolean]) returns [Boolean]</code>
-<code>  let cellRange be range(0, cells.length() - 1)</code>
-<code>  let next be cellRange.map(lambda n as Int =&gt; nextCellValue(cells, n))</code>
-<code>  return next.asArray()</code>
-<code>end function</code>
+<code>function nextGeneration(cells as [Boolean]) returns [Boolean]</code><br>
+<code>  let cellRange be range(0, cells.length() - 1)</code><br>
+<code>  let next be cellRange.map(lambda n as Int =&gt; nextCellValue(cells, n))</code><br>
+<code>  return next.asArray()</code><br>
+<code>end function</code><br>
 
 <p>In the examples above we can see several patterns or techniques that are widely used in functional programming in place of procedural code constructs:</p>
 <li>(Top example) Use of an <span class="Link">If expression</span>, instead of using an <span class="Link">If statement</span>.</li>
 <li>(Middle example) Use of <span class="Link">Higher order functions</span> &#8211; in this case, <code>filter</code> &#8211; together with <a href="#_Passing_a_function">Passing a function as a reference</a>.</li>
 <p>If you are passing a reference to a free-standing function as an argument into a HoF (as distinct from defining a <code>lambda</code>) then you provide the name of that function, but precede it with the keyword <code>function</code>. For example:</p>
-<code>variable passes set to allPupils.filter(function passedMathsTest)</code>
+<code>variable passes set to allPupils.filter(function passedMathsTest)</code><br>
 
-<code>function passedMathsTest(p as Pupil) as Boolean</code>
-<code>  return p.mathsPercent &gt; 35</code>
-<code>end function</code>
+<code>function passedMathsTest(p as Pupil) as Boolean</code><br>
+<code>  return p.mathsPercent &gt; 35</code><br>
+<code>end function</code><br>
 
 <p>Notes</p>
 <li>When passing in the reference function <code>passMathsTest</code>, the name is preceded by <code>function</code>, and no parameters (or brackets) are added to the name as they would have been if you were evaluating (calling) the function at that point.</li>
@@ -1577,15 +1577,15 @@ If the <code>property</code> is not initialised within the constructor then it w
 <li>It is written entirely within a single expression. This is possible because the <code>if</code> expression always returns a value.</li>
 <li>There is always a single <code>then</code> and a single <code>else</code> clause, and each clause contains just a single expression. The <code>if</code> expression returns the result of evaluating one of these two expressions, according to whether the condition evaluates to <code>true</code> or <code>false</code>.</li>
 <p>Here are three examples:</p>
-<code>return if c &lt; 1160 then c + 40 </code>
-<code> else c &#8211; 1160</code>
+<code>return if c &lt; 1160 then c + 40 </code><br>
+<code> else c &#8211; 1160</code><br>
 
-<code>return if isGreen(attempt, target, n) then setChar(attempt, n, "*") </code>
-<code> else attempt</code>
+<code>return if isGreen(attempt, target, n) then setChar(attempt, n, "*") </code><br>
+<code> else attempt</code><br>
 
-<code>return if attempt[n] is "*" then attempt </code>
-<code> else if isYellow(attempt, target, n) then setChar(attempt, n, "+") </code>
-<code> else setChar(attempt, n, "_"))</code>
+<code>return if attempt[n] is "*" then attempt </code><br>
+<code> else if isYellow(attempt, target, n) then setChar(attempt, n, "+") </code><br>
+<code> else setChar(attempt, n, "_"))</code><br>
 
 <p>Notes</p>
 <li>When the <code>if</code> expression is being entered or edited, it is presented as a single editable line which may be scrolled horizontally. As soon as the entry/edit field is exited, the expression will be re-formatted as shown above, with each else clause starting on a new line, indented by one character. Note that each of the three examples above is still a single statement and not a sequence of statements.</li>
@@ -1600,11 +1600,11 @@ If the <code>property</code> is not initialised within the constructor then it w
 <p>On most occasions when you write the name of an existing function elsewhere in code your intent is to evaluate the function and, to do so, you write the name of the function followed by brackets containing such arguments as are required by the function. For this reason if you forget to add the brackets, you will get an error, for example:</p>
 <p><img SRC="Images/ReferenceManual/Pic61.png" ALT="" ALIGN="MIDDLE" height="27" width="565"></p>
 <p>The second sentence in this error message is for when your intention is not to evaluate the function, but to create a reference to the function. This is a valid thing to do in functional programming but is not generally done in procedural programming. As the error message says, to create a reference to a function you need to precede it by and the name of the function should then not be followed by brackets (or any arguments). For example:</p>
-<code>variable passes set to allPupils.filter(ref passedMathsTest)</code>
+<code>variable passes set to allPupils.filter(ref passedMathsTest)</code><br>
 
-<code>function passedMathsTest(p as Pupil) as Boolean</code>
-<code>  return p.mathsPercent &gt; 35</code>
-<code>end function</code>
+<code>function passedMathsTest(p as Pupil) as Boolean</code><br>
+<code>  return p.mathsPercent &gt; 35</code><br>
+<code>end function</code><br>
 
 <h3><a name="_Ref180422165">Lambda</a></h3>
 <p>A lambda is lightweight means to define a function &#8216;in line&#8217;. You typically define a <code>lambda</code>:</p>
@@ -1618,23 +1618,23 @@ If the <code>property</code> is not initialised within the constructor then it w
 <p></p>
 <p></p>
 <p>Example:</p>
-<code>
+<code><br>
 function liveNeighbours(cells as [Boolean], c as Int) returns Int<br>
-  let neighbours be neighbourCells(c)<br>
-  let live be neighbours.filter(lambda i as Int =&gt; cells[i])<br>
-  return live.length()<br>
+&nbsp;&nbsp;let neighbours be neighbourCells(c)<br>
+&nbsp;&nbsp;let live be neighbours.filter(lambda i as Int =&gt; cells[i])<br>
+&nbsp;&nbsp;return live.length()<br>
 end function<br>
-</code>
+</code><br>
 <p>Notes</p>
 <li>Although a lambda is commonly defined &#8216;inline&#8217; (as shown above) it is possible to assign a lambda to a variable and hence to re-use it within the scope of that variable. </li>
 <li>Although a lambda will usually define at least one parameter, it is possible to define a lambda with no parameter, just returning an expression, in which case it acts just like a locally defined variable, but with the advantage (useful in rare circumstances) that the expression is evaluated &#8216;lazily&#8217; i.e. only when the lambda is used.</li>
 <p>The following example uses both these techniques within a function:</p>
-<code>
+<code><br>
 function safeSquareRoot(x as Float) returns Float<br>
-  let root be lambda =&gt; sqrt(x)<br>
-  return if x &lt; 0 then 0 else root()<br>
+&nbsp;&nbsp;let root be lambda =&gt; sqrt(x)<br>
+&nbsp;&nbsp;return if x &lt; 0 then 0 else root()<br>
 end function
-</code>
+</code><br>
 <h3>Defining your own HoFs</h3>
 <p>TODO</p>
 <p>The <code>Iterable</code> Type</p>
@@ -1643,41 +1643,41 @@ end function
 <h2><a name="_Ref180421921">Working with records</a></h2>
 <p>You may pass an instance of a<code> </code><span class="Link">Class</span> into a function, but you may not call any <code>procedure</code> on, or otherwise mutate, the instance.</p>
 <p>If you are wanting to learn to write code according to the functional programming paradigm, it is better to try to work exclusively with immutable Types. Elan provides very good support for these, both in the form of standard immutable data structures (such as the <a href="#_List">List</a>) and the user-defined &#8216;record&#8217; Type. Here is an example:</p>
-<code>record Square</code>
-<code>  property x as Float</code>
-<code>  property y as Float</code>
-<code>  property size as Float</code>
-<code>  property colour as Int</code>
-<code>end record</code>
+<code>record Square</code><br>
+<code>  property x as Float</code><br>
+<code>  property y as Float</code><br>
+<code>  property size as Float</code><br>
+<code>  property colour as Int</code><br>
+<code>end record</code><br>
 
 <p>A <code>record</code> is a user-defined data structure that is given a Type name &#8211; <code>Square</code>, above &#8211; that must begin with an upper-case letter. The record defines one or more properties, each of which has a name (starting with a lower-case letter) and a Type. The Type of a property may be any simple value Type (as in the example above), or a <code>List</code>, another Type of <code>record</code> (or even the same Type of record). What distinguishes a <code>record</code> Type from a <code>List</code> is that its members may be of different Types, and what distinguished a <code>record</code> Type from a <span class="Link">Tuple</span> is that each member has a specific name.</p>
 <p>Having defined a <code>record</code> Type, such as <code>Square</code> above, you can create as many instances as you wish using the following syntax to specify the values:</p>
-<code>
+<code><br>
 let sq1 be new Square() with<br>
- x set to 3.5,<br>
- y set to 4.0,<br>
- size set to 1.0,<br>
- colour set to blue<br>
-</code>
+&nbsp;x set to 3.5,<br>
+&nbsp;y set to 4.0,<br>
+&nbsp;size set to 1.0,<br>
+&nbsp;colour set to blue<br>
+</code><br>
 Notice that you are not required to provide a value for each property because, where a property is not specified in the &#8216;<code>with</code> clause&#8217; (as above), that property will be given the empty (default) value of the correct Type.</p>
 <p>You can then read the values from the properties using &#8216;dot syntax&#8217; for example:</p>
-<code>print sq1.size</code>
+<code>print sq1.size</code><br>
 
 <p><code>record</code> Types are immutable: the properties on an instance may not be changed, directly. However, you can easily create another instance that is a copy of the original, with all the same property values except for any specific changes made in another <code>with</code> clause. The newly-minted copy (with changes) must be assigned to a new named value. For example:</p>
-<code>
+<code><br>
 let sq1 be new Square() with<br>
- x set to 3.5,<br>
- y set to 4.0,<br>
- size set to 1.0<br>
-</code>
-<code>
+&nbsp;x set to 3.5,<br>
+&nbsp;y set to 4.0,<br>
+&nbsp;size set to 1.0<br>
+</code><br>
+<code><br>
 let sq2 be copy sq1 with<br>
- size set to 2.0,<br>
- colour set to red<br>
-</code>
+&nbsp;size set to 2.0,<br>
+&nbsp;colour set to red<br>
+</code><br>
 Or even to the same name if that name is a variable:</p>
-<code>variable a set to new Square() with x to 3.5, y to 4.0, size to 1.0,</code>
-<code>set a to copy a with size to 2.0, colour to red</code>
+<code>variable a set to new Square() with x to 3.5, y to 4.0, size to 1.0,</code><br>
+<code>set a to copy a with size to 2.0, colour to red</code><br>
 
 <p>This last example shows how you enter the comma-separated <code>with</code> clauses. The earlier examples show how the Editor displays a set of <code>with</code> clauses.</p>
 <p>Note that a <code>record</code> Type has some similarity to a <code>class</code>:</p>
@@ -1691,7 +1691,7 @@ Or even to the same name if that name is a variable:</p>
 <li>A <code>record</code> instance may be created or copied using a <code>with</code> clause, whereas <code>with</code> may not be used on a class instance.</li>
 <h3>Record deconstruction</h3>
 <p>A record may be &#8216;deconstructed&#8217;, meaning that its properties are read into separate variables using the same syntax as for deconstructing a <span class="Link">Tuple</span>. For example, assuming that Square is a record defined as in the example above then this code:</p>
-<code>let x, y, size, colour be mySquare</code>
+<code>let x, y, size, colour be mySquare</code><br>
 
 <p>will read the <code>properties</code> into the four names defined.</p>
 <p>Note</p>
@@ -1702,21 +1702,21 @@ Or even to the same name if that name is a variable:</p>
 It is not possible to use the system methods <code>random()</code> or <code>randomInt()</code> within a function because they create unseen side-effects. You may use those system methods outside the function and pass the resulting random number (as an <code>Int</code> or a <code>Float</code>) as an argument into a function.<br>
 <br>
 It is possible to create and use random numbers within a function, but it requires a different approach and is a little more complex, using a special Type named <code>Random</code> (note that the <code>R</code> is in upper-case), as in this example:</p>
-<code>main</code>
-<code>
-&nbsp; variable rnd set to new Random()<br>
-&nbsp; call rnd.initialiseFromClock()<br>
-&nbsp; variable dice set to 0<br>
-&nbsp; for i from 1 to 10 step 1<br>
-&nbsp; &nbsp; set dice, rnd to rollDice(rnd)<br>
-&nbsp; &nbsp; print dice<br>
-&nbsp; end for<br>
+<code>main</code><br>
+<code><br>
+&nbsp;&nbsp;variable rnd set to new Random()<br>
+&nbsp;&nbsp;call rnd.initialiseFromClock()<br>
+&nbsp;&nbsp;variable dice set to 0<br>
+&nbsp;&nbsp;for i from 1 to 10 step 1<br>
+&nbsp;&nbsp;&nbsp; set dice, rnd to rollDice(rnd)<br>
+&nbsp;&nbsp;&nbsp; print dice<br>
+&nbsp;&nbsp;end for<br>
 end main<br>
-</code>
+</code><br>
 
-<code>function rollDice(rnd as Random) returns (Int, Random)</code>
-<code>&nbsp; return rnd.nextInt(1, 6)</code>
-<code>end function</code>
+<code>function rollDice(rnd as Random) returns (Int, Random)</code><br>
+<code>&nbsp; return rnd.nextInt(1, 6)</code><br>
+<code>end function</code><br>
 
 <p>The <code>Random</code> Type defined two &#8216;function methods&#8217;: <code>next</code> and <code>nextInt</code>.</p>
 <p>Both of them return a 2-<span class="Link">Tuple</span> consisting of the random value (as either a <code>Float</code> or an <code>Int</code> respectively) plus a new <code>Random</code>. The new (returned) <code>Random</code> must be used for generating the subsequent random number (if more are required). If you call <code>next</code> repeatedly on the same instance of Random, you will always get the same value. </p>
@@ -1771,9 +1771,9 @@ end main<br>
 <h2><a name="_Float">F</a>loat</h2>
 <p>A &#8216;floating-point number&#8217;, i.e. a number that may have both integer and fractional parts.</p>
 <h3><a name="_Toc170738527">Type name</a></h3>
-<code>Float</code>
+<code>Float</code><br>
 <h3><a name="_Toc170738528">Defining literal floating-point value</a></h3>
-<code>variable a set to 1.618</code>
+<code>variable a set to 1.618</code><br>
 <h3><a name="_Constraints">C</a>onstraints</h3>
 <p>Since Elan compiles to JavaScript, the constraints on floating point numbers are those of JavaScript:</p>
 <li>Maximum value: just over 1 &times; 10308</li>
@@ -1791,17 +1791,17 @@ If you wish to define a variable to be of Type <code>Float</code> but initialise
 <h2><a name="_Boolean">B</a>oolean</h2>
 <p>A <code>Boolean</code> value is either <code>true</code> or <code>false</code>.</p>
 <h3><a name="_Toc170738532">Type name</a></h3>
-<code>Boolean</code>
+<code>Boolean</code><br>
 <h3><a name="_Toc170738533">Defining a literal Boolean</a></h3>
 <p><code>variable a set to true</code> </p>
 <p><code>true</code> and <code>false</code> must be written lower-case</p>
 <h3><a name="_Toc170738534">Default value</a></h3>
-<code>false</code>
+<code>false</code><br>
 
 <h2><a name="_String">S</a>tring</h2>
 <p>A <code>String</code> represents &#8216;text&#8217;  i.e. a sequence of zero or more characters.</p>
 <h3><a name="_Toc170738536">Type name</a></h3>
-<code>String</code>
+<code>String</code><br>
 <h3><a name="_Toc170738537">Defining a literal string value</a></h3>
 <p><code>variable a set to "Hello"</code></p>
 <p><code>String</code>s are always delineated by double-quotes.</p>
@@ -1811,49 +1811,49 @@ If you wish to define a variable to be of Type <code>Float</code> but initialise
 <li>As in most programming languages, strings are immutable. When you apply any operation or function with the intent of modifying an existing string, the existing string is never modified. Instead, the operation or function will return a new string that is based on the original, but with the specified differences.</li>
 <p class="List_Paragraph">
 <code>String</code>s may be appended to using the plus operator, for example<br>
- <code>print</code> <code>"Hello" + " " + "World"</code></p>
+<code>print</code> <code>"Hello" + " " + "World"</code></p>
 <p class="List_Paragraph">
 A newline may be inserted within a string as <code>\n</code>, for example:<br>
- <code>print "Hello\nWorld"</code></p>
+<code>print "Hello\nWorld"</code></p>
 <li>You may insert single-quotes  <code>' </code>within a string. </li>
 <h3><a name="_Ref181195935">Interpolated string</a></h3>
 <p class="List_Paragraph">
 Elan strings are automatically interpolated. This means that you may insert the values of variables or simple expressions within a string by enclosing them in curly braces. For example (assuming that the variables <code>a</code> and <code>b</code> are already defined as integers) :<br>
- <code>print "{a} times {b} equals {a*b}"</code></p>
+<code>print "{a} times {b} equals {a*b}"</code></p>
 <p class="List_Paragraph">
 You cannot include the characters <code>"</code>,<code> {</code>, or<code> }</code> directly within a literal string because of their special meanings. Instead, you use the constants <code>quotes</code>, <code>leftBrace</code> and <code>rightBrace</code> respectively:<br>
 <code>print "This is double quote mark: " + quotes</code><br>
- Alternatively, you can insert their Unicode codepoints by means of the <code>unicode()</code> standalone function:<br>
-<code>print "This is a double quote mark: " + unicode(34)</code>
+Alternatively, you can insert their Unicode codepoints by means of the <code>unicode()</code> standalone function:<br>
+<code>print "This is a double quote mark: " + unicode(34)</code><br>
 <p>or</p>
-<code>print"Here are the curly braces: {unicode(123)} and {unicode(125)}"</code>
+<code>print"Here are the curly braces: {unicode(123)} and {unicode(125)}"</code><br>
 
 <h3><a name="_Dot_methods_on">D</a>ot methods on a String</h3>
 <p>Note: There are no &#8216;substring&#8217; methods in Elan because you can always use an index range get a substring e.g. <code>s[3..7]</code>  gives a <code>string</code> containing the fourth through the eighth characters of <code>string s</code>. See<span class="Link"> Indexed Value</span>.</p>
-<code>upperCase() returns String </code>
+<code>upperCase() returns String </code><br>
 <p>returns a new string based on the input with all alpha-characters in upper-case.</p>
-<code>lowerCase() returns String </code>
+<code>lowerCase() returns String </code><br>
 <p>returns a new string based on the input with all alpha-characters in lower-case.</p>
-<code>contains(partString as String) returns Boolean</code>
+<code>contains(partString as String) returns Boolean</code><br>
 <p>takes a single parameter of Type <code>String</code>, and returns a Boolean value indicating whether or not that argument <code>string</code> is contained within the <code>string</code> on which <code>contains</code> was called. Usage:</p>
-<code>
+<code><br>
 variable a set to "Hello World!"<br>
 print a.contains("ello")
-</code>
+</code><br>
 <p>prints</span> true </p>
-<code>replace(match as String, replacement as String) returns String</code>
+<code>replace(match as String, replacement as String) returns String</code><br>
 <p>returns a new string where all occurrences of the <code>match</code> string are replaced with the <code>replacement</code> string. </p>
-<code>trim() returns String</code>
+<code>trim() returns String</code><br>
 <p>returns a new string based on the string on which the method is called, but with all leading and trailing spaces removed.</p>
-<code>indexOf(partString as String) returns Int</code>
+<code>indexOf(partString as String) returns Int</code><br>
 
 <p>The following methods are used for comparing strings alphabetically,  for example in a sort routine:</p>
-<code>isBefore(otherString as String) returns Boolean</code>
-<code>isAfter(otherString as String) returns Boolean</code>
-<code>isBeforeOrSameAs(otherString as String) returns Boolean</code>
-<code>isAfterOrSameAs(otherString as String) returns Boolean</code>
+<code>isBefore(otherString as String) returns Boolean</code><br>
+<code>isAfter(otherString as String) returns Boolean</code><br>
+<code>isBeforeOrSameAs(otherString as String) returns Boolean</code><br>
+<code>isAfterOrSameAs(otherString as String) returns Boolean</code><br>
 
-<code>asUnicode() returns Int</code>
+<code>asUnicode() returns Int</code><br>
 <p>returns the Unicode (integer) value for a character. If the string is more than one character long, the Unicode value returned is that for the first character in the string only. Note that the opposite method to create a single-character string from its numeric Unicode value is e.g. <code>unicode(123)</code> which returns <code>"{"</code>.</p>
 
 <h2><a name="_Arrays_and_Lists">A</a>rrays and Lists</h2>
@@ -1867,7 +1867,7 @@ print a.contains("ello")
 <tr><td>Type form</td>
 </tr<code>Array&lt;of String&gt;<br>
 Array2D&lt;of String&gt;
-</code>
+</code><br>
 </td>
 <td><code>List&lt;of String&gt;</code><br>
 </td>
@@ -1882,16 +1882,16 @@ Array2D&lt;of String&gt;
 </tr>
 <tr><td>Initial size (filled with default values)</td>
 <td><code>variable a set to<br>
-   createArray(10, "x")<br>
+&nbsp;&nbsp;&nbsp;createArray(10, "x")<br>
 createArray2D(8, 8, "")<br>
-</code>
+</code><br>
 <p>In each case, the last argument is the value to which each element is initialised, and defines the Type of elements in the Array</p>
 </td>
 <td>Not applicable</td>
 </tr>
 <tr><td>Read from position</td>
 <td><code>a[3]</code><br>
-<code>board[3][4]</code>
+<code>board[3][4]</code><br>
 </td>
 <td><code>[3]</code></td>
 </tr>
@@ -1901,7 +1901,7 @@ createArray2D(8, 8, "")<br>
 </tr>
 <tr><td>Put a value</td>
 <td><code>call a.putAt(3, "pear")</code><br>
-2D:<code>call board.putAt2D(3,4,"K")</code>
+2D:<code>call board.putAt2D(3,4,"K")</code><br>
 </td>
 <td>set a to a.withPutAt(3, "pear")</td>
 </tr>
@@ -1910,12 +1910,12 @@ createArray2D(8, 8, "")<br>
 call a.prepend("pear")<br>
 call a.appendArray(anotherArray)<br>
 call a.prependArray(anotherArray)<br>
-</code>
+</code><br>
 </td>
 <td>
 Append: <code>set a to a + {"pear"}</code> 
-Prepend:<code> set a to {"pear"} + a</code>
-Append/prepend a list: <code>set x to listA + listb</code>
+Prepend:<code> set a to {"pear"} + a</code><br>
+Append/prepend a list: <code>set x to listA + listb</code><br>
 </td>
 </tr>
 <tr><td>Insert</td>
@@ -1929,21 +1929,21 @@ Append/prepend a list: <code>set x to listA + listb</code>
 <tr><td>Remove by value</td>
 <td><code>call a.removeFirst("pear")<br>
 call a.removeAll("pear")<br>
-</code>
+</code><br>
 </td>
 <td><code>set a to a.withRemoveFirst ("p")<br>
 set a to a.withRemoveAll ("p")<br>
-</code>
+</code><br>
 </td>
 </tr>
 <tr><td>Deconstruction into head (first element) and tail (all the rest)</td>
 <td>Not applicable</td>
 <td><code>variable x:xs set to myList<br>
 set h:t to myList<br>
-</code>
+</code><br>
 <span class="Comment_Text_Char">discarding either the head or tail:</span><br>
 <code>variable _:tail set to myList<br>
-variable head:_ set t myList</code>
+variable head:_ set t myList</code><br>
 </td>
 </tr></table>
 </p>
@@ -1951,30 +1951,30 @@ variable head:_ set t myList</code>
 <p>An &#8216;Array&#8217; is a simple data structure that holds multiple elements of the same Type.</p>
 <p>Unlike a List, an Array is mutable, meaning that the elements within the data structure can be altered without creating a new Array from the old.</p>
 <p>The Type is specified in the following form:</p>
-<code>Array&lt;of String&gt;	for an Array of Type 	String</code>
-<code>Array&lt;of Int&gt; 	for an Array of Type 	Int</code>
+<code>Array&lt;of String&gt;	for an Array of Type 	String</code><br>
+<code>Array&lt;of Int&gt; 	for an Array of Type 	Int</code><br>
 
 <p>where, in these examples, <code>String</code> and <code>Int</code> represent the Type of each element in the <code>Array</code>s. The element Type can be any Type value &#8211; <code>Int</code>, <code>Boolean</code>, <code>Float, String</code> &#8211; or the name of a specific <code>class</code> such as <code>Player</code>, or an <code>enum</code> such as <code>Direction</code>. It may also be another data structure, including another <code>Array</code> (sometimes referred to as a &#8216;nested Array&#8217;).</p>
 <h4>Creating an Array</h4>
 <p>An <code>Array</code> may be defined in &#8216;literal&#8217; form, &#8216;delimited&#8217; by square brackets, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type:</p>
-<code>variable fruit set to ["apple", "orange", "pear"]</code>
+<code>variable fruit set to ["apple", "orange", "pear"]</code><br>
 
 <p>including &#8216;nested Arrays&#8217;:</p>
-<code>variable coordinates set to [[3.4, 0.1, 7.8], [1, 0, 1.5], [10, -1.5, 25]]</code>
+<code>variable coordinates set to [[3.4, 0.1, 7.8], [1, 0, 1.5], [10, -1.5, 25]]</code><br>
 
-<code>or variables (provided they are all of the same Type): </code>
-<code>variable values set to [x, y, z]</code>
+<code>or variables (provided they are all of the same Type): </code><br>
+<code>variable values set to [x, y, z]</code><br>
 
-<code>or a mixture of literal values and variables (all of the same Type):</code>
-<code>variable values set to [3.1, y, z]</code>
+<code>or a mixture of literal values and variables (all of the same Type):</code><br>
+<code>variable values set to [3.1, y, z]</code><br>
 <p>where <code>y </code>and <code>z </code>are existing variables of Type <code>Float</code>.</p>
 <p>You may also define an Array of a specified size, with each element initialised to the same value, for example:</p>
-<code>variable fruit set to createArray(20, "")</code>
+<code>variable fruit set to createArray(20, "")</code><br>
 
 <p>will create an Array of Type String with exactly 20 elements, each initialised to the empty String and:</p>
-<code>variable scores set to createArray(12, 100.0)</code>
+<code>variable scores set to createArray(12, 100.0)</code><br>
 
-<code>will create an Array of Type Float with exactly 12 elements, each initialised to 100.0.</code>
+<code>will create an Array of Type Float with exactly 12 elements, each initialised to 100.0.</code><br>
 
 <p>Although the resulting <code>Array</code> may still be expanded subsequently (by using the <code>add</code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array:</p>
 
@@ -1992,100 +1992,100 @@ call fruit.putAt(2, "grape")<br>
 call fruit.removeAll("apple")<br>
 call fruit.removeAt(3)<br>
 call fruit.removeFirst("apple")
-</code>
+</code><br>
 <h3><a name="_Using_an_Array">U</a>sing an Array</h3>
 <p>Elements are read using an index in square brackets &#8211; the first element being element <code>[0]</code>. The last element of an Array of size 10 will therefore be accessed by the index <code>[9]</code>.</p>
 <p>Attempting to read an element by index, where that element does not exist, will result in an &#8216;Index out of range&#8217; run-time error.</p>
 <p>Unlike in many programming languages you may not modify data by index: elements are modified by calling the <code>putAt</code> procedure on the Array.</p>
 <p>Try these examples (the last one will produce an error &#8211; make sure you understand why):</p>
-<code>variable a set to createArray(10, 0)</code>
-<code>print a</code>
-<code>print a.length()</code>
-<code>call a.putAt(0, 3)</code>
-<code>call a.putAt(1, 7)</code>
-<code>print a</code>
-<code>print a[0]</code>
-<code>print a[a.length() -1]</code>
-<code>print a[a.length()]</code>
+<code>variable a set to createArray(10, 0)</code><br>
+<code>print a</code><br>
+<code>print a.length()</code><br>
+<code>call a.putAt(0, 3)</code><br>
+<code>call a.putAt(1, 7)</code><br>
+<code>print a</code><br>
+<code>print a[0]</code><br>
+<code>print a[a.length() -1]</code><br>
+<code>print a[a.length()]</code><br>
 
 <p>Unlike in some languages, Elan Arrays may be dynamically extended, using <code>append</code> and <code>prepend</code> methods.</p>
-<code>variable a set to createArray(3, 0)</code>
-<code>variable b set to createArray(3, 10)</code>
-<code>print a</code>
-<code>print b</code>
-<code>a.append(3)</code>
-<code>b.prepend(7)</code>
-<code>print a</code>
-<code>print b</code>
-<code>a.appendArray(b)</code>
-<code>print a</code>
-<code><a name="_Toc170738543"></a></code>
+<code>variable a set to createArray(3, 0)</code><br>
+<code>variable b set to createArray(3, 10)</code><br>
+<code>print a</code><br>
+<code>print b</code><br>
+<code>a.append(3)</code><br>
+<code>b.prepend(7)</code><br>
+<code>print a</code><br>
+<code>print b</code><br>
+<code>a.appendArray(b)</code><br>
+<code>print a</code><br>
+<code><a name="_Toc170738543"></a></code><br>
 <h3><a name="_2-dimensional_Array">2</a>-dimensional Array</h3>
 <p>In Elan, as in many languages, a &#8216;2-dimensional Array&#8217; is just an Array of Arrays. However, Elan provides a couple of convenient short-cut methods for working with such data structures:</p>
-<code>variable board set to createArray2D(8, 8, "")</code>
+<code>variable board set to createArray2D(8, 8, "")</code><br>
 will create an Array of Arrays with a total of 64 elements each of Type <code>String</code>, and initialised to the empty <code>String</code>. The Type is determined by the Type of the third parameter, which might be an <code>Int</code>, <code>Boolean</code>, or user-defined Type. It need not be an empty value. The <code>Array2D</code> need not be square &#8211; it may be rectangular.<br>
 It is possible to create an 2-dimensional Array with no elements, for example by:</p>
-<code>let a be new Array2D&lt;of Int&gt;()</code>
+<code>let a be new Array2D&lt;of Int&gt;()</code><br>
 
 <p>However, this is not recommended as subsequently adding elements takes a lot of care and effort. It is recommended that you always use the method <code>createArray2D</code> to create a 2-dimensional Array initialised to the desired size. That way you can modify individual elements in the initialised Array with e.g.:</p>
-<code>call board.putAt2D(3,4,"K")</code>
+<code>call board.putAt2D(3,4,"K")</code><br>
 
 <p>and you can read individual elements with a double index, for example:</p>
-<code>for col from 0 to 7 step 1</code>
-<code>  for row from 0 to 7 step 1</code>
-<code>    print board[col][row]</code>
-<code>  end for</code>
-<code>end for</code>
+<code>for col from 0 to 7 step 1</code><br>
+<code>  for row from 0 to 7 step 1</code><br>
+<code>    print board[col][row]</code><br>
+<code>  end for</code><br>
+<code>end for</code><br>
 
 <p>If you want to define a function or procedure with a parameter that should be a 2-dimensional Array, the Type is specified as <code>Array2D</code>, for example:</p>
 
-<code>Array2D&lt;of String&gt;</code>
-<code>Array2D&lt;of Int&gt;</code>
+<code>Array2D&lt;of String&gt;</code><br>
+<code>Array2D&lt;of Int&gt;</code><br>
 <h3>Creating Arrays of specific sizes </h3>
 <p>The following methods return an <code>Array</code> of a specified size, and with all elements initialised to a specified value. Although the resulting <code>Array</code> may still be expanded subsequently (by using the <code>add</code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array:</p>
-<code>createArray(size as Int, initialValue as Type) returns [Type]</code>
+<code>createArray(size as Int, initialValue as Type) returns [Type]</code><br>
 <p>where <code>Type</code> is one of the following Types: <code>Int</code>, <code>Float</code>, <code>Boolean</code>, <code>String</code> or any Type of <code>enum</code>.</p>
 <p>There is also a variant of the method that creates a &#8216;2-dimensional&#8217; rectangular <code>Array</code> (actually an <code>Array</code> of <code>Array</code>s):</p>
-<code>createArray2D(noOfrows as Int, noOfColumns as Int, initialValue as T) returns [[Type]]</code>
+<code>createArray2D(noOfrows as Int, noOfColumns as Int, initialValue as T) returns [[Type]]</code><br>
 
 <h3><a name="_List">L</a>ist</h3>
 <p>A <code>List</code> is a simple data structure that holds multiple elements of the same Type.</p>
 <p> A <code>list</code>, like a <code>String</code> but unlike an <code>Array</code>, is immutable. You can still insert, delete, or change elements in a <code>List</code>, but the methods for these operations do not modify the input <code>List</code>: they return a new <code>List</code> based on the input <code>List</code> but with the specified differences. </p>
 <h4>Type name</h4>
 <p>The Type is specified in the following way:</p>
-<code>List&lt;of String&gt;</code> for a List of Type<code>String</code>
-<code></code>List&lt;of Int&gt; for a </span>List  of Type <code>>Int</code>
-List&lt;of List&lt;of Int&gt;&gt;</code> for a List of  Lists of Type </ode>Int</code>
+<code>List&lt;of String&gt;</code> for a List of Type<code>String</code><br>
+<code>List&lt;of Int&gt;</code> for a </span>List  of Type <code>>Int</code><br>
+List&lt;of List&lt;of Int&gt;&gt;</code> for a List of  Lists of Type </ode>Int</code><br>
 
 <h4>Creating a List</h4>
 <p>A <code>List</code> may be defined in &#8216;literal&#8217; form, &#8216;delimited&#8217; by curly braces, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type):</p>
-<code>variable fruit set to {"apple", "orange", "pear"} </code>
+<code>variable fruit set to {"apple", "orange", "pear"} </code><br>
 
 <h3>Dot methods on a List</h3>
 <p>The dot methods on a list are all functions.</p>
-<code>myList.contains(item) returns true or false</code>
-<code>myList.asArray() returns a new Array with the same contents as myList</code>
+<code>myList.contains(item) returns true or false</code><br>
+<code>myList.asArray() returns a new Array with the same contents as myList</code><br>
 
 <p>The following functions all return a new <code>List</code>, copied from the <code>List</code> on which the function was called, but with the differences specified by the function parameters:</p>
-<code>myList.withInsertAt(4, "cherry")</code>
-<code>myList.withPutAt(2, "grape")</code>
-<code>myList.withRemoveAt(3)</code>
-<code>myList.withRemoveFirst("apple")</code>
-<code>myList.withRemoveAll("apple")</code>
+<code>myList.withInsertAt(4, "cherry")</code><br>
+<code>myList.withPutAt(2, "grape")</code><br>
+<code>myList.withRemoveAt(3)</code><br>
+<code>myList.withRemoveFirst("apple")</code><br>
+<code>myList.withRemoveAll("apple")</code><br>
 
 <p>Try these examples:</p>
-<code>variable fruit set to empty List&lt;of String&gt;</code>
-<code>print fruit</code>
-<code>set fruit to fruit + "apple"</code>
-<code>set fruit to fruit + "pear"</code>
-<code>print fruit</code>
-<code>set fruit to "orange" + "pear" </code>
-<code>print fruit[0]</code>
-<code>print fruit.length()</code>
-<code>print fruit[fruit.length() -1]</code>
-<code>variable head:tail set to fruit</code>
-<code>print head</code>
-<code>print tail</code>
+<code>variable fruit set to empty List&lt;of String&gt;</code><br>
+<code>print fruit</code><br>
+<code>set fruit to fruit + "apple"</code><br>
+<code>set fruit to fruit + "pear"</code><br>
+<code>print fruit</code><br>
+<code>set fruit to "orange" + "pear" </code><br>
+<code>print fruit[0]</code><br>
+<code>print fruit.length()</code><br>
+<code>print fruit[fruit.length() -1]</code><br>
+<code>variable head:tail set to fruit</code><br>
+<code>print head</code><br>
+<code>print tail</code><br>
 
 <h2><a name="_Toc170738544">Dictionaries</a></h2>
 <p>There are two forms of dictionary in Elan: an ordinary <code>Dictionary</code> (which is mutable) and a <code>DictionaryImmutable</code> (which is not).</p>
@@ -2132,57 +2132,57 @@ Both return an immutable list of the appropriate Type
 <h3><a name="_Dictionary">D</a>ictionary</h3>
 <h4>Type name</h4>
 <p>In the following example, the keys are of Type <code>Int</code>, and the values associated with the keys are of Type <code>String</code>:</p>
-<code>Dictionary&lt;of String, Int&gt;</code>
+<code>Dictionary&lt;of String, Int&gt;</code><br>
 
 <p>For both <code>Dictionary</code> and <code>DictionaryImmutable</code> the values can be of any Type, including a specific Type of class, a <code>List</code>, another <code>Dictionary</code> or some other data structure. However, the key&#8217;s Type must be one of: <code>Int</code>, <code>Float</code>, <code>String</code>, <code>Boolean</code>, or a specific Type of <code>enum</code>.</p>
 <h4>Defining a literal</h4>
 <p>A literal <code>Dictionary</code> is defined as a comma-separated list of &#8216;key:value pairs&#8217; (key,colon.value) surrounded by square brackets:</p>
-<code>variable scrabbleValues set to ["a":1, "b":3, "c":3, "d":2]</code>
+<code>variable scrabbleValues set to ["a":1, "b":3, "c":3, "d":2]</code><br>
 <h4><a name="_Ref172641460"></a></h4>
 <h4><a name="_Using_a_Dictionary">U</a>sing a Dictionary</h4>
 <p>Try these examples:</p>
-<code>variable dict set to new Dictionary&lt;of String, Int&gt;()</code>
-<code>print dict</code>
-<code>call dict.putAtKey("a", 3)</code>
-<code>print dict["a"]</code>
-<code>call dict.removeAtKey("a")</code>
-<code>print dict</code>
+<code>variable dict set to new Dictionary&lt;of String, Int&gt;()</code><br>
+<code>print dict</code><br>
+<code>call dict.putAtKey("a", 3)</code><br>
+<code>print dict["a"]</code><br>
+<code>call dict.removeAtKey("a")</code><br>
+<code>print dict</code><br>
 
-<code><span class="Heading_4_Char">Constraints</span></code>
+<code><span class="Heading_4_Char">Constraints</span></code><br>
 <li>Key values must be unique within a <code>Dictionary</code>.</li>
 <li>There is no difference in syntax between adding an entry with a new key, and setting a new value for an existing key: if the key does not exist in the dictionary, it will be added.</li>
 <h3><a name="_Toc170738581">Dot methods on a Dictionary</a></h3>
 <p>See also <span class="Link">Quick reference</span>.</p>
-<code>putAtKey</code>
-<code>removeAtKey</code>
-<code>keys</code>
-<code>values</code>
-<code><a name="_Toc170738546"></a></code>
+<code>putAtKey</code><br>
+<code>removeAtKey</code><br>
+<code>keys</code><br>
+<code>values</code><br>
+<code><a name="_Toc170738546"></a></code><br>
 <h3><a name="_DictionaryImmutable">D</a>ictionaryImmutable</h3>
 <p>An immutable dictionary may be defined in a <code>constant</code>.</p>
 <h4>Type name</h4>
 <p>In the following example, the keys are of Type <code>Int</code>, and the values associated with the keys are of Type <code>String</code>:</p>
-<code>DictionaryImmutable&lt;of String, Int&gt;</code>
+<code>DictionaryImmutable&lt;of String, Int&gt;</code><br>
 
 <h4>Defining a literal</h4>
 <p>A literal<code> DictionaryImmutable</code> is defined as a comma-separated list of &#8216;key:value pairs&#8217; (key,colon.value) surrounded by curly braces:</p>
-<code>variable scrabbleValues set to {"a":1, "b":3, "c":3, "d":2}</code>
+<code>variable scrabbleValues set to {"a":1, "b":3, "c":3, "d":2}</code><br>
 
 <h4>Using an Immutable Dictionary</h4>
 <p>Try these examples:</p>
-<code>variable immD set to new DictionaryImmutable&lt;of String,Int&gt;()</code>
-<code>print immD</code>
-<code>set immD to immD.withPutAtKey("a", 3)</code>
-<code>print immD["a"]</code>
-<code>set immD to immD.withRemoveAtKey("a")</code>
-<code>print immD</code>
-<code><a name="_Toc170738582"></a></code>
+<code>variable immD set to new DictionaryImmutable&lt;of String,Int&gt;()</code><br>
+<code>print immD</code><br>
+<code>set immD to immD.withPutAtKey("a", 3)</code><br>
+<code>print immD["a"]</code><br>
+<code>set immD to immD.withRemoveAtKey("a")</code><br>
+<code>print immD</code><br>
+<code><a name="_Toc170738582"></a></code><br>
 <h3>Dot methods on an Immutable Dictionary</h3>
 <p>See also <span class="Link">Quick reference</span>.</p>
-<code>hasKey</code>
-<code>withPutAtKey</code>
-<code>withRemoveAtKey</code>
-<code><a name="_Toc170738547"></a></code>
+<code>hasKey</code><br>
+<code>withPutAtKey</code><br>
+<code>withRemoveAtKey</code><br>
+<code><a name="_Toc170738547"></a></code><br>
 
 <h2><a name="_Tuple">T</a>uple</h2>
 <p>A <code>tuple</code> is a way of holding a small number of values of different Types together as a single reference. They are referred to as 2-tuples, 3-tuples, etc. according to the number of values they hold. Common uses include:</p>
@@ -2191,36 +2191,36 @@ Both return an immutable list of the appropriate Type
 <p>A <code>tuple</code> is considered a &#8216;lightweight&#8217; alternative to defining a specific class for some purposes. </p>
 <h3><a name="_Toc170738553">Type name</a></h3>
 <p>Written as a comma-separated list of the Type of each member, surrounded by round brackets:</p>
-<code>(Int, Int, Int)</code>
-<code>(String, Boolean)</code>
+<code>(Int, Int, Int)</code><br>
+<code>(String, Boolean)</code><br>
 
 <h3><a name="_Toc170738554">Defining a literal tuple</a></h3>
 <p>A <code>tuple</code> is defined, where it is needed, by the keyword <code>tuple</code> and a number of elements, each being a variable or a literal value, separated by commas and surrounded by round brackets, for example:</p>
-<code>
+<code><br>
 let coords be tuple(x, y)<br>
 let myList be {tuple(1,1), tuple(1, 2)}<br>
 let foo be tuple(3.769, 4.088, true, 5, "correct")<br>
 call proc1(a, coords, tuple(x, y))<br>
 return tuple(3, 4)
-</code>
+</code><br>
 <a name="_Toc170738555"></a></p>
 <h3>Using a tuple</h3>
 <li>You may pass a tuple into a function, or return one from a function, for example:</li>
-<code>variable d set to distanceBetween(point1, tuple(12.34, 20.0))</code>
-<code></code>
+<code>variable d set to distanceBetween(point1, tuple(12.34, 20.0))</code><br>
+<br>
 <li>An existing <code>tuple</code> (for example <code>point1 </code>below) may be &#8216;deconstructed&#8217; into new variables or named values (where the number of variables/names must match the number of elements in the <code>tuple</code>): </li>
-<code>let x, y set to point1</code>
-<code>variable x, y set to point1</code>
+<code>let x, y set to point1</code><br>
+<code>variable x, y set to point1</code><br>
 <p>
 <br>
 or into existing variables of the correct Type:</p>
-<code>variable a set to 3</code>
-<code>variable b set to 4</code>
-<code>set a, b to point1</code>
-<code></code>
+<code>variable a set to 3</code><br>
+<code>variable b set to 4</code><br>
+<code>set a, b to point1</code><br>
+<br>
 <li>The &#8216;discard&#8217; symbol <code>_</code> (underscore) may also be used when deconstructing a tuple when there is no need to capture specific elements:</li>
-<code>variable x, _ set to point1</code>
-<code></code>
+<code>variable x, _ set to point1</code><br>
+<br>
 <p>Notes</p>
 <li>As in most languages, Elan <code>tuple</code>s are immutable. Once defined they are effectively &#8216;read only&#8217;. You cannot alter any of the elements in a <code>tuple</code> nor (unlike a <code>List</code> for example) can you create a new <code>tuple</code> from an existing one with specified differences.</li>
 <li>You cannot deconstruct a <code>tuple</code> into a mixture of new and existing variables.</li>
@@ -2230,9 +2230,9 @@ or into existing variables of the correct Type:</p>
 <p>A <code>function</code> may be passed as an argument into another <code>function</code> (or a <code>procedure</code>), or returned as the result of calling another <code>function</code>. This pattern is known as &#8216;Higher order Function&#8217; (HoF), and is a key idea in the functional programming paradigm. To define a <code>function</code> that takes in another <code>function</code> as a parameter, or returns a <code>function</code>, you need to specify the Type of the <code>function</code>, just as you would specify the Type of every parameter and the return Type for the <code>function</code>. </p>
 <h3><a name="_Toc170738560">Type name</a></h3>
 <p>The Type of any <code>function</code> starts with the word <code>Func</code> followed by angle brackets defining the Type of each parameter, and the return Type for that function, following this syntax:</p>
-<code>Func&lt;of String, String, Int =&gt; Boolean&gt;</code>
+<code>Func&lt;of String, String, Int =&gt; Boolean&gt;</code><br>
 <p>This example defines the Type for a function that defines three parameters of Type <code>String</code>, <code>String</code>, and <code>Int</code> respectively, and returns a <code>Boolean</code> value. T this Type would match that of a function definition that started:</p>
-<code>Function charactersMatchAt(a as String, b as String, position as Int) returns Boolean</code>
+<code>Function charactersMatchAt(a as String, b as String, position as Int) returns Boolean</code><br>
 
 <h1><a name="toc93">Standard library</a></h1>
 
@@ -2242,9 +2242,9 @@ or into existing variables of the correct Type:</p>
 <p>unicode(code as Int) returns String</p>
 
 <p>converts a Unicode value (expressed in decimal or hexadecimal notation) into a single character string. For example:</p>
-<code>function hearts() return string</code>
-<code>  return unicode(0x2655)</code>
-<code>end function</code>
+<code>function hearts() return string</code><br>
+<code>  return unicode(0x2655)</code><br>
+<code>end function</code><br>
 
 <h3>parseAsInt and parseAsFloat</h3>
 <p>
@@ -2430,15 +2430,15 @@ variable outcome, value set to parseAsInt(myString)</p>
 <p><img SRC="Images/ReferenceManual/Pic86.png" ALT="" ALIGN="MIDDLE" height="117" width="318"></p>
 <p>Although it is recommended that literal regular expressions are written with the <code>/../</code> delimiters, the ability to convert a <code>string</code> allows you to input a regular expression into a running program.</p>
 <h3>Bitwise functions</h3>
-<code>bitAnd(a as Int, b as Int) returns Int</code>
-<code>bitOr(a as Int, b as Int) returns Int</code>
-<code>bitXor(a as Int, b as Int) returns Int</code>
-<code>bitNot(a as Int) returns Int</code>
-<code>bitShiftL(a as Int, places as Int) returns Int</code>
-<code>bitShiftR(a as Int, places as Int) returns Int</code>
+<code>bitAnd(a as Int, b as Int) returns Int</code><br>
+<code>bitOr(a as Int, b as Int) returns Int</code><br>
+<code>bitXor(a as Int, b as Int) returns Int</code><br>
+<code>bitNot(a as Int) returns Int</code><br>
+<code>bitShiftL(a as Int, places as Int) returns Int</code><br>
+<code>bitShiftR(a as Int, places as Int) returns Int</code><br>
 
 <p>Examples of the bitwise functions being tested:</p>
-<code><img SRC="Images/ReferenceManual/Pic87.png" ALT="" ALIGN="MIDDLE" height="273" width="353"></code>
+<code><img SRC="Images/ReferenceManual/Pic87.png" ALT="" ALIGN="MIDDLE" height="273" width="353"></code><br>
 
 <p>The result of <code>bitNot(a)</code>, where <code>a</code> is <code>13</code>, being <code>-14</code> might be a surprise. But this is because the bitwise functions assume that the arguments are represented as 32-bit signed integers. So 13 is represented as <code>00000000000000000000000000001101</code>, and applying <code>bitNot</code> gives <code>11111111111111111111111111110010 </code>which is the value <code>-14 </code>in signed two&#8217;s complement format, the left-most bit being the sign (<code>0</code> positive, <code>1</code> negative).</p>
 
@@ -2446,15 +2446,15 @@ variable outcome, value set to parseAsInt(myString)</p>
 <p>All <code>procedure</code>s are accessed via a <code>call</code> statement.</p>
 
 
-<code>pause(100)</code>
+<code>pause(100)</code><br>
 
 <p>Typically used to slow down the execution of a program e.g. for a game. The argument provided to <code>pause</code> is in milliseconds, so <code>pause(100)</code> delays execution for one tenth of a second.</p>
-<code>clearConsole()</code>
+<code>clearConsole()</code><br>
 <p><a name="_Toc170738573">See <span class="Link">Printing plain text to the Console</span></a></p>
-<code>clearKeyBuffer()</code>
-<code>getKey()</code>
-<code>getKeyWithModifier()</code>
-<code>waitForAnyKey()</code>
+<code>clearKeyBuffer()</code><br>
+<code>getKey()</code><br>
+<code>getKeyWithModifier()</code><br>
+<code>waitForAnyKey()</code><br>
 
 
 <h2><a name="_System_methods">S</a>ystem methods</h2>
@@ -2514,55 +2514,55 @@ variable outcome, value set to parseAsInt(myString)</p>
 </p>
 
 <p>Example use of a <code>Stack</code>:</p>
-<code>main</code>
-<code>&nbsp; let sk be new Stack&lt;of String&gt;()</code>
-<code>&nbsp; print sk.length()</code>
-<code>&nbsp; call sk.push("apple")</code>
-<code>&nbsp; call sk.push("pear")</code>
-<code>&nbsp; print sk.length()</code>
-<code>&nbsp; print sk.peek()</code>
-<code>&nbsp; variable fruit set to sk.pop()</code>
-<code>&nbsp; print fruit</code>
-<code>&nbsp; set fruit to sk.pop()</code>
-<code>&nbsp; print fruit</code>
-<code>&nbsp; print sk.length()</code>
-<code>end main</code>
+<code>main</code><br>
+<code>&nbsp; let sk be new Stack&lt;of String&gt;()</code><br>
+<code>&nbsp; print sk.length()</code><br>
+<code>&nbsp; call sk.push("apple")</code><br>
+<code>&nbsp; call sk.push("pear")</code><br>
+<code>&nbsp; print sk.length()</code><br>
+<code>&nbsp; print sk.peek()</code><br>
+<code>&nbsp; variable fruit set to sk.pop()</code><br>
+<code>&nbsp; print fruit</code><br>
+<code>&nbsp; set fruit to sk.pop()</code><br>
+<code>&nbsp; print fruit</code><br>
+<code>&nbsp; print sk.length()</code><br>
+<code>end main</code><br>
 
 <p>Example use of a <code>Queue</code>:</p>
-<code>main</code>
-<code>&nbsp; let qu be new Queue&lt;of String&gt;()</code>
-<code>&nbsp; print qu.length()</code>
-<code>&nbsp; call qu.enqueue("apple")</code>
-<code>&nbsp; call qu.enqueue("pear")</code>
-<code>&nbsp; print qu.length()</code>
-<code>&nbsp; print qu.peek()</code>
-<code>&nbsp; variable fruit set to qu.dequeue()</code>
-<code>&nbsp; print fruit</code>
-<code>&nbsp; set fruit to qu.dequeue()</code>
-<code>&nbsp; print fruit</code>
-<code>&nbsp; print qu.length()</code>
-<code>end main</code>
+<code>main</code><br>
+<code>&nbsp; let qu be new Queue&lt;of String&gt;()</code><br>
+<code>&nbsp; print qu.length()</code><br>
+<code>&nbsp; call qu.enqueue("apple")</code><br>
+<code>&nbsp; call qu.enqueue("pear")</code><br>
+<code>&nbsp; print qu.length()</code><br>
+<code>&nbsp; print qu.peek()</code><br>
+<code>&nbsp; variable fruit set to qu.dequeue()</code><br>
+<code>&nbsp; print fruit</code><br>
+<code>&nbsp; set fruit to qu.dequeue()</code><br>
+<code>&nbsp; print fruit</code><br>
+<code>&nbsp; print qu.length()</code><br>
+<code>end main</code><br>
 <h3><a name="_Ref181258612">Set</a></h3>
 <p>A <code>Set</code> is a standard data structure that works somewhat like a <code>List</code> with the important difference that in a <code>Set</code> a given element may appear only once. If an item being added to a <code>Set</code> is identical to an existing item in the <code>Set</code> then the <code>Set</code> remains the same length as before. </p>
 <p>This enables a <code>Set</code> to work like a mathematical set so that it is possible to perform standard set operations such as <code>union</code> or <code>intersection</code>. For the same reason, a Set is an immutable data structure: there are no methods modify the set on which they are called, but several of them (including <code>add</code>, <code>remove</code>) return a new <code>Set</code> that is based on the original <code>Set</code> or <code>Set</code>s, with specified differences. </p>
 <p>Example of use:</p>
-<code>main</code>
-<code>&nbsp; variable st set to new Set&lt;of Int&gt;()</code>
-<code>&nbsp; set st to st.addFromList({3, 5, 7})</code>
-<code>&nbsp; print st.length()</code>
-<code>&nbsp; set st to st.add(7)</code>
-<code>&nbsp; print st.length()</code>
-<code>&nbsp; set st to st.remove(3)</code>
-<code>&nbsp; print st.length()</code>
-<code>&nbsp; set st to st.remove(3)</code>
-<code>&nbsp; print st.length()</code>
-<code>&nbsp; print st</code>
-<code>end main</code>
+<code>main</code><br>
+<code>&nbsp; variable st set to new Set&lt;of Int&gt;()</code><br>
+<code>&nbsp; set st to st.addFromList({3, 5, 7})</code><br>
+<code>&nbsp; print st.length()</code><br>
+<code>&nbsp; set st to st.add(7)</code><br>
+<code>&nbsp; print st.length()</code><br>
+<code>&nbsp; set st to st.remove(3)</code><br>
+<code>&nbsp; print st.length()</code><br>
+<code>&nbsp; set st to st.remove(3)</code><br>
+<code>&nbsp; print st.length()</code><br>
+<code>&nbsp; print st</code><br>
+<code>end main</code><br>
 
 <p>Notes</p>
 <p class="List_Paragraph">
 When creating a <code>Set</code>, the Type of the elements must be specified in the form<br>
- <code>Set&lt;of String&gt;</code>. This applies both when creating a new, empty set and when defining the Type of a parameter to be a <code>Set</code>.</p>
+<code>Set&lt;of String&gt;</code>. This applies both when creating a new, empty set and when defining the Type of a parameter to be a <code>Set</code>.</p>
 <li>You can add elements: individually with <code>add</code>, or multiple elements with <code>addFromList</code> and <code>addFromArray</code>.</li>
 <li>You can create a new <code>Se</code>t from an existing <code>Array</code> or <code>List</code> by calling <code>.asSet()</code> on it.</li>
 <p>Available dot methods on a <code>Set</code>, and the Type that each returns:</p>
@@ -2582,7 +2582,7 @@ isSupersetOf(anotherSet)<br>
 asArray(anotherSet)<br>  
 asList(anotherSet)<br>  
 asString()<br> 
-</code>
+</code><br>
 
 <h2><a name="_Higher_order_functions">H</a>igher order functions (HoFs)</h2>
 <p>These dot methods are called on any &#8216;iterable&#8217; Type, which includes <code>Array,</code> <code>List</code> and <code>String</code>. As &#8216;higher order functions&#8217; they take either a <code>lambda</code> or a function reference as one of their arguments: see <span class="Link">Passing a function as a reference</span>.</p>
@@ -2590,60 +2590,60 @@ asString()<br>
 <p>These are not yet fully documented but, for readers familiar with HoFs from another programming language, some examples are shown below.</p>
 <h3>filter </h3>
 <p>Usage:</p>
-<code>
+<code><br>
 let matches be rules.filter(lambda r as Rule =&gt; <br>
-  (r.currentState is currentState) and (r.currentSymbol is tape[headPosition]))<br>
-</code>
+&nbsp;&nbsp;(r.currentState is currentState) and (r.currentSymbol is tape[headPosition]))<br>
+</code><br>
 
 <h3>map</h3>
 <p>Usage:</p>
-<code>let next be cellRange.map(lambda n as Int =&gt; nextCellValue(cells, n))</code>
+<code>let next be cellRange.map(lambda n as Int =&gt; nextCellValue(cells, n))</code><br>
 
 <h3>reduce</h3>
 <p>Usage:</p>
-<code>
+<code><br>
 let d2 be possibleAnswers.reduce(d, <br>
-  lambda dd as Dictionary&lt;of String, Int&gt;, possAnswer as String =&gt;<br>
-  incrementCount(dd, possAnswer, attempt))
-</code>
+&nbsp;&nbsp;lambda dd as Dictionary&lt;of String, Int&gt;, possAnswer as String =&gt;<br>
+&nbsp;&nbsp;incrementCount(dd, possAnswer, attempt))
+</code><br>
 
 <h3>max and min</h3>
 <p>Both these functions may be applied to an <code>Iterable&lt;of Float&gt;</code>, e.g. an <code>Array&lt;of Float&gt;</code> or a <code>List&lt;of Float&gt;</code> and return the maximum or minimum value found therein.</p>
 
-<code>variable a set to {33, 4, 0,99, 82, 55}</code>
-<code>print "Max: {a.max()} Min: {a.min()}"</code>
+<code>variable a set to {33, 4, 0,99, 82, 55}</code><br>
+<code>print "Max: {a.max()} Min: {a.min()}"</code><br>
 
 <h3>maxBy and minBy</h3>
 <p>Alternative implementations of <code>max</code> and <code>min</code>:</p>
 
-<code>variable a set to {33, 4, 0,99, 82, 55}</code>
-<code>print a.maxBy(lambda x as Int =&gt; x mod 10)</code>
+<code>variable a set to {33, 4, 0,99, 82, 55}</code><br>
+<code>print a.maxBy(lambda x as Int =&gt; x mod 10)</code><br>
 
 
 <h3>any</h3>
 <p>Returns <code>true</code> or <code>false</code> indicating whether any of the members of the <code>iterable</code> individually pass the test defined by the <code>lambda</code> (which itself returns a <code>Boolean</code>):</p>
 
-<code>variable a set to {33, 4, 0,99, 82, 55}</code>
-<code>print a.any(lambda x as Int =&gt; x &gt; 50)</code>
+<code>variable a set to {33, 4, 0,99, 82, 55}</code><br>
+<code>print a.any(lambda x as Int =&gt; x &gt; 50)</code><br>
 
 <h3>sortBy</h3>
 
 <p>Additional sort methods will be introduced in a later Beta.</p>
 <p>For now, <code>sortBy</code> takes a <code>lambda</code> that takes two arguments (of the same Type as that of the <code>iterable</code> being sorted) and compares them, returning an integer with one of the values -1, 0, or +1, to indicate whether the first argument should be placed respectively before, adjacent to or after the second argument in the sorted result, where &#8216;adjacent to&#8217; means it does not matter whether before or after):</p>
-<code>variable source set to {2, 3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37}</code>
-<code>print source.sortBy(lambda x as Int, y as Int =&gt; if x &gt; y then 1 else -1)</code>
+<code>variable source set to {2, 3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37}</code><br>
+<code>print source.sortBy(lambda x as Int, y as Int =&gt; if x &gt; y then 1 else -1)</code><br>
 
 <p>The following are not HoFs, but are included here because they are most likely to be used with one of the HoFs listed above. </p>
 <h3>range</h3>
 
-<code>range(first as Int, last as Int) as Iterable&lt;of Int&gt;</code>
+<code>range(first as Int, last as Int) as Iterable&lt;of Int&gt;</code><br>
 
 <p>returns an <code>iterable</code> containing all the integer values between the two argument values.</p>
 
 <h2><a name="toc99">Dot methods that work on many different Types</a></h2>
-<code>.asString()</code>
-<code>.asIterable()</code>
-<code>
+<code>.asString()</code><br>
+<code>.asIterable()</code><br>
+<code><br>
 .length()<br>
 </p>
 <p><code>.head()</code> returns the first item in an <code>Array</code> or a <code>List</code></p>
