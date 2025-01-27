@@ -551,7 +551,7 @@ end procedure
 (If the field has a selected option in the auto-complete popup list then Tab will use that option &#8211; the same as Enter)
 </td>
 </tr>
-<tr><td>_</td>
+<tr><td>>&uarr;</td>
 <td>Select previous frame <br>
 (within peer-level only).
 </td>
@@ -559,7 +559,7 @@ end procedure
 &nbsp;(in tab order).
 </td>
 </tr>
-<tr><td>_</td>
+<tr><td>&darr;</td>
 <td>Select next frame<br>
 (within peer-level only).
 </td>
@@ -567,19 +567,19 @@ end procedure
 &nbsp;(in tab order).
 </td>
 </tr>
-<tr><td>_</td>
+<tr><td>&larr;</td>
 <td>Select parent frame (if any).</td>
 <td>Move text cursor left within field.</td>
 </tr>
-<tr><td>_</td>
+<tr><td>&rarr;</td>
 <td>Select first child frame (if any).</td>
 <td>Move text cursor right within field.</td>
 </tr>
-<tr><td>Shift-_</td>
+<tr><td>Shift-&uarr;</td>
 <td>Add prev. frame (peer-level) to current selection.</td>
 <td>If auto-complete options are offered (drop-down list), move the selection down one in the list. (See also Enter)</td>
 </tr>
-<tr><td>Shift-_</td>
+<tr><td>Shift-&darr;</td>
 <td>Add next frame (peer-level) to current selection.</td>
 <td>If auto-complete options are offered (drop-down list), move the selection up one in the list. (See also Enter)</td>
 </tr>
@@ -790,7 +790,7 @@ provided that the code you undid from was parsing successfully
 <p>
 <el-code>and</el-code> and <el-code>or</el-code> are binary operators<br>
 <el-code>not</el-code> is a unary operator. </p>
-<p>The operator precedence is <el-code>not</el-code> _ <el-code>and</el-code> _ <el-code>or</el-code>. </p>
+<p>The operator precedence is <el-code>not</el-code> &rarr; <el-code>and</el-code> &rarr; <el-code>or</el-code>. </p>
 <p>Example that implements an &#8216;exclusive or&#8217;.</p>
 <p>
 <el-code><br>
