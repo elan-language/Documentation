@@ -1,13 +1,10 @@
-:root {
-  --headingColor: rgb(15,71,97)
-}
 * {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 p { margin-top:0; margin-bottom:0; line-height:inherit; }
 
 h1,h2,h3,h4,h5,h6
-  { color: var(--headingColor); margin-top:0; margin-bottom:0; line-height:inherit; font-size:inherit; font-weight:inherit; }
+  { color: rgb(15,71,97); margin-top:0; margin-bottom:0; line-height:inherit; font-size:inherit; font-weight:inherit; }
 h1 { font-size:36pt; font-weight:bold;  text-indent:0pt; text-align:center; margin-bottom:4pt; }
 h2 { font-size:22pt; text-indent:0pt; margin-top:8pt; margin-bottom:4pt; }
 h3 { font-size:14pt; font-weight:bold; text-indent:0pt; margin-top:12pt; margin-bottom:4pt; }
@@ -51,11 +48,17 @@ p.List_Paragraph_2,li.List_Paragraph_2,td.List_Paragraph_2,th.List_Paragraph_2,h
   { text-indent:-17pt; margin-left:74.5pt; line-height:1.33; }
 /* Emphasis style  'Hyperlink' */
 span.Hyperlink { text-decoration:underline; color:rgb(70,120,134); }
-/* Emphasis style  'code Char' */
-span.code_Char { font-size:10pt; font-family:Courier, monospace; font-weight:bold; color:rgb(33,94,153); }
+
 /* Emphasis style  'Link' */
 span.Link { text-decoration:underline; font-weight:bold; color:rgb(33,94,153); }
 /* Emphasis style  'Comment Text Char' */
 span.Comment_Text_Char { font-size:10pt; }
 /* Emphasis style  'Heading 4 Char' */
 span.Heading_4_Char { font-style:italic; color: var(--headingColor); }
+
+/* code */
+code { font-size:10pt; font-family:Courier, monospace; font-weight:bold; color:rgb(33,94,153); }
+code.keyword { color: var(--keyword); }
+code.method { color: var(--method); }
+code.type { color: var(--type); }
+code.namedValue { color: var(--namedValue); }
