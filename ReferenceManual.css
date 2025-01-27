@@ -27,7 +27,7 @@ p.List_Paragraph_2,li.List_Paragraph_2,td.List_Paragraph_2,th.List_Paragraph_2,h
   { text-indent:-17pt; margin-left:74.5pt; line-height:1.33; }
 
 /* code */
-code { font-size:10pt; font-family:Courier, monospace; font-weight:bold; color:rgb(33,94,153); }
+code { font-size:12pt; font-family: Consolas, Courier, monospace; font-weight:bold; color:rgb(33,94,153); }
 
 code.keyword { color: var(--keyword); }
 code.method { color: var(--method); }
