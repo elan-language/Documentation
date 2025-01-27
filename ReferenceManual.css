@@ -29,4 +29,4 @@ p.List_Paragraph_2,li.List_Paragraph_2,td.List_Paragraph_2,th.List_Paragraph_2,h
   { text-indent:-17pt; margin-left:74.5pt; line-height:1.33; }
 
 /* code */
-el-code, el-code * {font-family: Consolas, Courier, monospace;}
+el-code * {font-family: Consolas, Courier, monospace;}
