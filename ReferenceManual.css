@@ -29,11 +29,4 @@ p.List_Paragraph_2,li.List_Paragraph_2,td.List_Paragraph_2,th.List_Paragraph_2,h
   { text-indent:-17pt; margin-left:74.5pt; line-height:1.33; }
 
 /* code */
-code { font-size:13pt; font-family: Consolas, Courier, monospace; color:rgb(33,94,153); }
-
-code.keyword { color: var(--keyword); }
-code.method { color: var(--method); }
-code.type { color: var(--type); }
-code.namedValue { color: var(--namedValue); }
-code.symbol { color: var(--namedValue); }
-code.elan, code.elan * {font-family: Consolas, Courier, monospace;}
+el-code, el-code * {font-family: Consolas, Courier, monospace;}
