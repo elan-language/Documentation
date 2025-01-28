@@ -1773,6 +1773,14 @@ Or even to the same name if that name is a variable:</p>
 <el-code>set a to copy a with size to 2.0, colour to red</el-code><br>
 
 <p>This last example shows how you enter the comma-separated <el-code>with</el-code> clauses. The earlier examples show how the Editor displays a set of <el-code>with</el-code> clauses.</p>
+
+<p>If you want to use one or more existing property values in order to determine a new value, the property name(s) must
+  be prefixed with the name of the instance being copied, for example:</p>>
+<el-code><br>
+  let sq2 be copy sq1 with<br>
+  &nbsp;size set to sq1.size + 3<br>
+</el-code><br>
+</p>
 <p>Note that a <el-code>record</el-code> Type has some similarity to a <el-code>class</el-code>:</p>
 <li>Both are user-define data structures</li>
 <li>Both are given a &#8216;Type name&#8217;</li>
