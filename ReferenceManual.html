@@ -2789,7 +2789,7 @@ let d2 be possibleAnswers.reduce(d, <br>
 
 <p>Additional sort methods will be introduced in a later Beta.</p>
 <p>For now, <el-code>sortBy</el-code> takes a <el-code>lambda</el-code> that takes two arguments (of the same Type as that of the <el-code>iterable</el-code> being sorted) and compares them, returning an integer with one of the values -1, 0, or +1, to indicate whether the first argument should be placed respectively before, adjacent to or after the second argument in the sorted result, where &#8216;adjacent to&#8217; means it does not matter whether before or after):</p>
-<el-code>variable source set to {2, 3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37}</el-code><br>
+<el-code>variable source set to {11, 3, 7, 37, 17, 2, 19, 5, 23, 27, 31, 13}</el-code><br>
 <el-code>print source.sortBy(lambda x as Int, y as Int =&gt; if x &gt; y then 1 else -1).asList()</el-code><br>
 
 <p>The following are not HoFs, but are included here because they are most likely to be used with one of the HoFs listed above. </p>
