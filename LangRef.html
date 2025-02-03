@@ -40,7 +40,7 @@ Comments can be inserted by a programmer at the same level as a <a href="#Global
   This comment is known as the 'header' and gives the version of Elan being run, together with other optional information depending upon your user profile.</p>
 <!-- #endregion-->
 <!--   #region Global Instructions-->
-<!-- #region Heading & Intro-->
+<!--     region Heading & Intro-->
 <h2 id="Global">Global Instructions</h2>
 
 <p>When you navigate to a <el-code>new code</el-code> that is at <em>global</em> level (not indented from the left-hand edge of the code pane)
@@ -62,7 +62,7 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <a href="#interface">interface</a>
 <a href="#comment">#</a>
 <!-- #endregion-->
-<!-- #region Main method-->
+<!--     #region Main method-->
 <h3 id="Main">Main method</h3>
 <p>A file must have a <el-code>main</el-code> method if it is intended to be run as program. (You may however develop and test code that does not have a <el-code>main</el-code> method, either as a coding exercise or for subsequent use within another program).</p>
 <p>The <el-code>main</el-code> method defines the start point when a program is run.</p>
@@ -82,7 +82,7 @@ you will be shown the set of globals that may be inserted there, for example:</p
 
 <p>The <el-code>main</el-code> method may delegate work to one or more <a href="#procedure">procedure</a> or <a href="#function">function</a>.</p>
 <!-- #endregion-->
-<!-- #region Procedure-->
+<!--     #region Procedure-->
  <h3 id="procedure">Procedure</h3>
 <p>A procedure is a named piece of behaviour that may define parameters; unlike a <a href="#function">function</a>, a procedure does not return a value.
   Also unlike a function, a procedure can have &#8216;side-effects&#8217; - indeed it <em>should</em> have side-effects otherwise there would be no point in calling it!
@@ -133,11 +133,11 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <p>Notes</p>
 <li>Parameters for a procedure are defined in exactly the same way as for a function; each parameter definition takes the form &lt;name&gt; <el-code>as</el-code> &lt;Type&gt;, for example <el-code>age as Int</el-code>.<a name="Parameter_passing"></a></li>
 <!-- #endregion-->
-<!-- #region Function-->
+<!--     #region Function-->
 <h3 id="Function">Function</h3>
 TODO
 <!-- #endregion-->
-<!-- #region Test-->
+<!--     #region Test-->
 <h3 id="Test">Test</h3>
 
 <p>Example of a Test:</p>
@@ -190,7 +190,7 @@ TODO
 <p>The principal reason for marking a test <el-code>ignore</el-code> is when either the test code or code in any function being called, would not terminate. This typically means that there is a loop (or a recursive call) with no exit condition, or where the exit condition is never met. </p>
 <p>If you do create such code without realising it, then when the tests are executed the test runner will &#8216;time out&#8217; after a few seconds (most tests will pass in milliseconds), and an error message will be shown on the Console. The test that caused the time-out will automatically then be marked <el-code>ignore</el-code>. Your priority should then be to identify the cause of the time-out and attempt to fix it before then restoring the test by selecting the test frame and hitting <el-code>Ctrl-i</el-code> .  (<el-code>Ctrl-i</el-code> is a toggle for setting and unsetting an <el-code>ignore</el-code> status)</p>
 <!-- #endregion-->
-<!-- #region Constant-->
+<!--     #region Constant-->
 <h3 id="Constant">Constant</h3>
 <p>A <el-code>constant</el-code> defines a named value that cannot change.</p>
 <p>A <el-code>constant</el-code> is always defined at &#8216;global&#8217; level (directly within a file) and is global in scope. A <el-code>constant</el-code> may not be defined within any method. (However, see [missing hyperlink]).</p>
@@ -231,7 +231,7 @@ It specifies a set of values, each of which is defined as a name, such that a na
 <h4>Notes</h4>
 <li><el-code>enum</el-code>s are read-only: once they have been defined it is not possible to add, remove, or update their values.</li>
 <!-- #endregion-->
-<!-- #region Record-->
+<!--     #region Record-->
 <h3 id="Record">Record</h3>
 
 <p>A <el-code>record</el-code> is a user-defined data structure that is given a Type name &#8211;  that must begin with an upper-case letter.
@@ -313,7 +313,7 @@ Or even to the same name if that name is a variable:</p>
 <p>Note</p>
 <li>When deconstructing, the names of the values must match the names of the <el-code>properties</el-code> of the <el-code>record</el-code>. However, the ordering of the names does not have to match the order in which the <el-code>properties</el-code> are defined in the <el-code>record</el-code>.</li>
 <!-- #endregion-->
-<!-- #region Class-->
+<!--     #region Class-->
 <h3 id="Class">Class</h3>
 
 <p>See also: <a href="inherits">Inheritance</a></p>
@@ -373,7 +373,7 @@ Or even to the same name if that name is a variable:</p>
   <li>Also, inheritance hierarchies must form a tree, that is you must avoid creating a &#8216;circular dependency where, for example, Type <el-code>A</el-code> inherits from Type <el-code>B</el-code>, which inherits from Type<el-code> C</el-code>, which inherits from Type <el-code>A</el-code>.</li>
   <li>The various &#8216;super-Types&#8217; (<el-code>abstract class</el-code> and/or <el-code>interface</el-code>s) that a concrete <el-code>class</el-code> inherits from may not define conflicting members, e.g. members with the same name but having different Type signatures.</li>
 <!-- #endregion-->
-<!-- #region Abstract Class-->
+<!--     #region Abstract Class-->
 <h3 id="ClassAbs">Abstract Class</h3>
 <p>See also: <a href="inherits">Inheritance</a></p>
 <p>An <el-code>abstract class</el-code> may not be instantiated (and hence may not define a constructor). It may define concrete members i.e.:</p>
@@ -391,7 +391,7 @@ If you wish to have several sub-classes of an <el-code>abstract class</el-code> 
 <li>Define a concrete implementation on the superclass with a similar, but slightly different name e.g. having a prefix such as: <el-code>default</el-code> </li>
 <li>Each sub-class must then define its implementation of the abstract method, but the ones needing a common implementation can be just one line, delegating responsibility up to the &#8216;default&#8217; method on the superclass. </li>
 <!-- #endregion-->
-<!-- #region Interface-->
+<!--     #region Interface-->
 <h3 id="Interface">Interface</h3>
 <p>See also: <a href="inherits">Inheritance</a></p>
 <p>An <el-code>interface</el-code> is similar to an <el-code>abstract class</el-code>, with the difference that it may define only abstract members. The advantage of using an <el-code>interface</el-code> instead of an <el-code>abstract class</el-code> is that a concrete<el-code> class</el-code> can inherit from multiple <el-code>interface</el-code>s. See <span class="Link">Inheritance</span>.</p>
@@ -400,8 +400,8 @@ If you wish to have several sub-classes of an <el-code>abstract class</el-code> 
 <!-- #endregion -->
  <!-- #endregion -->
 <!--   #region Member Instructions-->
+<!--     #region Heading & Intro-->
 <h2 id="Member">Member Instructions</h2>
-<!-- #region Heading & Intro-->
 <p>When you navigate to a <el-code>new code</el-code> that is at <em>member</em> level
   (located directly within a <a href="#record">record</a>, <a href="#class">class</a>, <a href="#abstract_class">abstract class</a>, or <a href="#interface">interface</a>)
   you will be shown the set of statements that may be inserted there, for example:</p>
@@ -423,7 +423,7 @@ If you wish to have several sub-classes of an <el-code>abstract class</el-code> 
     <a href="#function">private function</a>,
     <a href="#comment">#</a>
 <!-- #endregion-->
-<!-- #region Constructor-->
+<!--     #region Constructor-->
 <h3 id="constructor">Constructor</h3>
 <p>A concrete class <em>may</em> define a single <el-code>constructor</el-code>, which may:</el-code></p>
 <li>initialise any properties with fixed values</li>
@@ -446,7 +446,7 @@ the correct types must be provided, for example, if the class <el-code><el-type>
 <el-statement class="selected focused ok" id="let44" tabindex="0"><el-kw>let </el-kw><el-field id="var45" class="ok" tabindex="0"><el-txt><el-id>tail</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr46" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Square</el-type>(<el-lit>20</el-lit>, <el-lit>15</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>15</el-fr></el-statement>
 </el-code>
 <!-- #endregion-->
-<!-- #region Property-->
+<!--     #region Property-->
 <h3 id="Property">Property</h3>
 <p>Examples:</p>
 <el-code>property height as Int</el-code><br>
@@ -470,14 +470,14 @@ If the <el-code>property</el-code> is not initialised within the constructor the
 <el-code>  set property.height to height</el-code><br>
 <el-code>end procedure</el-code><br>
 <!-- #endregion-->
-<!-- #region Procedure Method-->
+<!--     #region Procedure Method-->
 <h3 id="procedure_method">Procedure Method</h3>
 <p>A &#8216;procedure method&#8217; follows the same syntax and rules as a global <a href="procedure">procedure</a>. The differences are:</p>
 <li>A procedure method, like a function method, is always referenced (used) by code outside the class using &#8216;dot syntax&#8217; on an instance.</li>
 <li>A procedure method may read, or write to, any <el-code>property</el-code> defined on the class.</li>
 <li>A procedure method may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its sub-classes. This is done by selecting the property frame and then pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
 <!-- #endregion-->
-<!-- #region Function Method-->
+<!--     #region Function Method-->
 <h3 id="function_method">Function Method</h3>
 <p>A function method follows the same syntax and rules as a global <a href="function">function</a>>. The differences are:</p>
 <li>A <el-code>function</el-code> method is always referenced (used) by code outside the class using &#8216;dot syntax&#8217; on an instance.</li>
@@ -486,19 +486,19 @@ If the <el-code>property</el-code> is not initialised within the constructor the
 <li>asString() method</li>
 <li>asString method. This is just a regular function method with a specific name, no parameters and returning a String. If defined for a class, then if an instance of the class is printed, the <el-code>asString</el-code> function method will automatically be used. Typically <el-code>asString</el-code> will return a string made up of one or more of the property values, perhaps with additional text, or the results of function calls.</li>
 <!-- #endregion-->
-<!-- #region Abstract Property-->
+<!--     #region Abstract Property-->
 <h3 id="abstract_property">Abstract Property</h3>
 TODO
 <!-- #endregion-->
-<!-- #region Abstract Procedure Method-->
+<!--     #region Abstract Procedure Method-->
 <h3 id="abstract_procedure_method">Abstract Procedure Method</h3>
 TODO
 <!-- #endregion-->
-<!-- #region Abstract Function Method-->
+<!--     #region Abstract Function Method-->
 <h3 id="abstract_function_method">Abstract Function Method</h3>
 TODO
 <!-- #endregion-->
-<!-- #endregion -->
+<!--     #endregion -->
 <!--   #region Statement Instructions-->
 <!--     #region Heading & Intro-->
 <h2 id="Statement">Statement Instructions</h2>
