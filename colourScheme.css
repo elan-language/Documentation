@@ -3,7 +3,7 @@
     --defaultText: black;
     --reverseText: white;
     --selection:rgb(173, 214, 255);
-    --ok: rgb(169, 247, 169); 
+    --ok: rgb(169, 247, 169);
     --warning: rgb(246, 193, 94);
     --error:  rgb(248, 74, 74);
     --optional:  lightgrey;
@@ -16,4 +16,6 @@
     --comment: rgb(1, 106, 1);
     --namedValue: rgb(139, 3, 173);
     --symbol: black;
+    --parameter: rgb(116, 116, 116);
+    --constant: rgb(139, 3, 273);
 }
