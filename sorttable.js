@@ -15,6 +15,8 @@
   This basically means: do what you want with it.
 */
 
+/* BVB 03-Feb-2025 Case-dependent code at sort_alpha: function(a,b) replaced by case-independent code as advised by Stuart */
+
 
 var stIsIE = /*@cc_on!@*/false;
 
@@ -265,11 +267,21 @@ sorttable = {
     if (isNaN(bb)) bb = 0;
     return aa-bb;
   },
+  /* Original alpha case-dependent sort
   sort_alpha: function(a,b) {
     if (a[0]==b[0]) return 0;
     if (a[0]<b[0]) return -1;
     return 1;
   },
+  */
+  
+ /* alpha case-independent sort */
+  sort_alpha: function(a,b) {
+    if (a[0].toLowerCase()==b[0].toLowerCase()) return 0;
+    if (a[0].toLowerCase()<b[0].toLowerCase()) return -1;
+    return 1;
+  },
+
   sort_ddmm: function(a,b) {
     mtch = a[0].match(sorttable.DATE_RE);
     y = mtch[3]; m = mtch[2]; d = mtch[1];
