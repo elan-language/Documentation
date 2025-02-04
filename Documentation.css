@@ -34,3 +34,9 @@ p.List_Paragraph_2,li.List_Paragraph_2,td.List_Paragraph_2,th.List_Paragraph_2,h
 el-code, el-code *, el-code-block, el-code-block * {font-family: Consolas, Courier, monospace;}
 el-code, el-code-block {color: rgb(28, 110, 148)}
 el-code-block {display:block; margin-top:12pt; margin-bottom:12pt;}
+
+/* Links in index */
+a:link {text-decoration: none}
+a:visited {text-decoration: none}
+a:hover {text-decoration: underline}
+a:active {text-decoration: none}
