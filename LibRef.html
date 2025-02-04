@@ -569,6 +569,9 @@ will paint the background colour for the whole grid, leaving any existing charac
 <li>As with the way that SVG works within Html, the shapes are drawn in the order in which they are added into the <el-code>VectorGraphics</el-code> instance, with later shapes positioned over earlier shapes.</li>
 <li>The colour (for <el-code>stroke</el-code> and <el-code>fill</el-code> properties) may be specified as described at <a href="#Colour">Colour</a>. The <el-code>fill</el-code> colour only may also be specified as &#8216;transparent&#8217; by giving it a negative value; we suggest using <el-code>fill to -1</el-code></li>
 <li><el-code>VectorGraphics</el-code> also has methods <el-code>removeLast</el-code> (no parameters), <el-code>remove</el-code> (which takes a shape as a parameter, and <el-code>replace</el-code> which takes an existing shape and a new shape as parameters. The new shape may be a modified version of an existing shape (created using <el-code>copy .. with</el-code>), thereby enabling animation. The following simple example creates a circle that changes between red and green every second:</li>
+<li><el-code>BaseVG</el-code> is the abstract superclass of all <el-code>.VG</el-code> shapes. 
+    You would only use if if you wanted to define a method that could work on any shape (using common members defined on <el-code>BaseVG</el-code>) 
+    or that could work with a List holding different types of shape.
 
 <el-code>main</el-code><br>
 <el-code>  variable vg set to new VectorGraphics()</el-code><br>
@@ -700,8 +703,8 @@ will paint the background colour for the whole grid, leaving any existing charac
 
 <!-- #region Higher order functions (HoFs)-->   
     <h2 id="HoF">Higher order functions (HoFs)</h2>
-    <p>These dot methods are called on any &#8216;iterable&#8217; Type, which includes <el-code>Array,</el-code> <el-code>List</el-code> and <el-code>String</el-code>. As &#8216;higher order functions&#8217; they take either a <el-code>lambda</el-code> or a function reference as one of their arguments: see <span class="Link">Passing a function as a reference</span>.</p>
-    <p>Important: Several of these methods return an abstract Type named <el-code>Iterable</el-code>. The result may easily be turned into a form that can be printed or passed into other functions, by appending <el-code>.asList()</el-code> or <el-code>.asArray()</el-code> at the end of the expression.</p>
+    <p>These dot methods are called on any <el-code>Array,</el-code> <el-code>List</el-code> or <el-code>String</el-code>. As &#8216;higher order functions&#8217; they take either a <el-code>lambda</el-code> or a function reference as one of their arguments: see <span class="Link">Passing a function as a reference</span>.</p>
+    <p>Important: Several of these methods return a <el-code><el-type>List</el-type></el-code> but this may be converted to an array using <el-code>.<el-method>asArray()</el-method></el-code> at the end of the expression.</p>
     <p>These are not yet fully documented but, for readers familiar with HoFs from another programming language, some examples are shown below.</p>
     
     <h3>filter </h3>
@@ -724,7 +727,7 @@ will paint the background colour for the whole grid, leaving any existing charac
     </el-code><br>
     
     <h3>max and min</h3>
-    <p>Both these functions may be applied to an <el-code>Iterable&lt;of Float&gt;</el-code>, e.g. an <el-code>Array&lt;of Float&gt;</el-code> or a <el-code>List&lt;of Float&gt;</el-code> and return the maximum or minimum value found therein.</p>
+    <p>Both these functions may be applied to an <el-code>List&lt;of Float&gt;</el-code> and return the maximum or minimum value found therein.</p>
     
     <el-code>variable a set to {33, 4, 0,99, 82, 55}</el-code><br>
     <el-code>print "Max: {a.max()} Min: {a.min()}"</el-code><br>
@@ -734,17 +737,11 @@ will paint the background colour for the whole grid, leaving any existing charac
     
     <el-code>variable a set to {33, 4, 0,99, 82, 55}</el-code><br>
     <el-code>print a.maxBy(lambda x as Int =&gt; x mod 10)</el-code><br>
-    
-    <h3>any</h3>
-    <p>Returns <el-code>true</el-code> or <el-code>false</el-code> indicating whether any of the members of the <el-code>iterable</el-code> individually pass the test defined by the <el-code>lambda</el-code> (which itself returns a <el-code>Boolean</el-code>):</p>
-    
-    <el-code>variable a set to {33, 4, 0,99, 82, 55}</el-code><br>
-    <el-code>print a.any(lambda x as Int =&gt; x &gt; 50)</el-code><br>
-    
+       
     <h3>sortBy</h3>
     
     <p>Additional sort methods will be introduced in a later Beta.</p>
-    <p>For now, <el-code>sortBy</el-code> takes a <el-code>lambda</el-code> that takes two arguments (of the same Type as that of the <el-code>iterable</el-code> being sorted) and compares them, returning an integer with one of the values -1, 0, or +1, to indicate whether the first argument should be placed respectively before, adjacent to or after the second argument in the sorted result, where &#8216;adjacent to&#8217; means it does not matter whether before or after):</p>
+    <p>For now, <el-code>sortBy</el-code> takes a <el-code>lambda</el-code> that takes two arguments (of the same Type as that of the <el-code>List</el-code> being sorted) and compares them, returning an integer with one of the values -1, 0, or +1, to indicate whether the first argument should be placed respectively before, adjacent to or after the second argument in the sorted result, where &#8216;adjacent to&#8217; means it does not matter whether before or after):</p>
     <el-code>variable source set to {11, 3, 7, 37, 17, 2, 19, 5, 23, 27, 31, 13}</el-code><br>
     <el-code>print source.sortBy(lambda x as Int, y as Int =&gt; if x &gt; y then 1 else -1).asList()</el-code><br>
     
@@ -752,9 +749,9 @@ will paint the background colour for the whole grid, leaving any existing charac
     
     <h3>range</h3>
     
-    <el-code>range(first as Int, last as Int) as Iterable&lt;of Int&gt;</el-code><br>
+    <el-code>range(first as Int, last as Int) as List&lt;of Int&gt;</el-code><br>
     
-    <p>returns an <el-code>iterable</el-code> containing all the integer values between the two argument values.</p>
+    <p>returns a <el-code><el-type>List</el-type></el-code> containing all the integer values between the two argument values.</p>
 <!--   #endregion-->
 
 <!-- #endregion--> 

@@ -10,6 +10,7 @@
 <title>Elan Language Reference</title>
 </head>
 <body>
+<!-- TODO add section & id (& index) for the three forms of Selector-->
 
 <!-- #region Instruction Set-->
 <!--   #region Heading & Intro-->
@@ -531,7 +532,7 @@ TODO
 <h3 id="Assert">Assert statement</h3>
 <!--     #endregion-->
 <!--     #region Procedure Call-->
-<h3 id="Call">Procedure Call</h3>
+<h3 id="call">Procedure Call</h3>
 <!--     #endregion-->
 <!--     #region Each loop-->
 <h3 id="Each">Each loop</h3>
@@ -553,8 +554,8 @@ end for
 </el-code-block>
 <!--     #endregion-->
 <!--     #region If statement-->
-<h3 id="If">If statement</h3>
-<p>See also <a href="ExpressIf">if expression</a></p>
+<h3 id="if_statement">If statement</h3>
+<p>See also <a href="if_expression">if expression</a></p>
 
 <p>Example1:</p>
 
@@ -1322,7 +1323,7 @@ end function
 </el-code><br>
 <!--   #endregion-->
 <!--   #region If expression-->
-<h2 id="ExpressIf">If expression</h2>
+<h2 id="if_expression">If expression</h2>
 <p>The &#8216;if expression&#8217; is in certain respects similar to an <span class="Link">If statement</span>, but with the following differences:</p>
 <li>It is written entirely within a single expression. This is possible because the <el-code>if</el-code> expression always returns a value.</li>
 <li>There is always a single <el-code>then</el-code> and a single <el-code>else</el-code> clause, and each clause contains just a single expression. The <el-code>if</el-code> expression returns the result of evaluating one of these two expressions, according to whether the condition evaluates to <el-code>true</el-code> or <el-code>false</el-code>.</li>
