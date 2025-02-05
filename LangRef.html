@@ -42,7 +42,7 @@ Comments can be inserted by a programmer at the same level as a <a href="#Global
 <!-- #endregion-->
 <!--   #region Global Instructions-->
 <!--     region Heading & Intro-->
-<h2 id="Global">Global Instructions</h2>
+<h2 id="global">Global Instructions</h2>
 
 <p>When you navigate to a <el-code>new code</el-code> that is at <em>global</em> level (not indented from the left-hand edge of the code pane)
 you will be shown the set of globals that may be inserted there, for example:</p>
@@ -64,7 +64,7 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <a href="#comment">#</a>
 <!-- #endregion-->
 <!--     #region Main method-->
-<h3 id="Main">Main method</h3>
+<h3 id="main">Main method</h3>
 <p>A file must have a <el-code>main</el-code> method if it is intended to be run as program. (You may however develop and test code that does not have a <el-code>main</el-code> method, either as a coding exercise or for subsequent use within another program).</p>
 <p>The <el-code>main</el-code> method defines the start point when a program is run.</p>
 <p>The <el-code>main</el-code> method does not have to be at the top of the file, but this is a good convention to follow.</p>
@@ -135,11 +135,11 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <li>Parameters for a procedure are defined in exactly the same way as for a function; each parameter definition takes the form &lt;name&gt; <el-code>as</el-code> &lt;Type&gt;, for example <el-code>age as Int</el-code>.<a name="Parameter_passing"></a></li>
 <!-- #endregion-->
 <!--     #region Function-->
-<h3 id="Function">Function</h3>
+<h3 id="function">Function</h3>
 TODO
 <!-- #endregion-->
 <!--     #region Test-->
-<h3 id="Test">Test</h3>
+<h3 id="test">Test</h3>
 
 <p>Example of a Test:</p>
 <el-code-block>
@@ -192,7 +192,7 @@ TODO
 <p>If you do create such code without realising it, then when the tests are executed the test runner will &#8216;time out&#8217; after a few seconds (most tests will pass in milliseconds), and an error message will be shown on the Console. The test that caused the time-out will automatically then be marked <el-code>ignore</el-code>. Your priority should then be to identify the cause of the time-out and attempt to fix it before then restoring the test by selecting the test frame and hitting <el-code>Ctrl-i</el-code> .  (<el-code>Ctrl-i</el-code> is a toggle for setting and unsetting an <el-code>ignore</el-code> status)</p>
 <!-- #endregion-->
 <!--     #region Constant-->
-<h3 id="Constant">Constant</h3>
+<h3 id="constant">Constant</h3>
 <p>A <el-code>constant</el-code> defines a named value that cannot change.</p>
 <p>A <el-code>constant</el-code> is always defined at &#8216;global&#8217; level (directly within a file) and is global in scope. A <el-code>constant</el-code> may not be defined within any method. (However, see [missing hyperlink]).</p>
 <p>The name of a <el-code>constant</el-code> follows the rules for an <a href="#Identifier">Identifier</a>.</p>
@@ -233,7 +233,7 @@ It specifies a set of values, each of which is defined as a name, such that a na
 <li><el-code>enum</el-code>s are read-only: once they have been defined it is not possible to add, remove, or update their values.</li>
 <!-- #endregion-->
 <!--     #region Record-->
-<h3 id="Record">Record</h3>
+<h3 id="record">Record</h3>
 
 <p>A <el-code>record</el-code> is a user-defined data structure that is given a Type name &#8211;  that must begin with an upper-case letter.
   The record defines one or more properties, each of which has a name (starting with a lower-case letter) and a Type.
@@ -315,7 +315,7 @@ Or even to the same name if that name is a variable:</p>
 <li>When deconstructing, the names of the values must match the names of the <el-code>properties</el-code> of the <el-code>record</el-code>. However, the ordering of the names does not have to match the order in which the <el-code>properties</el-code> are defined in the <el-code>record</el-code>.</li>
 <!-- #endregion-->
 <!--     #region Class-->
-<h3 id="Class">Class</h3>
+<h3 id="class">Class</h3>
 
 <p>See also: <a href="inherits">Inheritance</a></p>
 
@@ -364,7 +364,7 @@ Or even to the same name if that name is a variable:</p>
 
 <p>The created instance may then be used within expressions, like any other variable.</p>
 
-<h3 id="Inherit">Inheritance</h2>
+<h3 id="inherits">Inheritance</h2>
   <p>An ordinary <a href="class">class</a> (also known as a 'concrete class') may optionally inherit from just one <a href="abstract_class">abstract class</a>
     but may additionally inherit from any number of <a href="interface">interfaces</a>.
     The concrete class must define for itself a concrete implementation of every <em>abstract</em> member defined in the <el-code>abstract class</el-code> or any <el-code>interface</el-code>s that it inherits from, directly or indirectly.</p>
@@ -393,7 +393,7 @@ If you wish to have several sub-classes of an <el-code>abstract class</el-code> 
 <li>Each sub-class must then define its implementation of the abstract method, but the ones needing a common implementation can be just one line, delegating responsibility up to the &#8216;default&#8217; method on the superclass. </li>
 <!-- #endregion-->
 <!--     #region Interface-->
-<h3 id="Interface">Interface</h3>
+<h3 id="interface">Interface</h3>
 <p>See also: <a href="inherits">Inheritance</a></p>
 <p>An <el-code>interface</el-code> is similar to an <el-code>abstract class</el-code>, with the difference that it may define only abstract members. The advantage of using an <el-code>interface</el-code> instead of an <el-code>abstract class</el-code> is that a concrete<el-code> class</el-code> can inherit from multiple <el-code>interface</el-code>s. See <span class="Link">Inheritance</span>.</p>
 <p>An <el-code>interface</el-code> may inherit only from other <el-code>interface</el-code>s.</p>
@@ -448,7 +448,7 @@ the correct types must be provided, for example, if the class <el-code><el-type>
 </el-code>
 <!-- #endregion-->
 <!--     #region Property-->
-<h3 id="Property">Property</h3>
+<h3 id="property">Property</h3>
 <p>Examples:</p>
 <el-code>property height as Int</el-code><br>
 <el-code>property board as Board</el-code><br>
@@ -529,19 +529,19 @@ TODO
 <a href="#comment">#</a>
 <!--     #endregion-->
 <!--     #region Assert statement-->
-<h3 id="Assert">Assert statement</h3>
+<h3 id="assert">Assert statement</h3>
 <!--     #endregion-->
 <!--     #region Procedure Call-->
 <h3 id="call">Procedure Call</h3>
 <!--     #endregion-->
 <!--     #region Each loop-->
-<h3 id="Each">Each loop</h3>
+<h3 id="each">Each loop</h3>
 <!--     #endregion-->
 <!--     #region Else clause-->
-<h3 id="Else">Else clause</h3>
+<h3 id="else">Else clause</h3>
 <!--     #endregion-->
 <!--     #region For loop-->
-<h3 id="For">For loop</h3>
+<h3 id="for">For loop</h3>
 <p><b>Notes:</b></p>
 <li>The three defining values (<el-code>from</el-code>, <el-code>to</el-code>, and <el-code>step</el-code>) must all be integers &#8211; positive or negative.</li>
 <li>They may be defined by literal integers, variables of integer Type, or expressions that evaluate to an integer. </li>
@@ -586,7 +586,7 @@ end if
 <li>You can add as many <el-code>else if</el-code> clauses as you wish, but only one unconditional <el-code>else</el-code> (which, if present, must be the last clause).</li>
 <!--     #endregion-->
 <!--     #region Let statement-->
-<h3 id="Let">Let statement</h3>
+<h3 id="let">Let statement</h3>
 <!--     #endregion-->
 <!--     #region Print statement-->
 <h3 id="PrintTxt">Print statement</h3>
@@ -604,10 +604,10 @@ print "{a} times {b} equals {a*b}"
 <li>The last line in the example above uses an &#8216;interpolated string&#8217; <!-- TODO - link -->. Arguments placed within curly braces are evaluated before printing, and these may be separated by literal text and punctuation as needed. This is one recommended way to print more than one value on a line. The other way is to use print procedures.</li>
 <!--     #endregion-->
 <!--     #region Repeat loop-->
-<h3 id="Repeat">Repeat loop</h3>
+<h3 id="repeat">Repeat loop</h3>
 <!--     #endregion-->
 <!--     #region Set statement-->
-<h3 id="Set">Set statement</h3>
+<h3 id="set">Set statement</h3>
 <!--     #endregion-->
 <!--     #region Throw statement-->
 <h3 wthrow">Throw statement</h3>
@@ -615,7 +615,7 @@ print "{a} times {b} equals {a*b}"
 <el-code>throw exception "something has happened"</el-code><br>
 <!--     #endregion-->
 <!--     #region Try statement-->
-<h3 id="Try">Try statement</h3>
+<h3 id="try">Try statement</h3>
 
 <p>Where another piece of code might throw an exception, for example when calling a <a href="#System_methods">System method</a> that is dependent upon external conditions, it may be executed within a <el-code>try</el-code> statement, for example:</p>
 <el-code>  try</el-code><br>
@@ -636,10 +636,10 @@ print "{a} times {b} equals {a*b}"
 <el-code>  end try</el-code><br>
 <!--     #endregion-->
 <!--     #region Variable statement-->
-<h3 id="Var">Variable statement</h3>
+<h3 id="variable">Variable statement</h3>
 <!--     #endregion-->
 <!--     #region While loop-->
-<h3 id="While">While loop</h3>
+<h3 id="while">While loop</h3>
 <!-- #endregion -->
 <!--   #endregion -->
 <!-- #endregion -->
@@ -1053,7 +1053,7 @@ Both return an immutable list of the appropriate Type
 </tr></table>
 </p>
 
-<h3 id="Dict">Dictionary</h3>
+<h3 id="Dictionary">Dictionary</h3>
 
 <h4>Type name</h4>
 <p>In the following example, the keys are of Type <el-code>Int</el-code>, and the values associated with the keys are of Type <el-code>String</el-code>:</p>
@@ -1088,7 +1088,7 @@ Both return an immutable list of the appropriate Type
 <el-code>values</el-code><br>
 <el-code></el-code><br>
 
-<h3 id="DictImmut">DictionaryImmutable</h3>
+<h3 id="DictionaryImmutable">DictionaryImmutable</h3>
 <p>An immutable dictionary may be defined in a <el-code>constant</el-code>.</p>
 
 <h4>Type name</h4>
@@ -1293,7 +1293,7 @@ end Function
 <li>In the fourth example, <el-code>upperCase</el-code> is a &#8216;dot method&#8217; that may be applied to any instance (variable or literal) of Type <el-code>String</el-code>. See <span class="Link">Dot methods on a String</span>.</li>
 <!--   #endregion-->
 <!--   #region Lambda-->
-<h2 id="Lambda">Lambda</h2>
+<h2 id="lambda">Lambda</h2>
 <p>A lambda is lightweight means to define a function &#8216;in line&#8217;. You typically define a <el-code>lambda</el-code>:</p>
 <li>If the functionality it defines is needed in only one location; typically for a particular call to a HoF.</li>
 <li>If you need to capture a local variable in the implementation. This is called &#8216;closing around a variable&#8217;.</li>
