@@ -5,12 +5,12 @@ p { margin-top:0; margin-bottom:0; line-height:inherit; }
 
 h1,h2,h3,h4,h5,h6
   { color: rgb(15,71,97); margin-top:0; margin-bottom:0; line-height:inherit; font-size:inherit; font-weight:inherit; }
-h1 { font-size:36pt; font-weight:bold;  text-indent:0pt; margin-bottom:4pt; }
-h2 { font-size:22pt; text-indent:0pt; margin-top:8pt; margin-bottom:4pt; }
-h3 { font-size:14pt; font-weight:bold; text-indent:0pt; margin-top:12pt; margin-bottom:4pt; }
-h4 { font-style:italic;  text-indent:0pt; margin-top:4pt; margin-bottom:2pt; }
+h1 { font-size:24pt; font-weight:bold;  text-indent:0pt; margin-top:24pt; margin-bottom:4pt; }
+h2 { font-size:20pt; font-weight:bold; text-indent:0pt; margin-top:20pt; margin-bottom:4pt; }
+h3 { font-size:16pt; font-weight:bold; text-indent:0pt; margin-top:16pt; margin-bottom:4pt; }
+h4 {font-size:12pt; font-style:bold;  text-indent:0pt; margin-top:12pt; margin-bottom:4pt; }
 
-body { font-size:12pt; text-decoration:none; font-weight:normal; font-style:normal; text-transform:none; color:rgb(0,0,0); text-align:left; line-height:1.33; }
+body { font-size:12pt; margin-left: 20px; text-decoration:none; font-weight:normal; font-style:normal; text-transform:none; color:rgb(0,0,0); text-align:left; line-height:1.33; }
 
 p,img,pre,blockquote,address,td,th,li
   { font-size:12pt; text-indent:0pt; margin-bottom:8pt; line-height:1.3; }
