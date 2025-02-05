@@ -17,6 +17,7 @@ p,img,pre,blockquote,address,td,th,li
 
 table { text-align:center; margin-top:4pt; margin-bottom:4pt; }
 td, td *{ background-color: rgb(193, 227, 248);}
+td {padding-left: 5px;}
 th, th * {color: white; background-color: rgb(8, 75, 162);}
 tr.x, tr.x * {
   opacity: 70%;
