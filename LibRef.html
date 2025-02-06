@@ -1,44 +1,47 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en-GB">
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="referenceManual.css" rel="stylesheet">
+<link href="Documentation.css" rel="stylesheet">
 <link href="colourScheme.css" rel="stylesheet">
 <link href="elanStyle.css" rel="stylesheet">
 <title>Elan Library Reference</title>
+<style>
+table th {text-align: center;}
+table tr {text-align: left;}
+</style>
 </head>
 <body>
 
 <!-- #region Standalone functions-->
     <h1>Standalone functions</h1>
     <p>Standalone <el-code>functions</el-code> always return a value and are therefore used in contexts that expect a value, such as in the right-hand side of a variable declaration (variable) or assignment (set), either on their own or within a more complex expression. All standalone library<el-code> function</el-code>s require at least one argument to be passed in brackets, corresponding to the parameters defined for that <el-code>function</el-code>.</p>
-    
+
     <h3>unicode</h3>
     <p>unicode(code as Int) returns String</p>
-    
+
     <p>converts a Unicode value (expressed in decimal or hexadecimal notation) into a single character string. For example:</p>
     <el-code>function hearts() return string</el-code><br>
     <el-code>  return unicode(0x2655)</el-code><br>
     <el-code>end function</el-code><br>
-    
+
     <h3>parseAsInt and parseAsFloat</h3>
     <p>
     <span>parseAsInt(inp as String) returns (Boolean, Int)<br>
     parseAsFloat(inp as String) returns (Boolean, Float)</span></p>
-    
+
     <p>parseAsInt attempts to parse the input String as an Int and returns a 2-tuple, the first value of which is Boolean, with true indicating whether or not the parse has succeeded, and the second value being the resulting Int. parseAsFloat does the equivalent for floating point. </p>
-    
+
     <p>print parseAsInt("31") 	_	(true, 31)</p>
     <p>print parseAsFloat("31")	 _	(true, 31)</p>
-    
+
     <p>print parseAsInt("31.2)	 _	 (false, 0)</p>
     <p>print parseAsFloat("31.2")	 _	 (true, 31.2)</p>
-    
+
     <p>print parseAsInt("0")	 _	 (true, 0)</p>
     <p>print parseAsInt("0")	 _	 (true, 0)</p>
-    
+
     <p>Notes</p>
     <li>Any string that parses as an Int will also parse as a Float.</li>
     <li>If the parse fails, the second value will become zero, so you should always check the first value to see if the second value is a correct parse or just the default. </li>
@@ -46,7 +49,7 @@
     You can &#8216;deconstruct&#8217; the tuple into two variables:<br>
     variable outcome, value set to parseAsInt(myString)</p>
     <li>One use of these parsing methods is for validating user input, but note that there is an easier way to do this.</li>
-    
+
     <h3>floor, ceiling, and round</h3>
     <p>floor(inp as Float) returns Int</p>
     <p>returns the nearest integer value below (or equal to) the argument value. Usage:</p>
@@ -58,148 +61,39 @@
     <p>Rounds the input number of decimal places specified as the second argument (an Int). Usage:</p>
     <p>print round(3.14159, 3)	 _	 3.142</p>
     <p></p>
-    
+
     <h3>Maths functions</h3>
     <p>
-    <table>
-    <tr><th>Function</th>
-    <th>Argument</th>
-    <th>Input unit</th>
-    <th>Returns</th>
-    <th>Output unit</th>
-    </tr>
-    <tr id="pi"><td><el-code>pi</el-code></td>
-    <td>(none)</td>
-    <td></td>
-    <td>3.141592653589793..</td>
-    <td></td>
-    </tr>
-    <tr id="abs"><td><el-code><el-method>abs</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>absolute value of the input</td>
-    <td></td>
-    </tr>
-    <tr id="acos"><td><el-code><el-method>acos</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>arccosine of the input</td>
-    <td>radians</td>
-    </tr>
-    <tr id="asin"><td><el-code><el-method>asin</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>arcsine of the input</td>
-    <td>radians</td>
-    </tr>
-    <tr id="atan"><td><el-code><el-method>atan</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>arctangent of the input</td>
-    <td>radians</td>
-    </tr>
-    <tr id="acosDeg"><td><el-code><el-method>acosDeg</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>arccosine of the input</td>
-    <td>degrees</td>
-    </tr>
-    <tr id="asinDeg"><td><el-code><el-method>asinDeg</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>arcsine of the input</td>
-    <td>degrees</td>
-    </tr>
-    <tr id="atanDeg"><td><el-code><el-method>atanDeg</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>arctangent of the input</td>
-    <td>degrees</td>
-    </tr>
-    <tr id="cos"><td><el-code><el-method>cos</el-method></el-code></td>
-    <td>Float</td>
-    <td>radians</td>
-    <td>cosine of the input</td>
-    <td></td>
-    </tr>
-    <tr id="cosDeg"><td><el-code><el-method>cosDeg</el-method></el-code></td>
-    <td>Float</td>
-    <td>degrees</td>
-    <td>cosine of the input</td>
-    <td></td>
-    </tr>
-    <tr id="exp"><td><el-code><el-method>exp</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>ex where x is the argument, e being Euler's number 2.718281828459045.. and the base of natural logarithms</td>
-    <td></td>
-    </tr>
-    <tr id="logE"><td><el-code><el-method>logE</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>natural logarithm of the input</td>
-    <td></td>
-    </tr>
-    <tr id="log10"><td><el-code><el-method>log10</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>base-10 logarithm of the input</td>
-    <td></td>
-    </tr>
-    <tr id="log2"><td><el-code><el-method>log2</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>base-2 logarithm of the input</td>
-    <td></td>
-    </tr>
-    <tr id="sin"><td><el-code><el-method>sin</el-method></el-code></td>
-    <td>Float</td>
-    <td>radians</td>
-    <td>the sine of the input</td>
-    <td></td>
-    </tr>
-    <tr id="sinDeg"><td><el-code><el-method>sinDeg</el-method></el-code></td>
-    <td>Float</td>
-    <td>degrees</td>
-    <td>sine of the input</td>
-    <td></td>
-    </tr>
-    <tr id="sqrt"><td><el-code><el-method>sqrt</el-method></el-code></td>
-    <td>Float</td>
-    <td></td>
-    <td>positive square root of the input</td>
-    <td></td>
-    </tr>
-    <tr id="tan"><td><el-code><el-method>tan</el-method></el-code></td>
-    <td>Float</td>
-    <td>radians</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr id="tanDeg"><td><el-code><el-method>tanDeg</el-method></el-code></td>
-    <td>Float</td>
-    <td>degrees</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr id="degToRad"><td><el-code><el-method>degToRad</el-method></el-code></td>
-    <td>Float</td>
-    <td>degrees</td>
-    <td>converts input from degrees to radians</td>
-    <td>radians</td>
-    </tr>
-    <tr id="radToDeg"><td><el-code><el-method>radToDeg</el-method></el-code></td>
-    <td>Float</td>
-    <td>radians</td>
-    <td>converts input from radians to degrees</td>
-    <td>degrees</td>
-    </tr></table>
+<table>
+<tr><th>Function</th><th>Argument<br>Type</th><th>Input<br>unit</th><th>Returns</th><th>Output<br>unit</th></tr>
+<tr id="pi"><td><el-code>pi</el-code></td><td>(none)</td><td></td><td>3.141592653589793..</td><td></td></tr>
+<tr id="abs"><td><el-code><el-method>abs</el-method></el-code></td><td>Float</td><td></td><td>absolute value of the input</td><td></td></tr>
+<tr id="acos"><td><el-code><el-method>acos</el-method></el-code></td><td>Float</td><td></td><td>arccosine of the input</td><td>radians</td></tr>
+<tr id="asin"><td><el-code><el-method>asin</el-method></el-code></td><td>Float</td><td></td><td>arcsine of the input</td><td>radians</td></tr>
+<tr id="atan"><td><el-code><el-method>atan</el-method></el-code></td><td>Float</td><td></td><td>arctangent of the input</td><td>radians</td></tr>
+<tr id="acosDeg"><td><el-code><el-method>acosDeg</el-method></el-code></td><td>Float</td><td></td><td>arccosine of the input</td><td>degrees</td></tr>
+<tr id="asinDeg"><td><el-code><el-method>asinDeg</el-method></el-code></td><td>Float</td><td></td><td>arcsine of the input</td><td>degrees</td></tr>
+<tr id="atanDeg"><td><el-code><el-method>atanDeg</el-method></el-code></td><td>Float</td><td></td><td>arctangent of the input</td><td>degrees</td></tr>
+<tr id="cos"><td><el-code><el-method>cos</el-method></el-code></td><td>Float</td><td>radians</td><td>cosine of the input</td><td></td></tr>
+<tr id="cosDeg"><td><el-code><el-method>cosDeg</el-method></el-code></td><td>Float</td><td>degrees</td><td>cosine of the input</td><td></td></tr>
+<tr id="exp"><td><el-code><el-method>exp</el-method></el-code></td><td>Float</td><td></td><td>e<sup>x</sup> where x is the argument and<br>e is Euler's number 2.718281828459045..<br>the base of natural logarithms</td><td></td></tr>
+<tr id="logE"><td><el-code><el-method>logE</el-method></el-code></td><td>Float</td><td></td><td>natural logarithm of the input</td><td></td></tr>
+<tr id="log10"><td><el-code><el-method>log10</el-method></el-code></td><td>Float</td><td></td><td>base-10 logarithm of the input</td><td></td></tr>
+<tr id="log2"><td><el-code><el-method>log2</el-method></el-code></td><td>Float</td><td></td><td>base-2 logarithm of the input</td><td></td></tr>
+<tr id="sin"><td><el-code><el-method>sin</el-method></el-code></td><td>Float</td><td>radians</td><td>sine of the input</td><td></td></tr>
+<tr id="sinDeg"><td><el-code><el-method>sinDeg</el-method></el-code></td><td>Float</td><td>degrees</td><td>sine of the input</td><td></td></tr>
+<tr id="sqrt"><td><el-code><el-method>sqrt</el-method></el-code></td><td>Float</td><td></td><td>positive square root of the input</td><td></td></tr>
+<tr id="tan"><td><el-code><el-method>tan</el-method></el-code></td><td>Float</td><td>radians</td><td>tangent of the input</td><td></td></tr>
+<tr id="tanDeg"><td><el-code><el-method>tanDeg</el-method></el-code></td><td>Float</td><td>degrees</td><td>tangent of the input</td><td></td></tr>
+<tr id="degToRad"><td><el-code><el-method>degToRad</el-method></el-code></td><td>Float</td><td>degrees</td><td>converts input from degrees to radians</td><td>radians</td></tr>
+<tr id="radToDeg"><td><el-code><el-method>radToDeg</el-method></el-code></td><td>Float</td><td>radians</td><td>converts input from radians to degrees</td><td>degrees</td></tr>
+</table>
     </p>
-    
+
     <p>Examples of some maths functions being tested:</p>
-    
+
     <p><img src="Images/ReferenceManual/Pic84.png"  align="MIDDLE" height="220" width="298"></p>
-    
+
     <h3>Regular expressions</h3>
     <p>Elan&#8217;s regular expressions are modelled on those of JavaScript, including the syntax for literal regular expressions. See, for example this <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">Guide to Regular Expressions</a>.</p>
     <p>More functions for using regular expressions will be added in a future release of Elan. For now&#8230;</p>
@@ -208,7 +102,7 @@
     <p>You can convert a valid <el-code>string</el-code> without <el-code>/../</el-code> delimiters to a <el-code>RegExp</el-code> using function <el-code>asRegExp</el-code>:</p>
     <p><img src="Images/ReferenceManual/Pic86.png"  align="MIDDLE" height="117" width="318"></p>
     <p>Although it is recommended that literal regular expressions are written with the <el-code>/../</el-code> delimiters, the ability to convert a <el-code>string</el-code> allows you to input a regular expression into a running program.</p>
-    
+
     <h3>Bitwise functions</h3>
     <el-code id="bitAnd">bitAnd(a as Int, b as Int) returns Int</el-code><br>
     <el-code id="bitOr">bitOr(a as Int, b as Int) returns Int</el-code><br>
@@ -216,10 +110,10 @@
     <el-code id="bitNot">bitNot(a as Int) returns Int</el-code><br>
     <el-code id="bitShiftL">bitShiftL(a as Int, places as Int) returns Int</el-code><br>
     <el-code id="bitShiftR">bitShiftR(a as Int, places as Int) returns Int</el-code><br>
-    
+
     <p>Examples of the bitwise functions being tested:</p>
     <el-code><img src="Images/ReferenceManual/Pic87.png"  align="MIDDLE" height="273" width="353"></el-code><br>
-    
+
     <p>The result of <el-code>bitNot(a)</el-code>, where <el-code>a</el-code> is <el-code>13</el-code>, being <el-code>-14</el-code> might be a surprise. But this is because the bitwise functions assume that the arguments are represented as 32-bit signed integers. So 13 is represented as <el-code>00000000000000000000000000001101</el-code>, and applying <el-code>bitNot</el-code> gives <el-code>11111111111111111111111111110010 </el-code>which is the value <el-code>-14 </el-code>in signed two&#8217;s complement format, the left-most bit being the sign (<el-code>0</el-code> positive, <el-code>1</el-code> negative).</p>
 <!--   #endregion-->
 <!-- #region Standalone procedures-->
@@ -241,15 +135,15 @@
 <!-- #endregion-->
 <!-- #region   printLine-->
 <h2 id="printLine">printLine</h2>
-<p><el-code>printLine(arg as String)</el-code> prints the argument followed by a new line. 
+<p><el-code>printLine(arg as String)</el-code> prints the argument followed by a new line.
 The primary purpose of this is so that you may choose to do all printing via  methods rather than mixing them in with <el-code>print</el-code> statements.
 Note that the argument must be provided as a <el-code><el-type>String</el-type></el-code>.</p>
 <!-- #endregion-->
 <!-- #region   printNoLine-->
 <h2 id="printNoLine">printNoLine</h2>
-<p><el-code>printNoLine(arg as String)</el-code> does not automatically add a newline at the end, 
+<p><el-code>printNoLine(arg as String)</el-code> does not automatically add a newline at the end,
 so you may subsequently print something else on the same line (unless you choose to include a newline <el-code>\n</el-code> within the string).
-Note that the argument must be provided as a <el-code><el-type>String</el-type></el-code>.</p> 
+Note that the argument must be provided as a <el-code><el-type>String</el-type></el-code>.</p>
 <!-- #endregion-->
 <!-- #region   printTab-->
 <h2 id="printTab">printTab</h2>
@@ -283,7 +177,7 @@ Note that the argument must be provided as a <el-code><el-type>String</el-type><
 <el-code>function digits(number as Int) returns Int</el-code><br>
 <el-code>  return number.asString().length()</el-code><br>
 <el-code>end function</el-code><br>
- <!--   #endregion-->   
+ <!--   #endregion-->
 <!--   #endregion-->
 <!-- #region System methods-->
     <h1 id="MethSys">System methods</h1>
@@ -361,7 +255,7 @@ inputFloatBetween(prompt as string, min as Float, max as Float)
 <!-- #region   TextFileReader-->
 <h2 id="TextFileReader">TextFileReader</h2>
 
-<p>The <el-code><el-type>TextFileReader</el-type></el-code> class is used to read textual data from a file. 
+<p>The <el-code><el-type>TextFileReader</el-type></el-code> class is used to read textual data from a file.
     An instance is created by the standalone system method <el-code><el-method>openFileForReading</el-method></el-code>, on
 which the dot-methods the following methods may be invoked:</p>
 
@@ -401,7 +295,7 @@ which the dot-methods the following methods may be invoked:</p>
 <!-- #endregion -->
 <!-- #region   TextFileWriter-->
 <h2 id="TextFileWriter">TextFileWriter</h2>
-<p>The <el-code><el-type>TextFileWriter</el-type></el-code> class is used to write textual data to a file. 
+<p>The <el-code><el-type>TextFileWriter</el-type></el-code> class is used to write textual data to a file.
     An instance is created by the standalone system method <el-code><el-method>createFileForWriting</el-method></el-code>, on
 which the dot-methods the following methods may be invoked:</p>
 
@@ -566,8 +460,8 @@ will paint the background colour for the whole grid, leaving any existing charac
 <li>As with the way that SVG works within Html, the shapes are drawn in the order in which they are added into the <el-code>VectorGraphics</el-code> instance, with later shapes positioned over earlier shapes.</li>
 <li>The colour (for <el-code>stroke</el-code> and <el-code>fill</el-code> properties) may be specified as described at <a href="#Colour">Colour</a>. The <el-code>fill</el-code> colour only may also be specified as &#8216;transparent&#8217; by giving it a negative value; we suggest using <el-code>fill to -1</el-code></li>
 <li><el-code>VectorGraphics</el-code> also has methods <el-code>removeLast</el-code> (no parameters), <el-code>remove</el-code> (which takes a shape as a parameter, and <el-code>replace</el-code> which takes an existing shape and a new shape as parameters. The new shape may be a modified version of an existing shape (created using <el-code>copy .. with</el-code>), thereby enabling animation. The following simple example creates a circle that changes between red and green every second:</li>
-<li><el-code>BaseVG</el-code> is the abstract superclass of all <el-code>.VG</el-code> shapes. 
-    You would only use if if you wanted to define a method that could work on any shape (using common members defined on <el-code>BaseVG</el-code>) 
+<li><el-code>BaseVG</el-code> is the abstract superclass of all <el-code>.VG</el-code> shapes.
+    You would only use if if you wanted to define a method that could work on any shape (using common members defined on <el-code>BaseVG</el-code>)
     or that could work with a List holding different types of shape.
 
 <el-code>main</el-code><br>
@@ -586,7 +480,7 @@ will paint the background colour for the whole grid, leaving any existing charac
 <el-code>end main</el-code><br>
 <!-- endregion -->
 <!-- #region   Stack and queue-->
-    <p id="Queue"></p>      
+    <p id="Queue"></p>
     <h3 id="Stack">Stack and queue</h3>
     <li><el-code>Stack</el-code> and <el-code>Queue</el-code> are similar data structures except that <el-code>Stack</el-code> is &#8216;LIFO&#8217; (last in, first out), while <el-code>Queue</el-code> is FIFO (first in, first out). The names of the methods for adding/removing are different, but there are also common methods, summarised here.</li>
     <li>Both a <el-code>Stack</el-code> and a <el-code>Queue</el-code> are defined with the Type of the items that they can contain, similarly to how <el-code>Array</el-code> and <el-code>List</el-code> have a specified item Type, though with different syntax. The Type is specified in the form shown below e.g. <el-code>Stack&lt;of String&gt;, Queue&lt;of Int&gt;, Stack&lt;of (Float, Float)&gt;, Queue&lt;of Square&gt;</el-code>.</li>
@@ -621,7 +515,7 @@ will paint the background colour for the whole grid, leaving any existing charac
     <td>q.length()</td>
     </tr></table>
     </p>
-    
+
     <p>Example use of a <el-code>Stack</el-code>:</p>
     <el-code>main</el-code><br>
     <el-code>&nbsp; let sk be new Stack&lt;of String&gt;()</el-code><br>
@@ -636,7 +530,7 @@ will paint the background colour for the whole grid, leaving any existing charac
     <el-code>&nbsp; print fruit</el-code><br>
     <el-code>&nbsp; print sk.length()</el-code><br>
     <el-code>end main</el-code><br>
-    
+
     <p>Example use of a <el-code>Queue</el-code>:</p>
     <el-code>main</el-code><br>
     <el-code>&nbsp; let qu be new Queue&lt;of String&gt;()</el-code><br>
@@ -669,7 +563,7 @@ will paint the background colour for the whole grid, leaving any existing charac
     <el-code>&nbsp; print st.length()</el-code><br>
     <el-code>&nbsp; print st</el-code><br>
     <el-code>end main</el-code><br>
-    
+
     <p>Notes</p>
     <p>
     When creating a <el-code>Set</el-code>, the Type of the elements must be specified in the form<br>
@@ -699,23 +593,23 @@ will paint the background colour for the whole grid, leaving any existing charac
 
 <!-- #region Dot methods for fundamental types-->
 
-<!-- #region Higher order functions (HoFs)-->   
+<!-- #region Higher order functions (HoFs)-->
     <h2 id="HoF">Higher order functions (HoFs)</h2>
     <p>These dot methods are called on any <el-code>Array,</el-code> <el-code>List</el-code> or <el-code>String</el-code>. As &#8216;higher order functions&#8217; they take either a <el-code>lambda</el-code> or a function reference as one of their arguments: see <span class="Link">Passing a function as a reference</span>.</p>
     <p>Important: Several of these methods return a <el-code><el-type>List</el-type></el-code> but this may be converted to an array using <el-code>.<el-method>asArray()</el-method></el-code> at the end of the expression.</p>
     <p>These are not yet fully documented but, for readers familiar with HoFs from another programming language, some examples are shown below.</p>
-    
+
     <h3 id="filter">filter </h3>
     <p>Usage:</p>
     <el-code><br>
     let matches be rules.filter(lambda r as Rule =&gt; <br>
     &nbsp;&nbsp;(r.currentState is currentState) and (r.currentSymbol is tape[headPosition]))<br>
     </el-code><br>
-    
+
     <h3 id="map">map</h3>
     <p>Usage:</p>
     <el-code>let next be cellRange.map(lambda n as Int =&gt; nextCellValue(cells, n))</el-code><br>
-    
+
     <h3 id="reduce">reduce</h3>
     <p>Usage:</p>
     <el-code><br>
@@ -723,37 +617,37 @@ will paint the background colour for the whole grid, leaving any existing charac
     &nbsp;&nbsp;lambda dd as Dictionary&lt;of String, Int&gt;, possAnswer as String =&gt;<br>
     &nbsp;&nbsp;incrementCount(dd, possAnswer, attempt))
     </el-code><br>
-    
+
     <h3 id="max">max and min</h3><span id="min"></span>
     <p>Both these functions may be applied to an <el-code>List&lt;of Float&gt;</el-code> and return the maximum or minimum value found therein.</p>
-    
+
     <el-code>variable a set to {33, 4, 0,99, 82, 55}</el-code><br>
     <el-code>print "Max: {a.max()} Min: {a.min()}"</el-code><br>
-    
+
     <h3 id="maxBy">maxBy and minBy</h3><span id="minBy"></span>
     <p>Alternative implementations of <el-code>max</el-code> and <el-code>min</el-code>:</p>
-    
+
     <el-code>variable a set to {33, 4, 0,99, 82, 55}</el-code><br>
     <el-code>print a.maxBy(lambda x as Int =&gt; x mod 10)</el-code><br>
-       
+
     <h3 id="sortBy">sortBy</h3>
-    
+
     <p>Additional sort methods will be introduced in a later Beta.</p>
     <p>For now, <el-code>sortBy</el-code> takes a <el-code>lambda</el-code> that takes two arguments (of the same Type as that of the <el-code>List</el-code> being sorted) and compares them, returning an integer with one of the values -1, 0, or +1, to indicate whether the first argument should be placed respectively before, adjacent to or after the second argument in the sorted result, where &#8216;adjacent to&#8217; means it does not matter whether before or after):</p>
     <el-code>variable source set to {11, 3, 7, 37, 17, 2, 19, 5, 23, 27, 31, 13}</el-code><br>
     <el-code>print source.sortBy(lambda x as Int, y as Int =&gt; if x &gt; y then 1 else -1).asList()</el-code><br>
-    
+
     <p>The following are not HoFs, but are included here because they are most likely to be used with one of the HoFs listed above. </p>
-    
+
     <h3 id="range">range</h3>
-    
+
     <el-code>range(first as Int, last as Int) as List&lt;of Int&gt;</el-code><br>
-    
+
     <p>returns a <el-code><el-type>List</el-type></el-code> containing all the integer values between the two argument values.</p>
 <!--   #endregion-->
 
-<!-- #endregion--> 
-<!-- #region Leftover--> 
+<!-- #endregion-->
+<!-- #region Leftover-->
     <h2 id="MethDot">Dot methods that work on many different Types</h2>
     <!-- TODO These should each be added to the types they apply to-->
     <el-code>.asString()</el-code><br>
@@ -761,6 +655,6 @@ will paint the background colour for the whole grid, leaving any existing charac
     .length()<br>
     </p>
     <p><el-code>.head()</el-code> returns the first item in an <el-code>Array</el-code> or a <el-code>List</el-code></p>
-<!-- #endregion-->  
+<!-- #endregion-->
 </body>
 </html>
