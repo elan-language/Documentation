@@ -489,33 +489,15 @@ will paint the background colour for the whole grid, leaving any existing charac
     <li><el-code>Stack</el-code> and <el-code>Queue</el-code> have some methods in common: <el-code>length()</el-code>, and <el-code>peek()</el-code> which allows you to read the next item that would be removed, without actually removing it.</li>
     <li>The names of the methods for adding or removing an item are different for <el-code>Stac</el-code>k and <el-code>Queue</el-code>, as summarised in this table:</li>
     <p>
-    <table>
-    <tr><th></th>
-    <th>Stack</th>
-    <th>Queue</th>
-    </tr>
-    <tr><td>Create a new instance</td>
-    <td>let s be new Stack&lt;of Int&gt;()</td>
-    <td>let q be new Queue&lt;of Int&gt;()</td>
-    </tr>
-    <tr><td>Add an item (must be of correct Type)</td>
-    <td><el-code>call s.push(item)</el-code></td>
-    <td><el-code>call q.enqueue(item)</el-code></td>
-    </tr>
-    <tr><td>Remove the next item</td>
-    <td>variable item set to s.pop()</td>
-    <td>variable item set to q.dequeue()</td>
-    </tr>
-    <tr><td>View the next item to be removed without removing it</td>
-    <td>variable item set to s.peek()</td>
-    <td>variable item set to q.peek()</td>
-    </tr>
-    <tr><td>Read the current length</td>
-    <td>s.length()</td>
-    <td>q.length()</td>
-    </tr></table>
+<table>
+<tr><th></th><th>Stack</th><th>Queue</th></tr>
+<tr><td>Create a new instance</td><td><el-code>let s be new Stack&lt;of Int&gt;()</el-code></td><td><el-code>let q be new Queue&lt;of Int&gt;()</el-code></td></tr>
+<tr><td>Add an item (must be of correct Type)</td><td><el-code>call s.push(item)</el-code></td><td><el-code>call q.enqueue(item)</el-code></td></tr>
+<tr><td>Remove the next item</td><td><el-code>variable item set to s.pop()</el-code></td><td><el-code>variable item set to q.dequeue()</el-code></td></tr>
+<tr><td>View the next item to be removed<br>without removing it</td><td><el-code>variable item set to s.peek()</el-code></td><td><el-code>variable item set to q.peek()</el-code></td></tr>
+<tr><td>Read the current length</td><td><el-code>s.length()</el-code></td><td><el-code>q.length()</el-code></td></tr>
+</table>
     </p>
-
     <p>Example use of a <el-code>Stack</el-code>:</p>
     <el-code>main</el-code><br>
     <el-code>&nbsp; let sk be new Stack&lt;of String&gt;()</el-code><br>
