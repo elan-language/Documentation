@@ -16,11 +16,16 @@ p,img,pre,blockquote,address,td,th,li
   { font-size:12pt; text-indent:0pt; margin-bottom:8pt; line-height:1.3; }
 
 table { text-align:center; margin-top:4pt; margin-bottom:4pt; }
-td, td *{ background-color: rgb(193, 227, 248);}
+tr:nth-child(even) td{ 
+  background-color: rgb(226, 226, 226);
+}
+tr:nth-child(odd) td{ 
+  background-color: rgb(196, 196, 196);
+}
 td {padding-left: 5px;}
-th, th * {color: white; background-color: rgb(8, 75, 162);}
-tr.x, tr.x * {
-  opacity: 70%;
+th, th * {color: white; background-color: rgb(15,71,97)}
+tr.x td:nth-child(3) * {
+  color: red;
 }
 
 p.toc_1
