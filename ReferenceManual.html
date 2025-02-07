@@ -614,61 +614,7 @@ Where a colour can be specified, it is a value of Type <el-code>Int</el-code> in
 <p>As in Html, a colour number is made up of the values from 0 to 255 for each of the three components: red (R), green (G) and blue (B). So a colour value may be described by its integer value, or by three decimal values (R, G, B), or by a 6-digit hexadecimal number (<el-code>0xrrggbb</el-code>).</p>
 <p>Elan has a small number of standard named colours:</p>
 <p>
-<table>
-<tr><th>Integer<br>
-decimal
-</th>
-<th>R G B<br>
-decimal
-</th>
-<th>R G B<br>
-hexadecimal
-</th>
-<th>Colour<br>
-name
-</th>
-</tr>
-<tr><td>0</td>
-<td>  0    0    0</td>
-<td><el-code>0x000000</el-code></td>
-<td>black</td>
-</tr>
-<tr><td>16777215</td>
-<td>255  255  255</td>
-<td><el-code>0xffffff</el-code></td>
-<td>white</td>
-</tr>
-<tr><td>16711680</td>
-<td>255    0    0</td>
-<td><el-code>0xff0000</el-code></td>
-<td>red</td>
-</tr>
-<tr><td>32768</td>
-<td>  0  128    0</td>
-<td><el-code>0x008000</el-code></td>
-<td>green</td>
-</tr>
-<tr><td>255</td>
-<td>  0   0   255</td>
-<td><el-code>0x0000ff</el-code></td>
-<td>blue</td>
-</tr>
-<tr><td>16776960</td>
-<td>255  255    0</td>
-<td><el-code>0xffff00</el-code></td>
-<td>yellow</td>
-</tr>
-<tr><td>10824234</td>
-<td>165   42   42</td>
-<td><el-code>0xa52a2a</el-code></td>
-<td>brown</td>
-</tr>
-<tr><td>8421504</td>
-<td>128  128  128</td>
-<td><el-code>0x808080</el-code></td>
-<td>grey</td>
-</tr></table>
-</p>
+
 
 <p>You can use these colour names directly in an <el-code>Int</el-code>. If you want to define other colours, you put any of the 16,777,215 colour numbers into literals, constants or variables either as a decimal integer or, more conveniently, in the hexadecimal form shown in the table. For example you might define <el-code>lightBlue</el-code> and <el-code>deepPink</el-code> using these hex values:</p>
 <p>
