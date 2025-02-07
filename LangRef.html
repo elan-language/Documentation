@@ -776,92 +776,24 @@ print a.contains("ello")
 <h3>Quick reference</h3>
 <p>
 <table>
-<tr><th></th>
-<th>Array</th>
-<th>List</th>
-</tr>
-<tr><td>Type form</td>
-</tr<el-code>Array&lt;of String&gt;<br>
-Array2D&lt;of String&gt;
-</el-code><br>
-</td>
-<td><el-code>List&lt;of String&gt;</el-code><br>
-</td>
-</tr>
-<tr><td>Literal</td>
-<td>["plum", "pear"]</td>
-<td>{"plum", "pear"}</td>
-</tr>
-<tr><td>Literal empty</td>
-<td>empty Array&lt;of String&gt;</td>
-<td>empty List&lt;of String&gt;</td>
-</tr>
-<tr><td>Initial size (filled with default values)</td>
-<td><el-code>variable a set to<br>
-&nbsp;&nbsp;&nbsp;createArray(10, "x")<br>
-createArray2D(8, 8, "")<br>
-</el-code><br>
-<p>In each case, the last argument is the value to which each element is initialised, and defines the Type of elements in the Array</p>
-</td>
-<td>Not applicable</td>
-</tr>
-<tr><td>Read from position</td>
-<td><el-code>a[3]</el-code><br>
-<el-code>board[3][4]</el-code><br>
-</td>
-<td><el-code>[3]</el-code></td>
-</tr>
-<tr><td>Read range</td>
-<td><el-code>a[5..9]</el-code></td>
-<td><el-code>A[5..9)]</el-code></td>
-</tr>
-<tr><td>Put a value</td>
-<td><el-code>call a.putAt(3, "pear")</el-code><br>
-2D:<el-code>call board.putAt2D(3,4,"K")</el-code><br>
-</td>
-<td>set a to a.withPutAt(3, "pear")</td>
-</tr>
-<tr><td>Append and Prepend</td>
-<td><el-code>call a.append("pear")<br>
-call a.prepend("pear")<br>
-call a.appendArray(anotherArray)<br>
-call a.prependArray(anotherArray)<br>
-</el-code><br>
-</td>
-<td>
-Append: <el-code>set a to a + {"pear"}</el-code>
-Prepend:<el-code> set a to {"pear"} + a</el-code><br>
-Append/prepend a list: <el-code>set x to listA + listb</el-code><br>
-</td>
-</tr>
-<tr><td>Insert</td>
-<td>call a.insertAt(3, "pear")</td>
-<td>set a to a.withInsertAt(3, "pear")</td>
-</tr>
-<tr><td>Remove by index</td>
-<td>call a.removeAt(3)</td>
-<td>set a to a.withRemoveAt(3)</td>
-</tr>
-<tr><td>Remove by value</td>
-<td><el-code>call a.removeFirst("pear")<br>
-call a.removeAll("pear")<br>
-</el-code><br>
-</td>
-<td><el-code>set a to a.withRemoveFirst ("p")<br>
-set a to a.withRemoveAll ("p")<br>
-</el-code><br>
-</td>
-</tr>
-<tr><td>Deconstruction into head (first element) and tail (all the rest)</td>
-<td>Not applicable</td>
-<td><el-code>variable x:xs set to myList<br>
-set h:t to myList<br>
-</el-code><br>
-<span class="Comment_Text_Char">discarding either the head or tail:</span><br>
-<el-code>variable _:tail set to myList<br>
-variable head:_ set t myList</el-code><br>
-</td>
-</tr></table>
+<tr><th></th><th>Array</th><th>List</th></tr>
+<tr><td>Type form</td><td><el-code>Array&lt;of String&gt;</el-code><br>2D: <el-code>Array2D&lt;of String&gt;</el-code></td><td><el-code>List&lt;of String&gt;</el-code></td></tr>
+<tr><td>Literal</td><td><el-code>["plum", "pear"]</el-code></td><td><el-code>{"plum", "pear"}</el-code></td></tr>
+<tr><td>Literal empty</td><td><el-code>empty Array&lt;of String&gt;</td><td><el-code>empty List&lt;of String&gt;</td></tr>
+<tr><td>Initial size (filled with default values)</td><td><el-code>variable a set to createArray(10, "x")<br>
+variable a set to createArray2D(8, 8, "")</el-code><br>
+<p>In each case, the last argument is the value to which each element<br>is initialised, and defines the Type of elements in the Array</td><td>Not applicable</td></tr>
+<tr><td>Read from position</td><td><el-code>a[3]<br>board[3][4]</el-code></td><td><el-code>a{3}</el-code></td></tr>
+<tr><td>Read range</td><td><el-code>a[5..9]</el-code></td><td><el-code>a{5..9}</el-code></td></tr>
+<tr><td>Put a value</td><td><el-code>call a.putAt(3, "pear")</el-code><br>2D: <el-code>call board.putAt2D(3,4,"K")</el-code><br></td><td><el-code>set a to a.withPutAt(3, "pear")</el-code></td></tr>
+<tr><td>Append and prepend</td><td><el-code>call a.append("pear")<br>call a.prepend("pear")<br>call a.appendArray(anotherArray)<br>call a.prependArray(anotherArray)</el-code><br></td>
+<td>Append one item: <el-code>set a to a + {"pear"}</el-code><br>Prepend one item: <el-code> set a to {"pear"} + a</el-code><br>Append or prepend a List: <el-code>set x to listA + listb</el-code><br></td></tr>
+<tr><td>Insert</td><td><el-code>call a.insertAt(3, "pear")</el-code></td><td><el-code>set a to a.withInsertAt(3, "pear")</el-code></td></tr>
+<tr><td>Remove by index</td><td><el-code>call a.removeAt(3)</el-code></td><td><el-code>set a to a.withRemoveAt(3)</el-code></td></tr>
+<tr><td>Remove by value</td><td><el-code>call a.removeFirst("pear")<br>call a.removeAll("pear")</el-code></td><td><el-code>set a to a.withRemoveFirst ("pear")<br>set a to a.withRemoveAll ("pear")</el-code></td></tr>
+<tr><td>Deconstruction into head (first element)<br>and tail (all the rest)</td><td>Not applicable</td><td><el-code>variable x:xs set to myList<br>
+set h:t to myList</el-code><br>To discard either the head or the tail:<br><el-code>variable _:tail set to myList<br>variable head:_ set to myList</el-code></td></tr>
+</table>
 </p>
 
 <h3 id="Array">Array</h3>
@@ -877,7 +809,7 @@ variable head:_ set t myList</el-code><br>
 <p>An <el-code>Array</el-code> may be defined in &#8216;literal&#8217; form, &#8216;delimited&#8217; by square brackets, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type:</p>
 <el-code>variable fruit set to ["apple", "orange", "pear"]</el-code><br>
 
-<p>including &#8216;nested Arrays&#8217;:</p>
+<p>including &#8216;nested &#8217;:</p>
 <el-code>variable coordinates set to [[3.4, 0.1, 7.8], [1, 0, 1.5], [10, -1.5, 25]]</el-code><br>
 
 <el-code>or variables (provided they are all of the same Type): </el-code><br>
@@ -1016,41 +948,16 @@ List&lt;of List&lt;of Int&gt;&gt;</el-code> for a List of  Lists of Type </ode>I
 <h3>Quick reference</h3>
 <p>
 <table>
-<tr><th></th>
-<th>Dictionary</th>
-<th>DictionaryImmutable</th>
-</tr>
-<tr><td>Type form</td>
-<td> Dictionary&lt;of String, Int&gt;</td>
-<td>DictionaryImmutable&lt;of String, Int&gt;</td>
-</tr>
-<tr><td>Literal</td>
-<td>["a":1, "b":4]</td>
-<td>{"a":1, "b":4}</td>
-</tr>
+<tr><th></th><th>Dictionary</th><th>DictionaryImmutable</th></tr>
+<tr><td>Type form</td><td><el-code>Dictionary&lt;of String, Int&gt;</el-code></td><td><el-code>DictionaryImmutable&lt;of String, Int&gt;</el-code></td></tr>
+<tr><td>Literal</td><td><el-code>["a":1, "b":4]</el-code></td><td><el-code>{"a":1, "b":4}</el-code></td></tr>
 <tr><td>Literal empty</td>
-<td>empty Dictionary&lt;of String, Int&gt;</td>
-<td>empty DictionaryImmutable&lt;of String, Int&gt;</td>
-</tr>
-<tr><td>Read the value for a given key</td>
-<td>d["a"]</td>
-<td>d{"a"}</td>
-</tr>
-<tr><td>Get all keys<br>
-Get all values
-</td>
-<td>and</span> d.values() <br>
-Both return an immutable list of the appropriate Type
-</td>
-</tr>
-<tr><td>Define (or change) a value associated with a key</td>
-<td>call d.putAtKey("c", 7)</td>
-<td>set d to d.withPutAtKey("c", 7)</td>
-</tr>
-<tr><td>Remove both key and value</td>
-<td>call d.removeAtKey("c")</td>
-<td>set d to d.withRemoveAtKey("c")</td>
-</tr></table>
+<td><el-code>empty Dictionary&lt;of String, Int&gt;</el-code></td><td><el-code>empty DictionaryImmutable&lt;of String, Int&gt;</el-code></td></tr>
+<tr><td>Read the value for a given key</td><td><el-code>d["a"]</el-code></td><td><el-code>d{"a"</el-code>}</td></tr>
+<tr><td>Get all keys<br>Get all values</td><td colspan="2"><el-code>d.keys()</el-code >and <el-code>d.values()</el-code><br>both return an immutable list of the appropriate Type</td></tr>
+<tr><td>Define (or change) a value associated with a key</td><td><el-code>call d.putAtKey("c", 7)</el-code></td><td><el-code>set d to d.withPutAtKey("c", 7)</el-code></td></tr>
+<tr><td>Remove both key and value</td><td><el-code>call d.removeAtKey("c")</el-code></td><td><el-code>set d to d.withRemoveAtKey("c")</el-code></td></tr>
+</table>
 </p>
 
 <h3 id="Dictionary">Dictionary</h3>
