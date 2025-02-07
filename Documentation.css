@@ -27,7 +27,7 @@ tr:nth-child(even) td{
 tr:nth-child(odd) td{ 
   background-color: rgb(196, 196, 196);
 }
-td {padding-left: 5px;}
+td {padding-left: 5px; padding-right: 5px;}
 th, th * {color: white; background-color: rgb(15,71,97)}
 tr.x td:nth-child(3) * {
   color: red;
