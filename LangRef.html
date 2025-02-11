@@ -261,16 +261,15 @@ It specifies a set of values, each of which is defined as a name, such that a na
 <p> What distinguishes a <el-code>record</el-code> Type from a <el-code>List</el-code> is that its members may be of different Types,
   and what distinguished a <el-code>record</el-code> Type from a <span class="Link">Tuple</span> is that each member has a specific name.</p>
 
-<h4>Examples</h4>
+<h4>Examples:</h4>
 <el-code-block>
   <el-class class="ok multiline" id="class203" tabindex="0">
     <el-top><el-expand>+</el-expand><el-kw>record </el-kw><el-field id="type204" class="ok" tabindex="0"><el-txt><el-type>Square</el-type></el-txt><el-place>Name</el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A class name, like any type name, must begin with an upper-case letter, , optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-msg></el-msg><el-fr>64</el-fr></el-top>
     <el-prop class="ok" id="prop207" tabindex="0"><el-kw>property </el-kw><el-field id="ident208" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type209" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>65</el-fr></el-prop>
     <el-prop class="ok" id="prop210" tabindex="0"><el-kw>property </el-kw><el-field id="ident211" class="ok" tabindex="0"><el-txt><el-id>y</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type212" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>66</el-fr></el-prop>
     <el-kw>end record</el-kw>
-    </el-class>
-<el-code-block>
-<el-class class="error multiline" id="class1" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+    </el-class></el-code-block>
+<el-code-block><el-class class="error multiline" id="class1" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
 <el-top><el-expand>+</el-expand><el-kw>record </el-kw><el-field id="type2" class="ok" tabindex="0"><el-txt><el-type>Game</el-type></el-txt><el-place>Name</el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A class name, like any type name, must begin with an upper-case letter, , optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field> <el-msg class="error"></el-msg><el-fr>1</el-fr></el-top>
 <el-prop class="ok" id="prop9" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>property </el-kw><el-field id="ident10" class="ok" tabindex="0"><el-txt><el-id>head</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type11" class="ok" tabindex="0"><el-txt><el-type>Square</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-prop>
 <el-prop class="ok" id="prop18" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>property </el-kw><el-field id="ident19" class="ok" tabindex="0"><el-txt><el-id>body</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type20" class="ok" tabindex="0"><el-txt><el-type>List</el-type>&lt;<el-kw>of</el-kw> <el-type>Sqaure</el-type>&gt;</el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-prop>
@@ -284,21 +283,22 @@ It specifies a set of values, each of which is defined as a name, such that a na
 <el-kw>end record</el-kw>
 </el-class>
 </el-code-block>
-  <p>Having defined a <el-code>record</el-code> Type, such as <el-code>Game</el-code> above, you can create as many instances as you wish using the following syntax to specify the values:</p>
+  <p>Having defined a record Type, such as <el-code>Game</el-code> above, you can create as many instances as you wish using the following syntax to specify the values:</p>
 <el-code-block>
   <el-statement class="selected focused ok" id="let597" tabindex="0"><el-kw>let </el-kw><el-field id="var598" class="ok" tabindex="0"><el-txt><el-id>g1</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr599" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Game</el-type>()<el-kw> with </el-kw><br><el-id>head</el-id><el-kw> set to </el-kw><el-method>newSquare</el-method>(<el-lit>22</el-lit>, <el-lit>15</el-lit>), <br><el-id>key</el-id><el-kw> set to </el-kw>"<el-lit>d</el-lit>", <br><el-id>isOn</el-id><el-kw> set to </el-kw><el-id>true</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>52</el-fr></el-statement>
 </el-code-block>
+<p>
 Note that you are <em>not required</em> to provide a value for each property because, where a property is not specified in the &#8216;<el-code>with</el-code> clause&#8217; (as above), that property will be given the empty (default) value of the correct Type.</p>
 <p>You can then read the values from the properties using &#8216;dot syntax&#8217; for example:</p>
 <el-code>print sq1.size</el-code><br>
-
+<p>
 <p><el-code>record</el-code> Types are immutable: the properties on an instance may not be changed, directly. However, you can easily create another instance that is a copy of the original, with all the same property values except for any specific changes made in another <el-code>with</el-code> clause. The newly-minted copy (with changes) must be assigned to a new named value. For example:</p>
 <el-code><br>
 let sq1 be new Square() with<br>
 &nbsp;x set to 3.5,<br>
 &nbsp;y set to 4.0,<br>
 &nbsp;size set to 1.0<br>
-</el-code><br>
+</el-code>
 <el-code><br>
 let sq2 be copy sq1 with<br>
 &nbsp;size set to 2.0,<br>
@@ -312,10 +312,9 @@ Or even to the same name if that name is a variable:</p>
 
 <p>If you want to use one or more existing property values in order to determine a new value, the property name(s) must
   be prefixed with the name of the instance being copied, for example:</p>
-<el-code><br>
-  let sq2 be copy sq1 with<br>
-  &nbsp;size set to sq1.size + 3<br>
-</el-code><br>
+<el-code>
+  let sq2 be copy sq1 with size set to sq1.size + 3<br>
+</el-code>
 </p>
 <p>Note that a <el-code>record</el-code> Type has some similarity to a <el-code>class</el-code>:</p>
 <li>Both are user-define data structures</li>
