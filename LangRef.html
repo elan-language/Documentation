@@ -173,7 +173,14 @@ TODO
 
 <h4>Testing Float values</h3>
 <p>When testing <el-code>Float</el-code> values it is recommend that you always use the <el-code>round</el-code> function to round the computed result to a fixed number of decimal places. This avoids rounding errors and is easier to read:</p>
-<p><img src="Images/ReferenceManual/Pic66.png"  align="MIDDLE" height="45" width="284"></p>
+<p><el-code-block>
+<el-test class="ok multiline" id="test5" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+<el-top><el-expand>+</el-expand><el-kw>test </el-kw><el-field id="comment7" class="optional ok" tabindex="0"><el-txt>round()</el-txt><el-place><i>optional description</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Any text on a single line.">?</el-help></el-field><el-msg></el-msg><el-fr>1</el-fr></el-top>
+<el-statement class="ok" id="assert8" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>assert </el-kw><el-field id="text9" class="ok" tabindex="0"><el-txt><el-method>sqrt</el-method>(<el-lit>2</el-lit>).<el-method>round</el-method>(<el-lit>3</el-lit>)</el-txt><el-place><i>computed value</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="help TBD">?</el-help></el-field><el-kw> is </el-kw><el-field id="expr10" class="ok" tabindex="0"><el-txt><el-lit><el-lit>1</el-lit>.414</el-lit></el-txt><el-place><i>expected value</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field> <el-msg class="ok">pass</el-msg><el-fr>2</el-fr></el-statement>
+<el-kw>end test</el-kw>
+</el-test>
+<el-code-block>
+</p>
 
 <h4>Testing for runtime errors</h3>
 <p>If the expression you are testing causes a runtime error then the error will be displayed in the red fail message:</p>
