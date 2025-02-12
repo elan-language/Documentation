@@ -10,9 +10,98 @@
 <title>Elan Editor - Quick Reference</title>
 </head>
 <body>
+<!-- #region Editor-->
+ <!-- #region Heading & Intro-->
+<h1 id="Editor">The code editor</h1>
+
+<p>The main pane within the IDE is the 'code editor`.</p>
+
+<p>When entering, editing, or just navigating (browsing) through, different sections of code will be highlighted at two different levels: 
+    whole instruction(s) or an individual field within an instruction.</p>
+
+<h3 id="instruction">Instructions</h3>
+
+<p>The following show examples of instructions being highlighted.</p>
+
+<li>Here a single instruction is highlighted:</li>
+
+<el-code-block><main class="ok multiline" id="main1" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+    <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
+    <el-statement class="ok" id="var3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>gr</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>BlockGraphics</el-type>()</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+    <el-statement class="selected focused ok" id="var6" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var7" class="ok" tabindex="0"><el-txt><el-id>grid</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-kw>empty</el-kw> <el-type>Array</el-type>&lt;<el-kw>of</el-kw> <el-type>Boolean</el-type>&gt;</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement>
+    <el-statement class="ok" id="call9" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident10" class="ok" tabindex="0"><el-txt><el-method>fillRandom</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args11" class="optional ok" tabindex="0"><el-txt><el-id>grid</el-id></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>4</el-fr></el-top></el-statement>
+    <el-statement class="ok multiline" id="while12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+    <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
+    <el-statement class="ok" id="set15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>set </el-kw><el-field id="ident16" class="ok" tabindex="0"><el-txt><el-id>gr</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-method>updateGraphics</el-method>(<el-id>grid</el-id>, <el-id>gr</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-statement>
+    <el-statement class="ok" id="call18" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident19" class="ok" tabindex="0"><el-txt><el-id>gr</el-id>.<el-method>display</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args20" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>7</el-fr></el-top></el-statement>
+    <el-statement class="ok" id="set21" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>set </el-kw><el-field id="ident22" class="ok" tabindex="0"><el-txt><el-id>grid</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr23" class="ok" tabindex="0"><el-txt><el-method>nextGeneration</el-method>(<el-id>grid</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>8</el-fr></el-statement>
+    <el-statement class="ok" id="call24" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident25" class="ok" tabindex="0"><el-txt><el-method>pause</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args26" class="optional ok" tabindex="0"><el-txt><el-lit>50</el-lit></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>9</el-fr></el-top></el-statement>
+    <el-kw>end while</el-kw>
+    </el-statement>
+    <el-kw>end main</el-kw>
+    </main></el-code-block>
+
+<li>Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the of other instructions that it contains, which are all indented buy two characters:</li>
+    <el-code-block>
+        <el-statement class="selected focused ok multiline" id="while12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+            <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
+            <el-statement class="ok" id="set15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>set </el-kw><el-field id="ident16" class="ok" tabindex="0"><el-txt><el-id>gr</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-method>updateGraphics</el-method>(<el-id>grid</el-id>, <el-id>gr</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-statement>
+            <el-statement class="ok" id="call18" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident19" class="ok" tabindex="0"><el-txt><el-id>gr</el-id>.<el-method>display</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args20" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>7</el-fr></el-top></el-statement>
+            <el-statement class="ok" id="set21" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>set </el-kw><el-field id="ident22" class="ok" tabindex="0"><el-txt><el-id>grid</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr23" class="ok" tabindex="0"><el-txt><el-method>nextGeneration</el-method>(<el-id>grid</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>8</el-fr></el-statement>
+            <el-statement class="ok" id="call24" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident25" class="ok" tabindex="0"><el-txt><el-method>pause</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args26" class="optional ok" tabindex="0"><el-txt><el-lit>50</el-lit></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>9</el-fr></el-top></el-statement>
+            <el-kw>end while</el-kw>
+            </el-statement>
+    </el-code-block>
+
+<li>It is also possible to select multiple instructions (to move, or delete them, together), for example: </li>
+
+<el-code-block>
+    <el-statement class="ok multiline" id="while12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+        <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
+        <el-statement class="selected ok" id="set15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>set </el-kw><el-field id="ident16" class="ok" tabindex="0"><el-txt><el-id>g</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-id>g</el-id>.<el-method>withText</el-method>(<el-id>x</el-id>, <el-id>y</el-id>, "<el-lit>*</el-lit>", <el-id>red</el-id>, <el-id>black</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-statement>
+        <el-statement class="selected ok" id="call18" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident19" class="ok" tabindex="0"><el-txt><el-id>g</el-id>.<el-method>display</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args20" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>7</el-fr></el-top></el-statement>
+        <el-statement class="selected ok" id="call21" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident22" class="ok" tabindex="0"><el-txt><el-method>pause</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args23" class="optional ok" tabindex="0"><el-txt><el-lit>100</el-lit></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>8</el-fr></el-top></el-statement>
+        <el-statement class="selected ok" id="set24" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>set </el-kw><el-field id="ident25" class="ok" tabindex="0"><el-txt><el-id>g</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr26" class="ok" tabindex="0"><el-txt><el-id>g</el-id>.<el-method>withBlock</el-method>(<el-id>x</el-id>, <el-id>y</el-id>, <el-id>black</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>9</el-fr></el-statement>
+        <el-statement class="selected ok" id="let27" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var28" class="ok" tabindex="0"><el-txt><el-id>dir</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr29" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>3</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>10</el-fr></el-statement>
+        <el-statement class="selected focused ok" id="set30" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>set </el-kw><el-field id="ident31" class="ok" tabindex="0"><el-txt><el-id>x</el-id>, <el-id>y</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr32" class="ok" tabindex="0"><el-txt><el-method>updateCoordinates</el-method>(<el-id>x</el-id>, <el-id>y</el-id>, <el-id>dir</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>11</el-fr></el-statement>
+        <el-kw>end while</el-kw>
+    </el-statement>
+</el-code-block>
+
+<li>The following example shows a <i>single instruction</i> that has been formatted over multiple lines - either because it is too long to fit on one line, or because the editor formats that instruction over multiple lines for readability. Note that the second and subsequent lines are indented by just <i>one</i> character:</li>
+<el-code-block>
+    <el-statement class="selected focused ok" id="let15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var16" class="ok" tabindex="0"><el-txt><el-id>b</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>CircleVG</el-type>()<el-kw> with </el-kw><br><el-id>cx</el-id><el-kw> set to </el-kw><el-id>i</el-id>*<el-lit>5</el-lit> + <el-lit>2</el-lit>, <br><el-id>cy</el-id><el-kw> set to </el-kw><el-lit>75</el-lit>, <br><el-id>r</el-id><el-kw> set to </el-kw><el-lit>1</el-lit>, <br><el-id>fill</el-id><el-kw> set to </el-kw>-<el-lit>1</el-lit>, <br><el-id>stroke</el-id><el-kw> set to </el-kw><el-id>white</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-statement>
+</el-code-block>
+
+<h3 id="field">Fields</h3>
+
+<p>Instructions consist of fixed (or 'templated') code - keywords and sometimes symbols - plus a number of 'fields' which is where the user enters code that define specific details for that instruction.
+    When the field is highlighted it will be highlighted with a background colour and a thin black border. This indicates that the user may now enter or edit code in that field, for example:</p>
+<el-code-block>
+    <el-statement class="ok" id="var40" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var41" class="selected focused ok" tabindex="0"><el-txt><input spellcheck="false" data-cursorstart="4" data-cursorend="4" size="3" style="width: 4ch" value="newX"></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr42" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>13</el-fr></el-statement>
+</el-code-block>
+
+<p>A green background (as above) indicates that the text in field  is valid for that field. An amber background indicates that the text is not complete
+    but that additional text could be added to make it valid. <i>Commonly</i>, the field will contain a prompt that suggests what else might be needed, and/or 
+        a drop-down list of 'symbols' that <i>might</i> be valid for the field - though it is <i>not</i> guaranteed that all those options will then
+    compile:</p>
+
+<el-code-block><el-statement class="warning" id="var6" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var7" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg>
+    <el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr8" class="selected focused warning" tabindex="0"><el-txt><input spellcheck="false" data-cursorstart="5" data-cursorend="5" size="4" style="width: 5ch" value="20 + ">
+        </el-txt><el-place><i>expression</i></el-place><el-compl><i>expression</i></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement></el-code-block>
+
+<p>A red background indicates that the contents of the field are not valid for that field. In the following example a variable name cannot contain a bracket:</p>
+
+<el-code-block><el-statement class="selected focused error" id="var9" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+<el-kw>variable </el-kw><el-field id="var10" class="error" tabindex="0"><el-txt>y(</el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr11" class="ok" tabindex="0"><el-txt><el-lit>15</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>4</el-fr></el-statement></el-code-block>
+
+<p>If a field background turns red as you type, it is best to hit <b>Backspace</b> until it goes green or amber again, so that you can identify the <i>first</i> character that caused the issue.</p>
+
+<p>If the background to a field is grey, it means that that field is <i>optional</i> - you may enter valid text or move on to the next field, or the next instruction.</p>
+<!-- #endregion -->
 
 <!-- #region Keyboard navigation-->
-<h1 id="Keyboard">Navigation &#8211; using the keyboard</h1>
+<h2 id="Keyboard">Navigation &#8211; using the keyboard</h1>
 <p>Note: For Apple Mac users: commands use of the Ctrl key in this reference, should be replaced by the macOS Cmd key.</p>
 <p>
  <table>
@@ -32,9 +121,8 @@
  </table>
  </p>
 <!-- endregion -->
-
-<!-- region Keyboard Editing-->
- <h1>Editing &#8211; using the keyboard</h1>
+<!-- #region Keyboard Editing-->
+ <h2>Editing &#8211; using the keyboard</h1>
  <p>
  <table>
  <tr><th>Keystroke</th> <th>On a selected Frame</th> <th>On a selected Field</th> </tr>
@@ -57,19 +145,61 @@
  <tr><td>Ctrl-z</td> <td>Undo last edit<br> Takes you back to the next most recent version <span>that parsed successfully.<br> </span>Any changes made that did not result in a successful parse will be lost. </td> <td></td> </tr>
 </table>
  </p>
-<!-- endregion -->
-
-<!-- region Mouse operations-->
- <h1 id="Mouse">Mouse operation &#8211; quick reference</h1>
+<!-- #endregion -->
+<!-- #region Mouse operations-->
+ <h2 id="Mouse">Mouse operation &#8211; quick reference</h1>
  <li>To select a frame, click on the keyword at the start the frame. (You can successfully click in several other places within the frame, but the simplest rule to remember is click on the starting keyword).</li>
  <li>To select an additional frame (&#8216;multi-select&#8217;), hold down the Shift key on the keyboard and click on the frame to add to the current selection. Note that all the multi-selected frames must be at peer-level (the same level of indentation) and, unless global frames, must be within the same &#8216;parent&#8217; frame.</li>
  <li>To select a field, click on the text (or, if empty, the prompt) shown for that field. Having selected the field, you may then click again at a particular place within the text to position the text cursor. (By default, when a field is selected the text cursor will be at the right-hand end of any existing text).</li>
  <li>To collapse a multi-line frame, double-click on the keyword at the start of the frame</li>
  <li>To expand a collapsed frame, double-click on the keyword at the start of the frame (or the &#8216;+&#8217; symbol in front of it).</li>
- 
- <p>NOT YET IMPLEMENTED</p>
- <li>To move selected frame, or frames, up or down within the same peer level hold down the Ctrl key and drag the mouse, or move the scroll wheel</li>
- <li>Scrolling of options within the &#8216;autocomplete&#8217; popup using the mouse wheel.</li>
-<!-- endregion -->
+ <!-- #endregion -->
+<!-- #endregion -->
+
+
+<!-- #region Status panel-->
+<h1 id="Status_panel">Status panel</h1>
+<p>The status panel is shown below:</p>
+<img src="Images/ReferenceManual/Status_panel">
+<p>The panel shows four status bars:</p>
+<ul>
+    <li><b>Parse status</b> aggregates the parse status of each <a href="#field">field</a> and shows the <i>worst</i> status of any field.
+    <i>It is important to get the Parse Status to green ('ok') at the earliest opportunity because unless the parse status is green/ok, Elan
+        cannot attempt to <i>compile</i> the code, and nor can it <i>save</i> the code to a file. If the parse status is amber/incomplete or red/error
+    </i></li>
+    <li><b>Compile status</b> If the <i>parse status</i> is green/ok, Elan will attempt to <i>compile</i> the code, and will then shown</li>
+    <li><b>Test status</b></li>
+    <li><b>Run status</b></li>
+
+<p>Each of the four status bars may appear with a green, amber, or red background - with a superimposed word to clarify the meaning. 
+    Alternatively the bar may be replaced by the blue background, with no text, indicating that that particular status is not relevant at present.</p>
+</p>
+</ul>
+<!-- #endregion -->
+
+<!-- #region The run controls-->
+<h1 id="Run_controls">Run controls</h1>
+<p>The set of 5 buttons shown below constitute the 'run controls':</p>
+<img src="Images/ReferenceManual/Run_controls.png">
+<p>Reading left-to-right the five controls are:</p>
+<li><b>Run</b> This is the normal way to run the program. It will run at full speed, ignoring any breakpoints, and is the most efficient in terms of memory usage.</li>
+<li><b>Debug</b> Run in 'debug' mode. This is how to run a program if you wish to use breakpoints and/or to single-step through it. If the program is paused, execution be be continued by hitting this button.</li> 
+<li><b>Stop</b> When a program is running, or is paused, this button will stop and exit the program.</li>
+<li><b>Pause</b> <i>If you are running in debug mode</i>, it is possible to pause the program at any point during its execution. From their you may continue by hitting 'Run in debug mode' or 'Single Step'</li>
+<li><b>Step</b> <i>If the program is paused, hitting this button will execute the next instruction and then pause again.</i>
+<!-- #endregion -->
+<!-- #endregion -->
+
+<!-- #region working with code files-->
+ <!--   #region Loading a program-->
+<!-- #endregion -->
+<!-- #endregion -->
+
+<!-- #region Demos-->
+<!-- #endregion -->
+
+
+
+
  </body>
  </html>
