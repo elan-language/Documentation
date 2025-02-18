@@ -10,7 +10,7 @@
 <title>Elan Editor - Quick Reference</title>
 </head>
 <body>
-<!-- #region Editor-->
+<!-- #region Code Editor-->
  <!-- #region Heading & Intro-->
 <h1 id="Editor">The code editor</h1>
 
@@ -156,7 +156,6 @@
  <!-- #endregion -->
 <!-- #endregion -->
 
-
 <!-- #region Status panel-->
 <h1 id="Status_panel">Status panel</h1>
 <p>The status panel is shown below:</p>
@@ -191,15 +190,42 @@
 <!-- #endregion -->
 
 <!-- #region working with code files-->
- <!--   #region Loading a program-->
+ <!--  #region Loading a program-->
 <!-- #endregion -->
 <!-- #endregion -->
 
 <!-- #region Demos-->
+<h1 id="demo">Demo</h1>
+
+<p><b>Note:</b> Depending upon how the installation of Elan that you are using, the <b>Demo</b> button might or might not be shown.</p>
+
+<p>If the <b>Demo</b> button is shown, it may be used to load one of several example programs from a menu and then run them.</p>
+
 <!-- #endregion -->
 
+<!-- #region Display-->
+ <h1 id="display">The Display</h1>
+ <img src="images/display.png">
+ <p>The Display pane is always rendered with an aspect ratio of 4:3 - so if the width is changed (by moving the central blue bart left or right) the Display will change its vertical dimension also. 
+    It is used for the following purposes, on their own or in combination:</p>
 
+ <ul>
+    <li>to generate plain text, or formatted Html, using the <a href="LangRef.html#print">print instructions</a> and/or <a href="LibRef.html#Lib_proc">print procedures</a>.</li>
+    <li>inputting text from the keyboard using various <a href="LibRef.html#System_methods">system methods</a>.</li>
+    <li>for <a href="LibRef.html#BlockGraphics">Block graphics</a></li>
+    <li>for <a href="LibRef.html#VectorGraphics">Vector graphics</a></li>
+    <li>for <a href="LibRef.html#Turtle">Turtle graphics</a></li>
+ </ul>
 
+ <p>Any of three forms of graphics may generally be overlaid with printed text/Html, or each other. 
+    (The exception is that Turtle graphics and Vector graphics may not be used together, as the former makes exclusive use of the latter.</p>
+ <p>The <b>Clear</b> button will clear all of contents of the display, irrespective of the mechanism by which it was generated. 
+    However, the individual forms of display listed above may be cleared individually using specific methods (see links above).</p>
+<!-- #endregion -->
 
+<!-- #System info-->
+ <h1 id="System_info">System info</h1>
+ 
+<!-- #endregion -->
  </body>
  </html>
