@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<!-- <p><img src="Images/ReferenceManual/Pic1.png"  align="MIDDLE" height="255" width="559"></p> -->
+<!-- <p><img src="images/Pic1.png"  align="MIDDLE" height="255" width="559"></p> -->
 
 <p class="toc_1"><a href="#Punc">Symbols, Keywords, Constants, Methods and Types</a></p>
 <p class="toc_2"><a href="#Keyword">Keywords</a></p>
@@ -442,7 +442,7 @@ index-range
 
 <h2 id="h38">Demo programs </h2>
 <p>The Beta version includes a Demo button that offers a menu of demonstration programs which you can run:</p>
-<p><img src="Images/ReferenceManual/Pic9.png"  align="MIDDLE" height="221" width="278"></p>
+<p><img src="images/Pic9.png"  align="MIDDLE" height="221" width="278"></p>
 <p>The best way to get started with Elan is to explore these demo programs. You can edit any of them and save your own copy locally. </p>
 
 <h2 id="h39">Changes and additions for Beta 6</h2>
@@ -550,7 +550,7 @@ end procedure
 <el-code>print "&lt;p&gt;some text&lt;/p&gt;"</el-code><br>
 
 <p>Will produce:</p>
-<p><img src="Images/ReferenceManual/Pic25.png"  align="MIDDLE" height="153" width="374"></p>
+<p><img src="images/Pic25.png"  align="MIDDLE" height="153" width="374"></p>
 <p>Notes</p>
 <li>For specifying style or other attributes within Html tags, the attribute values should be enclosed in single quotation marks <el-code>'</el-code> as shown. Html will recognise single or double quotation marks, but entering double quotation marks would terminate the Elan string. Alternatively, you could replace each <el-code>'</el-code> by the interpolated constant <el-code>{quotes}</el-code>.</li>
 <li>It is not necessary to put individual lines of Html into separate <el-code>print</el-code> statements &#8211; you can print a string of any length &#8211; but putting tags into separate <el-code>print</el-code> statements can improve the readability of your code. </li>
@@ -580,7 +580,7 @@ end procedure
 <el-code>end main</el-code><br>
 
 <p>Here is the result:</p>
-<p><img src="Images/ReferenceManual/Pic26.png"  align="MIDDLE" height="226" width="316"></p>
+<p><img src="images/Pic26.png"  align="MIDDLE" height="226" width="316"></p>
 <p>Alternatively you could put, say, <el-code>[</el-code> and <el-code>]</el-code> in the original Html stylesheet instead of <el-code>{</el-code> and <el-code>}</el-code>, and use a function to replace the square brackets with curly braces (defined by their Unicode codepoint values) before use, and get the same result:</p>
 <el-code>main<br>
 &nbsp;&nbsp;let stylesheet be "&lt;style&gt; h1[color:blue;font-size:24pt;],p[font-family:Helvetica;] h1&lt;/style&gt;"<br>

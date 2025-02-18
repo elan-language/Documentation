@@ -52,7 +52,7 @@
 
 <h3 id="Passing_a_function">Passing a function as a reference</h3>
 <p>On most occasions when you write the name of an existing function elsewhere in code your intent is to evaluate the function and, to do so, you write the name of the function followed by brackets containing such arguments as are required by the function. For this reason if you forget to add the brackets, you will get an error, for example:</p>
-<p><img src="Images/ReferenceManual/Pic61.png"  align="MIDDLE" height="27" width="565"></p>
+<p><img src="images/Pic61.png"  align="MIDDLE" height="27" width="565"></p>
 <p>The second sentence in this error message is for when your intention is not to evaluate the function, but to create a reference to the function. This is a valid thing to do in functional programming but is not generally done in procedural programming. As the error message says, to create a reference to a function you need to precede it by and the name of the function should then not be followed by brackets (or any arguments). For example:</p>
 <el-code>variable passes set to allPupils.filter(ref passedMathsTest)</el-code><br>
 
