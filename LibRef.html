@@ -115,15 +115,15 @@ table tr {text-align: left;}
 
     <p>Examples of some maths functions being tested:</p>
 
-    <p><img src="Images/ReferenceManual/Pic84.png"  align="MIDDLE" height="220" width="298"></p>
+    <p><img src="images/Pic84.png"  align="MIDDLE" height="220" width="298"></p>
 
     <h3>Regular expressions</h3>
     <p>Elan&#8217;s regular expressions are modelled on those of JavaScript, including the syntax for literal regular expressions. See, for example this <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">Guide to Regular Expressions</a>.</p>
     <p>More functions for using regular expressions will be added in a future release of Elan. For now&#8230;</p>
     <p>The method <el-code>testRegExp</el-code> is applied to a <el-code>String</el-code> using dot syntax and requires a <el-code>RegExp</el-code> parameter specified as a literal or as variable. It returns a Boolean. For example:</p>
-    <p><img src="Images/ReferenceManual/Pic85.png"  align="MIDDLE" height="113" width="313"></p>
+    <p><img src="images/Pic85.png"  align="MIDDLE" height="113" width="313"></p>
     <p>You can convert a valid <el-code>string</el-code> without <el-code>/../</el-code> delimiters to a <el-code>RegExp</el-code> using function <el-code>asRegExp</el-code>:</p>
-    <p><img src="Images/ReferenceManual/Pic86.png"  align="MIDDLE" height="117" width="318"></p>
+    <p><img src="images/Pic86.png"  align="MIDDLE" height="117" width="318"></p>
     <p>Although it is recommended that literal regular expressions are written with the <el-code>/../</el-code> delimiters, the ability to convert a <el-code>string</el-code> allows you to input a regular expression into a running program.</p>
 
     <h3 id="Bitwise">Bitwise functions</h3>
@@ -135,7 +135,7 @@ table tr {text-align: left;}
     <el-code id="bitShiftR">bitShiftR(a as Int, places as Int) returns Int</el-code><br>
 
     <p>Examples of the bitwise functions being tested:</p>
-    <el-code><img src="Images/ReferenceManual/Pic87.png"  align="MIDDLE" height="273" width="353"></el-code><br>
+    <el-code><img src="images/Pic87.png"  align="MIDDLE" height="273" width="353"></el-code><br>
 
     <p>The result of <el-code>bitNot(a)</el-code>, where <el-code>a</el-code> is <el-code>13</el-code>, being <el-code>-14</el-code> might be a surprise. But this is because the bitwise functions assume that the arguments are represented as 32-bit signed integers. So 13 is represented as <el-code>00000000000000000000000000001101</el-code>, and applying <el-code>bitNot</el-code> gives <el-code>11111111111111111111111111110010 </el-code>which is the value <el-code>-14 </el-code>in signed two&#8217;s complement format, the left-most bit being the sign (<el-code>0</el-code> positive, <el-code>1</el-code> negative).</p>
 <!--   #endregion-->
@@ -423,7 +423,7 @@ end main
 </pre></el-code-block>
 
 <p>Output:</p>
-<el-code><img src="Images/ReferenceManual/Pic30.png"  align="MIDDLE" height="173" width="318"></el-code><br>
+<el-code><img src="images/Pic30.png"  align="MIDDLE" height="173" width="318"></el-code><br>
 
 <p>Notes</p>
 <li><el-code>move</el-code> and <el-code>turn</el-code> are the two most commonly-used methods. To <el-code>move</el-code> backwards, specify a negative value. The value passed into <el-code>turn</el-code> is interpreted as degrees: a positive value turns clockwise; a negative value anti-clockwise. Both methods take a numeric value, which may be an <el-code>Int</el-code> or a <el-code>Float</el-code>.</li>
@@ -463,7 +463,7 @@ end main
 <el-code>  end if</el-code><br>
 <el-code>end procedure</el-code><br>
 
-<p><img src="Images/ReferenceManual/Pic31.png"  align="MIDDLE" height="256" width="320"></p>
+<p><img src="images/Pic31.png"  align="MIDDLE" height="256" width="320"></p>
 <!-- #endregion -->
 <!-- #region   VectorGraphics-->
 <h2 id="VectorGraphics">Vector graphics</h2>
@@ -476,7 +476,7 @@ end main
 <el-code>end main</el-code><br>
 
 <p>Output:</p>
-<p><img src="Images/ReferenceManual/Pic33.png"  align="MIDDLE" height="152" width="554"></p>
+<p><img src="images/Pic33.png"  align="MIDDLE" height="152" width="554"></p>
 
 <p>Notes</p>
 <li>Elan vector graphics are displayed using SVG (Scalable Vector Graphics) that are a part of the Html specification. The names of the shapes broadly correspond to the names of SVG tags: <el-code>CircleVG</el-code> for &lt;<el-code>circle../&gt;</el-code>, <el-code>LineVG</el-code> for <el-code>&lt;line../&gt;</el-code>, and <el-code>RectangleVG</el-code> for <el-code>&lt;rect../&gt;</el-code>. The properties of the Elan VG shapes match the names of the attributes used in the SVG tags, except that the <el-code>stroke-width</el-code> attribute is changed to <el-code>strokeWidth</el-code> to make it a valid <a href="#Identifier">Identifier</a>.</li>
