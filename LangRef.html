@@ -12,16 +12,28 @@
 <body>
 <!-- TODO add section & id (& index) for the three forms of Selector-->
 
+<h1>Elan Language Reference</h1>
+Links to sections of this document:<br>
+<h5><a href="#Instruction_set">Instruction Set</a></h5>
+<h6><a href="#Comment">Comments</a></h6>
+<h5><a href="#Global">Global Instructions</a></h5>
+<h6><a href="#Main">Main method</a></h6>
+<h6><a href="#Procedure">Procedure</a></h6>
+<h5><a href="#Type">Types defined as part of the language</a></h5>
+<h5><a href="#Expression">Expressions</a></h5>
+<h6><a href="#Literal_value">Literal value</a></h6>
+<h6><a href="#Func">Func</a></h6>
+
 <!-- #region Instruction Set-->
 <!--   #region Heading & Intro-->
-<h1 id="InstrSet">Instruction Set</h1>
+<h1 id="Instuction_set">Instruction Set</h1>
 
 <p>This section defines the set of instructions that make up the Elan language, and which form the building blocks for any program.</p>
 <p>There are three categories of instruction, which are distinguished where the instructions of that categeory are <em>located</em> within a program:</p>
 <li><a href="#Global">Global instructions</a> (also referred to simply as 'globals') are located <em>directly</em> within a code file.
   They are never indented from the left-hand edge, nor may they be located <em>within</em> other instructions.
   Three of the globals - main, function, and procedure - are described as 'methods' and these defined one or more <a href="#Statement">statements</a> within them.</em><div class="">
-  Four of the globals - <a href="#record">record</a>, <a href="#class">class</a>, <a href="#abstract_class">abstract class</a>, and <a href="#interface">interface</a> - define data structures and these always contain <a href="#Member">members</a>.
+  Four of the globals - <a href="#record">record</a>, <a href="#class">class</a>, <a href="#Abstract_class">abstract class</a>, and <a href="#interface">interface</a> - define data structures and these always contain <a href="#Member">members</a>.
   The two remaining globals - constant, and enum - do not contain any further instructions.</li>
 <li><a href="#Member">Member instructions</a> (also referred to simply as 'members') are located directly within the 'data structure' globals: record, class, abstract class, interface.
   All members with the exception of property, define one or more <a href="#Statement">statements</a> within them.
@@ -42,7 +54,7 @@ Comments can be inserted by a programmer at the same level as a <a href="#Global
 <!-- #endregion-->
 <!--   #region Global Instructions-->
 <!--     #region Heading & Intro-->
-<h2 id="global">Global Instructions</h2>
+<h2 id="Global">Global Instructions</h2>
 
 <p>When you navigate to a <el-code>new code</el-code> that is at <em>global</em> level (not indented from the left-hand edge of the code pane)
 you will be shown the set of globals that may be inserted there, for example:</p>
@@ -64,7 +76,7 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <a href="#comment">#</a>
 <!-- #endregion-->
 <!--     #region Main method-->
-<h3 id="main">Main method</h3>
+<h3 id="Main">Main method</h3>
 <p>A file must have a <el-code>main</el-code> method if it is intended to be run as program. (You may however develop and test code that does not have a <el-code>main</el-code> method, either as a coding exercise or for subsequent use within another program).</p>
 <p>The <el-code>main</el-code> method defines the start point when a program is run.</p>
 <p>The <el-code>main</el-code> method does not have to be at the top of the file, but this is a good convention to follow.</p>
@@ -84,7 +96,7 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <p>The <el-code>main</el-code> method may delegate work to one or more <a href="#procedure">procedure</a> or <a href="#function">function</a>.</p>
 <!-- #endregion-->
 <!--     #region Procedure-->
- <h3 id="procedure">Procedure</h3>
+ <h3 id="Procedure">Procedure</h3>
 <p>A procedure is a named piece of behaviour that may define parameters; unlike a <a href="#function">function</a>, a procedure does not return a value.
   Also unlike a function, a procedure can have &#8216;side-effects&#8217; - indeed it <em>should</em> have side-effects otherwise there would be no point in calling it!
   For this reason the statements within a procedure can:</p>
@@ -385,7 +397,7 @@ Or even to the same name if that name is a variable:</p>
 <p>The created instance may then be used within expressions, like any other variable.</p>
 
 <h3 id="inherits">Inheritance</h2>
-  <p>An ordinary <a href="class">class</a> (also known as a 'concrete class') may optionally inherit from just one <a href="abstract_class">abstract class</a>
+  <p>An ordinary <a href="class">class</a> (also known as a 'concrete class') may optionally inherit from just one <a href="Abstract_class">abstract class</a>
     but may additionally inherit from any number of <a href="interface">interfaces</a>.
     The concrete class must define for itself a concrete implementation of every <em>abstract</em> member defined in the <el-code>abstract class</el-code> or any <el-code>interface</el-code>s that it inherits from, directly or indirectly.</p>
   <p>Notes</p>
@@ -395,7 +407,7 @@ Or even to the same name if that name is a variable:</p>
   <li>The various &#8216;super-Types&#8217; (<el-code>abstract class</el-code> and/or <el-code>interface</el-code>s) that a concrete <el-code>class</el-code> inherits from may not define conflicting members, e.g. members with the same name but having different Type signatures.</li>
 <!-- #endregion-->
 <!--     #region Abstract Class-->
-<h3 id="abstract_class">Abstract Class</h3>
+<h3 id="Abstract_class">Abstract Class</h3>
 <p>See also: <a href="inherits">Inheritance</a></p>
 <p>An <el-code>abstract class</el-code> may not be instantiated (and hence may not define a constructor). It may define concrete members i.e.:</p>
 <li>a <el-code>property</el-code> </li>
@@ -666,7 +678,7 @@ print "{a} times {b} equals {a*b}"
 
 <!-- #region Language Types-->
 <!--   #region Heading & Intro-->
-<h1 id="LangTypes>">Types defined as part of the language</h1>
+<h1 id="Type">Types defined as part of the language</h1>
 <!--   #endregion-->
 <!--   #region Int-->
 <h2 id="Int">Int</h2>
@@ -1089,7 +1101,7 @@ or into existing variables of the correct Type:</p>
 <p><el-code>tuple</el-code>s may be nested: you can define a <el-code>tuple</el-code> within a <el-code>tuple</el-code>.</p>
 <!--   #endregion-->
 <!--   #region Func-->
-<h2>Func</h2>
+<h3 id="Func">Func</h3>
 <p>A <el-code>function</el-code> may be passed as an argument into another <el-code>function</el-code> (or a <el-code>procedure</el-code>), or returned as the result of calling another <el-code>function</el-code>. This pattern is known as &#8216;Higher order Function&#8217; (HoF), and is a key idea in the functional programming paradigm. To define a <el-code>function</el-code> that takes in another <el-code>function</el-code> as a parameter, or returns a <el-code>function</el-code>, you need to specify the Type of the <el-code>function</el-code>, just as you would specify the Type of every parameter and the return Type for the <el-code>function</el-code>. </p>
 
 <h3>Type name</h3>
@@ -1102,7 +1114,7 @@ or into existing variables of the correct Type:</p>
 
 <!-- #region Expressions-->
 <!--   #region Heading & Intro-->
-<h1 id="Express">Expressions</h1>
+<h1 id="Expression">Expressions</h1>
 <p>One of the most important constructs in programming is the &#8216;expression&#8217;. An expression is evaluated to return a value. An expression is made up of the following possible elements:</p>
 <li>Literal value</li>
 <li>Named value</li>
@@ -1111,7 +1123,7 @@ or into existing variables of the correct Type:</p>
 <p>which this chapter describes.</p>
 <!--   #endregion-->
 <!--   #region Literal value-->
-<h2 id="LitVal">Literal value</h2>
+<h2 id="Literal_value">Literal value</h2>
 <p>A literal value is where a value is written &#8216;literally&#8217; in the code, such as <el-code>3.142</el-code> &#8211; in contrast to a value that is referred to by a name.</p>
 <p>The following data Types may be written as literal values (follow the links to view the form of each literal value):</p>
 <el-code><a href="#Int">Int</a>, <a href="#Float">Float</a>, <a href="#Boolean">Boolean</a>, <a href="#String">String</a>, <a href="#Array">Array</a>, <a href="#List">List</a>, <a href="#Dictionary">Dictionary</a>, <a href="#DictionaryImmutable">DictionaryImmutable</a>, <a href="#Tuple">Tuple</a></el-code><br>
