@@ -41,7 +41,7 @@
     <el-kw>end main</el-kw>
     </main></el-code-block>
 
-<li>Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the sequence of other instructions that it contains, which are all indented by two characters:</li>
+<li id="Container_instruction">Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the sequence of other instructions that it contains, which are all indented by two characters:</li>
     <el-code-block>
         <el-statement class="selected focused ok multiline" id="while12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
             <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
@@ -99,9 +99,103 @@
 
 <p>If the background to a field is grey, it means that that field is <i>optional</i> - you may enter valid text or move on to the next field, or the next instruction.</p>
 <!-- #endregion -->
+ <!-- #region Adding Instructions-->
+ <h2 id="Selector">Adding Instructions into a program</h2>
 
+ <p>At various places in the code you may see a 'new code selector', for example:</p>
+
+ <img src = "images/New_code.png">
+
+ <p>which indicates that new instruction(s) may be created there. When the line containing 'new code' is given focus it 
+    changes form to show the list of instructions that you may insert, for example: </p>
+
+    <el-code>
+        <el-global class="selected focused ok empty" id="select0" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+            <el-select><el-txt></el-txt><el-place>new code</el-place><el-help class="selector">
+                main procedure function test constant #</el-help></el-select></el-global>
+    </el-code>
+
+    <h3>Using a selector to insert a new instruction</h3>
+
+    <p>When a new code selector has focus (for example as shown above) 
+        in most cases you can type just the first character of the instruction to be inserted. And you will then see
+        the template for that instruction including any mandatory and/or optional <a href="">fields</a>. 
+        For example, given the initial list shown above, typing <el-code>f</el-code> will result in this being inserted:</p>
+
+<el-code-block>
+        <el-func class="warning multiline" id="func5" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+        <el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident7" class="selected focused empty warning" tabindex="0"><el-txt><input spellcheck="false" data-cursorstart="0" data-cursorend="0" size="1" style="width: 2px" value=""></el-txt><el-place><i>name</i></el-place><el-compl><i>name</i></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-method>(<el-field id="params8" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i>parameter definitions</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Zero or more parameter definitions comma-separated. Each parameter definition consists of a parameter name followed by the 'as' keyword and a Type. A parameter name follows the same rules as for a variable name - starting with a lower-case letter.">?</el-help></el-field>)<el-kw> returns </el-kw><el-field id="type9" class="empty warning" tabindex="0"><el-txt></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-top>
+        <el-statement class="ok empty" id="select6" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-select><el-txt></el-txt><el-place>new code</el-place><el-help class="selector"> each for if let repeat set throw try variable while #</el-help></el-select></el-statement>
+        <el-statement class="warning" id="return10" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>return </el-kw><el-field id="expr11" class="empty warning" tabindex="0"><el-txt></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement>
+        <el-kw>end function</el-kw>
+        </el-func>
+        <el-global class="ok empty" id="select0" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-select><el-txt></el-txt><el-place>new code</el-place><el-help class="selector"> procedure function test constant enum record class abstract interface #</el-help></el-select></el-global></div>
+</el-code-block>
+
+<p>Note that when an instruction is inserted is is followed by a 'new code' selector, and if, as in the example above, the inserted instruction
+    template is for a <a href="#Container_instruction">container instruction</a> then the template will contain its own 'new code' selector for inserting further instructions within it.</p>
+</p>
+
+<p>Where two or more instruction start with the same letter(s) typing the initial letter will filter the options. 
+        For example, if the initial list were:</p>
+
+<el-code><el-statement class="selected focused ok empty" id="select4" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-select><el-txt></el-txt><el-place>new code</el-place><el-help class="selector"> call each for if let print repeat set throw try variable while #</el-help></el-select></el-statement></el-code>
+
+<p>then after typing <el-code>t</el-code> you will see:</p>
+
+<el-code><el-statement class="selected focused ok" id="select4" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-select><el-txt>t</el-txt><el-place>new code</el-place><el-help class="selector"> throw try</el-help></el-select></el-statement></el-code>
+
+<p>and the desired instruction can be selected by then typing the second character (<el-code>h</el-code> or <el-code>r</el-code>).
+In the following example, starting from this <a href="#Member_selector">member selector</a>:</p>
+
+<!--TODO-->
+
+<h3>Why do the options I can see differ from those shown here?</h3>
+    
+    <p>The specific list offered may depends upon various factors including:</p>
+
+    <ul>
+        <li>The specific context where the 'new code' is located</li>
+        <li>What other instructions already exist in that context</li>
+        <li>Your individual permissions determined by your <a href="#Profile">User profile</a></li>
+    </ul>
+
+    <p>which means that you won't necessarily see all the instructions shown in this explanation. However, in general there are three 
+        distinct forms of 'new code selector': the global selector, the statement selector, and the member selector.<p>
+
+<h3 id="Global_selector">Global selector</h3>
+
+<p>The global selector appears only at 'global' level - in other words when the 'new code' is located <i>directly</i> within the file,
+rather than within <a href="#Container_Instruction">container instruction</a>. When given focus, it will list the <a href="LangRef.html#global"></a>global instructions that
+you may insert. This is the full list:</p>
+
+<el-code>
+    <el-global class="selected focused ok empty" id="select0" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-select><el-txt></el-txt><el-place>new code</el-place><el-help class="selector"> main procedure function test constant enum record class abstract interface #</el-help></el-select></el-global>
+</el-code>
+
+<p>Notes:</p>
+<li><el-code>main</el-code> will not be shown if the program already contains a <el-code>main</el-code> routine.</li>
+
+<h3 id="Statement_selector">Statement selector</h3>
+
+<h3 id="Member_selector">Member selector</h3>
+
+
+
+
+<h3>What if there is no 'new code' selector shown where you want to insert an instruction?</h3>
+ <p> If you want to insert new instructions in a place where there is no 'new code' indicator, then <i>either</i>:</p>
+    <ul>
+    <li>select the instruction immediately <i>before</i> where you want the new instruction and press <b>Enter</b> <i>or</i></li>
+    <li>select the instruction immediately <i>after</i> where you want the new instruction and press <b>Shift-Enter</b></li>
+</ul>
+
+<h3>How to remove unneeded new code selectors</h3>
+<!-- TODO  Delete and Trim-->
+
+ <!-- #endregion -->
 <!-- #region Keyboard navigation-->
-<h2 id="Keyboard">Navigation &#8211; using the keyboard</h1>
+<h2 id="Keyboard">Navigation &#8211; using the keyboard</h2>
 <p>Note: For Apple Mac users: commands use of the Ctrl key in this reference, should be replaced by the macOS Cmd key.</p>
 <p>
  <table>
@@ -122,7 +216,7 @@
  </p>
 <!-- endregion -->
 <!-- #region Keyboard Editing-->
- <h2>Editing &#8211; using the keyboard</h1>
+ <h2>Editing &#8211; using the keyboard</h2>
  <p>
  <table>
  <tr><th>Keystroke</th> <th>On a selected Frame</th> <th>On a selected Field</th> </tr>
@@ -147,7 +241,7 @@
  </p>
 <!-- #endregion -->
 <!-- #region Mouse operations-->
- <h2 id="Mouse">Mouse operation &#8211; quick reference</h1>
+ <h2 id="Mouse">Mouse operation &#8211; quick reference</h2>
  <li>To select a frame, click on the keyword at the start the frame. (You can successfully click in several other places within the frame, but the simplest rule to remember is click on the starting keyword).</li>
  <li>To select an additional frame (&#8216;multi-select&#8217;), hold down the Shift key on the keyboard and click on the frame to add to the current selection. Note that all the multi-selected frames must be at peer-level (the same level of indentation) and, unless global frames, must be within the same &#8216;parent&#8217; frame.</li>
  <li>To select a field, click on the text (or, if empty, the prompt) shown for that field. Having selected the field, you may then click again at a particular place within the text to position the text cursor. (By default, when a field is selected the text cursor will be at the right-hand end of any existing text).</li>
@@ -294,5 +388,13 @@
 <!-- #endregion -->
 <!-- #endregion -->
 
+<!-- #region User profile-->
+<h1 id="Profile">User profile</h1>
+<!-- TODO -->
+<p>User profiles determine the availability of specific language instructions and IDE capabilities are made available to the user. 
+    They may also be used to manage accessibility - for example to provide alternate colour scheme(s) for users with CVD. 
+    Profiles are created and managed by a teacher.
+</p>
+<!-- #endregion -->
  </body>
  </html>
