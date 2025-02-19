@@ -9,6 +9,8 @@ h1 { font-size:28pt; font-weight:bold;  text-indent:0pt; margin-top:24pt; margin
 h2 { font-size:20pt; font-weight:bold; text-indent:0pt; margin-top:20pt; margin-bottom:4pt; }
 h3 { font-size:16pt; font-weight:bold; text-indent:0pt; margin-top:16pt; margin-bottom:4pt; }
 h4 {font-size:12pt; font-style:bold;  text-indent:0pt; margin-top:12pt; margin-bottom:4pt; }
+h5 {font-size:12pt; font-style:bold;  text-indent:0pt; margin-top:6pt; margin-bottom:0pt; }
+h6 {font-size:12pt; font-style:bold;  text-indent:30pt; margin-top:0pt; margin-bottom:0pt; }
 
 body { font-size:12pt; margin-left: 20px; text-decoration:none; font-weight:normal; font-style:normal; text-transform:none; color:rgb(0,0,0); text-align:left; line-height:1.33; }
 .bold {
