@@ -41,7 +41,7 @@
     <el-kw>end main</el-kw>
     </main></el-code-block>
 
-<li>Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the of other instructions that it contains, which are all indented buy two characters:</li>
+<li>Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the sequence of other instructions that it contains, which are all indented by two characters:</li>
     <el-code-block>
         <el-statement class="selected focused ok multiline" id="while12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
             <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
@@ -154,7 +154,18 @@
  <li>To collapse a multi-line frame, double-click on the keyword at the start of the frame</li>
  <li>To expand a collapsed frame, double-click on the keyword at the start of the frame (or the &#8216;+&#8217; symbol in front of it).</li>
  <!-- #endregion -->
+<!-- #region Context menu-->
+<h2 id="Context_menu">Context menu</h2>
+
+<p>When an instruction is highlighted, you may right-mouse-click on it, or type <b>Ctrl-m</b> to bring up the context menu, for example:</p>
+
+<img src="Images/Context_menu.png">
+<p>Note that several of the options show a keyboard short-cut - which you may use just by selecting the instruction and pressing
+    the specified keys <i>without having to bring up the context menu.</i></p>
 <!-- #endregion -->
+<!-- #endregion -->
+
+
 
 <!-- #region Status panel-->
 <h1 id="Status_panel">Status panel</h1>
@@ -182,10 +193,10 @@
 <img src="Images/Run_controls.png">
 <p>Reading left-to-right the five controls are:</p>
 <li><b>Run</b> This is the normal way to run the program. It will run at full speed, ignoring any breakpoints, and is the most efficient in terms of memory usage.</li>
-<li><b>Debug</b> Run in 'debug' mode. This is how to run a program if you wish to use breakpoints and/or to single-step through it. If the program is paused, execution be be continued by hitting this button.</li> 
+<li><b>Debug</b> Run in 'debug' mode. See <a href="#Debugging">Debugging</a></li> 
 <li><b>Stop</b> When a program is running, or is paused, this button will stop and exit the program.</li>
-<li><b>Pause</b> <i>If you are running in debug mode</i>, it is possible to pause the program at any point during its execution. From their you may continue by hitting 'Run in debug mode' or 'Single Step'</li>
-<li><b>Step</b> <i>If the program is paused, hitting this button will execute the next instruction and then pause again.</i>
+<li><b>Pause</b> Pause the program (if running in debug mode). See <a href="#Debugging">Debugging</a></li>
+<li><b>Step</b> From a paused state, execute the next instruction only and pause again. See <a href="#Debugging">Debugging</a></i>
 <!-- #endregion -->
 <!-- #endregion -->
 
@@ -199,7 +210,8 @@
 
 <p><b>Note:</b> Depending upon how the installation of Elan that you are using, the <b>Demo</b> button might or might not be shown.</p>
 
-<p>If the <b>Demo</b> button is shown, it may be used to load one of several example programs from a menu and then run them.</p>
+<p>If the <b>Demo</b> button is shown, clicking on it will show a list of available demo programs, 
+    which you may load just by selecting the program name. You can then run the program with the <a href="#Run_controls">Run button</a>.</p>
 
 <!-- #endregion -->
 
@@ -211,21 +223,76 @@
 
  <ul>
     <li>to generate plain text, or formatted Html, using the <a href="LangRef.html#print">print instructions</a> and/or <a href="LibRef.html#Lib_proc">print procedures</a>.</li>
-    <li>inputting text from the keyboard using various <a href="LibRef.html#System_methods">system methods</a>.</li>
-    <li>for <a href="LibRef.html#BlockGraphics">Block graphics</a></li>
+    <li>to input text from the keyboard using various <a href="LibRef.html#System_methods">system methods</a>.</li>
+    <li>for <a href="LibRef.html#BlockGraphics">Block graphics</a> (as shown in the 'maze' example above)</li>
     <li>for <a href="LibRef.html#VectorGraphics">Vector graphics</a></li>
     <li>for <a href="LibRef.html#Turtle">Turtle graphics</a></li>
  </ul>
 
- <p>Any of three forms of graphics may generally be overlaid with printed text/Html, or each other. 
-    (The exception is that Turtle graphics and Vector graphics may not be used together, as the former makes exclusive use of the latter.</p>
+ <p>Any of the three forms of graphics may be overlaid with printed text/Html, or each other, with the one exception that Turtle graphics and Vector graphics may not be used together - as the former makes exclusive use of the latter.</p>
  <p>The <b>Clear</b> button will clear all of contents of the display, irrespective of the mechanism by which it was generated. 
     However, the individual forms of display listed above may be cleared individually using specific methods (see links above).</p>
 <!-- #endregion -->
 
 <!-- #System info-->
  <h1 id="System_info">System info</h1>
- 
+
+ <img src="images/System_info.png">
+
+ <p>The <b>System info</b> pane shows only messages generated by the Elan system, of three forms:</p>
+ <ul>
+    <li>Feedback on a user-action, for example: <el-code>Paste Failed: Nothing to paste</el-code></li>
+    <li>Run-time error messages, as shown in the screenshot above. Following the error message (the first two lines), you will see a 'stack trace', 
+        the top-most line of which indicates the routine (function, procedure, or main) in which the error occurred.
+         If it is not obvious which instruction within the routine caused the error, you can use the <a href="#Debugging">Debugging</a> facilities.</li>
+    <li>Status of all variable, whenever program execution is paused. See <a>Debugging</a></li>
+ </ul>
+
+ <p>If the information presented exceeds the space available for the pane, a scroll-bar will be shown.</p>
 <!-- #endregion -->
+
+<!-- #Debugging-->
+<!--   # Heading & Intro-->
+<h1 id="Debugging">Debugging</h1>
+
+<p>Elan contains some simple debugging tools. To use these tools, you need to run the program via the <a href="#Run_controls">Debug button</a>).
+    Note that because of the additional overhead involved in debugging, the program may run slower than when run normally.</p>
+
+<p>When debugging, a program may be paused at any point with the <a href="#Run_controls">Pause button. 
+    The <a href="#Status_panel">Run status</a> will then show as <el-code>paused</el-code>. Note, however, that:
+    <ul>
+        <li>the Pause key is not active if the program is currently waiting for a user input.)</li>
+        <li>it is not possible to pause within a loop that is executing very fast. For that you should use a breakpoint (below)</li>
+    </ul>
+
+<p>Whenever the run status is shown as <el-code>paused</el-code> , 
+    the instruction that would have been executed next will be highlighted with an amber background, and 
+    the <a href="#System_info">System info</a> will display the current value of each named value that is defined in the current scope, for example:</p>
+
+<img src="images/Variable_dump.png">
+
+<p>From the paused state, you may continue execution of the program by clicking the Debug key, or you may execute <i>just the next instruction</i>
+     by clicking the <a href="#Run_controls">Single step</a> button.</p>
+<!-- #endregion -->
+<!--   #Breakpoints-->
+<h2 id="Breakpoint">Breakpoints</h2>
+<p>You can place a breakpoint on an instruction, by selecting the instruction and then hitting <b>Ctrl-b</b>, 
+    or by bringing up the <a href="#Context_menu">Context menu</a> and selecting <b>set breakpoint</b>.
+    The breakpoint will be shown as a (red' flash adjacent to the instruction:</p>
+
+    <img src="images/Breakpoint_set.png">
+
+    <p>Pressing <b>Ctrl-b</b> on a selected instruction that already has a breakpoint will clear that breakpoint.
+    The context menu also offers options to clear a breakpoint that has been set, or to clear <i>all</i> breakpoints from the program in one go.</p>
+
+    <p>Breakpoints are active <i>only when running the program via the</i> <a href="#Run_controls">Debug button</a>.
+        Then,whenever a breakpoint is reached, execution will be paused, and the instruction containing the breakpoint will be 
+        highlighted with an amber background:</p>
+
+        <img src="images/Breakpoint_reached.png">
+        <p>and the <a href="#System_info">System info</a> will display the current value of each named value that is defined in the current scope.</p>
+<!-- #endregion -->
+<!-- #endregion -->
+
  </body>
  </html>
