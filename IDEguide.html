@@ -7,19 +7,25 @@
 <link href="Documentation.css" rel="stylesheet">
 <link href="colourScheme.css" rel="stylesheet">
 <link href="elanStyle.css" rel="stylesheet">
-<title>Elan Editor - Quick Reference</title>
+<title>Elan Editor Reference</title>
+<script type="text/javascript" src="generated_toc.js"></script>
 </head>
 <body>
+
+<div class="docTitle">Elan Editor Reference</div>
+
+<div id="generated-toc" class="generate_from_h1"></div>
+
 <!-- #region Code Editor-->
  <!-- #region Heading & Intro-->
 <h1 id="Editor">The code editor</h1>
 
 <p>The main pane within the IDE is the 'code editor`.</p>
 
-<p>When entering, editing, or just navigating (browsing) through, different sections of code will be highlighted at two different levels: 
+<p>When entering, editing, or just navigating (browsing) through, different sections of code will be highlighted at two different levels:
     whole instruction(s) or an individual field within an instruction.</p>
 
-<h3 id="instruction">Instructions</h3>
+<h3 id="Instruction">Instructions</h3>
 
 <p>The following show examples of instructions being highlighted.</p>
 
@@ -41,7 +47,7 @@
     <el-kw>end main</el-kw>
     </main></el-code-block>
 
-<li id="Container_instruction">Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the sequence of other instructions that it contains, which are all indented by two characters:</li>
+<li id="Container">Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the sequence of other instructions that it contains, which are all indented by two characters:</li>
     <el-code-block>
         <el-statement class="selected focused ok multiline" id="while12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
             <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
@@ -73,7 +79,7 @@
     <el-statement class="selected focused ok" id="let15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var16" class="ok" tabindex="0"><el-txt><el-id>b</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>CircleVG</el-type>()<el-kw> with </el-kw><br><el-id>cx</el-id><el-kw> set to </el-kw><el-id>i</el-id>*<el-lit>5</el-lit> + <el-lit>2</el-lit>, <br><el-id>cy</el-id><el-kw> set to </el-kw><el-lit>75</el-lit>, <br><el-id>r</el-id><el-kw> set to </el-kw><el-lit>1</el-lit>, <br><el-id>fill</el-id><el-kw> set to </el-kw>-<el-lit>1</el-lit>, <br><el-id>stroke</el-id><el-kw> set to </el-kw><el-id>white</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-statement>
 </el-code-block>
 
-<h3 id="field">Fields</h3>
+<h3 id="Field">Fields</h3>
 
 <p>Instructions consist of fixed (or 'templated') code - keywords and sometimes symbols - plus a number of 'fields' which is where the user enters code that define specific details for that instruction.
     When the field is highlighted it will be highlighted with a background colour and a thin black border. This indicates that the user may now enter or edit code in that field, for example:</p>
@@ -82,7 +88,7 @@
 </el-code-block>
 
 <p>A green background (as above) indicates that the text in field  is valid for that field. An amber background indicates that the text is not complete
-    but that additional text could be added to make it valid. <i>Commonly</i>, the field will contain a prompt that suggests what else might be needed, and/or 
+    but that additional text could be added to make it valid. <i>Commonly</i>, the field will contain a prompt that suggests what else might be needed, and/or
         a drop-down list of 'symbols' that <i>might</i> be valid for the field - though it is <i>not</i> guaranteed that all those options will then
     compile:</p>
 
@@ -112,7 +118,7 @@
         </main>
  </el-code-block>
 
- <p>which indicates that new instruction(s) may be created there. When the line containing 'new code' is given focus it 
+ <p>which indicates that new instruction(s) may be created there. When the line containing 'new code' is given focus it
     changes form to show the list of instructions that you may insert, for example: </p>
 
     <el-code>
@@ -123,9 +129,9 @@
 
     <h3>Using a selector to insert a new instruction</h3>
 
-    <p>When a new code selector has focus (for example as shown above) 
+    <p>When a new code selector has focus (for example as shown above)
         in most cases you can type just the first character of the instruction to be inserted. And you will then see
-        the template for that instruction including any mandatory and/or optional <a href="">fields</a>. 
+        the template for that instruction including any mandatory and/or optional <a href="">fields</a>.
         For example, given the initial list shown above, typing <el-code>f</el-code> will result in this being inserted:</p>
 
 <el-code-block>
@@ -142,7 +148,7 @@
     template is for a <a href="#Container_instruction">container instruction</a> then the template will contain its own 'new code' selector for inserting further instructions within it.</p>
 </p>
 
-<p>Where two or more instruction start with the same letter(s) typing the initial letter will filter the options. 
+<p>Where two or more instruction start with the same letter(s) typing the initial letter will filter the options.
         For example, if the initial list were:</p>
 
 <el-code><el-statement class="selected focused ok empty" id="select4" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-select><el-txt></el-txt><el-place>new code</el-place><el-help class="selector"> call each for if let print repeat set throw try variable while #</el-help></el-select></el-statement></el-code>
@@ -157,7 +163,7 @@ In the following example, starting from this <a href="#Member_selector">member s
 <!--TODO-->
 
 <h3>Why do the options I can see differ from those shown here?</h3>
-    
+
     <p>The specific list offered may depends upon various factors including:</p>
 
     <ul>
@@ -166,7 +172,7 @@ In the following example, starting from this <a href="#Member_selector">member s
         <li>Your individual permissions determined by your <a href="#Profile">User profile</a></li>
     </ul>
 
-    <p>which means that you won't necessarily see all the instructions shown in this explanation. However, in general there are three 
+    <p>which means that you won't necessarily see all the instructions shown in this explanation. However, in general there are three
         distinct forms of 'new code selector': the global selector, the statement selector, and the member selector.<p>
 
 <h3 id="Global_selector">Global selector</h3>
@@ -211,7 +217,7 @@ you may insert. This is the full list:</p>
  <tr><td>Tab</td> <td>First field in frame.</td> <td>Select next field within frame or, if from last field in a frame, select the frame itself.<br> (If the field has a selected option in the auto-complete popup list then Tab will use that option &#8211; the same as Enter) </td> </tr>
  <tr><td>&uarr;</td> <td>Select previous frame <br> (within peer-level only). </td> <td>Select previous frame<br> &nbsp;(in tab order). </td> </tr>
  <tr><td>&darr;</td> <td>Select next frame<br> (within peer-level only). </td> <td>Select next frame<br> &nbsp;(in tab order). </td> </tr>
- <tr><td>&larr;</td> <td>Select parent frame (if any).</td> <td>Move text cursor left within field.</td> </tr> 
+ <tr><td>&larr;</td> <td>Select parent frame (if any).</td> <td>Move text cursor left within field.</td> </tr>
  <tr><td>&rarr;</td> <td>Select first child frame (if any).</td> <td>Move text cursor right within field.</td> </tr>
  <tr><td>Shift- &uarr;</td> <td>Add prev. frame (peer-level) to current selection.</td> <td>If auto-complete options are offered (drop-down list), move the selection down one in the list. (See also Enter)</td> </tr>
  <tr><td>Shift- &darr;</td> <td>Add next frame (peer-level) to current selection.</td> <td>If auto-complete options are offered (drop-down list), move the selection up one in the list. (See also Enter)</td> </tr>
@@ -281,7 +287,7 @@ you may insert. This is the full list:</p>
     <li><b>Test status</b></li>
     <li><b>Run status</b></li>
 
-<p>Each of the four status bars may appear with a green, amber, or red background - with a superimposed word to clarify the meaning. 
+<p>Each of the four status bars may appear with a green, amber, or red background - with a superimposed word to clarify the meaning.
     Alternatively the bar may be replaced by the blue background, with no text, indicating that that particular status is not relevant at present.</p>
 </p>
 </ul>
@@ -293,7 +299,7 @@ you may insert. This is the full list:</p>
 <img src="Images/Run_controls.png">
 <p>Reading left-to-right the five controls are:</p>
 <li><b>Run</b> This is the normal way to run the program. It will run at full speed, ignoring any breakpoints, and is the most efficient in terms of memory usage.</li>
-<li><b>Debug</b> Run in 'debug' mode. See <a href="#Debugging">Debugging</a></li> 
+<li><b>Debug</b> Run in 'debug' mode. See <a href="#Debugging">Debugging</a></li>
 <li><b>Stop</b> When a program is running, or is paused, this button will stop and exit the program.</li>
 <li><b>Pause</b> Pause the program (if running in debug mode). See <a href="#Debugging">Debugging</a></li>
 <li><b>Step</b> From a paused state, execute the next instruction only and pause again. See <a href="#Debugging">Debugging</a></i>
@@ -306,19 +312,19 @@ you may insert. This is the full list:</p>
 <!-- #endregion -->
 
 <!-- #region Demos-->
-<h1 id="demo">Demo</h1>
+<h1 id="Button_Demo">Demo</h1>
 
 <p><b>Note:</b> Depending upon how the installation of Elan that you are using, the <b>Demo</b> button might or might not be shown.</p>
 
-<p>If the <b>Demo</b> button is shown, clicking on it will show a list of available demo programs, 
+<p>If the <b>Demo</b> button is shown, clicking on it will show a list of available demo programs,
     which you may load just by selecting the program name. You can then run the program with the <a href="#Run_controls">Run button</a>.</p>
 
 <!-- #endregion -->
 
 <!-- #region Display-->
- <h1 id="display">The Display</h1>
+ <h1 id="Display">The Display</h1>
  <img src="images/display.png">
- <p>The Display pane is always rendered with an aspect ratio of 4:3 - so if the width is changed (by moving the central blue bart left or right) the Display will change its vertical dimension also. 
+ <p>The Display pane is always rendered with an aspect ratio of 4:3 - so if the width is changed (by moving the central blue bart left or right) the Display will change its vertical dimension also.
     It is used for the following purposes, on their own or in combination:</p>
 
  <ul>
@@ -330,7 +336,7 @@ you may insert. This is the full list:</p>
  </ul>
 
  <p>Any of the three forms of graphics may be overlaid with printed text/Html, or each other, with the one exception that Turtle graphics and Vector graphics may not be used together - as the former makes exclusive use of the latter.</p>
- <p>The <b>Clear</b> button will clear all of contents of the display, irrespective of the mechanism by which it was generated. 
+ <p>The <b>Clear</b> button will clear all of contents of the display, irrespective of the mechanism by which it was generated.
     However, the individual forms of display listed above may be cleared individually using specific methods (see links above).</p>
 <!-- #endregion -->
 
@@ -342,7 +348,7 @@ you may insert. This is the full list:</p>
  <p>The <b>System info</b> pane shows only messages generated by the Elan system, of three forms:</p>
  <ul>
     <li>Feedback on a user-action, for example: <el-code>Paste Failed: Nothing to paste</el-code></li>
-    <li>Run-time error messages, as shown in the screenshot above. Following the error message (the first two lines), you will see a 'stack trace', 
+    <li>Run-time error messages, as shown in the screenshot above. Following the error message (the first two lines), you will see a 'stack trace',
         the top-most line of which indicates the routine (function, procedure, or main) in which the error occurred.
          If it is not obvious which instruction within the routine caused the error, you can use the <a href="#Debugging">Debugging</a> facilities.</li>
     <li>Status of all variable, whenever program execution is paused. See <a>Debugging</a></li>
@@ -358,15 +364,15 @@ you may insert. This is the full list:</p>
 <p>Elan contains some simple debugging tools. To use these tools, you need to run the program via the <a href="#Run_controls">Debug button</a>).
     Note that because of the additional overhead involved in debugging, the program may run slower than when run normally.</p>
 
-<p>When debugging, a program may be paused at any point with the <a href="#Run_controls">Pause button. 
+<p>When debugging, a program may be paused at any point with the <a href="#Run_controls">Pause button.
     The <a href="#Status_panel">Run status</a> will then show as <el-code>paused</el-code>. Note, however, that:
     <ul>
         <li>the Pause key is not active if the program is currently waiting for a user input.)</li>
         <li>it is not possible to pause within a loop that is executing very fast. For that you should use a breakpoint (below)</li>
     </ul>
 
-<p>Whenever the run status is shown as <el-code>paused</el-code> , 
-    the instruction that would have been executed next will be highlighted with an amber background, and 
+<p>Whenever the run status is shown as <el-code>paused</el-code> ,
+    the instruction that would have been executed next will be highlighted with an amber background, and
     the <a href="#System_info">System info</a> will display the current value of each named value that is defined in the current scope, for example:</p>
 
 <img src="images/Variable_dump.png">
@@ -376,7 +382,7 @@ you may insert. This is the full list:</p>
 <!-- #endregion -->
 <!--   #Breakpoints-->
 <h2 id="Breakpoint">Breakpoints</h2>
-<p>You can place a breakpoint on an instruction, by selecting the instruction and then hitting <b>Ctrl-b</b>, 
+<p>You can place a breakpoint on an instruction, by selecting the instruction and then hitting <b>Ctrl-b</b>,
     or by bringing up the <a href="#Context_menu">Context menu</a> and selecting <b>set breakpoint</b>.
     The breakpoint will be shown as a (red' flash adjacent to the instruction:</p>
 
@@ -386,7 +392,7 @@ you may insert. This is the full list:</p>
     The context menu also offers options to clear a breakpoint that has been set, or to clear <i>all</i> breakpoints from the program in one go.</p>
 
     <p>Breakpoints are active <i>only when running the program via the</i> <a href="#Run_controls">Debug button</a>.
-        Then,whenever a breakpoint is reached, execution will be paused, and the instruction containing the breakpoint will be 
+        Then,whenever a breakpoint is reached, execution will be paused, and the instruction containing the breakpoint will be
         highlighted with an amber background:</p>
 
         <img src="images/Breakpoint_reached.png">
@@ -397,8 +403,8 @@ you may insert. This is the full list:</p>
 <!-- #region User profile-->
 <h1 id="Profile">User profile</h1>
 <!-- TODO -->
-<p>User profiles determine the availability of specific language instructions and IDE capabilities are made available to the user. 
-    They may also be used to manage accessibility - for example to provide alternate colour scheme(s) for users with CVD. 
+<p>User profiles determine the availability of specific language instructions and IDE capabilities are made available to the user.
+    They may also be used to manage accessibility - for example to provide alternate colour scheme(s) for users with CVD.
     Profiles are created and managed by a teacher.
 </p>
 <!-- #endregion -->
