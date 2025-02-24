@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-GB">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="Documentation.css" rel="stylesheet">
+<link href="colourScheme.css" rel="stylesheet">
+<link href="elanStyle.css" rel="stylesheet">
+<title>Blackjack</title>
+</head>
+<body>
+
+<div class="docTitle">Blackjack</div>
+
+<div id="generated-toc" class="generate_from_h1"></div>
+
+<p>In this exercise you will:</p>
+
+<ul>
+    <li>Play a few hands of the card-game Blackjack (also known as 'twenty-one') learning:
+        <ul>
+            <li>How to load, run, and stop an existing Elan program.</li>
+            <li>The rules of Blackjack and how it is played and some of the important terminology such as 'draw', 'stand', 'bust', 'soft-ace', and 'dealer face-card'.</li>
+        </ul>
+    </li>
+    <li>Explore the code for the ready-made Elan Blackjack program, learning:
+    <ul>
+        <li>How to navigate (move around) the code in the program.</li>
+        <li>That a program is made up from instructions.</li>
+        <li>How one instruction may be made up from a sequence of other instructions.</li>
+        <li>How to recognise a few common instructions, and what they do.</li>
+    </ul>
+    </li>
+    <li>Make small modifications to the program, learning:
+    <ul>
+        <li>How to edit an existing instruction, include the difference between the 'templated' parts of an instruction,
+             which you cannot modify, and the 'fields' within an instruction which you can modify.</li>
+        <li>How to ensure that any changes/additions that you make are saved to a file, so that you can retrieve them again.</li>
+        <li>The program development cycle: write, run, test, refine.</li>
+    </ul>
+    </li>
+    <li>Write new code to create fully-automated Blackjack players that implement different strategies, learning:
+        <ul>
+            <li>How to implement two different, but minimal automated player strategies.</li>
+            <li>How to run a single simulated hand of Blackjack for the Dealer, and both your automated players.</li>
+            <li>How to run the same simulation 10,000 times and compare how each player, and the Dealer, have scored (known as 'looping' or 'iteration')</li>
+            <li>How to add a 'decision' into a strategy, by using a 'condition' or 'selection'.</li>
+            <li>How to refine an automated player's decision to make proper use of a 'soft ace'.</li>
+            <li>How to determine whether the dealer's face card makes a difference, by analysing how often the Dealer goes bust from different face cards.</li>
+            <li>How to refine the player's strategy to make best use of this information.</li>
+        </ul>
+</ul>
+
+<h1>Play a few hands of Blackjack using a ready-made Elan program</h1>
+
+<p>Before you start this exercise, your teacher should have advised you:</p>
+
+<ul>
+    <li>Where to access Elan (it might be via the public web, or locally from a school server).</li>
+    <li>Where you can access the ready made Blackjack program.</li>
+</ul>
+
+<h2>Load and Run the program</h2>
+
+<p>From the Elan page, select <b>File</b> then <b>Load</b> and use the file-selector dialog to find the file <b>Blackjack.elan</b>. 
+    Your screen should then look something like this (the text might be slighlty different due to version changes):</p>
+
+<img src="images/bj1-1.png">
+
+<p><b>Note</b> the following:</p>
+<ul>
+    <li>The <b>System info</b> pane at the bottom-right should be empty. If it contains an error message at this stage it
+    means that the program was not loaded successfully and you will need to ask your teacher for help.</li>
+    <li>The large pane on the left hand side of the screen shows the program <i>code</i>. 
+        You will be learning how to read, modify and extend this code in later sections. 
+        But you don't need to be able to understand any of it to run and use the Blackjack program.</li>
+    <li>At the top right you can see the status bar, which should show that the <b>Parse</b> status</li> is 'valid'</b>,
+        and that the <b>Compile</b> status is 'ok'. Both have a green background, to reinforce the message that this 
+        is the desired status. (If you have difficulty seeing the colours referred to, ask your teacher,
+        who can set up a different colour profile for you, both for the Elan tool, and for this documentation).
+ </ul>
+
+ <p>Assuming everything is as described above you will now be able to run the program. Click on the <b>Run</b> button - the triangular icon shown
+at the top of the screen.<p>
+
+</p>(Note that the button next to it looks similar but with a 'bug' inside it. You will learn about how to use that later. 
+If you pressed this button it would also run the program, but it may run slower because it is having to do more work. So always
+run with the plain <b>Run</b> button until you understand how and when to use <b>Debug</b>.)</p>
+
+<p>Upon running notice that:</p>
+
+<ul>
+    <li>The main code pane now has a tint, indicating that it is 'disabled': you can not alter it while the program is running.</li>
+    <li>The <b>Run</b> button is disabled, but the <b>Stop</b> button is enabled. You can stop the program at any point, and run it again from the start.</li>
+    <li>The <b>Display</b> pane will now contain some information generated by the program something like the following - though since the game uses a shuffled deck
+    the actual card values will differ each run.</li>
+</li>
+
+<img src="images/bj1-2.png">
+
+<h2>Understanding Blackjack</h2>
+<p>In the program you are the only <i>player</i>, playing against the dealer. Each of you has been dealt  an initial 'hand' of two cards. 
+    You can see both of your own cards and you can also see <i>one of the dealer's two cards</i>, known as the dealer's 'face card'. 
+    Alongside your hand you can see the total value of the hand. Note that:</p>
+
+    <ul>
+        <li>Number cards (two to ten) have their obvious value.</li>
+        <li>Royal cards (Jack, Queen, King) each has the value of 10.</li>
+        <li>If your hand includes an Ace, this will initially be valued at 11.</li>
+        <li>The program is offering you the option to 'stand' (take no more cards) or to 'draw' (be dealt another card). The pale blue bar 
+            indicates that it is expecting you to type a response - either <b>s</b> or <b>d</b>.
+        </li>
+        <li>Your aim is to get the total value of the hand as close to 21 as you dare. 
+            However, if you draw a card and that card takes the total value over 21 then your hand will be 'bust' and you cannot continue.
+        The exception is that if your hand has an Ace valued at 11, it will automatically be de-valued to 1, so you will not then be bust.</li>
+        <li>At each point that you are asked whether you want to stand or draw, you must weigh up the risks of going bust, against
+            the risk of standing, but with the dealer ending up closer to 21 than you.
+        </li>
+        <li>If your total hand value is exactly 21 you will not be offered the option to draw.</li>
+        <li>If your total hand value is exactly 21 from only two cards you hold a 'Blackjack' hand, which is even better in terms
+            of the final outcome than having a total of 21 from more than two cards.
+        </li>
+        <li>In this implementation of the game, there is no limit to the number of cards you can draw up to a total of 21. (Also,
+            if you happen to have played Blackjack before, this version does not offer the options offered by some versions
+            to 'split' a hand, to 'double' your stake, or 'insurance'.)
+        </li>
+        <li>You will be playing first. Only when you have finished playing your hand will the dealer play out their hand, and then the outcome of the round will be determined.</li>
+    </ul>
+
+</body>
+

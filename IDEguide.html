@@ -369,7 +369,7 @@ As with the main <b>Help</b> menu, the documentation will open in a separate bro
 <!--     #region Auto Save -->
 <h3 id="Auto_Save">Auto Save</h3>
 <p><b>Auto Save</b> offers a file selection dialog to allow you to specify the name and location where your code will be saved.
-    If you use this option, every time you modify the code <i>and its parse status is OK</i> the code will be saved automatically,
+    If you use this option, every time you modify the code <i>and its parse status is 'valid'</i> the code will be saved automatically,
     <i>overriding the previous version in the file</i>. Once this option has been selected, the <p>File</p> menu will offer
     a <b>Cancel Auto Save</b> option, after which you may use <b>Manual Save</b> - or re-select <b>Auto Save</b>.
 
@@ -382,7 +382,7 @@ As with the main <b>Help</b> menu, the documentation will open in a separate bro
 Unlike <b>Auto Save</b> - <b>Manual Save</b> is a one-off event - you must remember to save any subsequent changes if you need them saved.
 As a reminder, if your existing code is not saved, you will see a confirmation dialog:</p>
 <img src="images/Unsaved_warning.png">
-<p>Note that for both <b>Auto Save</b> and <b>Manual Save</b>, code may be saved <i>only when its parse status is'OK'</i>. However,
+<p>Note that for both <b>Auto Save</b> and <b>Manual Save</b>, code may be saved <i>only when its parse status is 'valid'</i>. However,
     it <i>may</i> be saved even if it does not compile, or pass any tests.</p>
 <!-- #endregion -->
 <!--   #region Trim -->
@@ -479,7 +479,7 @@ may easily find the parts of code that contain issues.</p>
 <!-- #endregion -->
  <!--   #region Undo & Redo -->
  <h3 id="Undo Redo">Undo and Redo</h3>
- <p>The <b>Undo</b> command allows you to undo recent change(s) and go back to the <i>last point at which the code parsed as 'OK'</i> - you cannot go back to any state when the code was still parsing as 'incomplete' or 'invalid'.
+ <p>The <b>Undo</b> command allows you to undo recent change(s) and go back to the <i>last point at which the code parsed as 'valid'</i> - you cannot go back to any state when the code was still parsing as 'incomplete' or 'invalid'.
     You may apply <b>Undo</b> repeatedly, to go back through all parse-valid states of the code since you loaded the code, or started from <b>New</b>.
     The <b>Redo</b> command to revert the last <b>Undo</b> if you went back too far.</p> 
 
