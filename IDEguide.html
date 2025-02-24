@@ -46,7 +46,7 @@
     <el-kw>end main</el-kw>
     </main></el-code-block>
 
-<li id="Container">Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the sequence of other instructions that it contains, which are all indented by two characters:</li>
+<li id="Container_instruction">Here a <i>container</i>-instruction is highlighted. The highlight shows the full extent of the instruction, indicating the sequence of other instructions that it contains, which are all indented by two characters:</li>
     <el-code-block>
         <el-statement class="selected focused ok multiline" id="while12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
             <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
@@ -318,7 +318,7 @@ you may insert. This is the full list:</p>
 </p>
 
 <!--   #region Demo -->
-<h2 id="demo">Demo</h2>
+<h2 id="Button_Demo">Demo</h2>
 
 <p><b>Note:</b> Depending upon how the installation of Elan that you are using, the <b>Demo</b> button might or might not be shown.</p>
 
@@ -327,7 +327,7 @@ you may insert. This is the full list:</p>
 
 <!-- #endregion -->
 <!--   #region Help-->
-<h2 id="Help">Help</h2>
+<h2 id="Button_Help">Help</h2>
 <p>The <b>Help</b> menu offers links to online documentation.
     Each link will open in a new tab in the browser so that you don't lose your current work.</p>
 
@@ -335,7 +335,7 @@ you may insert. This is the full list:</p>
 As with the main <b>Help</b> menu, the documentation will open in a separate browser tab.</p>
 <!-- #endregion -->
 <!--   #region   File -->
-<h2 id="File">File</h2>
+<h2 id="Button_File">File</h2>
 <!--     #region New -->
 <h3 id="New">New</h3>
 <p><b>New</b> will clear the current code - allowing you to start writing a new program. The code editor will then show this:</p>
@@ -349,7 +349,7 @@ As with the main <b>Help</b> menu, the documentation will open in a separate bro
     The second line shows the <a href="#Global_selector">Global selector</a>.</p>
 <!--     #endregion -->
 <!--     #region Load -->
-<h3 id="Load">Load</h3>
+<h3 id="Menu_Load">Load</h3>
 <p><b>Load</b> will present you with a file-selector dialog, from which you can navigate to, and load a <el-code>.elan</el-code> file,
      which will be loaded in place of your current code. As with <b>New</b> (above) if your existing code is not saved, you will see a confirmation dialog.</p>
 
@@ -360,14 +360,14 @@ As with the main <b>Help</b> menu, the documentation will open in a separate bro
 <el-code>Cannot load file: it has been created or modified outside Elan IDE</el-code>
 <!-- #endregion -->
 <!--     #region Append -->
-<h3 id="Append">Append</h3>
+<h3 id="Menu_Append">Append</h3>
 
 <p><b>Append</b>, like <b>Load</b> offers a file selection dialog. If you select a valid <el-code>.elan</el-code> file
      it will be <i>appended</i> onto the end of your current code. From there the appended code may be moved within
     the existing code (see <a href="Editing">Editing</a>).</p>
 <!-- #endregion -->
 <!--     #region Auto Save -->
-<h3 id="Auto_Save">Auto Save</h3>
+<h3 id="Menu_Auto_Save">Auto Save</h3>
 <p><b>Auto Save</b> offers a file selection dialog to allow you to specify the name and location where your code will be saved.
     If you use this option, every time you modify the code <i>and its parse status is 'valid'</i> the code will be saved automatically,
     <i>overriding the previous version in the file</i>. Once this option has been selected, the <p>File</p> menu will offer
@@ -377,7 +377,7 @@ As with the main <b>Help</b> menu, the documentation will open in a separate bro
 
 <!-- #endregion -->
 <!--     #region Manual Save -->
-<h3 id="Manual_Save">Manual Save</h3>
+<h3 id="Menu_Manual_Save">Manual Save</h3>
 <b>Manual Save</b> offers a file selection dialog to allow you to specify the name and location where your code will be saved.
 Unlike <b>Auto Save</b> - <b>Manual Save</b> is a one-off event - you must remember to save any subsequent changes if you need them saved.
 As a reminder, if your existing code is not saved, you will see a confirmation dialog:</p>
@@ -386,7 +386,7 @@ As a reminder, if your existing code is not saved, you will see a confirmation d
     it <i>may</i> be saved even if it does not compile, or pass any tests.</p>
 <!-- #endregion -->
 <!--   #region Trim -->
-<h3 id="Trim">Trim</h3>
+<h3 id="Button_Trim">Trim</h3>
 
 <p>The <b>Trim</b> command is used to neaten-up your code: it removes any 'new code' selectors from your code <i>that may be removed</i> which is typically most of them.
 <i>Where a 'new code' selector is not removed by <b>Trim</b> this indicates that code is still expected in that location.</i></p>
@@ -478,7 +478,7 @@ may easily find the parts of code that contain issues.</p>
 <p>The keyboard shortcut for <b>Trim</b> is <b>Alt-t</b>. (This is because <b>Ctrl-b</b> is a key sequence used for standard browser functionality).</p>
 <!-- #endregion -->
  <!--   #region Undo & Redo -->
- <h3 id="Undo Redo">Undo and Redo</h3>
+ <h3 id="Buttons_Undo_Redo">Undo and Redo</h3>
  <p>The <b>Undo</b> command allows you to undo recent change(s) and go back to the <i>last point at which the code parsed as 'valid'</i> - you cannot go back to any state when the code was still parsing as 'incomplete' or 'invalid'.
     You may apply <b>Undo</b> repeatedly, to go back through all parse-valid states of the code since you loaded the code, or started from <b>New</b>.
     The <b>Redo</b> command to revert the last <b>Undo</b> if you went back too far.</p>
