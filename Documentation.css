@@ -16,7 +16,7 @@ body { font-size:12pt; margin-left: 20px; text-decoration:none; font-weight:norm
 .bold {
   font-weight: bold;
 }
-p,img,pre,blockquote,address,td,th,li
+p,img,pre,blockquote,address,td,th,li,ul
   { font-size:12pt; text-indent:0pt; margin-bottom:8pt; line-height:1.3; }
 
  /* show sort direction icons in the sortable column headings */
