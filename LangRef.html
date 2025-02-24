@@ -8,20 +8,13 @@
 <link href="colourScheme.css" rel="stylesheet">
 <link href="elanStyle.css" rel="stylesheet">
 <title>Elan Language Reference</title>
+<script type="text/javascript" src="generated_toc.js"></script>
 </head>
 <body>
 
-<h1>Elan Language Reference - Contents</h1>
+<div class="docTitle">Elan Language Reference</div>
 
-<h5><a href="#Instruction_set">Instruction Set</a></h5>
-<h6><a href="#Comment">Comments</a></h6>
-<h5><a href="#Global">Global Instructions</a></h5>
-<h6><a href="#Main">Main method</a></h6>
-<h6><a href="#Procedure">Procedure</a></h6>
-<h5><a href="#Type">Types defined as part of the language</a></h5>
-<h5><a href="#Expression">Expressions</a></h5>
-<h6><a href="#Literal_value">Literal value</a></h6>
-<h6><a href="#Func">Func</a></h6>
+<div id="generated-toc" class="generate_from_h1"></div>
 
 <!-- #region Instruction Set-->
 <!--   #region Heading & Intro-->
@@ -63,11 +56,11 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <p>The specific globals offered will depend upon your user profile. The full set of globals is shown here with links to explanations below:</p>
 
 <a href="#main">main</a>,
-<a href="#procedure">procedure</a>,
-<a href="#function">function</a>,
-<a href="#test">test</a>,
-<a href="#constant">constant</a>,
-<a href="#enum">enum</a>,
+<a href="#Procedure">procedure</a>,
+<a href="#Function">function</a>,
+<a href="#Test">test</a>,
+<a href="#Constant">constant</a>,
+<a href="#Enum">enum</a>,
 <a href="#record">record</a>,
 <a href="#class">class</a>,
 <a href="#ClassAbs">abstract</a> (in this context, short for <el-code>abstract class</el-code>),
@@ -75,7 +68,7 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <a href="#comment">#</a>
 <!-- #endregion-->
 <!--     #region Main method-->
-<h3 id="Main">Main method</h3>
+<h3 id="main">Main method</h3>
 <p>A file must have a <el-code>main</el-code> method if it is intended to be run as program. (You may however develop and test code that does not have a <el-code>main</el-code> method, either as a coding exercise or for subsequent use within another program).</p>
 <p>The <el-code>main</el-code> method defines the start point when a program is run.</p>
 <p>The <el-code>main</el-code> method does not have to be at the top of the file, but this is a good convention to follow.</p>
@@ -85,8 +78,8 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <el-code-block>
 <main class="multiline" id="main1" tabindex="0">
   <el-top><el-expand>+</el-expand><el-kw>main</el-kw> <el-msg class="warning"></el-msg><el-fr>1</el-fr></el-top>
-  <el-statement class="ok" id="var3" tabindex="0"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt>[<el-lit>3</el-lit>, <el-lit>6</el-lit>, <el-lit>1</el-lit>, <el-lit>0</el-lit>, <el-lit>99</el-lit>, <el-lit>4</el-lit>, <el-lit>67</el-lit>]</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
-  <el-statement class="warning" id="call6" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident7" class="ok" tabindex="0"><el-txt><el-method>inPlaceRippleSort</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args8" class="optional ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-fr>3</el-fr></el-top></el-statement>
+  <el-statement class="ok" id="var3" tabindex="0"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt>[<el-lit>3</el-lit>, <el-lit>6</el-lit>, <el-lit>1</el-lit>, <el-lit>0</el-lit>, <el-lit>99</el-lit>, <el-lit>4</el-lit>, <el-lit>67</el-lit>]</el-txt><el-place><i>expression</i></el-place></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+  <el-statement class="warning" id="call6" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident7" class="ok" tabindex="0"><el-txt><el-method>inPlaceRippleSort</el-method></el-txt><el-place><i>procedureName</i></el-place></el-field>(<el-field id="args8" class="optional ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-fr>3</el-fr></el-top></el-statement>
   <el-statement class="ok" id="print9" tabindex="0"><el-kw>print </el-kw><el-field id="expr10" class="optional ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>4</el-fr></el-statement>
   <el-kw>end main</el-kw>
 </main>
