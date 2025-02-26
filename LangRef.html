@@ -258,21 +258,35 @@ It specifies a set of values, each of which is defined as a name, such that a na
 <!--     #region Record-->
 <h3 id="record">Record</h3>
 
-<p>A <el-code>record</el-code> is a user-defined data structure that is given a Type name &#8211;  that must begin with an upper-case letter.
+<p>A <el-code><el-kw>record</el-kw></el-code> is a user-defined data structure that is given a Type name &#8211;  (which must begin with an upper-case letter).
   The record defines one or more properties, each of which has a name (starting with a lower-case letter) and a Type.
-  The Type of a property may be any simple value Type (as in the example above), or a <el-code>List</el-code>,
-  another Type of <el-code>record</el-code> (or even the same Type of record).</p>
-<p> What distinguishes a <el-code>record</el-code> Type from a <el-code>List</el-code> is that its members may be of different Types,
-  and what distinguished a <el-code>record</el-code> Type from a <span class="Link">Tuple</span> is that each member has a specific name.</p>
+  The Type of a property may be any simple value Type (as in the example above), or a data structure such ,
+  another Type of <el-code><el-kw>record</el-kw></el-code> (or even the same Type of record).</p>
 
+  <p>Note that a <el-code><el-kw>record</el-kw></el-code> Type has some similarity to a <a href="#class">class</a>:</p>
+  <li>Both are user-define data structures</li>
+  <li>Both are given a &#8216;Type name&#8217;</li>
+  <li>Both may define one or more properties, each with a name and Type</li>
+  <li>Both may define encapsulated methods</li>
+  <p>However a <el-code><el-kw>record</el-kw></el-code> is different from a <el-code>class</el-code> in that:</p>
+  <li>A <el-code><el-kw>record</el-kw></el-code> is immutable (like a <el-code>List</el-code> or a <el-code>String</el-code>). You can create a copy with specified differences but you cannot modify a <el-code><el-kw>property</el-kw></el-code> on a given instance.</li>
+  <li>A <el-code><el-kw>record</el-kw></el-code> instance may be created or copied using a <el-code>with</el-code> clause, whereas <el-code>with</el-code> may not be used on a class instance.</li>
+  <li>A <el-code><el-kw>record</el-kw></el-code> does not define a constructor</li>
+  <li>A <el-code><el-kw>record</el-kw></el-code> may define only <i>function</i> methods - because <i>procedure</i> methods would imply the ability to <i>mutate</i> the record.</li>
 <h4>Examples:</h4>
 <el-code-block>
-  <el-class class="ok multiline" id="class203" tabindex="0">
-    <el-top><el-expand>+</el-expand><el-kw>record </el-kw><el-field id="type204" class="ok" tabindex="0"><el-txt><el-type>Square</el-type></el-txt><el-place>Name</el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A class name, like any type name, must begin with an upper-case letter, , optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-msg></el-msg><el-fr>64</el-fr></el-top>
-    <el-prop class="ok" id="prop207" tabindex="0"><el-kw>property </el-kw><el-field id="ident208" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type209" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>65</el-fr></el-prop>
-    <el-prop class="ok" id="prop210" tabindex="0"><el-kw>property </el-kw><el-field id="ident211" class="ok" tabindex="0"><el-txt><el-id>y</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type212" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>66</el-fr></el-prop>
+  <el-class class="selected focused ok multiline" id="class12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+    <el-top><el-expand>+</el-expand><el-kw>record </el-kw><el-field id="type13" class="ok" tabindex="0"><el-txt><el-type>Square</el-type></el-txt><el-place>Name</el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A class name, like any type name, must begin with an upper-case letter, , optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
+    <el-prop class="ok" id="prop16" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>property </el-kw><el-field id="ident17" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type18" class="ok" tabindex="0"><el-txt><el-type>Float</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-prop>
+    <el-prop class="ok" id="prop19" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>property </el-kw><el-field id="ident20" class="ok" tabindex="0"><el-txt><el-id>y</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type21" class="ok" tabindex="0"><el-txt><el-type>Float</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>7</el-fr></el-prop>
+    <el-func class="ok multiline" id="func22" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+    <el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident24" class="ok" tabindex="0"><el-txt>asString</el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-method>(<el-field id="params25" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i>parameter definitions</i></el-place><el-compl><i>parameter definitions</i></el-compl><el-msg></el-msg><el-help title="Zero or more parameter definitions comma-separated. Each parameter definition consists of a parameter name followed by the 'as' keyword and a Type. A parameter name follows the same rules as for a variable name - starting with a lower-case letter.">?</el-help></el-field>)<el-kw> returns </el-kw><el-field id="type26" class="ok" tabindex="0"><el-txt><el-type>String</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>8</el-fr></el-top>
+    <el-statement class="ok" id="return27" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>return </el-kw><el-field id="expr28" class="ok" tabindex="0"><el-txt>"<el-lit>Sq </el-lit>{<el-kw>property</el-kw>.<el-id>x</el-id>}<el-lit>, </el-lit>{<el-kw>property</el-kw>.<el-id>y</el-id>}<el-lit></el-lit>"</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>9</el-fr></el-statement>
+    <el-kw>end function</el-kw>
+    </el-func>
     <el-kw>end record</el-kw>
-    </el-class></el-code-block>
+  </el-class>
+</el-code-block>
 <el-code-block><el-class class="error multiline" id="class1" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
 <el-top><el-expand>+</el-expand><el-kw>record </el-kw><el-field id="type2" class="ok" tabindex="0"><el-txt><el-type>Game</el-type></el-txt><el-place>Name</el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A class name, like any type name, must begin with an upper-case letter, , optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field> <el-msg class="error"></el-msg><el-fr>1</el-fr></el-top>
 <el-prop class="ok" id="prop9" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>property </el-kw><el-field id="ident10" class="ok" tabindex="0"><el-txt><el-id>head</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field><el-kw> as </el-kw><el-field id="type11" class="ok" tabindex="0"><el-txt><el-type>Square</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-prop>
@@ -289,54 +303,49 @@ It specifies a set of values, each of which is defined as a name, such that a na
 </el-code-block>
   <p>Having defined a record Type, such as <el-code>Game</el-code> above, you can create as many instances as you wish using the following syntax to specify the values:</p>
 <el-code-block>
-  <el-statement class="selected focused ok" id="let597" tabindex="0"><el-kw>let </el-kw><el-field id="var598" class="ok" tabindex="0"><el-txt><el-id>g1</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr599" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Game</el-type>()<el-kw> with </el-kw><br><el-id>head</el-id><el-kw> set to </el-kw><el-method>newSquare</el-method>(<el-lit>22</el-lit>, <el-lit>15</el-lit>), <br><el-id>key</el-id><el-kw> set to </el-kw>"<el-lit>d</el-lit>", <br><el-id>isOn</el-id><el-kw> set to </el-kw><el-id>true</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>52</el-fr></el-statement>
+  <el-statement class="ok" id="let597" tabindex="0"><el-kw>let </el-kw><el-field id="var598" class="ok" tabindex="0"><el-txt><el-id>g1</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr599" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Game</el-type>()<el-kw> with </el-kw><br><el-id>head</el-id><el-kw> set to </el-kw><el-method>newSquare</el-method>(<el-lit>22</el-lit>, <el-lit>15</el-lit>), <br><el-id>key</el-id><el-kw> set to </el-kw>"<el-lit>d</el-lit>", <br><el-id>isOn</el-id><el-kw> set to </el-kw><el-id>true</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>52</el-fr></el-statement>
 </el-code-block>
 <p>
 Note that you are <em>not required</em> to provide a value for each property because, where a property is not specified in the &#8216;<el-code>with</el-code> clause&#8217; (as above), that property will be given the empty (default) value of the correct Type.</p>
 <p>You can then read the values from the properties using &#8216;dot syntax&#8217; for example:</p>
-<el-code>print sq1.size</el-code><br>
+<el-code-block><el-statement class="" id="print15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>print </el-kw><el-field id="expr16" class="optional" tabindex="0"><el-txt><el-id>sq</el-id>.<el-id>size</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl> <el-msg class="warning">'sq' is not defined</el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field> <el-msg class="warning"></el-msg><el-fr>2</el-fr></el-statement></el-code-block>
 <p>
-<p><el-code>record</el-code> Types are immutable: the properties on an instance may not be changed, directly. However, you can easily create another instance that is a copy of the original, with all the same property values except for any specific changes made in another <el-code>with</el-code> clause. The newly-minted copy (with changes) must be assigned to a new named value. For example:</p>
-<el-code><br>
-let sq1 be new Square() with<br>
-&nbsp;x set to 3.5,<br>
-&nbsp;y set to 4.0,<br>
-&nbsp;size set to 1.0<br>
-</el-code>
-<el-code><br>
-let sq2 be copy sq1 with<br>
-&nbsp;size set to 2.0,<br>
-&nbsp;colour set to red<br>
-</el-code><br>
+<p><el-code><el-kw>record</el-kw></el-code> Types are immutable: the properties on an instance may not be changed, directly. 
+  However, you can easily create another instance that is a copy of the original, 
+  with all the same property values except for any specific changes made in another <el-code>with</el-code> clause. 
+  The newly-minted copy (with changes) must be assigned to a new named value. For example:</p>
+<el-code-block>
+  <el-statement class="" id="let3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>sq1</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr5" class="" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Square</el-type>()<el-kw> with </el-kw><br><el-id>x</el-id><el-kw> set to </el-kw><el-lit><el-lit>3</el-lit>.5</el-lit>, <br><el-id>y</el-id><el-kw> set to </el-kw><el-lit><el-lit>4</el-lit>.0</el-lit>, <br><el-id>size</el-id><el-kw> set to </el-kw><el-lit><el-lit>1</el-lit>.0</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl> <el-msg class="error">'Square' is not defined</el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field> <el-msg class="error"></el-msg><el-fr>2</el-fr></el-statement>
+</el-code-block>
+<el-code-block>
+  <el-statement class="" id="let10" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var11" class="ok" tabindex="0"><el-txt><el-id>sq2</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr12" class="" tabindex="0"><el-txt><el-kw>copy</el-kw> <el-id>sq1</el-id><el-kw> with </el-kw><br><el-id>size</el-id><el-kw> set to </el-kw><el-lit><el-lit>2</el-lit>.0</el-lit>, <br><el-id>colour</el-id><el-kw> set to </el-kw><el-id>red</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl> <el-msg class="warning">'sq1' is not defined</el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field> <el-msg class="warning"></el-msg><el-fr>4</el-fr></el-statement>
+</el-code-block>
 Or even to the same name if that name is a variable:</p>
-<el-code>variable a set to new Square() with x to 3.5, y to 4.0</el-code><br>
-<el-code>set a to copy a with x to 3.7</el-code><br>
+<el-code-block>
+  <el-statement class="ok" id="var3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>a</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Square</el-type>()<el-kw> with </el-kw><br><el-id>x</el-id><el-kw> set to </el-kw><el-lit><el-lit>3</el-lit>.5</el-lit>, <br><el-id>y</el-id><el-kw> set to </el-kw><el-lit><el-lit>4</el-lit>.0</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+</el-code-block>
+<el-code-block>
+  <el-statement class="ok" id="set6" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>set </el-kw><el-field id="ident7" class="ok" tabindex="0"><el-txt><el-id>a</el-id></el-txt><el-place><i>variableName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A previously defined variable, but NOT a parameter. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> to </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-kw>copy</el-kw> <el-id>a</el-id><el-kw> with </el-kw><br><el-id>x</el-id><el-kw> set to </el-kw><el-lit><el-lit>3</el-lit>.7</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement>
+</el-code-block>
 
 <p>This last example shows how you enter the comma-separated <el-code>with</el-code> clauses. The earlier examples show how the Editor displays a set of <el-code>with</el-code> clauses.</p>
 
 <p>If you want to use one or more existing property values in order to determine a new value, the property name(s) must
   be prefixed with the name of the instance being copied, for example:</p>
-<el-code>
-  let sq2 be copy sq1 with size set to sq1.size + 3<br>
-</el-code>
+<el-code-block>
+  <el-statement class="" id="let9" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var10" class="ok" tabindex="0"><el-txt><el-id>sq2</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr11" class="" tabindex="0"><el-txt><el-kw>copy</el-kw> <el-id>sq1</el-id><el-kw> with </el-kw><br><el-id>size</el-id><el-kw> set to </el-kw><el-id>sq1</el-id>.<el-id>size</el-id> + <el-lit>3</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl> <el-msg class="warning">'sq1' is not defined</el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field> <el-msg class=""></el-msg><el-fr>4</el-fr></el-statement>
+</el-code-block>
 </p>
-<p>Note that a <el-code>record</el-code> Type has some similarity to a <el-code>class</el-code>:</p>
-<li>Both are user-define data structures</li>
-<li>Both are given a &#8216;Type name&#8217;</li>
-<li>Both may define one or more properties, each with a name and Type</li>
-<p>However a <el-code>record</el-code> is different from a <el-code>class</el-code> in that:</p>
-<li>A <el-code>record</el-code> does not define a constructor</li>
-<li>A <el-code>record</el-code> cannot define any methods</li>
-<li>A <el-code>record</el-code> is immutable (like a <el-code>List</el-code> or a <el-code>String</el-code>). You can create a copy with specified differences but you cannot modify a <el-code>property</el-code> on a given instance.</li>
-<li>A <el-code>record</el-code> instance may be created or copied using a <el-code>with</el-code> clause, whereas <el-code>with</el-code> may not be used on a class instance.</li>
 
 <h4>Record deconstruction</h4>
 <p>A record may be &#8216;deconstructed&#8217;, meaning that its properties are read into separate variables using the same syntax as for deconstructing a <span class="Link">Tuple</span>. For example, assuming that Square is a record defined as in the example above then this code:</p>
-<el-code>let x, y, size, colour be mySquare</el-code><br>
+<el-code-block>
+  <el-statement class="" id="let3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>x</el-id>, <el-id>y</el-id>, <el-id>size</el-id>, <el-id>colour</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr5" class="" tabindex="0"><el-txt><el-id>mySquare</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl> <el-msg class="warning">'mySquare' is not defined</el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field> <el-msg class="warning"></el-msg><el-fr>2</el-fr></el-statement>
+</el-code-block>
 
 <p>will read the <el-code>properties</el-code> into the four names defined.</p>
 <p>Note</p>
-<li>When deconstructing, the names of the values must match the names of the <el-code>properties</el-code> of the <el-code>record</el-code>. However, the ordering of the names does not have to match the order in which the <el-code>properties</el-code> are defined in the <el-code>record</el-code>.</li>
+<li>When deconstructing, the names of the values must match the names of the <el-code>properties</el-code> of the <el-code><el-kw>record</el-kw></el-code>. However, the ordering of the names does not have to match the order in which the <el-code>properties</el-code> are defined in the <el-code><el-kw>record</el-kw></el-code>.</li>
 <!-- #endregion-->
 <!--     #region Class-->
 <h3 id="class">Class</h3>
@@ -344,7 +353,7 @@ Or even to the same name if that name is a variable:</p>
 <p>See also: <a href="inherits">Inheritance</a></p>
 
 <p>A <el-code>class</el-code> is a user-defined Type offering far richer capability than an <el-code>enum</el-code>. </p>
-<p>(A <el-code>record</el-code> is in some ways similar to a <el-code>class</el-code> but simpler: it defines properties, but has no constructor and no methods. See <span class="Link">Working with records</span>).</p>
+<p>(A <el-code><el-kw>record</el-kw></el-code> is in some ways similar to a <el-code>class</el-code> but simpler: it defines properties, but has no constructor and no methods. See <span class="Link">Working with records</span>).</p>
 
 <h3>Definition</h3>
 <p>Here is an example of <el-code>class</el-code> definition, taken from the Snake OOP demo program:</p>
@@ -402,7 +411,7 @@ Or even to the same name if that name is a variable:</p>
 <h3 id="Abstract_class">Abstract Class</h3>
 <p>See also: <a href="inherits">Inheritance</a></p>
 <p>An <el-code>abstract class</el-code> may not be instantiated (and hence may not define a constructor). It may define concrete members i.e.:</p>
-<li>a <el-code>property</el-code> </li>
+<li>a <el-code><el-kw>property</el-kw></el-code> </li>
 <li>a <el-code>function</el-code></li>
 <li>a <el-code>procedure</el-code></li>
 <p>As with a concrete class, any of these members may be made <el-code>private</el-code> after the corresponding frame has been added, by selecting that member frame and pressing Ctrl_p.</p>
@@ -479,12 +488,12 @@ the correct types must be provided, for example, if the class <el-code><el-type>
 <el-code>property head as Square</el-code><br>
 <el-code>property body as [Square]</el-code><br>
 
-<li>A <el-code>property</el-code> is defined on a <span class="Link">Class</span> and must <el-code>specify</el-code> a name (conforming to the rules for an <a href="#Identifier">Identifier</a> and a Type.</li>
-<li>A <el-code>property</el-code> may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its sub-classes. This is done by selecting the property frame and pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
+<li>A <el-code><el-kw>property</el-kw></el-code> is defined on a <span class="Link">Class</span> and must <el-code>specify</el-code> a name (conforming to the rules for an <a href="#Identifier">Identifier</a> and a Type.</li>
+<li>A <el-code><el-kw>property</el-kw></el-code> may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its sub-classes. This is done by selecting the property frame and pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
 <li>If not marked <el-code>private</el-code>, a property may be read but not be written to. Properties may only be modified from outside the class by means of a <span class="Link">Procedure method</span>.</li>
 <li>A property may be given an initial value in the <el-code>constructor</el-code>.</li>
 <p>
-If the <el-code>property</el-code> is not initialised within the constructor then it will automatically be given the <el-code>empty</el-code> value for that Type. You may test whether a property contains this default value by writing e.g.:<br>
+If the <el-code><el-kw>property</el-kw></el-code> is not initialised within the constructor then it will automatically be given the <el-code>empty</el-code> value for that Type. You may test whether a property contains this default value by writing e.g.:<br>
 <el-code>if head is empty Square</el-code></p>
 <li>Whenever you wish to access a property from within a method (or from within the constructor) on the same class, then the name of the property must be prefixed with the &#8216;qualifier&#8217;: <el-code>property. </el-code>(&#8216;property-dot&#8217;). This applies whether you are reading or setting the property. By this means you can have a method parameter with the same name as a property, but they are unambiguous, because the property must be prefixed. A common pattern is to use the same name in a &#8216;setter&#8217; method, for example:</li>
 <el-code>constructor(board as Board)</el-code><br>
@@ -499,14 +508,14 @@ If the <el-code>property</el-code> is not initialised within the constructor the
 <h3 id="procedure_method">Procedure Method</h3>
 <p>A &#8216;procedure method&#8217; follows the same syntax and rules as a global <a href="procedure">procedure</a>. The differences are:</p>
 <li>A procedure method, like a function method, is always referenced (used) by code outside the class using &#8216;dot syntax&#8217; on an instance.</li>
-<li>A procedure method may read, or write to, any <el-code>property</el-code> defined on the class.</li>
+<li>A procedure method may read, or write to, any <el-code><el-kw>property</el-kw></el-code> defined on the class.</li>
 <li>A procedure method may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its sub-classes. This is done by selecting the property frame and then pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
 <!-- #endregion-->
 <!--     #region Function Method-->
 <h3 id="function_method">Function Method</h3>
 <p>A function method follows the same syntax and rules as a global <a href="function">function</a>>. The differences are:</p>
 <li>A <el-code>function</el-code> method is always referenced (used) by code outside the class using &#8216;dot syntax&#8217; on an instance.</li>
-<li>A <el-code>function</el-code> method may directly reference (read only) any <el-code>property</el-code> defined on the class as though it were a variable/parameter.</li>
+<li>A <el-code>function</el-code> method may directly reference (read only) any <el-code><el-kw>property</el-kw></el-code> defined on the class as though it were a variable/parameter.</li>
 <li>A <el-code>function</el-code> method may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its sub-classes. This is done by selecting the property frame and then pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
 <li>asString() method</li>
 <li>asString method. This is just a regular function method with a specific name, no parameters and returning a String. If defined for a class, then if an instance of the class is printed, the <el-code>asString</el-code> function method will automatically be used. Typically <el-code>asString</el-code> will return a string made up of one or more of the property values, perhaps with additional text, or the results of function calls.</li>
