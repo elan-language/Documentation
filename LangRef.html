@@ -14,7 +14,9 @@
 
 <div class="docTitle">Elan Language Reference</div>
 
-<div id="generated-toc" class="generate_from_h1"></div>
+<div class="docTOC">
+	<div id="generated-toc" class="generate_from_h1 generate_for_page"></div>
+</div>
 
 <!-- #region Instruction Set-->
 <!--   #region Heading & Intro-->
@@ -88,7 +90,7 @@ you will be shown the set of globals that may be inserted there, for example:</p
 <p>The <el-code>main</el-code> method may delegate work to one or more <a href="#procedure">procedure</a> or <a href="#function">function</a>.</p>
 <!-- #endregion-->
 <!--     #region Procedure-->
- <h3 id="Procedure">Procedure</h3>
+ <h3 id="procedure">Procedure</h3>
 <p>A procedure is a named piece of behaviour that may define parameters; unlike a <a href="#function">function</a>, a procedure does not return a value.
   Also unlike a function, a procedure can have &#8216;side-effects&#8217; - indeed it <em>should</em> have side-effects otherwise there would be no point in calling it!
   For this reason the statements within a procedure can:</p>
@@ -310,9 +312,9 @@ Note that you are <em>not required</em> to provide a value for each property bec
 <p>You can then read the values from the properties using &#8216;dot syntax&#8217; for example:</p>
 <el-code-block><el-statement class="" id="print15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>print </el-kw><el-field id="expr16" class="optional" tabindex="0"><el-txt><el-id>sq</el-id>.<el-id>size</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl> <el-msg class="warning">'sq' is not defined</el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field> <el-msg class="warning"></el-msg><el-fr>2</el-fr></el-statement></el-code-block>
 <p>
-<p><el-code><el-kw>record</el-kw></el-code> Types are immutable: the properties on an instance may not be changed, directly. 
-  However, you can easily create another instance that is a copy of the original, 
-  with all the same property values except for any specific changes made in another <el-code>with</el-code> clause. 
+<p><el-code><el-kw>record</el-kw></el-code> Types are immutable: the properties on an instance may not be changed, directly.
+  However, you can easily create another instance that is a copy of the original,
+  with all the same property values except for any specific changes made in another <el-code>with</el-code> clause.
   The newly-minted copy (with changes) must be assigned to a new named value. For example:</p>
 <el-code-block>
   <el-statement class="" id="let3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>sq1</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr5" class="" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Square</el-type>()<el-kw> with </el-kw><br><el-id>x</el-id><el-kw> set to </el-kw><el-lit><el-lit>3</el-lit>.5</el-lit>, <br><el-id>y</el-id><el-kw> set to </el-kw><el-lit><el-lit>4</el-lit>.0</el-lit>, <br><el-id>size</el-id><el-kw> set to </el-kw><el-lit><el-lit>1</el-lit>.0</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl> <el-msg class="error">'Square' is not defined</el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field> <el-msg class="error"></el-msg><el-fr>2</el-fr></el-statement>
@@ -521,11 +523,11 @@ If the <el-code><el-kw>property</el-kw></el-code> is not initialised within the 
 <li>asString method. This is just a regular function method with a specific name, no parameters and returning a String. If defined for a class, then if an instance of the class is printed, the <el-code>asString</el-code> function method will automatically be used. Typically <el-code>asString</el-code> will return a string made up of one or more of the property values, perhaps with additional text, or the results of function calls.</li>
 <!-- #endregion-->
 <!--     #region Abstract Property-->
-<h3 id="abstract_property">Abstract Property</h3>
+<h3 id="Abstract_property">Abstract Property</h3>
 TODO
 <!-- #endregion-->
 <!--     #region Abstract Procedure Method-->
-<h3 id="abstract_procedure_method">Abstract Procedure Method</h3>
+<h3 id="Abstract_procedure_method">Abstract Procedure Method</h3>
 TODO
 <!-- #endregion-->
 <!--     #region Abstract Function Method-->
@@ -712,7 +714,7 @@ print "{a} times {b} equals {a*b}"
 <h3>Defining literal floating-point value</h3>
 <el-code>variable a set to 1.618</el-code><br>
 
-<h3 id="Constraints">Constraints</h3>
+<h3>Constraints</h3>
 <p>Since Elan compiles to JavaScript, the constraints on floating point numbers are those of JavaScript:</p>
 <li>Maximum value: just over 1 &times; 10308</li>
 <li>Minimum value: approximately 5 &times; 10-324</li>
@@ -775,7 +777,7 @@ Alternatively, you can insert their Unicode codepoints by means of the <el-code>
 <p>or</p>
 <el-code>print"Here are the curly braces: {unicode(123)} and {unicode(125)}"</el-code><br>
 
-<h3 id="MethDot">Dot methods on a String</h3>
+<h3 id="Dot_method">Dot methods on a String</h3>
 <p>Note: There are no &#8216;substring&#8217; methods in Elan because you can always use an index range get a substring e.g. <el-code>s[3..7]</el-code>  gives a <el-code>string</el-code> containing the fourth through the eighth characters of <el-code>string s</el-code>. See<span class="Link"> Indexed Value</span>.</p>
 <el-code>upperCase() returns String </el-code><br>
 <p>returns a new string based on the input with all alpha-characters in upper-case.</p>
@@ -974,7 +976,7 @@ List&lt;of List&lt;of Int&gt;&gt;</el-code> for a List of  Lists of Type </ode>I
 <el-code>print tail</el-code><br>
 <!--   #endregion-->
 <!--   #region Dictionaries-->
-<h2 id="Dictionaries">Dictionaries</h2>
+<h2 id="Dictionary">Dictionaries</h2>
 <p>There are two forms of dictionary in Elan: an ordinary <el-code>Dictionary</el-code> (which is mutable) and a <el-code>DictionaryImmutable</el-code> (which is not).</p>
 
 <h3>Quick reference</h3>
@@ -1130,7 +1132,7 @@ or into existing variables of the correct Type:</p>
 <el-code><a href="#Int">Int</a>, <a href="#Float">Float</a>, <a href="#Boolean">Boolean</a>, <a href="#String">String</a>, <a href="#Array">Array</a>, <a href="#List">List</a>, <a href="#Dictionary">Dictionary</a>, <a href="#DictionaryImmutable">DictionaryImmutable</a>, <a href="#Tuple">Tuple</a></el-code><br>
 <!--   #endregion-->
 <!--   #region Named value-->
-<h2 id="NamVal">Named value</h2>
+<h2 id="Named_value">Named value</h2>
 <p>A named value is a value that is associated with a name rather than being defined literally in code. There are various kinds of named value:</p>
 <p><a href="#Constant">Constant</a>, <span class="Hyperlink"><a href="#Let_statement_1">let</a></span> statement, <span class="Hyperlink"><a href="#Variables">variable</a></span> statement, <a href="#Parameter_passing_1">Parameter passing</a>, <span class="Hyperlink"><a href="#Enum_1">enum</a></span> statement</p>
 <!--   #endregion-->
@@ -1160,9 +1162,9 @@ or into existing variables of the correct Type:</p>
 <el-code>withPutAtKey</el-code>	on a	<el-code>DictionaryImmutable</el-code></p>
 <!--   #endregion-->
 <!--   #region Operator-->
-<h2 id="Oper">Operator</h2>
+<h2 id="Operator">Operators</h2>
 
-<h3 id="ArithOp">Arithmetic operators</h3>
+<h3 id="Arithmetic_operator">Arithmetic operators</h3>
 <p>Arithmetic operators can be applied to <el-code>Float</el-code> or <el-code>Int</el-code> arguments, but the result is always a <el-code>Float</el-code>:</p>
 <p>
 <el-code>2^3</el-code> &rarr; 8<br>
@@ -1181,7 +1183,7 @@ or into existing variables of the correct Type:</p>
 <p><el-code>2*-3</el-code> &rarr; -6</p>
 <p>Note that the Elan editor automatically puts spaces around the <el-code>+</el-code> and <el-code>&#8211;</el-code> binary operators, but not around <el-code>^</el-code>, <el-code>/</el-code> or <el-code>*</el-code>. This is just to visually reinforce the precedence.</p>
 
-<h3 id="LogicOp">Logical operators</h3>
+<h3 id="Logical_operator">Logical operators</h3>
 <p>Logical operators are applied to <el-code>Boolean</el-code> arguments and return a <el-code>Boolean</el-code> result.</p>
 <p>
 <el-code>and</el-code> and <el-code>or</el-code> are binary operators<br>
@@ -1221,7 +1223,7 @@ end Function
 <el-code>(a &gt; b) and (b &lt; c)</el-code><br>
 <el-code>(a + b) &gt; (c -d)</el-code><br>
 
-<h2 id="h50">Function call</h2>
+<h2>Function call</h2>
 <p>An expression may simply be a function call, or it may include one or more function calls within it. Examples:</p>
 <el-code>print sinDeg(30)</el-code><br>
 <el-code>variable x set to sinDeg(30)^2 + cosDeg(30)^2</el-code><br>

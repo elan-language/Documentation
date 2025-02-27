@@ -1,4 +1,4 @@
-/*  Generated TOC
+/** Generated TOC
     Stuart Langridge, July 2007
     
     Generate a table of contents, based on headings in the page.
@@ -32,6 +32,9 @@
     The "quux" heading will not appear in the TOC. To override this,
     add class="generate_for_page" to the container, which will process
     all headings on the page wheresoever they may be.
+
+    Updated to do generate_from_page properly, January 2025 (thanks Bernard!)
+
 */
 
 generated_toc = {
@@ -50,7 +53,7 @@ generated_toc = {
         if (classes[i].match(/^generate_from_h[1-6]$/)) {
           generate_from = classes[i].substr(classes[i].length-1,1);
         } else if (classes[i].match(/^generate_for_[a-z]+$/)) {
-          generate_for = classes[i].match(/^generate_for_([a-z])+$/)[1];
+          generate_for = classes[i].match(/^generate_for_([a-z]+)$/)[1];
         }
       }
     } else {
@@ -61,7 +64,7 @@ generated_toc = {
     // set top_node to be the element in the document under which
     // we'll be analysing headings
     if (generate_for == 'page') {
-      top_node = document.getElementsByTagName('body');
+      top_node = document.getElementsByTagName('body')[0];
     } else {
       // i.e., explicitly set to "parent", left blank (so "unset"),
       // or some invalid value
@@ -210,6 +213,7 @@ generated_toc = {
         alllis[i].className = "notmissing";
       }
     }
+    
   },
   
   wrapOpenClose: function(a, cur_list_el) {
@@ -309,3 +313,5 @@ else if((/mozilla/i.test(u)&&!/(compati)/.test(u)) || (/opera/i.test(u))){
 document.addEventListener("DOMContentLoaded",i,false); } else if(e){     (
 function(){var t=document.createElement('doc:rdy');try{t.doScroll('left');
 i();t=null;}catch(e){st(arguments.callee,0);}})();}else{window.onload=i;}})(generated_toc.init);
+
+

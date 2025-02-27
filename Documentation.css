@@ -44,7 +44,8 @@ tr.subhead td, tr.subhead td * {
 .docTitle { color:rgb(15,71,97); font-size:28pt; font-weight:bold;  text-indent:0pt; margin-top:24pt; margin-bottom:4pt; }
 
 /* document table of contents */
-.docTOC ul, li { font-size:12pt; font-style:bold; margin-top:0pt; margin-bottom:0pt; }
+.docTOC ul, li { font-size:10pt; font-style:bold; margin-top:-2pt; margin-bottom:-2pt; }
+.docTOC div { column-count:3; column-gap:0px; }
 
 /* to hide 'Skip table of contents' */
 .hidden { visibility: hidden; }
