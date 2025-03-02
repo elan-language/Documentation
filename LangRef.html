@@ -429,15 +429,15 @@ Or even to the same name if that name is a variable:</p>
 <li>a <el-code>function</el-code></li>
 <li>a <el-code>procedure</el-code></li>
 <p>As with a concrete class, any of these members may be made <el-code>private</el-code> after the corresponding frame has been added, by selecting that member frame and pressing Ctrl_p.</p>
-<p>These concrete members are automatically inherited by any sub-class, but they may not be overridden (re-defined) by the sub-class. Therefore you should define concrete members only if they are intended to work identically on every sub-class.</p>
+<p>These concrete members are automatically inherited by any subclass, but they may not be overridden (re-defined) by the subclass. Therefore you should define concrete members only if they are intended to work identically on every subclass.</p>
 <p id="Abstract_function" id="Abstract_procedure" id="Abstract_property">You may also define abstract methods on an abstract classes i.e. <el-code>abstract property</el-code>, <el-code>abstract function</el-code>, <el-code>abstract procedure</el-code>. Such methods define only the signature of the method, not the implementation (body). Therefore they have no <el-code>end</el-code> statement. For example:</p>
 <el-code>abstract function calculateDiscount() as Float</el-code><br>
 <p>
 <br>
-If you wish to have several sub-classes of an <el-code>abstract class</el-code> that share a common implementation for a method, but require that some of the sub-classes can define a different implementation, then you should:</p>
+If you wish to have several subclasses of an <el-code>abstract class</el-code> that share a common implementation for a method, but require that some of the subclasses can define a different implementation, then you should:</p>
 <li>Define the method as <el-code>abstract</el-code> on the superclass</li>
 <li>Define a concrete implementation on the superclass with a similar, but slightly different name e.g. having a prefix such as: <el-code>default</el-code> </li>
-<li>Each sub-class must then define its implementation of the abstract method, but the ones needing a common implementation can be just one line, delegating responsibility up to the &#8216;default&#8217; method on the superclass. </li>
+<li>Each subclass must then define its implementation of the abstract method, but the ones needing a common implementation can be just one line, delegating responsibility up to the &#8216;default&#8217; method on the superclass. </li>
 <!-- #endregion-->
 <!--     #region Interface-->
 <h3 id="interface">Interface</h3>
@@ -503,7 +503,7 @@ the correct types must be provided, for example, if the class <el-code><el-type>
 <el-code>property body as [Square]</el-code><br>
 
 <li>A <el-code><el-kw>property</el-kw></el-code> is defined on a <span class="Link">Class</span> and must <el-code>specify</el-code> a name (conforming to the rules for an <a href="#Identifier">Identifier</a> and a Type.</li>
-<li>A <el-code><el-kw>property</el-kw></el-code> may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its sub-classes. This is done by selecting the property frame and pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
+<li>A <el-code><el-kw>property</el-kw></el-code> may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its subclasses. This is done by selecting the property frame and pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
 <li>If not marked <el-code>private</el-code>, a property may be read but not be written to. Properties may only be modified from outside the class by means of a <span class="Link">Procedure method</span>.</li>
 <li>A property may be given an initial value in the <el-code>constructor</el-code>.</li>
 <p>
@@ -523,14 +523,14 @@ If the <el-code><el-kw>property</el-kw></el-code> is not initialised within the 
 <p>A &#8216;procedure method&#8217; follows the same syntax and rules as a global <a href="procedure">procedure</a>. The differences are:</p>
 <li>A procedure method, like a function method, is always referenced (used) by code outside the class using &#8216;dot syntax&#8217; on an instance.</li>
 <li>A procedure method may read, or write to, any <el-code><el-kw>property</el-kw></el-code> defined on the class.</li>
-<li>A procedure method may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its sub-classes. This is done by selecting the property frame and then pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
+<li>A procedure method may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its subclasses. This is done by selecting the property frame and then pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
 <!-- #endregion-->
 <!--     #region Function Method-->
 <h3 id="function_method">Function Method</h3>
 <p>A function method follows the same syntax and rules as a global <a href="function">function</a>>. The differences are:</p>
 <li>A <el-code>function</el-code> method is always referenced (used) by code outside the class using &#8216;dot syntax&#8217; on an instance.</li>
 <li>A <el-code>function</el-code> method may directly reference (read only) any <el-code><el-kw>property</el-kw></el-code> defined on the class as though it were a variable/parameter.</li>
-<li>A <el-code>function</el-code> method may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its sub-classes. This is done by selecting the property frame and then pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
+<li>A <el-code>function</el-code> method may be marked <el-code>private</el-code>, in which case it is visible only to code within the class and, if defined on an <el-code>abstract class</el-code>, within its subclasses. This is done by selecting the property frame and then pressing Ctrl-p. (Pressing these keys again will remove the <el-code>private</el-code> modifier).</li>
 <li>asString() method</li>
 <li>asString method. This is just a regular function method with a specific name, no parameters and returning a String. If defined for a class, then if an instance of the class is printed, the <el-code>asString</el-code> function method will automatically be used. Typically <el-code>asString</el-code> will return a string made up of one or more of the property values, perhaps with additional text, or the results of function calls.</li>
 <!-- #endregion-->
@@ -806,7 +806,7 @@ print a.contains("ello")
 <p>returns a new string where all occurrences of the <el-code>match</el-code> string are replaced with the <el-code>replacement</el-code> string. </p>
 <el-code>trim() returns String</el-code><br>
 <p>returns a new string based on the string on which the method is called, but with all leading and trailing spaces removed.</p>
-<el-code>indexOf(partString as String) returns Int</el-code><br>
+<p id="indexOf"><el-code>indexOf(partString as String) returns Int</el-code></p>
 
 <p>The following methods are used for comparing strings alphabetically,  for example in a sort routine:</p>
 <el-code>isBefore(otherString as String) returns Boolean</el-code><br>
