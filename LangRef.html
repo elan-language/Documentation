@@ -846,33 +846,30 @@ set h:t to myList</el-code><br>To discard either the head or the tail:<br><el-co
 <p>An &#8216;Array&#8217; is a simple data structure that holds multiple elements of the same Type.</p>
 <p>Unlike a List, an Array is mutable, meaning that the elements within the data structure can be altered without creating a new Array from the old.</p>
 <p>The Type is specified in the following form:</p>
-<el-code>Array&lt;of String&gt;	for an Array of Type 	String</el-code><br>
-<el-code>Array&lt;of Int&gt; 	for an Array of Type 	Int</el-code><br>
+<el-code>Array&lt;of String&gt;</el-code> for an Array of Type >el-code>String</el-code><br>
+<el-code>Array&lt;of Int&gt;</el-code> for an Array of Type <el-code>Int</el-code><br>
 
 <p>where, in these examples, <el-code>String</el-code> and <el-code>Int</el-code> represent the Type of each element in the <el-code>Array</el-code>s. The element Type can be any Type value &#8211; <el-code>Int</el-code>, <el-code>Boolean</el-code>, <el-code>Float, String</el-code> &#8211; or the name of a specific <el-code>class</el-code> such as <el-code>Player</el-code>, or an <el-code>enum</el-code> such as <el-code>Direction</el-code>. It may also be another data structure, including another <el-code>Array</el-code> (sometimes referred to as a &#8216;nested Array&#8217;).</p>
 
 <h4>Creating an Array</h4>
 <p>An <el-code>Array</el-code> may be defined in &#8216;literal&#8217; form, &#8216;delimited&#8217; by square brackets, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type:</p>
-<el-code>variable fruit set to ["apple", "orange", "pear"]</el-code><br>
-
+<p><el-code>variable fruit set to ["apple", "orange", "pear"]</el-code></p>
 <p>including &#8216;nested &#8217;:</p>
-<el-code>variable coordinates set to [[3.4, 0.1, 7.8], [1, 0, 1.5], [10, -1.5, 25]]</el-code><br>
-
-<el-code>or variables (provided they are all of the same Type): </el-code><br>
-<el-code>variable values set to [x, y, z]</el-code><br>
-
-<el-code>or a mixture of literal values and variables (all of the same Type):</el-code><br>
-<el-code>variable values set to [3.1, y, z]</el-code><br>
+<p><el-code>variable coordinates set to [[3.4, 0.1, 7.8], [1, 0, 1.5], [10, -1.5, 25]]</el-code></p>
+or variables (provided they are all of the same Type):</p>
+<p><el-code>variable values set to [x, y, z]</el-code></p>
+or a mixture of literal values and variables (all of the same Type):
+<p><el-code>variable values set to [3.1, y, z]</el-code></p>
 <p>where <el-code>y </el-code>and <el-code>z </el-code>are existing variables of Type <el-code>Float</el-code>.</p>
-<p>You may also define an Array of a specified size, with each element initialised to the same value, for example:</p>
+<p>You may also define an <el-code>Array</el-code> of a specified size, with each element initialised to the same value, for example:<br>
 <el-code>variable fruit set to createArray(20, "")</el-code><br>
 
-<p>will create an Array of Type String with exactly 20 elements, each initialised to the empty String and:</p>
+<p>will create an <el-code>Array</el-code> of Type <el-code>String</el-code> with exactly 20 elements, each initialised to the empty String and:</p>
 <el-code>variable scores set to createArray(12, 100.0)</el-code><br>
 
-<el-code>will create an Array of Type Float with exactly 12 elements, each initialised to 100.0.</el-code><br>
+creates an <el-code>Array</el-code> of Type <el-code>Float</el-code> with exactly 12 elements, each initialised to 100.0.</el-code><br>
 
-<p>Although the resulting <el-code>Array</el-code> may still be expanded subsequently (by using the <el-code>add</el-code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array:</p>
+<p>Although the resulting <el-code>Array</el-code> may still be expanded subsequently (by using the <el-code>add</el-code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array</p>
 
 <h3>Dot methods on an Array</h3>
 <p>Functions:</p>
