@@ -97,7 +97,7 @@ Unlike a <a href="#function">function</a>, a procedure does not return a value.
   For this reason the statements within a procedure can:</p>
 <li>Include <el-code>print</el-code> statements (or methods).</li>
 <li>include <el-code>input</el-code> methods or other &#8216;system&#8217; methods (such as a random number generation).</li>
-<li><el-code>call</el-code> other procedures (or itself if <a href="#recursion">&#8216;recursion&#8217;</a> is required).</li>
+<li><el-code>call</el-code> other procedures (or itself if <a href="#Recursion">&#8216;recursion&#8217;</a> is required).</li>
 <li>Re-assign a parameter, provided that parameter definition is preceded by the keyword <el-code>out</el-code> Example:</li>
 
 <el-code-block>
@@ -148,12 +148,26 @@ Unlike a <a href="#procedure">procedure</a>, a function returns a value. Also un
 <p>
 TODO
 
+<!-- #endregion-->
+<!--     #region Parameters-->
 <div id="as"></div>
 <h3 id="Parameter">Parameters</h3>
 Parameters for both procedures and functions are defined in exactly the same way: each parameter definition takes the form
 <br>&nbsp;&nbsp;&lt;name&gt; <el-code>as</el-code> &lt;Type&gt;
 <br> for example:
 <br>&nbsp;&nbsp;<el-code>age as Int</el-code>
+
+<!-- #endregion--
+<!--     #region Recursion-->
+<h3 id="Recursion">Recursion</h3>
+Procedures and functions may be called or referenced recursively. For example, a simple factorial calculation:
+<el-code-block>
+<el-func class="selected focused ok multiline" id="func11" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+<el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident13" class="ok" tabindex="0"><el-txt>factorial</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params14" class="optional ok" tabindex="0"><el-txt><el-id>n</el-id> <el-kw>as</el-kw> <el-type>Int</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type15" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place></el-field><el-msg></el-msg><el-fr>3</el-fr></el-top>
+<el-statement class="ok" id="return16" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>return </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt>(<el-kw>if </el-kw><el-id>n</el-id> &gt; <el-lit>1</el-lit><el-kw> then </el-kw><el-id>n</el-id>*<el-method>factorial</el-method>(<el-id>n</el-id> - <el-lit>1</el-lit>)<el-kw><br>else </el-kw><el-lit>1</el-lit>)</el-txt><el-place><i>expression</i></el-place></el-field><el-msg></el-msg><el-fr>4</el-fr></el-statement>
+<el-kw>end function</el-kw>
+</el-func>
+</el-code-block>
 
 <!-- #endregion-->
 <!--     #region Test-->
@@ -856,20 +870,17 @@ set h:t to myList</el-code><br>To discard either the head or the tail:<br><el-co
 <p><el-code>variable fruit set to ["apple", "orange", "pear"]</el-code></p>
 <p>including &#8216;nested &#8217;:</p>
 <p><el-code>variable coordinates set to [[3.4, 0.1, 7.8], [1, 0, 1.5], [10, -1.5, 25]]</el-code></p>
-or variables (provided they are all of the same Type):</p>
+<p>or variables (provided they are all of the same Type):</p>
 <p><el-code>variable values set to [x, y, z]</el-code></p>
-or a mixture of literal values and variables (all of the same Type):
+<p>or a mixture of literal values and variables (all of the same Type):</p>
 <p><el-code>variable values set to [3.1, y, z]</el-code></p>
 <p>where <el-code>y </el-code>and <el-code>z </el-code>are existing variables of Type <el-code>Float</el-code>.</p>
-<p>You may also define an <el-code>Array</el-code> of a specified size, with each element initialised to the same value, for example:<br>
-<el-code>variable fruit set to createArray(20, "")</el-code><br>
-
-<p>will create an <el-code>Array</el-code> of Type <el-code>String</el-code> with exactly 20 elements, each initialised to the empty String and:</p>
-<el-code>variable scores set to createArray(12, 100.0)</el-code><br>
-
-creates an <el-code>Array</el-code> of Type <el-code>Float</el-code> with exactly 12 elements, each initialised to 100.0.</el-code><br>
-
-<p>Although the resulting <el-code>Array</el-code> may still be expanded subsequently (by using the <el-code>add</el-code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array</p>
+<p>You may also define an <el-code>Array</el-code> of a specified size, with each element initialised to the same value, for example:</p>
+<el-code>variable fruit set to createArray(20, "")</el-code></p>
+<p>creates an <el-code>Array</el-code> of Type <el-code>String</el-code> with exactly 20 elements, each initialised to the empty String and:</p>
+<el-code>variable scores set to createArray(12, 100.0)</el-code></p>
+<p>creates an <el-code>Array</el-code> of Type <el-code>Float</el-code> with exactly 12 elements, each initialised to 100.0.</el-code</p>
+<p>Although the resulting <el-code>Array</el-code> may still be expanded subsequently (by using the <el-code>add</el-code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array.</p>
 
 <h3>Dot methods on an Array</h3>
 <p>Functions:</p>
@@ -879,7 +890,7 @@ creates an <el-code>Array</el-code> of Type <el-code>Float</el-code> with exactl
 <p>
 <el-code>call fruit.append("banana")<br>
 call fruit.appendArray(anotherArray)<br>
-call fruit.insertAt(4, "cherry</span>")<br>
+call fruit.insertAt(4, "cherry")<br>
 call fruit.prepend("melon")<br>
 call fruit.putAt(2, "grape")<br>
 call fruit.removeAll("apple")<br>
@@ -888,7 +899,7 @@ call fruit.removeFirst("apple")
 </el-code><br>
 
 <h3 id="Using_an_Array">Using an Array</h3>
-<p>Elements are read using an index in square brackets &#8211; the first element being element <el-code>[0]</el-code>. The last element of an Array of size 10 will therefore be accessed by the index <el-code>[9]</el-code>.</p>
+<p>Elements are read using an index in square brackets, the first element being element <el-code>[0]</el-code>. The last element of an <el-code>Array</el-code> of size 10 will therefore be accessed by the index <el-code>[9]</el-code>.</p>
 <p>Attempting to read an element by index, where that element does not exist, will result in an &#8216;Index out of range&#8217; run-time error.</p>
 <p>Unlike in many programming languages you may not modify data by index: elements are modified by calling the <el-code>putAt</el-code> procedure on the Array.</p>
 <p>Try these examples (the last one will produce an error &#8211; make sure you understand why):</p>
