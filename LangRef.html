@@ -151,15 +151,15 @@ TODO
 <!-- #endregion-->
 <!--     #region Parameters-->
 <div id="as"></div>
-<h3 id="Parameter">Parameters</h3>
-Parameters for both procedures and functions are defined in exactly the same way: each parameter definition takes the form
+<h4 id="Parameter">Parameters</h4>
+Parameters for both procedures and functions are defined in exactly the same way: each parameter definition takes the form:
 <br>&nbsp;&nbsp;&lt;name&gt; <el-code>as</el-code> &lt;Type&gt;
 <br> for example:
 <br>&nbsp;&nbsp;<el-code>age as Int</el-code>
 
 <!-- #endregion--
 <!--     #region Recursion-->
-<h3 id="Recursion">Recursion</h3>
+<h4 id="Recursion">Recursion</h4>
 Procedures and functions may be called or referenced recursively. For example, a simple factorial calculation:
 <el-code-block>
 <el-func class="selected focused ok multiline" id="func11" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
@@ -603,10 +603,10 @@ TODO
 <!--     #endregion-->
 <!--     #region For loop-->
 <h3 id="for">For loop</h3>
-<p><b>Notes:</b></p>
-<li>The three defining values (<el-code>from</el-code>, <el-code>to</el-code>, and <el-code>step</el-code>) must all be integers &#8211; positive or negative.</li>
-<li>They may be defined by literal integers, variables of integer Type, or expressions that evaluate to an integer. </li>
-<p>However, if you require a negative step then the literal value, variable, or expression must start with a negative sign &#8211; as this is needed at compile time to determine the nature of the exit condition. So if you have a variable <el-code>s</el-code> that holds a negative value to be used as the step, then you will need to write something like the following:</p>
+<p>The loop counter variable does not have to bave been defined in a <el-code>variable</el-code> statement.</p>
+<p>The three defining values (<el-code>from</el-code>, <el-code>to</el-code>, and <el-code>step</el-code>) must all be integer, positive or negative.</p>
+<p>They may be defined by literal integers, variables of Type <el-code>Int</el-code>, or expressions that evaluate to an integer. </p>
+<p>However, if you require a negative step then the literal value, variable, or expression must start with a negative sign as this is needed at compile time to determine the nature of the exit condition. So if you have a variable <el-code>s</el-code> that holds a negative value to be used as the step, then you will need to write something like the following:</p>
 <el-code-block>
 variable s set to -3<br>
 for i from 100 to 0 step -(-s)<br>
