@@ -661,13 +661,18 @@ end if
 <h3 id="print">Print statement</h3>
 
 <p>The simplest way to print is with the <el-code>print</el-code> statement. For example</p>
-<el-code><br>
-print "Hello"<br>
-let a be 3<br>
-let b be 4<br>
-print a * b<br>
-print "{a} times {b} equals {a*b}"
-</el-code><br>
+
+<el-code-block>
+  <main class="ok multiline" id="main3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+    <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
+    <el-statement class="ok" id="print5" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>print </el-kw><el-field id="expr6" class="optional ok" tabindex="0"><el-txt>"<el-lit>Hello</el-lit>"</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+    <el-statement class="ok" id="let7" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var8" class="ok" tabindex="0"><el-txt><el-id>a</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr9" class="ok" tabindex="0"><el-txt><el-lit>3</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement>
+    <el-statement class="ok" id="let10" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var11" class="ok" tabindex="0"><el-txt><el-id>b</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr12" class="ok" tabindex="0"><el-txt><el-lit>4</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>4</el-fr></el-statement>
+    <el-statement class="ok" id="print13" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>print </el-kw><el-field id="expr14" class="optional ok" tabindex="0"><el-txt><el-id>a</el-id>*<el-id>b</el-id></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-statement>
+    <el-statement class="ok" id="print15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>print </el-kw><el-field id="expr16" class="optional ok" tabindex="0"><el-txt>"<el-lit></el-lit>{<el-id>a</el-id>}<el-lit> times </el-lit>{<el-id>b</el-id>}<el-lit> equals </el-lit>{<el-id>a</el-id>*<el-id>b</el-id>}<el-lit></el-lit>"</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-statement>
+    <el-kw>end main</el-kw>
+  </main>
+</el-code-block>
 
 <p>Note</p>
 <li>The last line in the example above uses an <a href="#Interpolated_string">interpolated string</a>. Arguments placed within curly braces are evaluated before printing, and these may be separated by literal text and punctuation as needed. This is one recommended way to print more than one value on a line. The other way is to use print procedures.</li>
