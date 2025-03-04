@@ -19,7 +19,7 @@ body { font-size:12pt; margin-left: 20px; text-decoration:none; font-weight:norm
 p,img,pre,blockquote,address,td,th,li,ul
   { font-size:12pt; text-indent:0pt; margin-bottom:8pt; line-height:1.3; }
 
- /* show sort direction icons in the sortable column headings */
+/* show sort direction icons in the sortable column headings */
 table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {content: " \25B4\25BE"}
 
 table { text-align:left; margin-top:4pt; margin-bottom:4pt; }
@@ -39,6 +39,8 @@ tr.subhead td, tr.subhead td * {
   color: white;
   font-weight: bold;
 }
+
+.tableColours td { font-family:monospace; text-align:right; }
 
 /* document title */
 .docTitle { color:rgb(15,71,97); font-size:28pt; font-weight:bold;  text-indent:0pt; margin-top:24pt; margin-bottom:4pt; }

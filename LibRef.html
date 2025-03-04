@@ -26,22 +26,22 @@
 
 <table>
     <tr><th>Name</th><th>Type</th><th>value</th></tr>
-    <tr><td><el-code><el-id>openBrace</el-id></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td><el-code>{</el-code></td>
-    <tr><td><el-code><el-id>closeBrace</el-id></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td><el-code>}</el-code></td>
-    <tr><td><el-code><el-id>quotes</el-id></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td><el-code>"</el-code></td>
+    <tr><td><el-code><el-id>openBrace</el-id></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td><el-code>&nbsp;{</el-code></td>
+    <tr><td><el-code><el-id>closeBrace</el-id></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td><el-code>&nbsp;}</el-code></td>
+    <tr><td><el-code><el-id>quotes</el-id></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td><el-code>&nbsp;"</el-code></td>
 </table>
 
 <h2 id="Library_colours">Library Colours</h2>
-<table>
-    <tr><th>Colour<br>name</th><th>Integer<br>decimal</th><th>R G B<br>decimal</th><th>R G B<br>hexadecimal</th></tr>
-    <tr><td><el-code><el-id>black</el-id></el-code></td><td>0</td><td>  0    0    0</td><td><el-code>0x000000</el-code></td></tr>
-    <tr><td><el-code><el-id>white</el-id></el-code></td><td>16777215</td><td>255  255  255</td><td><el-code>0xffffff</el-code></td></tr>
-    <tr><td><el-code><el-id>red</el-id></el-code></td><td>16711680</td><td>255    0    0</td><td><el-code>0xff0000</el-code></td></tr>
-    <tr><td><el-code><el-id>green</el-id></el-code></td><td>32768</td><td>  0  128    0</td><td><el-code>0x008000</el-code></td></tr>
-    <tr><td><el-code><el-id>blue</el-id></el-code></td><td>255</td><td>  0   0   255</td><td><el-code>0x0000ff</el-code></td></tr>
-    <tr><td><el-code><el-id>yellow</el-id></el-code></td><td>16776960</td><td>255  255    0</td><td><el-code>0xffff00</el-code></td></tr>
-    <tr><td><el-code><el-id>brown</el-id></el-code></td><td>10824234</td><td>165   42   42</td><td><el-code>0xa52a2a</el-code></td></tr>
-    <tr><td><el-code><el-id>grey</el-id></el-code></td><td>8421504</td><td>128  128  128</td><td><el-code>0x808080</el-code></td></tr>
+<table class="tableColours">
+<tr><th>Colour</th><th>decimal</th><th>decimal<br></th><th>hexadecimal</th></tr>
+<tr><th>name</th><th>integer</th><th style="font-family:monospace;">&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;B</th><th style="font-family:monospace;">&nbsp;0xrrggbb</th></tr>    <tr><td><el-code><el-id>black</el-id></el-code></td><td>0</td><td>&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp0&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><el-code>0x000000</el-code></td></tr>
+    <tr><td><el-code><el-id>white</el-id></el-code></td><td>16777215</td><td>&nbsp;255&nbsp;&nbsp;255&nbsp;&nbsp;255</td><td><el-code>0xffffff</el-code></td></tr>
+    <tr><td><el-code><el-id>red</el-id></el-code></td><td>16711680</td><td>&nbsp;255&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><el-code>0xff0000</el-code></td></tr>
+    <tr><td><el-code><el-id>green</el-id></el-code></td><td>32768</td><td>&nbsp;&nbsp;0&nbsp;&nbsp;128&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><el-code>0x008000</el-code></td></tr>
+    <tr><td><el-code><el-id>blue</el-id></el-code></td><td>255</td><td>&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;255</td><td><el-code>0x0000ff</el-code></td></tr>
+    <tr><td><el-code><el-id>yellow</el-id></el-code></td><td>16776960</td><td>&nbsp;255&nbsp;&nbsp;255&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><el-code>0xffff00</el-code></td></tr>
+    <tr><td><el-code><el-id>brown</el-id></el-code></td><td>10824234</td><td>&nbsp;165&nbsp;&nbsp;&nbsp;42&nbsp;&nbsp;&nbsp;42</td><td><el-code>0xa52a2a</el-code></td></tr>
+    <tr><td><el-code><el-id>grey</el-id></el-code></td><td>8421504</td><td>&nbsp;128&nbsp;&nbsp;128&nbsp;&nbsp;128</td><td><el-code>0x808080</el-code></td></tr>
 </table>
  <!-- #endregion -->
 <!-- #region Library functions-->
@@ -80,7 +80,7 @@
     <h4>Notes</h4>
     <li>Any string that parses as an <el-code><el-type>Int</el-type></el-code> will also parse as a <el-code><el-type>Float</el-type></el-code>.</li>
     <li>If the parse fails, the second value will become zero, so you should always check the first value to see if the second value is a correct parse or just the default.</li>
-    <li> You can &#8216;deconstruct&#8217; the tuple into two variables: 
+    <li> You can &#8216;deconstruct&#8217; the tuple into two variables:
     <el-code><el-statement class="selected focused ok" id="var111" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var112" class="ok" tabindex="0"><el-txt><el-id>success</el-id>, <el-id>parsedValue</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr113" class="ok" tabindex="0"><el-txt><el-method>parseAsInt</el-method>(<el-id>myString</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement></el-code>
     <li>One use of these parsing methods is for validating user input, but note that an easier way to do this is to use the various <a href="#input_methods">input methods</a>.</li>
 
@@ -633,7 +633,7 @@ will paint the background colour for the whole grid, leaving any existing charac
 </table>
     </p>
     <p>Example use of a <el-code>Stack</el-code>:</p>
-    
+
     <el-code-block>
         <main class="selected focused ok multiline" id="main1" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
             <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
