@@ -142,11 +142,17 @@ Unlike a <a href="#function">function</a>, a procedure does not return a value.
 <!--     #region Function-->
 <h3 id="function">Function</h3>
 
-<p>A function is a named piece of behaviour that can define <b>parameters</b> which are given inputs via <b>arguments</b> when reference to the function occurs in a statement.
-Unlike a <a href="#procedure">procedure</a>, a function returns a value. Also unlike a procedure, a function can have no &#8216;side-effects&#8217;.
+<p>A function is a named piece of behaviour that can define <b>parameters</b> which are given inputs via <b>arguments</b> when reference to the function occurs in an expression.
+Unlike a <a href="#procedure">procedure</a>, a function returns a value. Also unlike a procedure, a function can have no &#8216;side-effects&#8217; and may not depend on any <a href="#System_methods">System methods</a>.
+Example of a function:</p>
 
-<p>
-TODO
+<el-code-block>
+  <el-func class="ok multiline" id="func91" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+    <el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident93" class="ok" tabindex="0"><el-txt>score</el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else.">?</el-help></el-field></el-method>(<el-field id="params94" class="optional ok" tabindex="0"><el-txt><el-id>g</el-id> <el-kw>as</el-kw> <el-type>Game</el-type></el-txt><el-place><i>parameter definitions</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Zero or more parameter definitions comma-separated. Each parameter definition consists of a parameter name followed by the 'as' keyword and a Type. A parameter name follows the same rules as for a variable name - starting with a lower-case letter.">?</el-help></el-field>)<el-kw> returns </el-kw><el-field id="type95" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A simple Type name must begin with an upper-case letter. See manual for Array, List, an  Dictionary types, 'generic type', 'tuple type', 'function type' - consult documentation for these.">?</el-help></el-field><el-msg></el-msg><el-fr>30</el-fr></el-top>
+    <el-statement class="ok" id="return96" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>return </el-kw><el-field id="expr97" class="ok" tabindex="0"><el-txt><el-id>g</el-id>.<el-id>body</el-id>.<el-method>length</el-method>() - <el-lit>2</el-lit></el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>31</el-fr></el-statement>
+    <el-kw>end function</el-kw>
+    </el-func>
+</el-code-block>
 
 <!-- #endregion-->
 <!--     #region Parameters-->
@@ -550,15 +556,17 @@ If the <el-code><el-kw>property</el-kw></el-code> is not initialised within the 
 <!-- #endregion-->
 <!--     #region Abstract Property-->
 <h3 id="Abstract_property">Abstract Property</h3>
-TODO
+<p>An abstract property may be defined only on an <a href="#Abstract_class">abstract class</a>. Any concrete sub-class must then implement a concrete (regular) property to match.</p>
 <!-- #endregion-->
 <!--     #region Abstract Procedure Method-->
 <h3 id="Abstract_procedure_method">Abstract Procedure Method</h3>
-TODO
+<p>An abstract procedure method may be defined only on an <a href="#Abstract_class">abstract class</a>. Any concrete sub-class must then implement a concrete (regular) property to match.</p>
+
 <!-- #endregion-->
 <!--     #region Abstract Function Method-->
 <h3 id="abstract_function_method">Abstract Function Method</h3>
-TODO
+<p>An abstract function method may be defined only on an <a href="#Abstract_class">abstract class</a>. Any concrete sub-class must then implement a concrete (regular) property to match.</p>
+
 <!-- #endregion-->
 <!--     #endregion -->
 <!--   #region Statement Instructions-->
@@ -662,7 +670,7 @@ print "{a} times {b} equals {a*b}"
 </el-code><br>
 
 <p>Note</p>
-<li>The last line in the example above uses an &#8216;interpolated string&#8217; <!-- TODO - link -->. Arguments placed within curly braces are evaluated before printing, and these may be separated by literal text and punctuation as needed. This is one recommended way to print more than one value on a line. The other way is to use print procedures.</li>
+<li>The last line in the example above uses an <a href="#Interpolated_string">interpolated string</a>. Arguments placed within curly braces are evaluated before printing, and these may be separated by literal text and punctuation as needed. This is one recommended way to print more than one value on a line. The other way is to use print procedures.</li>
 <!--     #endregion-->
 <!--     #region Repeat loop-->
 <h3 id="repeat">Repeat loop</h3>
@@ -791,7 +799,7 @@ A newline may be inserted within a string as <el-code>\n</el-code>, for example:
 <el-code>print "Hello\nWorld"</el-code></p>
 <li>You may insert single-quotes  <el-code>' </el-code>within a string. </li>
 
-<h3>Interpolated string</h3>
+<h3 id="Interpolated_string">Interpolated string</h3>
 <p>
 Elan strings are automatically interpolated. This means that you may insert the values of variables or simple expressions within a string by enclosing them in curly braces. For example (assuming that the variables <el-code>a</el-code> and <el-code>b</el-code> are already defined as integers) :<br>
 <el-code>print "{a} times {b} equals {a*b}"</el-code></p>
