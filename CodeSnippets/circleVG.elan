@@ -1,0 +1,8 @@
+# FFFF Elan Beta 8 valid
+
+main
+  variable vg set to new VectorGraphics()
+  let circ be new CircleVG() with cx set to 20, cy set to 20, r set to 5, stroke set to red, strokeWidth set to 2, fill set to green
+  set vg to vg.add(circ)
+  call vg.display()
+end main
