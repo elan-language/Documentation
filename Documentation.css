@@ -22,23 +22,15 @@ p,img,pre,blockquote,address,td,th,li,ul
 /* show sort direction icons in the sortable column headings */
 table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {content: " \25B4\25BE"}
 
-table { text-align:left; margin-top:4pt; margin-bottom:4pt; }
-tr:nth-child(even) td{
-  background-color: rgb(226, 226, 226);
-}
-tr:nth-child(odd) td{
-  background-color: rgb(196, 196, 196);
-}
-td {padding-left: 5px; padding-right: 5px;}
-th, th * {color: white; background-color: rgb(15,71,97)}
-tr.x td:nth-child(3) * {
-  color: red;
-}
-tr.subhead td, tr.subhead td * {
-  background-color: rgb(15,71,97);
-  color: white;
-  font-weight: bold;
-}
+table
+ th, th * {color: white; background-color: rgb(15,71,97)}
+ th { text-align:center; margin-top:4pt; margin-bottom:4pt }
+ tr { text-align:left; margin-top:4pt; margin-bottom:4pt; }
+ tr:nth-child(even) td { background-color: rgb(226, 226, 226); }
+ tr:nth-child(odd)  td { background-color: rgb(196, 196, 196); }
+ td {padding-left: 5px; padding-right: 5px;}
+ tr.x td:nth-child(3) * { color: red; }
+ tr.subhead td, tr.subhead td * { background-color: rgb(15,71,97); color: white; font-weight: bold; }
 
 .tableColours td { font-family:monospace; text-align:right; }
 
