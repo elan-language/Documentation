@@ -1,0 +1,12 @@
+# 631748f80d7f0a5b4f8b9f2275adc0e89af0fa1ac9300461fcf742a42ede4d34 Elan Beta 8 valid
+
+main
+  variable gr set to new BlockGraphics()
+  while true
+    let x be randomInt(0, 39)
+    let y be randomInt(0, 29)
+    let colour be randomInt(0, 2^24 - 1)
+    set gr to gr.withBlock(x, y, colour)
+    call gr.display()
+  end while
+end main
