@@ -1,7 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en-GB">
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="Documentation.css" rel="stylesheet">
@@ -11,12 +10,9 @@
 <script type="text/javascript" src="generated_toc.js"></script>
 </head>
 <body>
-
 <div class="docTitle">Elan Language Reference</div>
-
 <div class="docTOC">
-	<div id="generated-toc" class="generate_from_h1 generate_for_page"></div>
-</div>
+<div id="generated-toc" class="generate_from_h1 generate_for_page"></div></div>
 
 <!-- #region Instruction Set-->
 <!--   #region Heading & Intro-->
@@ -30,10 +26,8 @@
   Four of the globals - <a href="#record">record</a>, <a href="#class">class</a>, <a href="#Abstract_class">abstract class</a>, and <a href="#interface">interface</a> - define data structures and these always contain <a href="#Member">members</a>.
   The two remaining globals - constant, and enum - do not contain any further instructions.</li>
 <li><a href="#Member">Member instructions</a> (also referred to simply as 'members') are located directly within the 'data structure' globals: record, class, abstract class, interface.
-  All members with the exception of property, define one or more <a href="#Statement">statements</a> within them.
-</li>
-<li><a href="#Statement">Statement instructions</a> (also referred to simply as 'statements) are located within 'methods.
-Some of these statements may contain other statements. </li>
+  All members with the exception of property, define one or more <a href="#Statement">statements</a> within them.</li>
+<li><a href="#Statement">Statement instructions</a> (also referred to simply as 'statements) are located within 'methods. Some of these statements may contain other statements. </li>
 </ul>
 <p>All instructions are added into a program using the <el-code>new code</el-code> 'selectors'.</p>
 
@@ -125,7 +119,7 @@ Unlike a <a href="#function">function</a>, a procedure does not return a value.
   </el-proc>
 </el-code-block>
 <p>Procedures are executed within a <a href="#call">call</a> statement, for example:</p>
-<el-code-block source="sort">
+<el-code-block source="sort.elan">
 <main class="ok multiline" id="main1" tabindex="0">
   <el-top><el-expand>+</el-expand><el-kw>main</el-kw></el-top>
   <el-statement class="ok" id="var3" tabindex="0"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>li</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt>[<el-lit>3</el-lit>, <el-lit>6</el-lit>, <el-lit>1</el-lit>, <el-lit>0</el-lit>, <el-lit>99</el-lit>, <el-lit>4</el-lit>, <el-lit>67</el-lit>]</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
@@ -140,7 +134,7 @@ Unlike a <a href="#function">function</a>, a procedure does not return a value.
 <p>A function is a named piece of behaviour that can define <b>parameters</b> which are given inputs via <b>arguments</b> when reference to the function occurs in an expression.
 Unlike a <a href="#procedure">procedure</a>, a function returns a value. Also unlike a procedure, a function can have no &#8216;side-effects&#8217; and may not depend on any <a href="#System_methods">System methods</a>.
 Example of a function:</p>
-<el-code-block source="score">
+<el-code-block source="score.elan">
 <el-func class="ok multiline" id="func91" tabindex="0">
 <el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident93" class="ok" tabindex="0"><el-txt>score</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params94" class="optional ok" tabindex="0"><el-txt><el-id>g</el-id> <el-kw>as</el-kw> <el-type>Game</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type95" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
 <el-statement class="ok" id="return96" tabindex="0"><el-kw>return </el-kw><el-field id="expr97" class="ok" tabindex="0"><el-txt><el-id>g</el-id>.<el-id>body</el-id>.<el-method>length</el-method>() - <el-lit>2</el-lit></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
@@ -215,7 +209,7 @@ Procedures and functions may be called or referenced recursively. For example, a
 
 <h4>Testing for runtime errors</h3>
 <p>If the expression you are testing causes a runtime error then the error will be displayed in the red fail message:</p>
-<p><el-code-block source="test_runtime">
+<p><el-code-block source="test_runtime.elan">
 <el-test class="error multiline" id="test5" tabindex="0">
 <el-top><el-expand>+</el-expand><el-kw>test </el-kw><el-field id="comment7" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i>optional description</i></el-place></el-field></el-top>
 <el-statement class="ok" id="let62" tabindex="0"><el-kw>let </el-kw><el-field id="var63" class="ok" tabindex="0"><el-txt><el-id>a</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr64" class="ok" tabindex="0"><el-txt>[<el-lit>5</el-lit>, <el-lit>1</el-lit>, <el-lit>7</el-lit>]</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
@@ -230,7 +224,7 @@ Procedures and functions may be called or referenced recursively. For example, a
 <h3>Marking a test with &#8216;ignore&#8217;</h3>
 <p>It is possible to mark a test with the <el-code>ignore</el-code> keyword, by selecting the test frame and then hitting Ctrl-i for example:</p>
 
-<p><el-code-block source="test_ignore">
+<p><el-code-block source="test_ignore.elan">
 <el-test class="warning multiline" id="test213" tabindex="0">
 <el-top><el-expand>+</el-expand><el-kw>ignore test </el-kw><el-field id="comment215" class="optional ok" tabindex="0"><el-txt>clockTick</el-txt><el-place><i>optional description</i></el-place></el-field><el-msg></el-msg></el-top>
 <el-statement class="ok" id="let216" tabindex="0"><el-kw>let </el-kw><el-field id="var217" class="ok" tabindex="0"><el-txt><el-id>g1</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr218" class="ok" tabindex="0"><el-txt><el-method>newGame</el-method>(<el-kw>new</el-kw> <el-type>Random</el-type>())</el-txt><el-place><i>expression</i></el-place></el-field><el-msg></el-msg></el-statement>
