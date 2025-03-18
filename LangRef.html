@@ -14,6 +14,9 @@
 <div class="docTOC">
 <div id="generated-toc" class="generate_from_h1 generate_for_page"></div></div>
 
+<!-- TODO: suggestion -->
+<!-- for temporary note of where change is needed -->
+
 <!-- #region Instruction Set-->
 <!--   #region Heading & Intro-->
 <h1 id="Instuction_set">Instruction Set</h1>
@@ -22,7 +25,7 @@
 <ul>
 <li><a href="#Global">Global instructions</a> (also referred to simply as &lsquo;globals&rsquo;) are located <em>directly</em> within a code file.
   They are never indented from the left-hand edge, nor may they be located <em>within</em> other instructions.
-  Three of the globals &ndash; <el-code>main</el-code>, <el-code>function</el-code>, and <el-code>procedure</el-code> &ndash; are described as &lsquo;methods&rsquo; and these defined one or more <a href="#Statement">statements</a> within them.</em><div class="">
+  Three of the globals &ndash; <el-code>main</el-code>, <el-code>function</el-code>, and <el-code>procedure</el-code> &ndash; are described as &lsquo;methods&rsquo; and these defined one or more <a href="#Statement">statements</a> within them.</em>
   Four of the globals &ndash; <a href="#record"><el-code>record</el-code></a>, <a href="#class">class</a>, <a href="#Abstract_class"><el-code>abstract class</el-code></a>, and <a href="#interface"><el-code>interface</el-code></a> &ndash; define data structures and these always contain <a href="#Member">members</a>.
   The two remaining globals &ndash; <el-code>constant</el-code>, and <el-code>enum</el-code> &ndash; do not contain any further instructions.</li>
 <li><a href="#Member">Member instructions</a> (also referred to simply as &lsquo;members&rsquo;) are located directly within the &lsquo;data structure&rsquo; globals: <el-code>record</el-code>, <el-code>class</el-code>, <el-code>abstract class</el-code>, <el-code>interface</el-code>.
@@ -192,7 +195,7 @@ Procedures and functions may be called or referenced recursively. For example, a
 </el-test>
 </el-code-block>
 
-<b>Notes:</b>
+Notes:
 <ul>
 <li>Elan tests are designed to test <el-code>function</el-code>s only. It is not possible to call a <el-code>procedure</el-code> or <el-code>main</el-code> routine within a test. Nor is it possible to use any <a href="#System_methods">System method</a> (the same rule as for a function).</li>
 <li>A test may optionally be given a name or description in free-form text, just like a comment, which plays no role in the execution of the test. You might give the test the same name as a function that it is testing, or you might describe a particular scenario that is being tested.</li>
@@ -211,7 +214,6 @@ Procedures and functions may be called or referenced recursively. For example, a
 <el-statement class="ok" id="assert14" tabindex="0"><el-kw>assert </el-kw><el-field id="text15" class="ok" tabindex="0"><el-txt><el-method>sqrt</el-method>(<el-lit>2</el-lit>).<el-method>round</el-method>(<el-lit>3</el-lit>)</el-txt><el-place><i>computed value</i></el-place></el-field><el-kw> is </el-kw><el-field id="expr16" class="ok" tabindex="0"><el-txt><el-lit><el-lit>1</el-lit>.414</el-lit></el-txt><el-place><i>expected value</i></el-place></el-field> <el-msg class="ok">pass</el-msg></el-statement>
 <el-kw>end test</el-kw>
 </el-test>
-
 </el-code-block>
 
 <h4>Testing for runtime errors</h3>
@@ -248,11 +250,12 @@ Procedures and functions may be called or referenced recursively. For example, a
 <!-- #endregion-->
 <!--     #region Constant-->
 <h3 id="constant">Constant</h3>
-<p>A <el-code>constant</el-code> defines a named value that cannot change.</p>
-<p>A <el-code>constant</el-code> is always defined at global level (directly within a file) and is global in scope. A <el-code>constant</el-code> may not be defined within any method. (However, see <a href="">missing hyperlink</a>).</p>
-<p>The name of a <el-code>constant</el-code> follows the rules for an <a href="#Identifier">Identifier</a>.</p>
-<p>The value to which a constant is set must be a <span class="Link">Literal value</span> of one of the following Types: <el-code>Int</el-code>, <el-code>Float</el-code>, <el-code>Boolean</el-code>, <el-code>String</el-code>, <el-code>Dictionary</el-code> or <el-code>DictionaryImmutable</el-code>.</p>
-
+<p>A <el-code>constant</el-code> defines a named value that cannot change and is always defined at global level (directly within a file) and is global in scope.</p>
+<ul>
+<li>A <el-code>constant</el-code> may not be defined within any method. (However, see<a href=""</a>)<!-- TODO missing link -->.</li>
+<li>The name of a <el-code>constant</el-code> follows the rules for an <a href="#Identifier">Identifier</a>.</li>
+<li>The value to which a constant is set must be a <span class="Link">Literal value</span> of one of the following Types: <el-code>Int</el-code>, <el-code>Float</el-code>, <el-code>Boolean</el-code>, <el-code>String</el-code>, <el-code>Dictionary</el-code> or <el-code>DictionaryImmutable</el-code>.</li>
+</ul>
 Examples:
 
 <el-code-block source="constants_enum.elan">
@@ -335,13 +338,14 @@ Examples:
 <el-kw>end record</el-kw>
 </el-class>
 </el-code-block>
-  <p>Having defined a record Type, such as <el-code>Game</el-code> above, you can create as many instances as you wish using the following syntax to specify the values:</p>
+Having defined a record Type, such as <el-code>Game</el-code> above, you can create as many instances as you wish using the following syntax to specify the values:
 <el-code-block source="newGame from snake_FP.elan">
 <el-statement class="ok" id="let603" tabindex="0"><el-kw>let </el-kw><el-field id="var604" class="ok" tabindex="0"><el-txt><el-id>g1</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr605" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Game</el-type>()<el-kw> with </el-kw><br><el-id>head</el-id><el-kw> set to </el-kw><el-method>newSquare</el-method>(<el-lit>22</el-lit>, <el-lit>15</el-lit>), <br><el-id>key</el-id><el-kw> set to </el-kw>"<el-lit>d</el-lit>", <br><el-id>isOn</el-id><el-kw> set to </el-kw><el-id>true</el-id></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-</el-code-block>>
+</el-code-block>
 Note that you are not <em>required</em> to provide a value for each property because, where a property is not specified in the &lsquo;<el-code>with</el-code> clause&rsquo; (as above), that property will be given the empty (default) value of the correct Type.</p>
 <p>You can then read the values from the properties using &lsquo;dot syntax&rsquo; for example:</p>
-<el-code-block><el-statement class="" id="print15" tabindex="0"><el-kw>print </el-kw><el-field id="expr16" class="optional" tabindex="0"><el-txt><el-id>sq</el-id>.<el-id>size</el-id></el-txt><el-place><i>expression</i></el-place></el-field> <el-msg class="warning"></el-msg></el-statement></el-code-block>
+<el-code-block source=""><el-statement class="" id="print15" tabindex="0"><el-kw>print </el-kw><el-field id="expr16" class="optional" tabindex="0"><el-txt><el-id>sq</el-id>.<el-id>size</el-id></el-txt><el-place><i>expression</i></el-place></el-field> <el-msg class="warning"></el-msg></el-statement>
+</el-code-block>
 <p><el-code><el-kw>record</el-kw></el-code> Types are immutable: the properties on an instance may not be changed, directly.
   However, you can easily create another instance that is a copy of the original,
   with all the same property values except for any specific changes made in another <el-code>with</el-code> clause.
@@ -642,8 +646,7 @@ end for
 <h3 id="if_statement">If statement</h3>
 <p>See also <a href="if_expression">if expression</a></p>
 
-<p>Example1:</p>
-
+Example 1:
 <el-code-block
   <el-statement class="multiline" id="if3" tabindex="0">
     <el-top><el-expand>+</el-expand><el-kw>if </el-kw><el-field id="expr5" class="" tabindex="0"><el-txt><el-id>head</el-id><el-kw> is </el-kw><el-id>apple</el-id></el-txt><el-place><i>condition</i></el-place></el-field><el-kw> then</el-kw></el-top> <el-msg class=""></el-msg>
@@ -653,9 +656,9 @@ end for
     <el-statement class="" id="call12" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident13" class="" tabindex="0"><el-txt><el-id>body</el-id>.<el-method>removeAt</el-method></el-txt><el-place><i>procedureName</i></el-place></el-field>(<el-field id="args14" class="optional ok" tabindex="0"><el-txt><el-lit>0</el-lit></el-txt><el-place><i>arguments</i></el-place></el-field>) <el-msg class=""></el-msg></el-top></el-statement>
     <el-kw>end if</el-kw>
     </el-statement>
-  </el-code-block>
+</el-code-block>
 
-<p>Example 2:</p>
+Example 2:
 <el-code><br>
 if item is value then<br>
 &nbsp;&nbsp;set result to true<br>
@@ -664,8 +667,7 @@ else if item.isBefore(value) then<br>
 else<br>
 &nbsp;&nbsp;set result to binarySearch(list[mid + 1..], item)<br>
 end if
-</el-code><br>
-
+</el-code>
 Notes:
 <ul>
 <li>The <el-code>else</el-code> clause is optional</li>
@@ -678,7 +680,7 @@ Notes:
 <!--     #region Print statement-->
 <h3 id="print">Print statement</h3>
 
-<p>The simplest way to print is with the <el-code>print</el-code> statement. For example</p>
+The simplest way to print is with the <el-code>print</el-code> statement. For example:
 
 <el-code-block>
   <main class="ok multiline" id="main3" tabindex="0">
@@ -711,23 +713,34 @@ Note:
 <!--     #region Try statement-->
 <h3 id="try">Try statement</h3>
 
-<p>Where another piece of code might throw an exception, for example when calling a <a href="#System_methods">System method</a> that is dependent upon external conditions, it may be executed within a <el-code>try</el-code> statement, for example:</p>
-<el-code>  try</el-code><br>
-<el-code>    call foo()</el-code><br>
-<el-code>    print "not caught"</el-code><br>
-<el-code>  catch exception in e</el-code><br>
-<el-code>    print e</el-code><br>
-<el-code>  end try</el-code><br>
-
-<p>The variable holding the exception (by default named <el-code>e</el-code>, but this may be changed by you) is of Type <el-code>String</el-code>. You may compare the exception message to one or more expected messages and, if the message does not match an expected exception, you may choose to throw the exception &lsquo;up&rsquo;, as in this example:</p>
-<el-code>  try</el-code><br>
-<el-code>    call foo()</el-code><br>
-<el-code>    print "not caught"</el-code><br>
-<el-code>  catch exception in e</el-code><br>
-<el-code>    if e isnt "An expected message" then</el-code><br>
-<el-code>      throw exception e</el-code><br>
-<el-code>    end if</el-code><br>
-<el-code>  end try</el-code><br>
+Where another piece of code might throw an exception, for example when calling a <a href="#System_methods">System method</a> that is dependent upon external conditions, it may be executed within a <el-code>try</el-code> statement, for example:
+<el-code-block source="tryCatch.elan">
+<el-statement class="ok multiline" id="try18" tabindex="0">
+<el-top><el-expand>+</el-expand><el-kw>try </el-kw></el-top>
+<el-statement class="ok" id="call38" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident39" class="ok" tabindex="0"><el-txt><el-method>foo</el-method></el-txt><el-place><i>procedureName</i></el-place></el-field>(<el-field id="args40" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i></i></el-place></el-field>)</el-top></el-statement>
+<el-statement class="ok" id="print47" tabindex="0"><el-kw>print </el-kw><el-field id="expr48" class="optional ok" tabindex="0"><el-txt>"<el-lit>not caught</el-lit>"</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-statement class="ok multiline outdent" id="catch20" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>catch exception in </el-kw><el-field id="ident22" class="ok" tabindex="0"><el-txt><el-id>e</el-id></el-txt><el-place><i>variableName</i></el-place></el-field></el-top>
+<el-statement class="ok" id="print64" tabindex="0"><el-kw>print </el-kw><el-field id="expr65" class="optional ok" tabindex="0"><el-txt><el-id>e</el-id></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+</el-statement>
+<el-kw>end try</el-kw>
+</el-statement>
+</el-code-block>
+The variable holding the exception (by default named <el-code>e</el-code>, but this may be changed by you) is of Type <el-code>String</el-code>. You may compare the exception message to one or more expected messages and, if the message does not match an expected exception, you may choose to throw the exception &lsquo;up&rsquo;, as in this example:
+<el-code-block source="tryCatch.elan">
+<el-statement class="ok multiline" id="try141" tabindex="0">
+<el-top><el-expand>+</el-expand><el-kw>try </el-kw></el-top>
+<el-statement class="ok" id="call158" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident159" class="ok" tabindex="0"><el-txt><el-method>foo</el-method></el-txt><el-place><i>procedureName</i></el-place></el-field>(<el-field id="args160" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i></i></el-place></el-field>)</el-top></el-statement>
+<el-statement class="ok" id="print177" tabindex="0"><el-kw>print </el-kw><el-field id="expr178" class="optional ok" tabindex="0"><el-txt>"<el-lit>not caught</el-lit>"</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-statement class="ok multiline outdent" id="catch143" tabindex="0"><el-top><el-expand>+</el-expand><el-kw>catch exception in </el-kw><el-field id="ident145" class="ok" tabindex="0"><el-txt><el-id>e</el-id></el-txt><el-place><i>variableName</i></el-place></el-field></el-top>
+<el-statement class="ok multiline" id="if211" tabindex="0">
+<el-top><el-expand>+</el-expand><el-kw>if </el-kw><el-field id="expr213" class="ok" tabindex="0"><el-txt><el-id>e</el-id><el-kw> isnt </el-kw>"<el-lit>an expected message</el-lit>"</el-txt><el-place><i>condition</i></el-place></el-field><el-kw> then</el-kw></el-top>
+<el-statement class="ok" id="throw234" tabindex="0"><el-kw>throw exception </el-kw><el-field id="msg235" class="ok" tabindex="0"><el-txt><el-id>e</el-id></el-txt><el-place><i>message</i></el-place></el-field></el-statement>
+<el-kw>end if</el-kw>
+</el-statement>
+</el-statement>
+<el-kw>end try</el-kw>
+</el-statement>
+</el-code-block>
 <!--     #endregion-->
 <!--     #region Variable statement-->
 <h3 id="variable">Variable statement</h3>
@@ -845,7 +858,7 @@ Alternatively, you can insert their Unicode codepoints by means of the <el-code>
 <el-code>print"Here are the curly braces: {unicode(123)} and {unicode(125)}"</el-code><br>
 
 <h3 id="String_method">Dot methods on a String</h3>
-<p>Note: There are no &lsquo;substring&rsquo; methods in Elan because you can always use an index range get a substring e.g. <el-code>s[3..7]</el-code>  gives a <el-code>string</el-code> containing the fourth through the eighth characters of <el-code>string s</el-code>. See<span class="Link"> Indexed Value</span>.</p>
+<p>There are no &lsquo;substring&rsquo; methods in Elan because you can always use an index range get a substring, e.g. <el-code>s[3..7]</el-code>  gives a <el-code>string</el-code> containing the fourth character to the seventh character inclusive of <el-code>string s</el-code>. Note that the upper bound of the range is <em>exclusive</em>. See<span class="Link"> Indexed Value</span>.</p>
 <el-code>upperCase() returns String </el-code><br>
 <p>returns a new string based on the input with all alpha-characters in upper case.</p>
 <el-code>lowerCase() returns String </el-code><br>
@@ -1118,11 +1131,11 @@ Constraints:
 <!--   #endregion-->
 <!--   #region Tuple-->
 <h2 id="Tuple">Tuples</h2>
-<p>A <el-code>tuple</el-code> is a way of holding a small number of values of different Types together as a single reference. They are referred to as 2-tuples, 3-tuples, etc. according to the number of values they hold. Common uses include:</p>
-<p>Holding a pair of x and y coordinates (each of Type <el-code>Float</el-code>) as a single unit, and</p>
-<p>Allowing a function to pass back a result comprised of both a message in a <el-code>String</el-code> and a <el-code>Boolean</el-code> indicating whether the operation was successful.</p>
-<p>A <el-code>tuple</el-code> is considered a &lsquo;lightweight&rsquo; alternative to defining a specific class for some purposes. </p>
-
+A <el-code>tuple</el-code> is a way of holding a small number of values of different Types together as a single reference. It may be considered a &lsquo;lightweight&rsquo; alternative to defining a specific class for some purposes. Tuples are referred to as 2-tuples, 3-tuples, etc. according to the number of values they hold. Common uses include:
+<ul>
+<li>Holding a pair of x and y coordinates (each of Type <el-code>Float</el-code>) as a single unit.</li>
+<li>Allowing a function to pass back a result comprised of both a message in a <el-code>String</el-code> and a <el-code>Boolean</el-code> indicating whether the operation was successful.</li>
+</ul>
 <h3>Type name</h3>
 <p>Written as a comma-separated list of the Type of each member, surrounded by round brackets:</p>
 <el-code>(Int, Int, Int)</el-code><br>
@@ -1156,7 +1169,7 @@ or into existing variables of the correct Type:</p>
 <p>The &lsquo;discard&rsquo; symbol <el-code>_</el-code> (underscore) may also be used when deconstructing a tuple when there is no need to capture specific elements:</p>
 <el-code>variable x, _ set to point1</el-code><br>
 <br>
-<p>Notes</p>
+Notes:
 <p>As in most languages, Elan <el-code>tuple</el-code>s are immutable. Once defined they are effectively &lsquo;read only&rsquo;. You cannot alter any of the elements in a <el-code>tuple</el-code> nor (unpke a <el-code>pst</el-code> for example) can you create a new <el-code>tuple</el-code> from an existing one with specified differences.</p>
 <p>You cannot deconstruct a <el-code>tuple</el-code> into a mixture of new and existing variables.</p>
 <p><el-code>tuple</el-code>s may be nested: you can define a <el-code>tuple</el-code> within a <el-code>tuple</el-code>.</p>
@@ -1167,7 +1180,7 @@ or into existing variables of the correct Type:</p>
 
 <h3>Type name</h3>
 <p>The Type of any <el-code>function</el-code> starts with the word <el-code>Func</el-code> followed by angle brackets defining the Type of each parameter, and the return Type for that function, following this syntax:</p>
-<div class="TODO">to correct:</div><el-code>Func&lt;of String, String, Int =&gt; Boolean&gt;</el-code>
+<el-code>Func&lt;of String, String, Int =&gt; Boolean&gt;</el-code><!-- TODO correct the syntax -->
 <p>This example defines the Type for a function that defines three parameters of Type <el-code>String</el-code>, <el-code>String</el-code>, and <el-code>Int</el-code> respectively, and returns a <el-code>Boolean</el-code> value. This Type would match that of a function definition that started:</p>
 <el-code-block source="functionChars.elan">
 <el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident5" class="ok" tabindex="0"><el-txt>charactersMatchAt</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params6" class="optional ok" tabindex="0"><el-txt><el-id>a</el-id> <el-kw>as</el-kw> <el-type>String</el-type>, <el-id>b</el-id> <el-kw>as</el-kw> <el-type>String</el-type>, <el-id>position</el-id> <el-kw>as</el-kw> <el-type>Int</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type7" class="ok" tabindex="0"><el-txt><el-type>Boolean</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
@@ -1214,7 +1227,7 @@ If a variable is of an indexable Type, then an index or index range may be appli
     <el-code>print a[4]</el-code>        &rarr; <el-code>o</el-code>
     <el-code>print a[4..]</el-code>    &rarr; <el-code>o World!</el-code>
     <el-code>print a[..7]</el-code>    &rarr; <el-code>Hello W</el-code>   (since the upper bound of a range is <em>exclusive</em>)
-    <el-code>print a[0..4]</el-code>  &rarr; <el-code>Hell</el-code>        (for the same reason)
+    <el-code>print a[0..4]</el-code>  &rarr; <el-code>Hell</el-code>         (for the same reason)
 </pre>
 <p>See also: <a href="#Using_an_Array">Using an Array</a>, <a href="#Using_a_Dictionary">Using a Dictionary</a></p>
 <p>Important: unlike in many languages, indexes in Elan (whether, single, multiple, or a range) are only ever used for <em>reading</em> values.
@@ -1284,7 +1297,7 @@ example, which implements an &lsquo;exclusive or&rsquo;, need not use brackets a
     <el-code>&lt;=</el-code>        for     less than or equal to
 </pre>
 <p>Each is applied to two arguments of Type <el-code>Float</el-code>, but any variable or expression that evaluates to an <el-code>Int</el-code> may always be used where a <el-code>Float</el-code> is expected.</p>
-<p>Notes</p>
+Notes:
 <ul>
 <li>These operators cannot be applied to strings. Use the dot methods <el-code>isBefore</el-code> and <el-code>isAfter</el-code> to compare strings alphabetically. See <a href="#Dot_methods_on">Dot methods on a String</a>.</li>
 <li>Where a binary operator is expected, as soon as you type <el-code>&lt; </el-code>or <el-code>&gt;</el-code> the editor will automatically insert a space after it. To enter <el-code>&lt;=</el-code> or <el-code>&gt;=</el-code> you need to delete the space (using the Backspace key) and then type <el-code>=</el-code>.</li>
@@ -1346,7 +1359,7 @@ Notes:
 <el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident3" class="ok" tabindex="0"><el-txt>safeSquareRoot</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params4" class="optional ok" tabindex="0"><el-txt><el-id>x</el-id> <el-kw>as</el-kw> <el-type>Float</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type5" class="ok" tabindex="0"><el-txt><el-type>Float</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
 <el-statement class="ok" id="let8" tabindex="0"><el-kw>let </el-kw><el-field id="var9" class="ok" tabindex="0"><el-txt><el-id>root</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr10" class="ok" tabindex="0"><el-txt><el-kw>lambda</el-kw> =&gt; <el-method>sqrt</el-method>(<el-id>x</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl><i>name</i> as <i>Type</i>, ...</el-compl></el-field></el-statement>
 <el-statement class="ok" id="return6" tabindex="0"><el-kw>return </el-kw><el-field id="expr7" class="ok" tabindex="0"><el-txt><el-kw>if </el-kw><el-id>x</el-id> &lt; <el-lit>0</el-lit><el-kw> then </el-kw><el-lit>0</el-lit><el-kw><br>else </el-kw><el-method>root</el-method>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-kw>end function</el-kw></el-func>"
+<el-kw>end function</el-kw></el-func>
 </el-code-block>
 <!--   #endregion-->
 <!--   #region If expression-->
@@ -1366,5 +1379,6 @@ The &lsquo;if expression&rsquo; is in certain respects similar to an <span class
 </el-code-block>
 <!-- #endregion-->
 <!-- #endregion-->
+<b>Elan Language Reference</b> go to the <a href="#top">top</a></h4>
 </body>
 </html>
