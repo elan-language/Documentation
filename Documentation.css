@@ -34,6 +34,9 @@ table
 
 .tableColours td { font-family:monospace; text-align:right; }
 
+/* highlight things to correct or complete */
+.TODO p,div { color: rgb(255, 0, 0); font-weight:bold; }
+
 /* document title */
 .docTitle { color:rgb(15,71,97); font-size:28pt; font-weight:bold;  text-indent:0pt; margin-top:24pt; margin-bottom:4pt; }
 

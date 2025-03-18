@@ -1167,9 +1167,11 @@ or into existing variables of the correct Type:</p>
 
 <h3>Type name</h3>
 <p>The Type of any <el-code>function</el-code> starts with the word <el-code>Func</el-code> followed by angle brackets defining the Type of each parameter, and the return Type for that function, following this syntax:</p>
-<el-code>Func&lt;of String, String, Int =&gt; Boolean&gt;</el-code><br>
-<p>This example defines the Type for a function that defines three parameters of Type <el-code>String</el-code>, <el-code>String</el-code>, and <el-code>Int</el-code> respectively, and returns a <el-code>Boolean</el-code> value. T this Type would match that of a function definition that started:</p>
-<el-code>Function charactersMatchAt(a as String, b as String, position as Int) returns Boolean</el-code><br>
+<div class="TODO">to correct:</div><el-code>Func&lt;of String, String, Int =&gt; Boolean&gt;</el-code>
+<p>This example defines the Type for a function that defines three parameters of Type <el-code>String</el-code>, <el-code>String</el-code>, and <el-code>Int</el-code> respectively, and returns a <el-code>Boolean</el-code> value. This Type would match that of a function definition that started:</p>
+<el-code-block source="functionChars.elan">
+<el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident5" class="ok" tabindex="0"><el-txt>charactersMatchAt</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params6" class="optional ok" tabindex="0"><el-txt><el-id>a</el-id> <el-kw>as</el-kw> <el-type>String</el-type>, <el-id>b</el-id> <el-kw>as</el-kw> <el-type>String</el-type>, <el-id>position</el-id> <el-kw>as</el-kw> <el-type>Int</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type7" class="ok" tabindex="0"><el-txt><el-type>Boolean</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
+</el-code-block>
 <!--   #endregion-->
 <!-- #endregion-->
 
@@ -1206,56 +1208,62 @@ or into existing variables of the correct Type:</p>
 <!--   #endregion-->
 <!--   #region Indexed Value-->
 <h3>Indexed Value</h3>
-<p>If a variable is of an indexable Type, then an index or index range may be applied to the variable within an expression. For example:</p>
-<el-code>variable a set to "Hello World!"</el-code><br>
-<el-code>print a[4]</el-code><br>
-<el-code>print a[4..]</el-code><br>
-<el-code>print a[..5]</el-code><br>
-<el-code>print a[0..4]</el-code><br>
-
+If a variable is of an indexable Type, then an index or index range may be applied to the variable within an expression. For example:
+<pre>
+    <el-code>variable a set to "Hello World!"</el-code>
+    <el-code>print a[4]</el-code>        &rarr; <el-code>o</el-code>
+    <el-code>print a[4..]</el-code>    &rarr; <el-code>o World!</el-code>
+    <el-code>print a[..7]</el-code>    &rarr; <el-code>Hello W</el-code>   (since the upper bound of a range is <em>exclusive</em>)
+    <el-code>print a[0..4]</el-code>  &rarr; <el-code>Hell</el-code>        (for the same reason)
+</pre>
 <p>See also: <a href="#Using_an_Array">Using an Array</a>, <a href="#Using_a_Dictionary">Using a Dictionary</a></p>
-<p>Important: unlike in many languages, indexes in Elan (whether, single, multiple, or a range) are only ever used for reading values. Writing a value to a specific index location is done through a method such as:</p>
-<p>
-<el-code>putAt</el-code> on an	<el-code>Array</el-code><br>
-<el-code>withPutAt</el-code>	on a	<el-code>List</el-code><br>
-<el-code>putAtKey</el-code>	on a	<el-code>Dictionary</el-code><br>
-<el-code>withPutAtKey</el-code>	on a	<el-code>DictionaryImmutable</el-code></p>
+<p>Important: unlike in many languages, indexes in Elan (whether, single, multiple, or a range) are only ever used for <em>reading</em> values.
+Writing a value to a specific index location is done through a method such as in these examples:</p>
+<pre>
+    <el-code>putAt</el-code>               on an  <el-code>Array</el-code>
+    <el-code>withPutAt</el-code>       on a    <el-code>List</el-code>
+    <el-code>putAtKey</el-code>         on a    <el-code>Dictionary</el-code>
+    <el-code>withPutAtKey</el-code>  on a    <el-code>DictionaryImmutable</el-code>
+</pre>
 <!--   #endregion-->
 <!--   #region Operator-->
 <h3 id="Operator">Operators</h3>
 
-<h3 id="Arithmetic_operator">Arithmetic operators</h3>
+<h4 id="Arithmetic_operator">Arithmetic operators</h4>
 <p>Arithmetic operators can be applied to <el-code>Float</el-code> or <el-code>Int</el-code> arguments, but the result is always a <el-code>Float</el-code>:</p>
-<p>
-<el-code>2^3</el-code> &rarr; 8<br>
-<el-code>2/3</el-code> &rarr; 0.666..<br>
-<el-code>2*3</el-code> &rarr; 6<br>
-<el-code>2 + 3</el-code> &rarr; 5<br>
-<el-code>2 - 3</el-code> &rarr; -1<br>
-<el-code>11 mod 3</el-code> &rarr; 2 (integer remainder)<br>
-<el-code>11 div 3</el-code> &rarr; 3 (integer division)<br>
-</p>
-<p>Arithmetic operators follow the conventional rules for precedence i.e. &lsquo;BIDMAS&rsquo; (or &lsquo;BODMAS&rsquo;)</p>
-<p>Note: When combining <el-code>div</el-code> or <el-code>mod</el-code> with any other operators within an expression, insert brackets to avoid ambiguity e.g.:</p>
-<el-code>(5 + 6) mod 3</el-code><br>
-
-<p>The minus sign may also be used as a unary operator, and this takes precedence over binary operators so:</p>
-<p><el-code>2*-3</el-code> &rarr; -6</p>
+<pre>
+    <el-code>2^3</el-code>             &rarr;  <el-code>8</el-code>
+    <el-code>2/3</el-code>             &rarr;  <el-code>0.666...</el-code>
+    <el-code>2*3</el-code>             &rarr;  <el-code>6</el-code>
+    <el-code>2 + 3</el-code>         &rarr;  <el-code>5</el-code>
+    <el-code>2 - 3</el-code>         &rarr;  <el-code>-1</el-code>
+    <el-code>11 mod 3</el-code>   &rarr;  <el-code>2</el-code> (integer remainder)
+    <el-code>11 div 3</el-code>   &rarr;  <el-code>3</el-code> (integer division)
+</pre>
+<p>Arithmetic operators follow the conventional rules for precedence i.e. &lsquo;BIDMAS&rsquo; (or &lsquo;BODMAS&rsquo;).</p>
+When combining <el-code>div</el-code> or <el-code>mod</el-code> with any other operators within an expression, insert brackets to avoid ambiguity e.g.:
+<pre>
+    <el-code>(5 + 6) mod 3</el-code>
+</pre>
+The minus sign may also be used as a unary operator, and this takes precedence over binary operators so:
+<pre>
+    <el-code>2*-3</el-code>           &rarr;  <el-code>-6</el-code>
+</pre>
 <p>Note that the Elan editor automatically puts spaces around the <el-code>+</el-code> and <el-code>&ndash;</el-code> binary operators, but not around <el-code>^</el-code>, <el-code>/</el-code> or <el-code>*</el-code>. This is just to visually reinforce the precedence.</p>
 
-<h3 id="Logical_operator">Logical operators</h3>
+<h4 id="Logical_operator">Logical operators</h4>
 <p>Logical operators are applied to <el-code>Boolean</el-code> arguments and return a <el-code>Boolean</el-code> result.</p>
-<p>
 <el-code>and</el-code> and <el-code>or</el-code> are binary operators<br>
 <el-code>not</el-code> is a unary operator. </p>
-<p>The operator precedence is <el-code>not</el-code> &rarr; <el-code>and</el-code> &rarr; <el-code>or</el-code>. </p>
-<p>Example that implements an &lsquo;exclusive or&rsquo;.</p>
-<p>
-<el-code><br>
-function xor(a as Boolean, b as Boolean) returns Boolean<br>
-&nbsp;&nbsp;return a and not b or b and not a<br>
-end Function
-</el-code><br>
+The operator precedence is <el-code>not</el-code> &rarr; <el-code>and</el-code> &rarr; <el-code>or</el-code>, so this
+example, which implements an &lsquo;exclusive or&rsquo;, need not use brackets and can rely on the operator precedence:</p>
+
+<el-code-block source="xor.elan">
+<el-func class="ok multiline" id="func3" tabindex="0">
+<el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident5" class="ok" tabindex="0"><el-txt>xor</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params6" class="optional ok" tabindex="0"><el-txt><el-id>a</el-id> <el-kw>as</el-kw> <el-type>Boolean</el-type>, <el-id>b</el-id> <el-kw>as</el-kw> <el-type>Boolean</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type7" class="ok" tabindex="0"><el-txt><el-type>Boolean</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
+<el-statement class="ok" id="return8" tabindex="0"><el-kw>return </el-kw><el-field id="expr9" class="ok" tabindex="0"><el-txt><el-id>a</el-id><el-kw> and </el-kw><el-kw>not</el-kw> <el-id>b</el-id><el-kw> or </el-kw><el-id>b</el-id><el-kw> and </el-kw><el-kw>not</el-kw> <el-id>a</el-id></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-kw>end function</el-kw></el-func>
+</el-code-block>
 
 <h4>Equality testing</h4>
 <p>Equality testing uses the <el-code>is</el-code> and <el-code>isnt</el-code> keywords with two arguments. The arguments may be of any Type.</p>
@@ -1269,12 +1277,12 @@ end Function
 
 <h4>Numeric comparison</h4>
 <p>The numeric comparison operators are:</p>
-<p>
-<el-code>&gt;</el-code> 	for	greater than<br>
-<el-code>&lt;</el-code>	for	less than<br>
-<el-code>&gt;=</el-code> 	for	greater than or equal to<br>
-<el-code>&lt;=</el-code> 	for	less than or equal to<br>
-</p>
+<pre>
+    <el-code>&gt; </el-code>        for     greater than
+    <el-code>&lt; </el-code>        for     less than
+    <el-code>&gt;=</el-code>        for     greater than or equal to
+    <el-code>&lt;=</el-code>        for     less than or equal to
+</pre>
 <p>Each is applied to two arguments of Type <el-code>Float</el-code>, but any variable or expression that evaluates to an <el-code>Int</el-code> may always be used where a <el-code>Float</el-code> is expected.</p>
 <p>Notes</p>
 <ul>
@@ -1282,24 +1290,30 @@ end Function
 <li>Where a binary operator is expected, as soon as you type <el-code>&lt; </el-code>or <el-code>&gt;</el-code> the editor will automatically insert a space after it. To enter <el-code>&lt;=</el-code> or <el-code>&gt;=</el-code> you need to delete the space (using the Backspace key) and then type <el-code>=</el-code>.</li>
 </ul>
 
-<h3>Combining operators </h3>
+<h4>Combining operators </h4>
 <p>You can combine operators of different kinds, e.g. combining numeric comparison with logical operators in a single expression. However the rules of precedence between operators of different kinds are complex. It is strongly recommend that you always use brackets to disambiguate such expressions, for example:</p>
-<el-code>(a &gt; b) and (b &lt; c)</el-code><br>
-<el-code>(a + b) &gt; (c -d)</el-code><br>
+
+<el-code-block source="combiningOperators.elan">
+<el-field id="expr19" class="ok" tabindex="0"><el-txt>(<el-id>a</el-id> &gt; <el-id>b</el-id>)<el-kw> and </el-kw>(<el-id>b</el-id> &lt; <el-id>c</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field>
+<br>
+<el-field id="expr35" class="ok" tabindex="0"><el-txt>(<el-id>a</el-id> + <el-id>b</el-id>) &gt; (<el-id>c</el-id> - <el-id>d</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field>
+</el-code-block>
 
 <h3 id="function_call">Function call</h3>
-<p>An expression may simply be a function call, or it may include one or more function calls within it. Examples:</p>
-<el-code>print sinDeg(30)</el-code><br>
-<el-code>variable x set to sinDeg(30)^2 + cosDeg(30)^2</el-code><br>
-<el-code>variable name set to inputString("Your name")</el-code><br>
-<el-code>print name.upperCase()</el-code><br>
-
-<p>Notes</p>
+An expression may simply be a function call, or it may include one or more function calls within it. Examples:
+<el-code-block source="sinDeg.elan">
+<el-statement class="ok" id="print5" tabindex="0"><el-kw>print </el-kw><el-field id="expr6" class="optional ok" tabindex="0"><el-txt><el-method>sinDeg</el-method>(<el-lit>30</el-lit>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-statement class="ok" id="var7" tabindex="0"><el-kw>variable </el-kw><el-field id="var8" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr9" class="ok" tabindex="0"><el-txt><el-method>sinDeg</el-method>(<el-lit>30</el-lit>)^<el-lit>2</el-lit> + <el-method>cosDeg</el-method>(<el-lit>30</el-lit>)^<el-lit>2</el-lit></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-statement class="ok" id="var10" tabindex="0"><el-kw>variable </el-kw><el-field id="var11" class="ok" tabindex="0"><el-txt><el-id>name</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr12" class="ok" tabindex="0"><el-txt><el-method>inputString</el-method>("<el-lit>Your name</el-lit>")</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-statement class="ok" id="print13" tabindex="0"><el-kw>print </el-kw><el-field id="expr14" class="optional ok" tabindex="0"><el-txt><el-id>name</el-id>.<el-method>upperCase</el-method>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+</el-code-block>
+Notes:
 <ul>
-<li>The third example above is not strictly a function call, but is a &lsquo;system method&rsquo;<span class="Link">Error! Reference source not found.</span> call. System methods may only be used within the <span class="Link">Main routine</span> or a Functions and procedure, because they have external dependencies or side effects.</li>
-<li>In the fourth example, <el-code>upperCase</el-code> is a &lsquo;dot method&rsquo; that may be applied to any instance (variable or literal) of Type <el-code>String</el-code>. See <span class="Link">Dot methods on a String</span>.</li>
+<li>The third example above is not strictly a function call, but is a &lsquo;system method&rsquo; call.
+System methods may be used only within the <el-code>main</el-code> routine or a <el-code>procedure</el-code>, because they have external dependencies or side effects.</li>
+<li>In the fourth example, <el-code>upperCase</el-code> is a &lsquo;dot method&rsquo; that may be applied to any instance (variable or literal) of Type <el-code>String</el-code>.
+See <span class="Link">Dot methods on a String</span>.</li>
 </ul>
-
 <!--   #endregion-->
 <!--   #region Lambda-->
 <h3 id="lambda">Lambda</h3>
@@ -1313,27 +1327,27 @@ end Function
 <li>The<el-code> =&gt;</el-code> symbol, which is usually articulated as &lsquo;returns&rsquo;,  &lsquo;yields&rsquo; or even &lsquo;fat arrow&rsquo;.</li>
 <li>An expression that makes use of the parameters, and may also make use of other variables that are in scope. </li>
 </ul>
-
-<p>Example:</p>
-<el-code><br>
-function liveNeighbours(cells as [Boolean], c as Int) returns Int<br>
-&nbsp;&nbsp;let neighbours be neighbourCells(c)<br>
-&nbsp;&nbsp;let live be neighbours.filter(lambda i as Int =&gt; cells[i])<br>
-&nbsp;&nbsp;return live.length()<br>
-end function<br>
-</el-code><br>
-<p>Notes</p>
+Example:
+<el-code-block source="liveNeighbours.elan">
+<el-func class="ok multiline" id="func3" tabindex="0">
+<el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident5" class="ok" tabindex="0"><el-txt>liveNeighbours</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params6" class="optional ok" tabindex="0"><el-txt><el-id>cells</el-id> <el-kw>as</el-kw> <el-type>Array</el-type>&lt;<el-kw>of</el-kw> <el-type>Boolean</el-type>&gt;, <el-id>c</el-id> <el-kw>as</el-kw> <el-type>Int</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type7" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
+<el-statement class="ok" id="let10" tabindex="0"><el-kw>let </el-kw><el-field id="var11" class="ok" tabindex="0"><el-txt><el-id>neighbours</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr12" class="ok" tabindex="0"><el-txt><el-method>neighbourCells</el-method>(<el-id>c</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-statement class="ok" id="let13" tabindex="0"><el-kw>let </el-kw><el-field id="var14" class="ok" tabindex="0"><el-txt><el-id>live</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr15" class="ok" tabindex="0"><el-txt><el-id>neighbours</el-id>.<el-method>filter</el-method>(<el-kw>lambda</el-kw> <el-id>i</el-id> <el-kw>as</el-kw> <el-type>Int</el-type> =&gt; <el-id>cells</el-id>[<el-id>i</el-id>])</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-statement class="ok" id="return8" tabindex="0"><el-kw>return </el-kw><el-field id="expr9" class="ok" tabindex="0"><el-txt><el-id>live</el-id>.<el-method>length</el-method>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-kw>end function</el-kw> </el-func>
+</el-code-block>
+Notes:
 <ul>
-<li>Although a lambda is commonly defined &lsquo;inline&rsquo; (as shown above) it is possible to assign a lambda to a variable and hence to re-use it within the scope of that variable. </li>
-<li>Although a lambda will usually define at least one parameter, it is possible to define a lambda with no parameter, just returning an expression, in which case it acts just like a locally defined variable, but with the advantage (useful in rare circumstances) that the expression is evaluated &lsquo;lazily&rsquo; i.e. only when the lambda is used.</li>
+<li>Although a lambda is commonly defined &lsquo;inline&rsquo; (as shown above) it is possible to assign a lambda to a variable and hence to re-use it within the scope of that variable.</li>
+<li>Ana although a lambda will usually define at least one parameter, it is possible to define a lambda with no parameter &ndash; just returning an expression &ndash; in which case it acts just like a locally defined variable, but with the advantage (useful in rare circumstances) that the expression is evaluated &lsquo;lazily&rsquo; i.e. only when the lambda is used.</li>
 </ul>
 <p>The following example uses both these techniques within a function:</p>
-<el-code><br>
-function safeSquareRoot(x as Float) returns Float<br>
-&nbsp;&nbsp;let root be lambda =&gt; sqrt(x)<br>
-&nbsp;&nbsp;return if x &lt; 0 then 0 else root()<br>
-end function
-</el-code><br>
+<el-code-block source="safeSquareRoot.elan<el-func class="ok multiline" id="func1" tabindex="0">
+<el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident3" class="ok" tabindex="0"><el-txt>safeSquareRoot</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params4" class="optional ok" tabindex="0"><el-txt><el-id>x</el-id> <el-kw>as</el-kw> <el-type>Float</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type5" class="ok" tabindex="0"><el-txt><el-type>Float</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
+<el-statement class="ok" id="let8" tabindex="0"><el-kw>let </el-kw><el-field id="var9" class="ok" tabindex="0"><el-txt><el-id>root</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr10" class="ok" tabindex="0"><el-txt><el-kw>lambda</el-kw> =&gt; <el-method>sqrt</el-method>(<el-id>x</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl><i>name</i> as <i>Type</i>, ...</el-compl></el-field></el-statement>
+<el-statement class="ok" id="return6" tabindex="0"><el-kw>return </el-kw><el-field id="expr7" class="ok" tabindex="0"><el-txt><el-kw>if </el-kw><el-id>x</el-id> &lt; <el-lit>0</el-lit><el-kw> then </el-kw><el-lit>0</el-lit><el-kw><br>else </el-kw><el-method>root</el-method>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-kw>end function</el-kw></el-func>"
+</el-code-block>
 <!--   #endregion-->
 <!--   #region If expression-->
 <h3 id="if_expression">If expression</h3>
@@ -1349,7 +1363,6 @@ The &lsquo;if expression&rsquo; is in certain respects similar to an <span class
 <el-statement class="ok" id="return25" tabindex="0"><el-kw>return </el-kw><el-field id="expr26" class="ok" tabindex="0"><el-txt><el-kw>if </el-kw><el-method>isGreen</el-method>(<el-id>attempt</el-id>, <el-id>target</el-id>, <el-id>n</el-id>)<el-kw> then </el-kw><el-method>setChar</el-method>(<el-id>attempt</el-id>, <el-id>n</el-id>, "<el-lit>*</el-lit>")<el-kw><br>else </el-kw><el-id>attempt</el-id></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
 <br>
 <el-statement class="ok" id="return104" tabindex="0"><el-kw>return </el-kw><el-field id="expr105" class="ok" tabindex="0"><el-txt><el-kw>if </el-kw><el-id>attempt</el-id>[<el-id>n</el-id>]<el-kw> is </el-kw>"<el-lit>*</el-lit>"<el-kw> then </el-kw><el-id>attempt</el-id><el-kw><br>else </el-kw><el-kw>if </el-kw><el-method>isYellow</el-method>(<el-id>attempt</el-id>, <el-id>target</el-id>, <el-id>n</el-id>)<el-kw> then </el-kw><el-method>setChar</el-method>(<el-id>attempt</el-id>, <el-id>n</el-id>, "<el-lit>+</el-lit>")<el-kw><br>else </el-kw><el-method>setChar</el-method>(<el-id>attempt</el-id>, <el-id>n</el-id>, "<el-lit>_</el-lit>")</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-
 </el-code-block>
 <!-- #endregion-->
 <!-- #endregion-->
