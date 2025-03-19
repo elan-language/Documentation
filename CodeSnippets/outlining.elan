@@ -4,7 +4,7 @@ main
 
 end main
 
-function binarySearch(list as Array<of String>, item as String) returns Boolean
+function binarySearch(list as List<of String>, item as String) returns Boolean
   return true
 end function
 

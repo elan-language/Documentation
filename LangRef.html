@@ -99,7 +99,7 @@ Unlike a <a href="#function">function</a>, a procedure does not return a value.
 </ul>
 <el-code-block source="inPlaceRippleSort.elan">
   <el-proc class="ok multiline" id="proc11" tabindex="0">
-  <el-top><el-expand>+</el-expand><el-kw>procedure </el-kw><el-method><el-field id="ident13" class="ok" tabindex="0"><el-txt>inPlaceRippleSort</el-txt><el-place><i>name</i></el-place>></el-field></el-method>(<el-field id="params14" class="optional ok" tabindex="0"><el-txt><el-kw>out</el-kw> <el-id>arr</el-id> <el-kw>as</el-kw> <el-type>Array</el-type>&lt;<el-kw>of</el-kw> <el-type>Int</el-type>&gt;</el-txt><el-place><i>parameter definitions</i></el-place></el-field>)</el-top>
+  <el-top><el-expand>+</el-expand><el-kw>procedure </el-kw><el-method><el-field id="ident13" class="ok" tabindex="0"><el-txt>inPlaceRippleSort</el-txt><el-place><i>name</i></el-place>></el-field></el-method>(<el-field id="params14" class="optional ok" tabindex="0"><el-txt><el-kw>out</el-kw> <el-id>arr</el-id> <el-kw>as</el-kw> <el-type>List</el-type>&lt;<el-kw>of</el-kw> <el-type>Int</el-type>&gt;</el-txt><el-place><i>parameter definitions</i></el-place></el-field>)</el-top>
   <el-statement class="ok" id="var15" tabindex="0"><el-kw>variable </el-kw><el-field id="var16" class="ok" tabindex="0"><el-txt><el-id>changes</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
   <el-statement class="ok" id="var18" tabindex="0"><el-kw>variable </el-kw><el-field id="var19" class="ok" tabindex="0"><el-txt><el-id>lastComp</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr20" class="ok" tabindex="0"><el-txt><el-id>arr</el-id>.<el-method>length</el-method>() - <el-lit>2</el-lit></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
   <el-statement class="ok multiline" id="repeat21" tabindex="0">
@@ -189,7 +189,7 @@ Procedures and functions may be called or referenced recursively. For example, a
 <el-statement class="ok" id="let104" tabindex="0"><el-kw>let </el-kw><el-field id="var105" class="ok" tabindex="0"><el-txt><el-id>li3</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr106" class="ok" tabindex="0"><el-txt>["<el-lit>lemon</el-lit>"]</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
 <el-statement class="ok" id="assert107" tabindex="0"><el-kw>assert </el-kw><el-field id="text108" class="ok" tabindex="0"><el-txt><el-method>binarySearch</el-method>(<el-id>li3</el-id>, "<el-lit>lemon</el-lit>")</el-txt><el-place><i>computed value</i></el-place></el-field><el-kw> is </el-kw><el-field id="expr109" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>expected value</i></el-place></el-field> <el-msg class="ok">pass</el-msg></el-statement>
 <el-statement class="ok" id="assert110" tabindex="0"><el-kw>assert </el-kw><el-field id="text111" class="ok" tabindex="0"><el-txt><el-method>binarySearch</el-method>(<el-id>li3</el-id>, "<el-lit>lime</el-lit>")</el-txt><el-place><i>computed value</i></el-place></el-field><el-kw> is </el-kw><el-field id="expr112" class="ok" tabindex="0"><el-txt><el-id>false</el-id></el-txt><el-place><i>expected value</i></el-place></el-field> <el-msg class="ok">pass</el-msg></el-statement>
-<el-statement class="ok" id="let113" tabindex="0"><el-kw>let </el-kw><el-field id="var114" class="ok" tabindex="0"><el-txt><el-id>li4</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr115" class="ok" tabindex="0"><el-txt><el-kw>empty</el-kw> <el-type>Array</el-type>&lt;<el-kw>of</el-kw> <el-type>String</el-type>&gt;</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+<el-statement class="ok" id="let113" tabindex="0"><el-kw>let </el-kw><el-field id="var114" class="ok" tabindex="0"><el-txt><el-id>li4</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr115" class="ok" tabindex="0"><el-txt><el-kw>empty</el-kw> <el-type>List</el-type>&lt;<el-kw>of</el-kw> <el-type>String</el-type>&gt;</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
 <el-statement class="ok" id="assert116" tabindex="0"><el-kw>assert </el-kw><el-field id="text117" class="ok" tabindex="0"><el-txt><el-method>binarySearch</el-method>(<el-id>li4</el-id>, "<el-lit>pear</el-lit>")</el-txt><el-place><i>computed value</i></el-place></el-field><el-kw> is </el-kw><el-field id="expr118" class="ok" tabindex="0"><el-txt><el-id>false</el-id></el-txt><el-place><i>expected value</i></el-place></el-field> <el-msg class="ok">pass</el-msg></el-statement>
 <el-kw>end test</el-kw>
 </el-test>
@@ -300,7 +300,7 @@ The value is specified by the Type name for the specified <el-code>enum</el-code
 
 <p>A <el-code><el-kw>record</el-kw></el-code> is a user-defined data structure that is given a Type name (which must begin with an upper case letter).
   The <el-code>record</el-code> defines one or more properties, each of which has a name (starting with a lower case letter) and a Type.
-  The Type of a property may be any simple value Type, or a List, or another Type of <el-code>record</el-code> ( or even the same Type of <el-code>record</el-code>).</p>
+  The Type of a property may be any simple value Type, or a ListImmutable, or another Type of <el-code>record</el-code> ( or even the same Type of <el-code>record</el-code>).</p>
   <p>Note that the Type <el-code><el-kw>record</el-kw></el-code> has some similarity to a <a href="#class">class</a> in that:</p>
 <ul>
   <li>Both are user-defined data structures</li>
@@ -310,7 +310,7 @@ The value is specified by the Type name for the specified <el-code>enum</el-code
 </ul>
  However a <el-code>record</el-code> differs  from a <el-code>class</el-code> in that:</p>
  <ul>
-  <li>A <el-code><el-kw>record</el-kw></el-code> is immutable (like a <el-code>List</el-code> or a <el-code>String</el-code>). You can create a copy with specified differences but you cannot modify a <el-code><el-kw>property</el-kw></el-code> on a given instance.</li>
+  <li>A <el-code><el-kw>record</el-kw></el-code> is immutable (like a <el-code>ListImmutable</el-code> or a <el-code>String</el-code>). You can create a copy with specified differences but you cannot modify a <el-code><el-kw>property</el-kw></el-code> on a given instance.</li>
   <li>A <el-code><el-kw>record</el-kw></el-code> instance may be created or copied using a <el-code>with</el-code> clause, whereas <el-code>with</el-code> may not be used on a class instance.</li>
   <li>A <el-code><el-kw>record</el-kw></el-code> does not define a constructor</li>
   <li>A <el-code><el-kw>record</el-kw></el-code> may define only <i>function</i> methods, since <i>procedure</i> methods would imply the ability to <i>mutate</i> the record.</li>
@@ -328,7 +328,7 @@ Examples:
 <el-class class="ok multiline" id="class168" tabindex="0">
 <el-top><el-expand>+</el-expand><el-kw>record </el-kw><el-field id="type169" class="ok" tabindex="0"><el-txt><el-type>Game</el-type></el-txt><el-place>Name</el-place></el-field></el-top>
 <el-prop class="ok" id="prop172" tabindex="0"><el-kw>property </el-kw><el-field id="ident173" class="ok" tabindex="0"><el-txt><el-id>head</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> as </el-kw><el-field id="type174" class="ok" tabindex="0"><el-txt><el-type>Square</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-prop>
-<el-prop class="ok" id="prop175" tabindex="0"><el-kw>property </el-kw><el-field id="ident176" class="ok" tabindex="0"><el-txt><el-id>body</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> as </el-kw><el-field id="type177" class="ok" tabindex="0"><el-txt><el-type>List</el-type>&lt;<el-kw>of</el-kw> <el-type>Square</el-type>&gt;</el-txt><el-place><i>Type</i></el-place></el-field></el-prop>
+<el-prop class="ok" id="prop175" tabindex="0"><el-kw>property </el-kw><el-field id="ident176" class="ok" tabindex="0"><el-txt><el-id>body</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> as </el-kw><el-field id="type177" class="ok" tabindex="0"><el-txt><el-type>ListImmutable</el-type>&lt;<el-kw>of</el-kw> <el-type>Square</el-type>&gt;</el-txt><el-place><i>Type</i></el-place></el-field></el-prop>
 <el-prop class="ok" id="prop178" tabindex="0"><el-kw>property </el-kw><el-field id="ident179" class="ok" tabindex="0"><el-txt><el-id>priorTail</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> as </el-kw><el-field id="type180" class="ok" tabindex="0"><el-txt><el-type>Square</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-prop>
 <el-prop class="ok" id="prop181" tabindex="0"><el-kw>property </el-kw><el-field id="ident182" class="ok" tabindex="0"><el-txt><el-id>apple</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> as </el-kw><el-field id="type183" class="ok" tabindex="0"><el-txt><el-type>Square</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-prop>
 <el-prop class="ok" id="prop184" tabindex="0"><el-kw>property </el-kw><el-field id="ident185" class="ok" tabindex="0"><el-txt><el-id>isOn</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> as </el-kw><el-field id="type186" class="ok" tabindex="0"><el-txt><el-type>Boolean</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-prop>
@@ -796,7 +796,7 @@ Notes:
 <li>Maximum value: just over 1 &times; 10308<br>
 Minimum value: approximately 5 &times; 10-324<br>
 For greater detail, refer to the official JavaScript documentation.</li>
-<li>A variable that has been defined as being of Type <el-code>Float</el-code> may not be passed as an argument into a method that requires an <el-code>Int</el-code>, nor as an index into an <el-code>Array</el-code>, even if the variable contains no fractional part.<br>
+<li>A variable that has been defined as being of Type <el-code>Float</el-code> may not be passed as an argument into a method that requires an <el-code>Int</el-code>, nor as an index into an <el-code>List</el-code>, even if the variable contains no fractional part.<br>
 It may, however, be converted into an <el-code>Int</el-code> before passing, using the functions <el-code>floor()</el-code> or <el-code>ceiling()</el-code>:<br>
 <el-code>floor()</el-code> returns the integer value left by removing any fractional part, and<br>
 <el-code>ceiling()</el-code> returns the lowest integer greater than the <el-code>Float</el-code> value if does have a fractional part.</li>
@@ -890,18 +890,18 @@ print a.contains("ello")
 <h3>Quick reference</h3>
 <p>
 <table>
-<tr><th></th><th>Array</th><th>List</th></tr>
-<tr><td>Type form</td><td><el-code>Array&lt;of String&gt;</el-code><br>2D: <el-code>Array2D&lt;of String&gt;</el-code></td><td><el-code>List&lt;of String&gt;</el-code></td></tr>
+<tr><th></th><th>List</th><th>ListImmutable</th></tr>
+<tr><td>Type form</td><td><el-code>List&lt;of String&gt;</el-code><br>2D: <el-code>Array2D&lt;of String&gt;</el-code></td><td><el-code>ListImmutable&lt;of String&gt;</el-code></td></tr>
 <tr><td>Literal</td><td><el-code>["plum", "pear"]</el-code></td><td><el-code>{"plum", "pear"}</el-code></td></tr>
-<tr><td>Literal empty</td><td><el-code>empty Array&lt;of String&gt;</td><td><el-code>empty List&lt;of String&gt;</td></tr>
+<tr><td>Literal empty</td><td><el-code>empty List&lt;of String&gt;</td><td><el-code>empty ListImmutable&lt;of String&gt;</td></tr>
 <tr><td>Initial size (filled with default values)</td><td><el-code>variable a set to createArray(10, "x")<br>
 variable a set to createArray2D(8, 8, "")</el-code><br>
-<p>In each case, the last argument is the value to which each element<br>is initialised, and defines the Type of elements in the Array</td><td>Not applicable</td></tr>
+<p>In each case, the last argument is the value to which each element<br>is initialised, and defines the Type of elements in the List</td><td>Not applicable</td></tr>
 <tr><td>Read from position</td><td><el-code>a[3]<br>board[3][4]</el-code></td><td><el-code>a{3}</el-code></td></tr>
 <tr><td>Read range</td><td><el-code>a[5..9]</el-code></td><td><el-code>a{5..9}</el-code></td></tr>
 <tr><td>Put a value</td><td><el-code>call a.putAt(3, "pear")</el-code><br>2D: <el-code>call board.putAt2D(3,4,"K")</el-code><br></td><td><el-code>set a to a.withPutAt(3, "pear")</el-code></td></tr>
 <tr><td>Append and prepend</td><td><el-code>call a.append("pear")<br>call a.prepend("pear")<br>call a.appendArray(anotherArray)<br>call a.prependArray(anotherArray)</el-code><br></td>
-<td>Append one item: <el-code>set a to a + {"pear"}</el-code><br>Prepend one item: <el-code> set a to {"pear"} + a</el-code><br>Append or prepend a List: <el-code>set x to listA + listb</el-code><br></td></tr>
+<td>Append one item: <el-code>set a to a + {"pear"}</el-code><br>Prepend one item: <el-code> set a to {"pear"} + a</el-code><br>Append or prepend a ListImmutable: <el-code>set x to listA + listb</el-code><br></td></tr>
 <tr><td>Insert</td><td><el-code>call a.insertAt(3, "pear")</el-code></td><td><el-code>set a to a.withInsertAt(3, "pear")</el-code></td></tr>
 <tr><td>Remove by index</td><td><el-code>call a.removeAt(3)</el-code></td><td><el-code>set a to a.withRemoveAt(3)</el-code></td></tr>
 <tr><td>Remove by value</td><td><el-code>call a.removeFirst("pear")<br>call a.removeAll("pear")</el-code></td><td><el-code>set a to a.withRemoveFirst ("pear")<br>set a to a.withRemoveAll ("pear")</el-code></td></tr>
@@ -910,17 +910,17 @@ set h:t to myList</el-code><br>To discard either the head or the tail:<br><el-co
 </table>
 </p>
 
-<h2 id="Array">Array</h2>
-<p>An &lsquo;Array&rsquo; is a simple data structure that holds multiple elements of the same Type.</p>
-<p>Unlike a List, an Array is mutable, meaning that the elements within the data structure can be altered without creating a new Array from the old.</p>
+<h2 id="List">List</h2>
+<p>An &lsquo;List&rsquo; is a simple data structure that holds multiple elements of the same Type.</p>
+<p>Unlike a ListImmutable, an List is mutable, meaning that the elements within the data structure can be altered without creating a new List from the old.</p>
 <p>The Type is specified in the following form:</p>
-<el-code>Array&lt;of String&gt;</el-code> for an Array of Type >el-code>String</el-code><br>
-<el-code>Array&lt;of Int&gt;</el-code> for an Array of Type <el-code>Int</el-code><br>
+<el-code>List&lt;of String&gt;</el-code> for an List of Type >el-code>String</el-code><br>
+<el-code>List&lt;of Int&gt;</el-code> for an List of Type <el-code>Int</el-code><br>
 
-<p>where, in these examples, <el-code>String</el-code> and <el-code>Int</el-code> represent the Type of each element in the <el-code>Array</el-code>s. The element Type can be any Type value &ndash; <el-code>Int</el-code>, <el-code>Boolean</el-code>, <el-code>Float, String</el-code> &ndash; or the name of a specific <el-code>class</el-code> such as <el-code>Player</el-code>, or an <el-code>enum</el-code> such as <el-code>Direction</el-code>. It may also be another data structure, including another <el-code>Array</el-code> (sometimes referred to as a &lsquo;nested Array&rsquo;).</p>
+<p>where, in these examples, <el-code>String</el-code> and <el-code>Int</el-code> represent the Type of each element in the <el-code>List</el-code>s. The element Type can be any Type value &ndash; <el-code>Int</el-code>, <el-code>Boolean</el-code>, <el-code>Float, String</el-code> &ndash; or the name of a specific <el-code>class</el-code> such as <el-code>Player</el-code>, or an <el-code>enum</el-code> such as <el-code>Direction</el-code>. It may also be another data structure, including another <el-code>List</el-code> (sometimes referred to as a &lsquo;nested List&rsquo;).</p>
 
-<h3>Creating an Array</h3>
-<p>An <el-code>Array</el-code> may be defined in &lsquo;literal&rsquo; form, &lsquo;delimited&rsquo; by square brackets, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type:</p>
+<h3>Creating an List</h3>
+<p>An <el-code>List</el-code> may be defined in &lsquo;literal&rsquo; form, &lsquo;delimited&rsquo; by square brackets, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type:</p>
 <p><el-code>variable fruit set to ["apple", "orange", "pear"]</el-code></p>
 <p>including &lsquo;nested &rsquo;:</p>
 <p><el-code>variable coordinates set to [[3.4, 0.1, 7.8], [1, 0, 1.5], [10, -1.5, 25]]</el-code></p>
@@ -929,17 +929,17 @@ set h:t to myList</el-code><br>To discard either the head or the tail:<br><el-co
 <p>or a mixture of literal values and variables (all of the same Type):</p>
 <p><el-code>variable values set to [3.1, y, z]</el-code></p>
 <p>where <el-code>y </el-code>and <el-code>z </el-code>are existing variables of Type <el-code>Float</el-code>.</p>
-<p>You may also define an <el-code>Array</el-code> of a specified size, with each element initialised to the same value, for example:</p>
+<p>You may also define an <el-code>List</el-code> of a specified size, with each element initialised to the same value, for example:</p>
 <el-code>variable fruit set to createArray(20, "")</el-code></p>
-<p>creates an <el-code>Array</el-code> of Type <el-code>String</el-code> with exactly 20 elements, each initialised to the empty String and:</p>
+<p>creates an <el-code>List</el-code> of Type <el-code>String</el-code> with exactly 20 elements, each initialised to the empty String and:</p>
 <el-code>variable scores set to createArray(12, 100.0)</el-code></p>
-<p>creates an <el-code>Array</el-code> of Type <el-code>Float</el-code> with exactly 12 elements, each initialised to 100.0.</el-code</p>
-<p>Although the resulting <el-code>Array</el-code> may still be expanded subsequently (by using the <el-code>add</el-code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array.</p>
+<p>creates an <el-code>List</el-code> of Type <el-code>Float</el-code> with exactly 12 elements, each initialised to 100.0.</el-code</p>
+<p>Although the resulting <el-code>List</el-code> may still be expanded subsequently (by using the <el-code>add</el-code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array.</p>
 
-<h3>Dot methods on an Array</h3>
+<h3>Dot methods on an List</h3>
 <p>Functions:</p>
 <p><el-code>myArray.contains(item) returns</el-code>s <el-code>true</el-code> or <el-code>false</el-code></p>
-<p><el-code>myArray.asList() returns</el-code>s a <el-code>List</el-code> containing the same elements as the <el-code>Array</el-code> on which the method was called. This is often used to permit an <el-code>Array</el-code> to be passed into a function that has been designed to accept a <el-code>List</el-code>.</p>
+<p><el-code>myArray.asList() returns</el-code>s a <el-code>ListImmutable</el-code> containing the same elements as the <el-code>List</el-code> on which the method was called. This is often used to permit an <el-code>List</el-code> to be passed into a function that has been designed to accept a <el-code>ListImmutable</el-code>.</p>
 <p>Procedures:</p>
 <p>
 <el-code>call fruit.append("banana")<br>
@@ -952,10 +952,10 @@ call fruit.removeAt(3)<br>
 call fruit.removeFirst("apple")
 </el-code><br>
 
-<h3 id="Using_an_Array">Using an Array</h3>
-<p>Elements are read using an index in square brackets, the first element being element <el-code>[0]</el-code>. The last element of an <el-code>Array</el-code> of size 10 will therefore be accessed by the index <el-code>[9]</el-code>.</p>
+<h3 id="Using_an_Array">Using an List</h3>
+<p>Elements are read using an index in square brackets, the first element being element <el-code>[0]</el-code>. The last element of an <el-code>List</el-code> of size 10 will therefore be accessed by the index <el-code>[9]</el-code>.</p>
 <p>Attempting to read an element by index, where that element does not exist, will result in an &lsquo;Index out of range&rsquo; run-time error.</p>
-<p>Unlike in many programming languages you may not modify data by index: elements are modified by calling the <el-code>putAt</el-code> procedure on the Array.</p>
+<p>Unlike in many programming languages you may not modify data by index: elements are modified by calling the <el-code>putAt</el-code> procedure on the List.</p>
 <p>Try these examples (the last one will produce an error &ndash; make sure you understand why):</p>
 <el-code>variable a set to createArray(10, 0)</el-code><br>
 <el-code>print a</el-code><br>
@@ -980,55 +980,45 @@ call fruit.removeFirst("apple")
 <el-code>print a</el-code><br>
 <el-code></el-code><br>
 
-<h3 id="Array2D">2-dimensional Array</h3>
-<p>In Elan, as in many languages, a &lsquo;2-dimensional Array&rsquo; is just an Array of Arrays. However, Elan provides a couple of convenient short-cut methods for working with such data structures:</p>
-<el-code>variable board set to createArray2D(8, 8, "")</el-code><br>
-will create an Array of Arrays with a total of 64 elements each of Type <el-code>String</el-code>, and initialised to the empty <el-code>String</el-code>. The Type is determined by the Type of the third parameter, which might be an <el-code>Int</el-code>, <el-code>Boolean</el-code>, or user-defined Type. It need not be an empty value. The <el-code>Array2D</el-code> need not be square &ndash; it may be rectangular.<br>
-It is possible to create an 2-dimensional Array with no elements, for example by:</p>
-<el-code>let a be new Array2D&lt;of Int&gt;()</el-code><br>
+<h3 id="Array2D">2-dimensional array</h3>
+<p>Elan has a type <el-code><el-type>Array2D</el-type></el-code> to implement 2-dimensional arrays of simple types such as <el-code><el-type>Int</el-type></el-code> or <el-code><el-type>String</el-type></el-code>.
+  Note that is an 'Array' (rather than 'List') because it is defined as a fixed size: the elements may be changed, but the size cannot be dynamically extended or reduced. For example:
+<el-code>variable board set to new Array2D(8, 8, "")</el-code><br>
+will create an List of Arrays with a total of 64 elements each of Type <el-code>String</el-code>, with each element initialised to the empty <el-code>String</el-code>. The initial value need not be an empty value.
+ The <el-code>Array2D</el-code> need not be square &ndash; it may be rectangular.<br>
 
-<p>However, this is not recommended as subsequently adding elements takes a lot of care and effort. It is recommended that you always use the method <el-code>createArray2D</el-code> to create a 2-dimensional Array initialised to the desired size. That way you can modify individual elements in the initialised Array with e.g.:</p>
-<el-code>call board.putAt2D(3,4,"K")</el-code><br>
-
-<p>and you can read individual elements with a double index, for example:</p>
+<p>You can read individual elements with a double index, for example:</p>
 <el-code>for col from 0 to 7 step 1</el-code><br>
 <el-code>  for row from 0 to 7 step 1</el-code><br>
-<el-code>    print board[col][row]</el-code><br>
+<el-code>    print board[col, row]</el-code><br>
 <el-code>  end for</el-code><br>
 <el-code>end for</el-code><br>
 
-<p>If you want to define a function or procedure with a parameter that should be a 2-dimensional Array, the Type is specified as <el-code>Array2D</el-code>, for example:</p>
+<p>If you want to define a function or procedure with a parameter that should be a 2-dimensional List, the Type is specified as <el-code>Array2D</el-code>, for example:</p>
 
 <el-code>Array2D&lt;of String&gt;</el-code><br>
 <el-code>Array2D&lt;of Int&gt;</el-code><br>
 
-<h3>Creating Arrays of specific sizes</h3>
-<p>The following methods return an <el-code>Array</el-code> of a specified size, and with all elements initialised to a specified value. Although the resulting <el-code>Array</el-code> may still be expanded subsequently (by using the <el-code>add</el-code> procedure), the typical use for these two methods is for cases that would originally have used a traditional (fixed-size) array:</p>
-<el-code>createArray(size as Int, initialValue as Type) returns [Type]</el-code><br>
-<p>where <el-code>Type</el-code> is one of the following Types: <el-code>Int</el-code>, <el-code>Float</el-code>, <el-code>Boolean</el-code>, <el-code>String</el-code> or any Type of <el-code>enum</el-code>.</p>
-<p>There is also a variant of the method that creates a &lsquo;2-dimensional&rsquo; rectangular <el-code>Array</el-code> (actually an <el-code>Array</el-code> of <el-code>Array</el-code>s):</p>
-<el-code>createArray2D(noOfrows as Int, noOfColumns as Int, initialValue as T) returns [[Type]]</el-code><br>
-
-<h2 id="List">List</h2>
-<p>A <el-code>List</el-code> is a simple data structure that holds multiple elements of the same Type.</p>
-<p> A <el-code>list</el-code>, like a <el-code>String</el-code> but unlike an <el-code>Array</el-code>, is immutable. You can still insert, delete, or change elements in a <el-code>List</el-code>, but the methods for these operations do not modify the input <el-code>List</el-code>: they return a new <el-code>List</el-code> based on the input <el-code>List</el-code> but with the specified differences. </p>
+<h2 id="ListImmutable">ListImmutable</h2>
+<p>A <el-code>ListImmutable</el-code> is a simple data structure that holds multiple elements of the same Type.</p>
+<p> A <el-code>list</el-code>, like a <el-code>String</el-code> but unlike an <el-code>List</el-code>, is immutable. You can still insert, delete, or change elements in a <el-code>ListImmutable</el-code>, but the methods for these operations do not modify the input <el-code>ListImmutable</el-code>: they return a new <el-code>ListImmutable</el-code> based on the input <el-code>ListImmutable</el-code> but with the specified differences. </p>
 
 <h3>Type name</h3>
 <p>The Type is specified in the following way:</p>
-<el-code>List&lt;of String&gt;</el-code> for a List of Type<el-code>String</el-code><br>
-<el-code>List&lt;of Int&gt;</el-code> for a </span>List  of Type <el-code>>Int</el-code><br>
-List&lt;of List&lt;of Int&gt;&gt;</el-code> for a List of  Lists of Type </ode>Int</el-code><br>
+<el-code>ListImmutable&lt;of String&gt;</el-code> for a ListImmutable of Type<el-code>String</el-code><br>
+<el-code>ListImmutable&lt;of Int&gt;</el-code> for a </span>ListImmutable  of Type <el-code>>Int</el-code><br>
+ListImmutable&lt;of ListImmutable&lt;of Int&gt;&gt;</el-code> for a ListImmutable of  Lists of Type </ode>Int</el-code><br>
 
-<h3>Creating a List</h3>
-<p>A <el-code>List</el-code> may be defined in &lsquo;literal&rsquo; form, &lsquo;delimited&rsquo; by curly braces, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type):</p>
+<h3>Creating a ListImmutable</h3>
+<p>A <el-code>ListImmutable</el-code> may be defined in &lsquo;literal&rsquo; form, &lsquo;delimited&rsquo; by curly braces, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type):</p>
 <el-code>variable fruit set to {"apple", "orange", "pear"} </el-code><br>
 
-<h3>Dot methods on a List</h3>
+<h3>Dot methods on a ListImmutable</h3>
 <p>The dot methods on a list are all functions.</p>
 <el-code>myList.contains(item) returns true or false</el-code><br>
-<el-code>myList.asArray() returns a new Array with the same contents as myList</el-code><br>
+<el-code>myList.asArray() returns a new List with the same contents as myList</el-code><br>
 
-<p>The following functions all return a new <el-code>List</el-code>, copied from the <el-code>List</el-code> on which the function was called, but with the differences specified by the function parameters:</p>
+<p>The following functions all return a new <el-code>ListImmutable</el-code>, copied from the <el-code>ListImmutable</el-code> on which the function was called, but with the differences specified by the function parameters:</p>
 <el-code>myList.withInsertAt(4, "cherry")</el-code><br>
 <el-code>myList.withPutAt(2, "grape")</el-code><br>
 <el-code>myList.withRemoveAt(3)</el-code><br>
@@ -1036,7 +1026,7 @@ List&lt;of List&lt;of Int&gt;&gt;</el-code> for a List of  Lists of Type </ode>I
 <el-code>myList.withRemoveAll("apple")</el-code><br>
 
 <p>Try these examples:</p>
-<el-code>variable fruit set to empty List&lt;of String&gt;</el-code><br>
+<el-code>variable fruit set to empty ListImmutable&lt;of String&gt;</el-code><br>
 <el-code>print fruit</el-code><br>
 <el-code>set fruit to fruit + "apple"</el-code><br>
 <el-code>set fruit to fruit + "pear"</el-code><br>
@@ -1074,7 +1064,7 @@ List&lt;of List&lt;of Int&gt;&gt;</el-code> for a List of  Lists of Type </ode>I
 <p>In the following example, the keys are of Type <el-code>Int</el-code>, and the values associated with the keys are of Type <el-code>String</el-code>:</p>
 <el-code>Dictionary&lt;of String, Int&gt;</el-code><br>
 
-<p>For both <el-code>Dictionary</el-code> and <el-code>DictionaryImmutable</el-code> the values can be of any Type, including a specific Type of class, a <el-code>List</el-code>, another <el-code>Dictionary</el-code> or some other data structure. However, the key&rsquo;s Type must be one of: <el-code>Int</el-code>, <el-code>Float</el-code>, <el-code>String</el-code>, <el-code>Boolean</el-code>, or a specific Type of <el-code>enum</el-code>.</p>
+<p>For both <el-code>Dictionary</el-code> and <el-code>DictionaryImmutable</el-code> the values can be of any Type, including a specific Type of class, a <el-code>ListImmutable</el-code>, another <el-code>Dictionary</el-code> or some other data structure. However, the key&rsquo;s Type must be one of: <el-code>Int</el-code>, <el-code>Float</el-code>, <el-code>String</el-code>, <el-code>Boolean</el-code>, or a specific Type of <el-code>enum</el-code>.</p>
 
 <h3>Defining a literal Dictionary</h3>
 <p>A literal <el-code>Dictionary</el-code> is defined as a comma-separated list of &lsquo;key:value pairs&rsquo; (key,colon.value) surrounded by square brackets:</p>
@@ -1204,7 +1194,7 @@ Notes:
 <h3 id="Literal_value">Literal value</h3>
 <p>A literal value is where a value is written &lsquo;literally&rsquo; in the code, such as <el-code>3.142</el-code> &ndash; in contrast to a value that is referred to by a name.</p>
 <p>The following data Types may be written as literal values (follow the links to view the form of each literal value):</p>
-<el-code><a href="#Int">Int</a>, <a href="#Float">Float</a>, <a href="#Boolean">Boolean</a>, <a href="#String">String</a>, <a href="#Array">Array</a>, <a href="#List">List</a>, <a href="#Dictionary">Dictionary</a>, <a href="#DictionaryImmutable">DictionaryImmutable</a>, <a href="#Tuple">Tuple</a></el-code><br>
+<el-code><a href="#Int">Int</a>, <a href="#Float">Float</a>, <a href="#Boolean">Boolean</a>, <a href="#String">String</a>, <a href="#List">List</a>, <a href="#ListImmutable">ListImmutable</a>, <a href="#Dictionary">Dictionary</a>, <a href="#DictionaryImmutable">DictionaryImmutable</a>, <a href="#Tuple">Tuple</a></el-code><br>
 <!--   #endregion-->
 <!--   #region Named value-->
 <h3 id="Named_value">Named value</h3>
@@ -1229,12 +1219,12 @@ If a variable is of an indexable Type, then an index or index range may be appli
     <el-code>print a[..7]</el-code>    &rarr; <el-code>Hello W</el-code>   (since the upper bound of a range is <em>exclusive</em>)
     <el-code>print a[0..4]</el-code>  &rarr; <el-code>Hell</el-code>         (for the same reason)
 </pre>
-<p>See also: <a href="#Using_an_Array">Using an Array</a>, <a href="#Using_a_Dictionary">Using a Dictionary</a></p>
+<p>See also: <a href="#Using_an_Array">Using an List</a>, <a href="#Using_a_Dictionary">Using a Dictionary</a></p>
 <p>Important: unlike in many languages, indexes in Elan (whether, single, multiple, or a range) are only ever used for <em>reading</em> values.
 Writing a value to a specific index location is done through a method such as in these examples:</p>
 <pre>
-    <el-code>putAt</el-code>               on an  <el-code>Array</el-code>
-    <el-code>withPutAt</el-code>       on a    <el-code>List</el-code>
+    <el-code>putAt</el-code>               on an  <el-code>List</el-code>
+    <el-code>withPutAt</el-code>       on a    <el-code>ListImmutable</el-code>
     <el-code>putAtKey</el-code>         on a    <el-code>Dictionary</el-code>
     <el-code>withPutAtKey</el-code>  on a    <el-code>DictionaryImmutable</el-code>
 </pre>
@@ -1343,7 +1333,7 @@ See <span class="Link">Dot methods on a String</span>.</li>
 Example:
 <el-code-block source="liveNeighbours.elan">
 <el-func class="ok multiline" id="func3" tabindex="0">
-<el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident5" class="ok" tabindex="0"><el-txt>liveNeighbours</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params6" class="optional ok" tabindex="0"><el-txt><el-id>cells</el-id> <el-kw>as</el-kw> <el-type>Array</el-type>&lt;<el-kw>of</el-kw> <el-type>Boolean</el-type>&gt;, <el-id>c</el-id> <el-kw>as</el-kw> <el-type>Int</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type7" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
+<el-top><el-expand>+</el-expand><el-kw>function </el-kw><el-method><el-field id="ident5" class="ok" tabindex="0"><el-txt>liveNeighbours</el-txt><el-place><i>name</i></el-place></el-field></el-method>(<el-field id="params6" class="optional ok" tabindex="0"><el-txt><el-id>cells</el-id> <el-kw>as</el-kw> <el-type>List</el-type>&lt;<el-kw>of</el-kw> <el-type>Boolean</el-type>&gt;, <el-id>c</el-id> <el-kw>as</el-kw> <el-type>Int</el-type></el-txt><el-place><i>parameter definitions</i></el-place></el-field>)<el-kw> returns </el-kw><el-field id="type7" class="ok" tabindex="0"><el-txt><el-type>Int</el-type></el-txt><el-place><i>Type</i></el-place></el-field></el-top>
 <el-statement class="ok" id="let10" tabindex="0"><el-kw>let </el-kw><el-field id="var11" class="ok" tabindex="0"><el-txt><el-id>neighbours</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr12" class="ok" tabindex="0"><el-txt><el-method>neighbourCells</el-method>(<el-id>c</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
 <el-statement class="ok" id="let13" tabindex="0"><el-kw>let </el-kw><el-field id="var14" class="ok" tabindex="0"><el-txt><el-id>live</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr15" class="ok" tabindex="0"><el-txt><el-id>neighbours</el-id>.<el-method>filter</el-method>(<el-kw>lambda</el-kw> <el-id>i</el-id> <el-kw>as</el-kw> <el-type>Int</el-type> =&gt; <el-id>cells</el-id>[<el-id>i</el-id>])</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
 <el-statement class="ok" id="return8" tabindex="0"><el-kw>return </el-kw><el-field id="expr9" class="ok" tabindex="0"><el-txt><el-id>live</el-id>.<el-method>length</el-method>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>

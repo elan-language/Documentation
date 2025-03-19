@@ -77,7 +77,7 @@
 <p class="toc_2"><a href="#h86">Float</a></p>
 <p class="toc_2"><a href="#h87">Boolean</a></p>
 <p class="toc_2"><a href="#h88">String</a></p>
-<p class="toc_2"><a href="#Array">Arrays and Lists</a></p>
+<p class="toc_2"><a href="#List">Arrays and Lists</a></p>
 <p class="toc_2"><a href="#Dict">Dictionaries</a></p>
 <p class="toc_2"><a href="#Tuple">Tuple</a></p>
 <p class="toc_2"><a href="#Func">Func</a></p>
@@ -101,13 +101,13 @@
 </tr>
 <tr><td>[ ]</td>
 <td>square brackets</td>
-<td colspan="2">used to delimit a literal <el-code>Array</el-code> or <el-code>Dictionary</el-code>, or for an index or<br>
+<td colspan="2">used to delimit a literal <el-code>List</el-code> or <el-code>Dictionary</el-code>, or for an index or<br>
 index-range
 </td>
 </tr>
 <tr><td>{ }</td>
 <td>curly braces</td>
-<td>used to delimit a literal <el-code>List</el-code> or <el-code>DictionaryImmutable</el-code>, or to define an &#8216;interpolated field&#8217; within a literal <el-code>String</el-code></td>
+<td>used to delimit a literal <el-code>ListImmutable</el-code> or <el-code>DictionaryImmutable</el-code>, or to define an &#8216;interpolated field&#8217; within a literal <el-code>String</el-code></td>
 </tr>
 <tr><td>.</td>
 <td>dot</td>
@@ -473,7 +473,7 @@ index-range
 <h2 id="h41">If you have programmed in another language, the key differences to be aware of&#8230;</h2>
 
 <h3>Types</h3>
-<li>Elan is a statically typed language. Basic Types are <el-code>Int</el-code>, <el-code>Float</el-code>, <el-code>Boolean</el-code>, and <el-code>String</el-code><el-code>.</el-code> There are ready-made data structures as Types <el-code>Array</el-code>, <el-code>List</el-code>, <el-code>Dictionary</el-code>. Elan supports user-defined <el-code>class</el-code>es and <el-code>enum</el-code>s, and there are several ready-made classes in the standard library such as <el-code>BlockGraphics</el-code>, <el-code>File</el-code>, <el-code>Set</el-code>, <el-code>Stack</el-code>, <el-code>Queue</el-code>, <el-code>Tree</el-code>, <el-code>Graph</el-code> &#8230; (only the first of these is in the Beta 6). </li>
+<li>Elan is a statically typed language. Basic Types are <el-code>Int</el-code>, <el-code>Float</el-code>, <el-code>Boolean</el-code>, and <el-code>String</el-code><el-code>.</el-code> There are ready-made data structures as Types <el-code>List</el-code>, <el-code>ListImmutable</el-code>, <el-code>Dictionary</el-code>. Elan supports user-defined <el-code>class</el-code>es and <el-code>enum</el-code>s, and there are several ready-made classes in the standard library such as <el-code>BlockGraphics</el-code>, <el-code>File</el-code>, <el-code>Set</el-code>, <el-code>Stack</el-code>, <el-code>Queue</el-code>, <el-code>Tree</el-code>, <el-code>Graph</el-code> &#8230; (only the first of these is in the Beta 6). </li>
 
 <h3 id="Vars">Variables</h3>
 <li>Variables are defined by the <el-code>variable </el-code>statement, and re-assigned with a <el-code>set</el-code> statement.</li>
@@ -482,15 +482,15 @@ index-range
 <li>There is no such thing as a global variable in Elan. Variables are defined within <el-code>main</el-code>, or within a <el-code>function</el-code> or <el-code>procedure</el-code> and are visible only within that scope.</li>
 
 <h3 id="Const">Constants</h3>
-<li>A <el-code>constant</el-code> is only ever defined at global level and is <el-code>set to</el-code> a literal value of an immutable Type: for example any of the four basic Types or a <el-code>List</el-code>, but not an <el-code>Array</el-code> (see below).</li>
+<li>A <el-code>constant</el-code> is only ever defined at global level and is <el-code>set to</el-code> a literal value of an immutable Type: for example any of the four basic Types or a <el-code>ListImmutable</el-code>, but not an <el-code>List</el-code> (see below).</li>
 
 <h3 id="Let_statement_1">Let statement</h3>
 <li>A <el-code>let</el-code> statement may be thought of as being between a constant and a variable. Like a variable a <el-code>let</el-code> may be defined only within a routine, but unlike a variable it may not be re-assigned once defined. It is recommended that you always use a <el-code>let</el-code> in preference to a <el-code>variable </el-code>unless you need to be able to assign a new value to it.</li>
 
 <h3>Arrays</h3>
-<li>An <el-code>Array</el-code> is a mutable data structure &#8211; as it is in most languages.</li>
+<li>An <el-code>List</el-code> is a mutable data structure &#8211; as it is in most languages.</li>
 <li>It may be initialised to a specific size, with each element set to an initial value (e.g. 0 for an <el-code>Int</el-code> or <el-code>Float</el-code>), but it may also be extended dynamically with the <el-code>append</el-code><el-code> </el-code>and<el-code> prepend</el-code> methods.</li>
-<li>A 2D Array may also be created, accessed with a double index e.g. <el-code>a[2][3</el-code>]. See also <a href="#2-dimensional_Array">2-dimensional Array</a>.</li>
+<li>A 2D List may also be created, accessed with a double index e.g. <el-code>a[2][3</el-code>]. See also <a href="#2-dimensional_Array">2-dimensional List</a>.</li>
 
 <h3>Testing for equality</h3>
 <li>Elan tests for equality by value (not equality by reference) using the keywords <el-code>is</el-code> (for example <el-code>if x is y</el-code>) and <el-code>isnt</el-code>. The comparisons, <el-code>&gt;</el-code>, <el-code>&lt;</el-code>. <el-code>&gt;=</el-code>, <el-code>&lt;=</el-code> apply to numeric Types (<el-code>Int</el-code> and <el-code>Float</el-code>) only. (There are methods for <el-code>String</el-code> comparison &#8211; see <span class="Link">Dot methods on a String</span> )</li>
@@ -532,10 +532,10 @@ end procedure
 
 <h3>Functional techniques</h3>
 <li>Elan has strong support for the functional programming paradigm, building on the foundation of its rigorous definition of a <el-code>function</el-code>. In addition:</li>
-<li>The standard library defines several &#8216;higher-order functions&#8217; (HoFs) including <el-code>map</el-code>, <el-code>filter</el-code> and <el-code>reduce</el-code> that apply to any Type that is &#8216;iterable&#8217; (including <el-code>String</el-code>, <el-code>Array</el-code> and <el-code>List</el-code>).</li>
+<li>The standard library defines several &#8216;higher-order functions&#8217; (HoFs) including <el-code>map</el-code>, <el-code>filter</el-code> and <el-code>reduce</el-code> that apply to any Type that is &#8216;iterable&#8217; (including <el-code>String</el-code>, <el-code>List</el-code> and <el-code>ListImmutable</el-code>).</li>
 <li>Any user-defined or standard library function may be passed as an argument into a parameter, or associated with a name using a <el-code>variable </el-code>or <el-code>let</el-code> statement, by preceding the name of the function with the keyword <el-code>function</el-code>.</li>
 <li>You may also define a <el-code>lambda</el-code>, inline as an argument in a function call, or assigned to a named value.</li>
-<li>Although pure functions, including HoFs, may work with mutable data structures (without actually mutating them), immutable data structures are considered a better fit for functional programming. Elan provides many immutable standard data structures, including <el-code>String</el-code> (immutable in most languages) and <el-code>List</el-code> (in contrast to many languages), and <el-code>record</el-code> which is like an immutable form of a <el-code>class</el-code> without encapsulated methods.</li>
+<li>Although pure functions, including HoFs, may work with mutable data structures (without actually mutating them), immutable data structures are considered a better fit for functional programming. Elan provides many immutable standard data structures, including <el-code>String</el-code> (immutable in most languages) and <el-code>ListImmutable</el-code> (in contrast to many languages), and <el-code>record</el-code> which is like an immutable form of a <el-code>class</el-code> without encapsulated methods.</li>
 <p class="heading_1">
 
 <h1 id="InOut">Input/Output</h1>
