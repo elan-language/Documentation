@@ -2,7 +2,7 @@
 
 main
   let file be openFileForReading()
-  variable lines set to empty Array<of String>
+  variable lines set to empty List<of String>
   while not file.endOfFile()
     let line be file.readLine()
     call lines.append(line)

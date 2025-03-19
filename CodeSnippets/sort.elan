@@ -6,6 +6,6 @@ main
   print li
 end main
 
-procedure inPlaceRippleSort(out arr as Array<of Int>)
+procedure inPlaceRippleSort(out arr as List<of Int>)
 
 end procedure

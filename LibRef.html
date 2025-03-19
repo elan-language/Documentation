@@ -340,7 +340,7 @@ inputStringWithLimits(prompt as string, minLength as Int, maxLength as Int)
 
 <!-- #region   inputStringFromOptions-->
 <h2 id="inputStringFromOptions">inputStringFromOptions</h2>
-inputStringFromOptions(prompt as String, options as Array<of String>)
+inputStringFromOptions(prompt as String, options as List<of String>)
 <!-- #endregion-->
 
 <!-- #region   inputInt-->
@@ -406,7 +406,7 @@ which the dot-methods the following methods may be invoked:</p>
 <el-code-block source="TextFileReader_2.elan">
   <el-top><el-expand>+</el-expand><el-kw>main</el-kw></el-top>
   <el-statement class="ok" id="let3" tabindex="0"><el-kw>let </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>file</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-method>openFileForReading</el-method>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-  <el-statement class="ok" id="var6" tabindex="0"><el-kw>variable </el-kw><el-field id="var7" class="ok" tabindex="0"><el-txt><el-id>lines</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-kw>empty</el-kw> <el-type>Array</el-type>&lt;<el-kw>of</el-kw> <el-type>String</el-type>&gt;</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+  <el-statement class="ok" id="var6" tabindex="0"><el-kw>variable </el-kw><el-field id="var7" class="ok" tabindex="0"><el-txt><el-id>lines</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-kw>empty</el-kw> <el-type>List</el-type>&lt;<el-kw>of</el-kw> <el-type>String</el-type>&gt;</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
   <el-statement class="ok multiline" id="while9" tabindex="0">
   <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr11" class="ok" tabindex="0"><el-txt><el-kw>not</el-kw> <el-id>file</el-id>.<el-method>endOfFile</el-method>()</el-txt><el-place><i>condition</i></el-place></el-field></el-top>
   <el-statement class="ok" id="let12" tabindex="0"><el-kw>let </el-kw><el-field id="var13" class="ok" tabindex="0"><el-txt><el-id>line</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-id>file</el-id>.<el-method>readLine</el-method>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
@@ -618,7 +618,7 @@ will paint the background colour for the whole grid, leaving any existing charac
 <li>As with <span class="Link">Block</span> graphics the screen is not updated until the display method is called, allowing you to make multiple changes before updating the screen. Similarly, the method to add a shape returns a new instance of the <el-code>VectorGraphics</el-code> which must be assigned either to an existing variable, or to a new <el-code>let</el-code>.</li>
 <li>As with the way that SVG works within Html, the shapes are drawn in the order in which they are added into the <el-code>VectorGraphics</el-code> instance, with later shapes positioned over earlier shapes.</li>
 <li>The colour (for <el-code>stroke</el-code> and <el-code>fill</el-code> properties) may be specified as described at <a href="#Colour">Colour</a>. The <el-code>fill</el-code> colour only may also be specified as &#8216;transparent&#8217; by giving it a negative value; we suggest using <el-code>fill to -1</el-code></li>
-<li><el-code>BaseVG</el-code> is the abstract superclass of all <el-code>.VG</el-code> shapes. You would only use if if you wanted to define a method that could work on any shape (using common members defined on <el-code>BaseVG</el-code>) or that could work with a List holding different types of shape.</li>
+<li><el-code>BaseVG</el-code> is the abstract superclass of all <el-code>.VG</el-code> shapes. You would only use if if you wanted to define a method that could work on any shape (using common members defined on <el-code>BaseVG</el-code>) or that could work with a ListImmutable holding different types of shape.</li>
 <li><el-code>VectorGraphics</el-code> also has methods <el-code>removeLast</el-code> (no parameters), <el-code>remove</el-code> (which takes a shape as a parameter, and <el-code>replace</el-code> which takes an existing shape and a new shape as parameters. The new shape may be a modified version of an existing shape (created using <el-code>copy .. with</el-code>), thereby enabling animation. The following simple example creates a circle that changes between red and green every second:</li>
 </ul>
 
@@ -649,8 +649,8 @@ will paint the background colour for the whole grid, leaving any existing charac
 <h2 id="Stack">Stack and queue</h2>
 <ul>
     <li><el-code>Stack</el-code> and <el-code>Queue</el-code> are similar data structures except that <el-code>Stack</el-code> is &#8216;LIFO&#8217; (last in, first out), while <el-code>Queue</el-code> is FIFO (first in, first out). The names of the methods for adding/removing are different, but there are also common methods, summarised here.</li>
-    <li>Both a <el-code>Stack</el-code> and a <el-code>Queue</el-code> are defined with the Type of the items that they can contain, similarly to how <el-code>Array</el-code> and <el-code>List</el-code> have a specified item Type, though with different syntax. The Type is specified in the form shown below e.g. <el-code>Stack&lt;of String&gt;, Queue&lt;of Int&gt;, Stack&lt;of (Float, Float)&gt;, Queue&lt;of Square&gt;</el-code>.</li>
-    <li>Both <el-code>Stack </el-code>and<el-code> Queue</el-code> are dynamically extensible, like <el-code>Array</el-code> and <el-code>List</el-code>. There is no need (or means to) specify a size limit as they will continue to expand until, eventually, the computer&#8217;s memory limit is reached.</li>
+    <li>Both a <el-code>Stack</el-code> and a <el-code>Queue</el-code> are defined with the Type of the items that they can contain, similarly to how <el-code>List</el-code> and <el-code>ListImmutable</el-code> have a specified item Type, though with different syntax. The Type is specified in the form shown below e.g. <el-code>Stack&lt;of String&gt;, Queue&lt;of Int&gt;, Stack&lt;of (Float, Float)&gt;, Queue&lt;of Square&gt;</el-code>.</li>
+    <li>Both <el-code>Stack </el-code>and<el-code> Queue</el-code> are dynamically extensible, like <el-code>List</el-code> and <el-code>ListImmutable</el-code>. There is no need (or means to) specify a size limit as they will continue to expand until, eventually, the computer&#8217;s memory limit is reached.</li>
     <li>This same syntax is used to specify the Type if you want to pass a <el-code>Stack</el-code> into a function, or specify it as the <el-code>return</el-code> Type.</li>
     <li><el-code>Stack</el-code> and <el-code>Queue</el-code> have some methods in common: <el-code>length()</el-code>, and <el-code>peek()</el-code> which allows you to read the next item that would be removed, without actually removing it.</li>
     <li>The names of the methods for adding or removing an item are different for <el-code>Stac</el-code>k and <el-code>Queue</el-code>, as summarised in this table:</li>
@@ -705,7 +705,7 @@ will paint the background colour for the whole grid, leaving any existing charac
 
 <!-- #region   Set-->
 <h2 id="Set_data">Set</h2>
-    <p>A <el-code>Set</el-code> is a standard data structure that works somewhat like a <el-code>List</el-code> with the important difference that in a <el-code>Set</el-code> a given element may appear only once. If an item being added to a <el-code>Set</el-code> is identical to an existing item in the <el-code>Set</el-code> then the <el-code>Set</el-code> remains the same length as before. </p>
+    <p>A <el-code>Set</el-code> is a standard data structure that works somewhat like a <el-code>ListImmutable</el-code> with the important difference that in a <el-code>Set</el-code> a given element may appear only once. If an item being added to a <el-code>Set</el-code> is identical to an existing item in the <el-code>Set</el-code> then the <el-code>Set</el-code> remains the same length as before. </p>
     <p>This enables a <el-code>Set</el-code> to work like a mathematical set so that it is possible to perform standard set operations such as <el-code>union</el-code> or <el-code>intersection</el-code>. For the same reason, a Set is an immutable data structure: there are no methods modify the set on which they are called, but several of them (including <el-code>add</el-code>, <el-code>remove</el-code>) return a new <el-code>Set</el-code> that is based on the original <el-code>Set</el-code> or <el-code>Set</el-code>s, with specified differences. </p>
     <p>Example of use:</p>
 <el-code-block source="set_1.elan">
@@ -729,8 +729,8 @@ will paint the background colour for the whole grid, leaving any existing charac
 <ul>
     <li> When creating a <el-code>Set</el-code>, the Type of the elements must be specified in the form
     <el-code>Set&lt;of String&gt;</el-code>. This applies both when creating a new, empty set and when defining the Type of a parameter to be a <el-code>Set</el-code>.</li>
-    <li>You can add elements: individually with <el-code>add</el-code>, or multiple elements with <el-code>addFromList</el-code> and <el-code>addFromArray</el-code>.</li>
-    <li>You can create a new <el-code>Se</el-code>t from an existing <el-code>Array</el-code> or <el-code>List</el-code> by calling <el-code>.asSet()</el-code> on it.</li>
+    <li>You can add elements: individually with <el-code>add</el-code>, or multiple elements with <el-code>addFromList</el-code> and <el-code>addFromList</el-code>.</li>
+    <li>You can create a new <el-code>Se</el-code>t from an existing <el-code>List</el-code> or <el-code>ListImmutable</el-code> by calling <el-code>.asSet()</el-code> on it.</li>
 </ul>
     <p>Available dot methods on a <el-code>Set</el-code>:</p>
 <el-code-block source="set_2.elan">
@@ -738,7 +738,7 @@ will paint the background colour for the whole grid, leaving any existing charac
         <el-statement class="ok" id="print20" tabindex="0"><el-kw>print </el-kw><el-field id="expr21" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>contains</el-method>(<el-id>item</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
         <el-statement class="ok" id="print22" tabindex="0"><el-kw>print </el-kw><el-field id="expr23" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>add</el-method>(<el-id>item</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
         <el-statement class="ok" id="print24" tabindex="0"><el-kw>print </el-kw><el-field id="expr25" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>addFromList</el-method>(<el-id>list</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-        <el-statement class="ok" id="print26" tabindex="0"><el-kw>print </el-kw><el-field id="expr27" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>addFromArray</el-method>(<el-id>array</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+        <el-statement class="ok" id="print26" tabindex="0"><el-kw>print </el-kw><el-field id="expr27" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>addFromList</el-method>(<el-id>array</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
         <el-statement class="ok" id="print28" tabindex="0"><el-kw>print </el-kw><el-field id="expr29" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>remove</el-method>(<el-id>item</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
         <el-statement class="ok" id="print30" tabindex="0"><el-kw>print </el-kw><el-field id="expr31" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>union</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
         <el-statement class="ok" id="print32" tabindex="0"><el-kw>print </el-kw><el-field id="expr33" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>difference</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
@@ -746,23 +746,23 @@ will paint the background colour for the whole grid, leaving any existing charac
         <el-statement class="ok" id="print36" tabindex="0"><el-kw>print </el-kw><el-field id="expr37" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>isDisjointFrom</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
         <el-statement class="ok" id="print38" tabindex="0"><el-kw>print </el-kw><el-field id="expr39" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>isSubsetOf</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
         <el-statement class="ok" id="print40" tabindex="0"><el-kw>print </el-kw><el-field id="expr41" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>isSupersetOf</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-        <el-statement class="ok" id="print42" tabindex="0"><el-kw>print </el-kw><el-field id="expr43" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>asArray</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-        <el-statement class="ok" id="print44" tabindex="0"><el-kw>print </el-kw><el-field id="expr45" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>asList</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+        <el-statement class="ok" id="print42" tabindex="0"><el-kw>print </el-kw><el-field id="expr43" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>asList</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
+        <el-statement class="ok" id="print44" tabindex="0"><el-kw>print </el-kw><el-field id="expr45" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>asImmutableList</el-method>(<el-id>anotherSet</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
         <el-statement class="ok" id="print46" tabindex="0"><el-kw>print </el-kw><el-field id="expr47" class="optional ok" tabindex="0"><el-txt><el-id>s</el-id>.<el-method>asString</el-method>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
 </el-code-block>
 <!-- #endregion-->
 
 <!-- #region Higher order functions (HoFs)-->
-<h1>Library functions that process Arrays and Lists</h1>
+<h1>Library functions that process Lists</h1>
 
 <h2 id="max">max and min</h2><span id="min"></span>
-<p>Both these functions may be applied to an <el-code>List&lt;of Float&gt;</el-code> and return the maximum or minimum value found therein.</p>
+<p>Both these functions may be applied to an <el-code>ListImmutable&lt;of Float&gt;</el-code> and return the maximum or minimum value found therein.</p>
 <el-code>variable a set to {33, 4, 0,99, 82, 55}</el-code><br>
 <el-code>print "Max: {a.max()} Min: {a.min()}"</el-code><br>
 
 <h2 id="HoF">Higher order functions (HoFs)</h2>
-    <p>These dot methods are called on any <el-code>Array,</el-code> <el-code>List</el-code> or <el-code>String</el-code>. As &#8216;higher order functions&#8217; they take either a <el-code>lambda</el-code> or a function reference as one of their arguments: see <span class="Link">Passing a function as a reference</span>.</p>
-    <p>Important: Several of these methods return a <el-code><el-type>List</el-type></el-code> but this may be converted to an array using <el-code>.<el-method>asArray()</el-method></el-code> at the end of the expression.</p>
+    <p>These dot methods are called on any <el-code>List,</el-code> <el-code>ListImmutable</el-code> or <el-code>String</el-code>. As &#8216;higher order functions&#8217; they take either a <el-code>lambda</el-code> or a function reference as one of their arguments: see <span class="Link">Passing a function as a reference</span>.</p>
+    <p>Important: Several of these methods return a <el-code><el-type>ListImmutable</el-type></el-code> but this may be converted to an array using <el-code>.<el-method>asList()</el-method></el-code> at the end of the expression.</p>
     <p>These are not yet fully documented but, for readers familiar with HoFs from another programming language, some examples are shown below.</p>
 
 <h3 id="filter">filter </h3>
@@ -790,14 +790,14 @@ will paint the background colour for the whole grid, leaving any existing charac
     <el-code>print a.maxBy(lambda x as Int =&gt; x mod 10)</el-code><br>
 
 <h3 id="sortBy">sortBy</h3>
-    <p><el-code>sortBy</el-code> takes a <el-code>lambda</el-code> that takes two arguments (of the same Type as that of the <el-code>List</el-code> being sorted) and compares them, returning an integer with one of the values -1, 0, or +1, to indicate whether the first argument should be placed respectively before, adjacent to or after the second argument in the sorted result, where &#8216;adjacent to&#8217; means it does not matter whether before or after):</p>
+    <p><el-code>sortBy</el-code> takes a <el-code>lambda</el-code> that takes two arguments (of the same Type as that of the <el-code>ListImmutable</el-code> being sorted) and compares them, returning an integer with one of the values -1, 0, or +1, to indicate whether the first argument should be placed respectively before, adjacent to or after the second argument in the sorted result, where &#8216;adjacent to&#8217; means it does not matter whether before or after):</p>
     <el-code>variable source set to {11, 3, 7, 37, 17, 2, 19, 5, 23, 27, 31, 13}</el-code><br>
-    <el-code>print source.sortBy(lambda x as Int, y as Int =&gt; if x &gt; y then 1 else -1).asList()</el-code><br>
+    <el-code>print source.sortBy(lambda x as Int, y as Int =&gt; if x &gt; y then 1 else -1).asImmutableList()</el-code><br>
     <p>The following are not HoFs, but are included here because they are most likely to be used with one of the HoFs listed above. </p>
 
 <h3 id="range">range</h3>
-    <el-code>range(first as Int, last as Int) as List&lt;of Int&gt;</el-code><br>
-    <p>returns a <el-code><el-type>List</el-type></el-code> containing all the integer values between the two argument values.</p>
+    <el-code>range(first as Int, last as Int) as ListImmutable&lt;of Int&gt;</el-code><br>
+    <p>returns a <el-code><el-type>ListImmutable</el-type></el-code> containing all the integer values between the two argument values.</p>
 <!-- #endregion-->
 
 <!-- #region Leftover-->
@@ -807,7 +807,7 @@ will paint the background colour for the whole grid, leaving any existing charac
     <el-code><br>
     .length()<br>
     </p>
-    <p><el-code>.head()</el-code> returns the first item in an <el-code>Array</el-code> or a <el-code>List</el-code></p>
+    <p><el-code>.head()</el-code> returns the first item in an <el-code>List</el-code> or a <el-code>ListImmutable</el-code></p>
     <!-- #region Dot methods for fundamental types-->
     <!-- #endregion-->
 <!-- #endregion-->
