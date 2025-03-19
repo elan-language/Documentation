@@ -77,7 +77,7 @@
 <p class="toc_2"><a href="#h86">Float</a></p>
 <p class="toc_2"><a href="#h87">Boolean</a></p>
 <p class="toc_2"><a href="#h88">String</a></p>
-<p class="toc_2"><a href="#List">Arrays and Lists</a></p>
+<p class="toc_2"><a href="#List">Lists</a></p>
 <p class="toc_2"><a href="#Dict">Dictionaries</a></p>
 <p class="toc_2"><a href="#Tuple">Tuple</a></p>
 <p class="toc_2"><a href="#Func">Func</a></p>
@@ -192,14 +192,14 @@ index-range
 <p><el-code><el-kw>and</el-kw></el-code> &#8211; keyword: see <a href="#OperLog">Logical operators</a></p>
 <p><el-code><el-method>any</el-method></el-code><code class="symbol">(</el-code><el-code>lambdaOrFunctionRef</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
 <p><el-code><el-method>append</el-method></el-code><code class="symbol">(</el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; extension procedure</p>
-<p><el-code><el-method>appendArray</el-method></el-code><code class="symbol">(</el-code><el-code>other</el-code><code class="symbol">)</el-code> &#8211; extension procedure</p>
+<p><el-code><el-method>appendList</el-method></el-code><code class="symbol">(</el-code><el-code>other</el-code><code class="symbol">)</el-code> &#8211; extension procedure</p>
 <p><el-code><el-kw>as</el-kw></el-code> &#8211; used in a parameter definition: see <span class="Link">Functions and procedures</span></p>
-<p><el-code><el-method>asArray</el-method></el-code><code class="symbol">()</el-code> &#8211; extension function</p>
+<p><el-code><el-method>asList</el-method></el-code><code class="symbol">()</el-code> &#8211; extension function</p>
 <p><el-code><el-method>asBinary</el-method></el-code><code class="symbol">()</el-code> &#8211; extension function</p>
 <p><el-code><el-method>asin</el-method></el-code><code class="symbol">(</el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; standalone function</p>
 <p><el-code><el-method>asinDeg</el-method></el-code><code class="symbol">(</el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; standalone function</p>
 <p><el-code><el-method>asIterable</el-method></el-code><code class="symbol">()</el-code> &#8211; extension function</p>
-<p><el-code><el-method>asList</el-method></el-code><code class="symbol">()</el-code> &#8211; extension function</p>
+<p><el-code><el-method>asImmutableList</el-method></el-code><code class="symbol">()</el-code> &#8211; extension function</p>
 <p><el-code><el-method>asRegExp</el-method></el-code><code class="symbol">() &#8211; </el-code>extension function</p>
 <p><el-code><el-kw>assert</el-kw></el-code> &#8211; keyword: see <span class="Link">Tests</span></p>
 <p><el-code><el-method>asSet</el-method></el-code><code class="symbol">()</el-code> &#8211; extension function</p>
@@ -239,8 +239,7 @@ index-range
 <p><el-code><el-kw>copy</el-kw></el-code> &#8211; keyword, see <span class="Link">Working with records</span></p>
 <p><el-code><el-method>cos</el-method></el-code><code class="symbol">(</el-code><el-code>radians</el-code><code class="symbol">)</el-code> &#8211; standalone function</p>
 <p><el-code><el-method>cosDeg</el-method></el-code><code class="symbol">(</el-code><el-code>degrees</el-code><code class="symbol">)</el-code> &#8211; standalone function</p>
-<p><el-code><el-method>createArray</el-method></el-code><code class="symbol">(</el-code><el-code>size, initialValue</el-code><code class="symbol">)</el-code> &#8211; standalone function</p>
-<p><el-code><el-method>createArray2D</el-method></el-code><code class="symbol">(</el-code><el-code>columns, rows, initialValue</el-code><code class="symbol">)</el-code> &#8211; standalone function</p>
+<p><el-code><el-method>new Array2D</el-method></el-code><code class="symbol">(</el-code><el-code>columns, rows, initialValue</el-code><code class="symbol">)</el-code> &#8211; standalone function</p>
 <p><el-code><el-method>createFileForWriting</el-method></el-code><code class="symbol">(</el-code><el-code>fileName</el-code><code class="symbol">)</el-code> &#8211; standalone function</p>
 
 <h3>D</h3>
@@ -251,7 +250,7 @@ index-range
 <p><el-code><el-kw>each</el-kw></el-code> &#8211; keyword, see <span class="Link">Each loop</span></p>
 <p><el-code><el-type>ElanSet</el-type></el-code> &#8211; Type</p>
 <p><el-code><el-kw>else</el-kw></el-code> &#8211; keyword, see <span class="Link">If statement</span> and <span class="Link">If expression</span></p>
-<p><el-code><el-kw>empty</el-kw></el-code> &#8211; keyword, creates the empty value of a specified Type. See e.g. <span class="Link">Arrays and Lists</span></p>
+<p><el-code><el-kw>empty</el-kw></el-code> &#8211; keyword, creates the empty value of a specified Type. See e.g. <span class="Link">Lists</span></p>
 <p><el-code><el-kw>end</el-kw></el-code> &#8211; keyword, (followed by another keyword) defines the end of a multi-line construct</p>
 <p><el-code><el-kw>enum</el-kw></el-code> &#8211; keyword, see <a href="#Enum_1">Enum</a></p>
 <p><el-code><el-kw>exception</el-kw></el-code> &#8211; keyword, see <a href="#Try_statement">Try statement</a><span class="Link"> </span>and </p>
@@ -302,7 +301,7 @@ index-range
 <p><el-code><el-kw>isnt</el-kw></el-code> &#8211; keyword, see <span class="Link">Equality testing</span></p>
 
 <h3>J</h3>
-<p><el-code><el-method>joinArrayElements</el-method></el-code><code class="symbol">(</el-code><el-code>separator</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
+<p><el-code><el-method>joinListElements</el-method></el-code><code class="symbol">(</el-code><el-code>separator</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
 <p><el-code><el-method>joinListElements</el-method></el-code><code class="symbol">(</el-code><el-code>separator</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
 
 <h3>K</h3>
@@ -333,7 +332,7 @@ index-range
 <p><el-code><el-kw>not</el-kw></el-code> &#8211; keyword, see <span class="Link">Logical operators</span></p>
 
 <h3>O</h3>
-<p><el-code><el-kw>of</el-kw></el-code> &#8211; keyword, used to define Types of elements, see <span class="Link">Arrays and Lists</span> <span class="Link">Dictionaries</span> <span class="Link">Func</span> </p>
+<p><el-code><el-kw>of</el-kw></el-code> &#8211; keyword, used to define Types of elements, see <span class="Link">Lists</span> <span class="Link">Dictionaries</span> <span class="Link">Func</span> </p>
 <p><el-code><el-method>openFileForReading</el-method></el-code><code class="symbol">()</el-code> &#8211; standalone system method</p>
 <p><el-code><el-id>openBrace</el-id></el-code> &#8211; constant (String)</p>
 <p><el-code><el-kw>or</el-kw></el-code> &#8211; keyword, see <span class="Link">Logical operators</span></p>
@@ -345,7 +344,7 @@ index-range
 <p><el-code><el-method>pause</el-method></el-code><code class="symbol">(</el-code><el-code>milliseconds</el-code><code class="symbol">)</el-code> &#8211; standalone procedure</p>
 <p><el-code><el-id>pi</el-id></el-code> &#8211; constant (Float)</p>
 <p><el-code><el-method>prepend</el-method></el-code><code class="symbol">(</el-code><el-code>other</el-code><code class="symbol">)</el-code> &#8211; extension procedure</p>
-<p><el-code><el-method>prependArray</el-method></el-code><code class="symbol">(</el-code><el-code>other</el-code><code class="symbol">)</el-code> &#8211; extension procedure</p>
+<p><el-code><el-method>prependList</el-method></el-code><code class="symbol">(</el-code><el-code>other</el-code><code class="symbol">)</el-code> &#8211; extension procedure</p>
 <p><el-code><el-kw>print</el-kw></el-code> &#8211; keyword, see <span class="Link">Input/Output</span></p>
 <p><el-code><el-method>printLine</el-method></el-code><code class="symbol">(</el-code><el-code>text</el-code><code class="symbol">)</el-code> &#8211; standalone procedure</p>
 <p><el-code><el-method>printNoLine</el-method></el-code><code class="symbol">(</el-code><el-code>text</el-code><code class="symbol">)</el-code> &#8211; standalone procedure</p>
@@ -424,9 +423,9 @@ index-range
 <p><el-code><el-kw>while</el-kw></el-code> &#8211; keyword, see <span class="Link">While loop</span></p>
 <p><el-code><el-id>white</el-id></el-code> &#8211; constant (Int)</p>
 <p><el-code><el-kw>with</el-kw></el-code> &#8211; keyword, see <span class="Link">Working with records</span></p>
-<p><el-code><el-method>withInsertAt</el-method></el-code><code class="symbol">(</el-code><el-code>index</el-code><code class="symbol">, </el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
-<p><el-code><el-method>withPutAt</el-method></el-code><code class="symbol">(</el-code><el-code>index</el-code><code class="symbol">, </el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
-<p><el-code><el-method>withPutAtKey</el-method></el-code><code class="symbol">(</el-code><el-code>key</el-code><code class="symbol">, </el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
+<p><el-code><el-method>withInsert</el-method></el-code><code class="symbol">(</el-code><el-code>index</el-code><code class="symbol">, </el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
+<p><el-code><el-method>withPut</el-method></el-code><code class="symbol">(</el-code><el-code>index</el-code><code class="symbol">, </el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
+<p><el-code><el-method>withPutKey</el-method></el-code><code class="symbol">(</el-code><el-code>key</el-code><code class="symbol">, </el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
 <p><el-code><el-method>withRemoveAll</el-method></el-code><code class="symbol">(</el-code><el-code>value</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
 <p><el-code><el-method>withRemoveAt</el-method></el-code><code class="symbol">(</el-code><el-code>index</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
 <p><el-code><el-method>withRemoveAtKey</el-method></el-code><code class="symbol">(</el-code><el-code>key</el-code><code class="symbol">)</el-code> &#8211; extension function</p>
@@ -487,10 +486,10 @@ index-range
 <h3 id="Let_statement_1">Let statement</h3>
 <li>A <el-code>let</el-code> statement may be thought of as being between a constant and a variable. Like a variable a <el-code>let</el-code> may be defined only within a routine, but unlike a variable it may not be re-assigned once defined. It is recommended that you always use a <el-code>let</el-code> in preference to a <el-code>variable </el-code>unless you need to be able to assign a new value to it.</li>
 
-<h3>Arrays</h3>
+<h3>Lists</h3>
 <li>An <el-code>List</el-code> is a mutable data structure &#8211; as it is in most languages.</li>
 <li>It may be initialised to a specific size, with each element set to an initial value (e.g. 0 for an <el-code>Int</el-code> or <el-code>Float</el-code>), but it may also be extended dynamically with the <el-code>append</el-code><el-code> </el-code>and<el-code> prepend</el-code> methods.</li>
-<li>A 2D List may also be created, accessed with a double index e.g. <el-code>a[2][3</el-code>]. See also <a href="#2-dimensional_Array">2-dimensional List</a>.</li>
+<li>A 2D List may also be created, accessed with a double index e.g. <el-code>a[2][3</el-code>]. See also <a href="#2-dimensional_List">2-dimensional List</a>.</li>
 
 <h3>Testing for equality</h3>
 <li>Elan tests for equality by value (not equality by reference) using the keywords <el-code>is</el-code> (for example <el-code>if x is y</el-code>) and <el-code>isnt</el-code>. The comparisons, <el-code>&gt;</el-code>, <el-code>&lt;</el-code>. <el-code>&gt;=</el-code>, <el-code>&lt;=</el-code> apply to numeric Types (<el-code>Int</el-code> and <el-code>Float</el-code>) only. (There are methods for <el-code>String</el-code> comparison &#8211; see <span class="Link">Dot methods on a String</span> )</li>

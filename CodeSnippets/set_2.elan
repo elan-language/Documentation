@@ -5,7 +5,7 @@ main
   print s.contains()
   print s.add(item)
   print s.addFromList(list)
-  print s.addFromArray(array)
+  print s.addFromList(array)
   print s.remove(item)
   print s.union(anotherSet)
   print s.difference(anotherSet)
@@ -13,7 +13,7 @@ main
   print s.isDisjointFrom(anotherSet)
   print isSubsetOf(anotherSet)
   print isSupersetOf(anotherSet)
-  print "s.asArray(anotherSet)"
   print "s.asList(anotherSet)"
+  print "s.asImmutableList(anotherSet)"
   print s.asString()
 end main
