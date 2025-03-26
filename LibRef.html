@@ -36,7 +36,7 @@
 
 <h3>Dot methods</h3>
 <table>
-    <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Desciption</th></tr>
+    <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Description</th></tr>
     <tr><th colspan="4">Functions</th></tr>
     <tr><td><el-code><el-method>asBinary</el-method></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td></td><td></td></tr>
     <tr><td><el-code><el-method>asString</el-method></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td></td><td></td></tr>
@@ -67,7 +67,7 @@
 
 <h3>Dot methods</h3>
 <table>
-    <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Desciption</th></tr>
+    <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Description</th></tr>
     <tr><th colspan="4">Functions</th></tr>
     <tr><td><el-code><el-method>asString</el-method></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td></td><td></td></tr>
     <tr><td><el-code><el-method>ceiling</el-method></el-code></td><td><el-code><el-type>Int</el-type></el-code></td><td></td><td>returns first integer larger than or equal to the floating-point number</td></tr>
@@ -107,7 +107,7 @@ It may, however, be converted into an <el-code>Int</el-code> before passing, usi
 
 <h3>Dot methods</h3>
 <table>
-    <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Desciption</th></tr>
+    <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Desrciption</th></tr>
     <tr><th colspan="4">Functions</th></tr>
     <tr><td><el-code><el-method>asString</el-method></el-code></td>
         <td><el-code><el-type>String</el-type></el-code></td>
@@ -145,7 +145,7 @@ A newline may be inserted within a string as <el-code>\n</el-code>, for example:
 
 <h3>Dot methods</h3>
 <table>
-    <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Desciption</th></tr>
+    <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Description</th></tr>
     <tr><th colspan="4">Functions</th></tr>
     <tr><td><el-code><el-method>asString</el-method></el-code></td>
         <td><el-code><el-type>String</el-type></el-code></td>
@@ -195,7 +195,7 @@ A newline may be inserted within a string as <el-code>\n</el-code>, for example:
     <li><el-code><el-method>length</el-method></el-code> returns the number of characters in the string as an <el-code><el-type>Int</el-type></el-code></li>
     <li><el-code><el-method>lowerCase</el-method></el-code>returns a new string with the original rendered in lower-case.</li>
     <li><el-code><el-method>map</el-method></el-code></li>
-    <li><el-code><el-method>matchesRegExp</el-method></el-code>returns a <el-code><el-type>Int</el-type></el-code> indicating whether or not the string matches theregular expression provided as an argument of type <el-code><el-type>RegExp</el-type></el-code>.</li>
+    <li><el-code><el-method>matchesRegExp</el-method></el-code>returns a <el-code><el-type>Int</el-type></el-code> indicating whether or not the string matches the regular expression provided as an argument of type <el-code><el-type>RegExp</el-type></el-code>.</li>
     <li><el-code><el-method>reduce</el-method></el-code></li>
     <li><el-code><el-method>replace</el-method></el-code> returns a new string with <i>all</i> occurrences of the string (specified as the first argument replaced by the string specified as the second argument.</li>
     <li><el-code><el-method>sortBy</el-method></el-code></li>
@@ -323,7 +323,7 @@ call fruit.removeFirst("apple")
 <el-code>print a[a.length()]</el-code><br>
 <p>
 <p>Elan lists may be dynamically extended, using <el-code>append</el-code> and <el-code>prepend</el-code> methods.</p>
-<el-code>variable a set to [0]<br>
+<el-code>variable a set to [0]</el-code><br>
 <el-code>variable b set to [0]</el-code><br>
 <el-code>print a</el-code><br>
 <el-code>print b</el-code><br>
@@ -333,10 +333,10 @@ call fruit.removeFirst("apple")
 <el-code>print b</el-code><br>
 <el-code>a.appendList(b)</el-code><br>
 <el-code>print a</el-code><br>
-<el-code></el-code><br>
+
 <!--   #endregion-->
 <!--   #region Dictionary-->
-<h3 id="Dictionary">Dictionary</h3>
+<h2 id="Dictionary">Dictionaries</h2>
 <p>There are two forms of dictionary in Elan: an ordinary <el-code>Dictionary</el-code> (which is mutable) and a <el-code>DictionaryImmutable</el-code> (which is not).</p>
 
 <h3>Quick reference</h3>
@@ -431,7 +431,7 @@ or into existing variables of the correct Type:</p>
 <el-code>variable x, _ set to point1</el-code><br>
 <br>
 Notes:
-<p>As in most languages, Elan <el-code>tuple</el-code>s are immutable. Once defined they are effectively &lsquo;read only&rsquo;. You cannot alter any of the elements in a <el-code>tuple</el-code> nor (unpke a <el-code>pst</el-code> for example) can you create a new <el-code>tuple</el-code> from an existing one with specified differences.</p>
+<p>As in most languages, Elan <el-code>tuple</el-code>s are immutable. Once defined they are effectively &lsquo;read only&rsquo;. You cannot alter any of the elements in a <el-code>tuple</el-code> nor (unlike a <el-code>List</el-code> for example) can you create a new <el-code>tuple</el-code> from an existing one with specified differences.</p>
 <p>You cannot deconstruct a <el-code>tuple</el-code> into a mixture of new and existing variables.</p>
 <p><el-code>tuple</el-code>s may be nested: you can define a <el-code>tuple</el-code> within a <el-code>tuple</el-code>.</p>
 <!-- #endregion-->
@@ -492,7 +492,7 @@ Notes:
     <li>Both <el-code>Stack </el-code>and<el-code> Queue</el-code> are dynamically extensible, like <el-code>List</el-code> and <el-code>ListImmutable</el-code>. There is no need (or means to) specify a size limit as they will continue to expand until, eventually, the computer&#8217;s memory limit is reached.</li>
     <li>This same syntax is used to specify the Type if you want to pass a <el-code>Stack</el-code> into a function, or specify it as the <el-code>return</el-code> Type.</li>
     <li><el-code>Stack</el-code> and <el-code>Queue</el-code> have some methods in common: <el-code>length()</el-code>, and <el-code>peek()</el-code> which allows you to read the next item that would be removed, without actually removing it.</li>
-    <li>The names of the methods for adding or removing an item are different for <el-code>Stac</el-code>k and <el-code>Queue</el-code>, as summarised in this table:</li>
+    <li>The names of the methods for adding or removing an item are different for <el-code>Stack</el-code>k and <el-code>Queue</el-code>, as summarised in this table:</li>
 </ul>
 <p>
 <table>
@@ -1280,14 +1280,8 @@ inputFloatBetween(prompt as string, min as Float, max as Float)
 <h2 id="Dot_methods">Dot methods that work on many different Types</h2>
     <!-- TODO These should each be added to the types they apply to-->
     <el-code>.asString()</el-code><br>
-    <el-code><br>
-    .length()<br>
-    </p>
-    <p><el-code>.head()</el-code> returns the first item in an <el-code>List</el-code> or a <el-code>ListImmutable</el-code></p>
-    <!-- #region Dot methods for fundamental types-->
-    <!-- #endregion-->
-<!-- #endregion-->
-<b>Elan Library Reference</b> go to the <a href="#top">top</a></h4>
+    <el-code>.length()</el-code><br>
+    <el-code>.head()</el-code> returns the first item in a <el-code>List</el-code> or a <el-code>ListImmutable</el-code></p>
 
 <p>Empty method table template</p>
 <table>
@@ -1305,7 +1299,9 @@ inputFloatBetween(prompt as string, min as Float, max as Float)
         <td></td>
     </tr>
 </table>
-
-
+<!-- #region Dot methods for fundamental types-->
+<!-- #endregion-->
+<!-- #endregion-->
+<b>Elan Library Reference</b> go to the <a href="#top">top</a></h4>
 </body>
 </html>
