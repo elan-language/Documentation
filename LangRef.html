@@ -21,7 +21,7 @@
 <!--   #region Heading & Intro-->
 <h1 id="Instuction_set">Instruction Set</h1>
 <p>This section defines the set of instructions that make up the Elan language and form the building blocks for any program.</p>
-<p>There are three categories of instruction, which are distinguished where the instructions of that categeory are <em>located</em> within a program:</p>
+<p>There are three categories of instruction, which are distinguished where the instructions of that category are <em>located</em> within a program:</p>
 <ul>
 <li><a href="#Global">Global instructions</a> (also referred to simply as &lsquo;globals&rsquo;) are located <em>directly</em> within a code file.
   They are never indented from the left-hand edge, nor may they be located <em>within</em> other instructions.
@@ -246,7 +246,7 @@ Notes:
 </el-code-block></p>
 <p>When a test is marked with <el-code>ignore</el-code>, that test will not be executed when the tests are run, and its result will be shown as &lsquo;not run&rsquo;. The overall test status will also show in the &lsquo;warning&rsquo; status (amber colour), even if all the tests that did run passed. This is to discourage you from leaving a test marked <el-code>ignore</el-code> for long.</p>
 <p>The principal reason for marking a test <el-code>ignore</el-code> is when either the test code, or code in any function being called, does not terminate. This typically means that there is a loop (or a recursive call) with no exit condition, or where the exit condition is never met.</p>
-<p>If you do create such code without realising it, then when the tests are executed the test runner will &lsquo;time out&rsquo; after a few seconds (most tests will pass in milliseconds), and an error message will be shown in the Syestem info pane. The test that caused the timeout will automatically then be marked <el-code>ignore</el-code>. Your priority should then be to identify the cause of the timeout and attempt to fix it before then restoring the <el-code>test</el-code> by selecting its frame and hitting <el-code>Ctrl-i</el-code> {which is a toggle for setting and unsetting an <el-code>ignore</el-code> status).</p>
+<p>If you do create such code without realising it, then when the tests are executed the test runner will &lsquo;time out&rsquo; after a few seconds (most tests will pass in milliseconds), and an error message will be shown in the System info pane. The test that caused the timeout will automatically then be marked <el-code>ignore</el-code>. Your priority should then be to identify the cause of the timeout and attempt to fix it before then restoring the <el-code>test</el-code> by selecting its frame and hitting <el-code>Ctrl-i</el-code> {which is a toggle for setting and unsetting an <el-code>ignore</el-code> status).</p>
 <!-- #endregion-->
 <!--     #region Constant-->
 <h3 id="constant">Constant</h3>
@@ -631,7 +631,7 @@ If the <el-code><el-kw>property</el-kw></el-code> is not initialised within the 
 <!--     #endregion-->
 <!--     #region For loop-->
 <h3 id="for">For loop</h3>
-<p>The loop counter variable does not have to bave been defined in a <el-code>variable</el-code> statement.</p>
+<p>The loop counter variable does not have to have been defined in a <el-code>variable</el-code> statement.</p>
 <p>The three defining values (<el-code>from</el-code>, <el-code>to</el-code>, and <el-code>step</el-code>) must all be integer, positive or negative.</p>
 <p>They may be defined by literal integers, variables of Type <el-code>Int</el-code>, or expressions that evaluate to an integer. </p>
 <p>However, if you require a negative step then the literal value, variable, or expression must start with a negative sign as this is needed at compile time to determine the nature of the exit condition. So if you have a variable <el-code>s</el-code> that holds a negative value to be used as the step, then you will need to write something like the following:</p>
