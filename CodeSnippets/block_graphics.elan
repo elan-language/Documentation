@@ -1,12 +1,12 @@
-# 631748f80d7f0a5b4f8b9f2275adc0e89af0fa1ac9300461fcf742a42ede4d34 Elan Beta 8 valid
+# 94e6436792ce38a05a422c1052eb205ac08673100c5c8f61179e5e01e1899e9d Elan Beta 9 valid
 
 main
-  variable gr set to new BlockGraphics()
+  variable blocks set to new Array2D<of Int>(40, 30, white)
   while true
     let x be randomInt(0, 39)
     let y be randomInt(0, 29)
-    let colour be randomInt(0, 2^24 - 1)
-    set gr to gr.withBlock(x, y, colour)
-    call gr.display()
+    let colour be randomInt(0, white - 1)
+    call blocks.put(x, y, colour)
+    call displayBlocks(blocks)
   end while
 end main

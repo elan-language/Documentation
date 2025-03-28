@@ -245,173 +245,13 @@ print a.contains("ello")
 <p>returns the Unicode (integer) value for a character. If the string is more than one character long, the Unicode value returned is that for the first character in the string only. Note that the opposite method to create a single-character string from its numeric Unicode value is e.g. <el-code>unicode(123)</el-code> which returns <el-code>"{"</el-code>.</p>
 <!--   #endregion-->
 <!--   #endregion-->
-<!-- #region Standard data structures-->
-<h1>Standard data structures</h1>
-<!--   #region Array-->
-<h2 id="Array">Array</h2>
-<!--   #endregion-->
-<!--   #region Array2D-->
-<h2 id="Array2D">Array2D</h2>
-<p>Elan has a type <el-code><el-type>Array2D</el-type></el-code> to implement 2-dimensional arrays of simple types such as <el-code><el-type>Int</el-type></el-code> or <el-code><el-type>String</el-type></el-code>.
-  Note that is called an 'array' (rather than 'List') because it is defined as a fixed size: the elements may be changed, but the size cannot be dynamically extended or reduced. For example:
-<el-code>variable board set to new Array2D(8, 8, "")</el-code><br>
-will create an List of Lists with a total of 64 elements each of Type <el-code>String</el-code>, with each element initialised to the empty <el-code>String</el-code>. The initial value need not be an empty value.
- The <el-code>Array2D</el-code> need not be square &ndash; it may be rectangular.<br>
-
-<p>You can read individual elements with a double index, for example:</p>
-<el-code>for col from 0 to 7 step 1</el-code><br>
-<el-code>  for row from 0 to 7 step 1</el-code><br>
-<el-code>    print board[col, row]</el-code><br>
-<el-code>  end for</el-code><br>
-<el-code>end for</el-code><br>
-
-<p>If you want to define a function or procedure with a parameter that should be a 2-dimensional List, the Type is specified as <el-code>Array2D</el-code>, for example:</p>
-
-<el-code>Array2D&lt;of String&gt;</el-code><br>
-<el-code>Array2D&lt;of Int&gt;</el-code><br>
-<!--   #endregion-->
-<!--   #region List-->
-<h2 id="List">List</h2>
-<p>An &lsquo;List&rsquo; is a simple data structure that holds multiple elements of the same Type.</p>
-<p>Unlike a ListImmutable, an List is mutable, meaning that the elements within the data structure can be altered without creating a new List from the old.</p>
-<p>The Type is specified in the following form:</p>
-<el-code>List&lt;of String&gt;</el-code> for an List of Type >el-code>String</el-code><br>
-<el-code>List&lt;of Int&gt;</el-code> for an List of Type <el-code>Int</el-code><br>
-
-<p>where, in these examples, <el-code>String</el-code> and <el-code>Int</el-code> represent the Type of each element in the <el-code>List</el-code>s. The element Type can be any Type value &ndash; <el-code>Int</el-code>, <el-code>Boolean</el-code>, <el-code>Float, String</el-code> &ndash; or the name of a specific <el-code>class</el-code> such as <el-code>Player</el-code>, or an <el-code>enum</el-code> such as <el-code>Direction</el-code>. It may also be another data structure, including another <el-code>List</el-code> (sometimes referred to as a &lsquo;nested List&rsquo;).</p>
-
-<h3>Creating a List</h3>
-<p>An <el-code>List</el-code> may be defined in &lsquo;literal&rsquo; form, &lsquo;delimited&rsquo; by square brackets, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type:</p>
-<p><el-code>variable fruit set to ["apple", "orange", "pear"]</el-code></p>
-<p>including &lsquo;nested &rsquo;:</p>
-<p><el-code>variable coordinates set to [[3.4, 0.1, 7.8], [1, 0, 1.5], [10, -1.5, 25]]</el-code></p>
-<p>or variables (provided they are all of the same Type):</p>
-<p><el-code>variable values set to [x, y, z]</el-code></p>
-<p>or a mixture of literal values and variables (all of the same Type):</p>
-<p><el-code>variable values set to [3.1, y, z]</el-code></p>
-<p>where <el-code>y </el-code>and <el-code>z </el-code>are existing variables of Type <el-code>Float</el-code>.</p>
-
-<h3>Dot methods on an List</h3>
-<p>Functions:</p>
-<p><el-code>myList.contains(item) returns</el-code>s <el-code>true</el-code> or <el-code>false</el-code></p>
-<p><el-code>myList.asImmutableList() returns</el-code>s a <el-code>ListImmutable</el-code> containing the same elements as the <el-code>List</el-code> on which the method was called. This is often used to permit an <el-code>List</el-code> to be passed into a function that has been designed to accept a <el-code>ListImmutable</el-code>.</p>
-<p>Procedures:</p>
-<p>
-<el-code>call fruit.append("banana")<br>
-call fruit.appendList(anotherList)<br>
-call fruit.insertAt(4, "cherry")<br>
-call fruit.prepend("melon")<br>
-call fruit.putAt(2, "grape")<br>
-call fruit.removeAll("apple")<br>
-call fruit.removeAt(3)<br>
-call fruit.removeFirst("apple")
-</el-code><br>
-
-<h3 id="Using_a_List">Using a List</h3>
-<p>Elements are read using an index in square brackets, the first element being element <el-code>[0]</el-code>. The last element of an <el-code>List</el-code> of size 10 will therefore be accessed by the index <el-code>[9]</el-code>.</p>
-<p>Attempting to read an element by index, where that element does not exist, will result in an &lsquo;Index out of range&rsquo; run-time error.</p>
-<p>Unlike in many programming languages you may not modify data by index: elements are modified by calling the <el-code>putAt</el-code> procedure on the List.</p>
-<p>Try these examples (the last one will produce an error &ndash; make sure you understand why):</p>
-<el-code>variable a set to [0, 0, 0, 0, 0, 0, 0, 0]</el-code><br>
-<el-code>print a</el-code><br>
-<el-code>print a.length()</el-code><br>
-<el-code>call a.putAt(0, 3)</el-code><br>
-<el-code>call a.putAt(1, 7)</el-code><br>
-<el-code>print a</el-code><br>
-<el-code>print a[0]</el-code><br>
-<el-code>print a[a.length() -1]</el-code><br>
-<el-code>print a[a.length()]</el-code><br>
-<p>
-<p>Elan lists may be dynamically extended, using <el-code>append</el-code> and <el-code>prepend</el-code> methods.</p>
-<el-code>variable a set to [0]<br>
-<el-code>variable b set to [0]</el-code><br>
-<el-code>print a</el-code><br>
-<el-code>print b</el-code><br>
-<el-code>a.append(3)</el-code><br>
-<el-code>b.prepend(7)</el-code><br>
-<el-code>print a</el-code><br>
-<el-code>print b</el-code><br>
-<el-code>a.appendList(b)</el-code><br>
-<el-code>print a</el-code><br>
-<el-code></el-code><br>
-<!--   #endregion-->
-<!--   #region Dictionary-->
-<h3 id="Dictionary">Dictionary</h3>
-<p>There are two forms of dictionary in Elan: an ordinary <el-code>Dictionary</el-code> (which is mutable) and a <el-code>DictionaryImmutable</el-code> (which is not).</p>
-
-<h3>Quick reference</h3>
-<p>
-<table>
-<tr><th></th><th>Dictionary</th><th>DictionaryImmutable</th></tr>
-<tr><td>Type form</td><td><el-code>Dictionary&lt;of String, Int&gt;</el-code></td><td><el-code>DictionaryImmutable&lt;of String, Int&gt;</el-code></td></tr>
-<tr><td>Literal</td><td><el-code>["a":1, "b":4]</el-code></td><td><el-code>{"a":1, "b":4}</el-code></td></tr>
-<tr><td>Literal empty</td>
-<td><el-code>empty Dictionary&lt;of String, Int&gt;</el-code></td><td><el-code>empty DictionaryImmutable&lt;of String, Int&gt;</el-code></td></tr>
-<tr><td>Read the value for a given key</td><td><el-code>d["a"]</el-code></td><td><el-code>d{"a"</el-code>}</td></tr>
-<tr><td>Get all keys<br>Get all values</td><td colspan="2"><el-code>d.keys()</el-code >and <el-code>d.values()</el-code><br>both return an immutable list of the appropriate Type</td></tr>
-<tr><td>Define (or change) a value associated with a key</td><td><el-code>call d.putAtKey("c", 7)</el-code></td><td><el-code>set d to d.withPutKey("c", 7)</el-code></td></tr>
-<tr><td>Remove both key and value</td><td><el-code>call d.removeAtKey("c")</el-code></td><td><el-code>set d to d.withRemoveAtKey("c")</el-code></td></tr>
-</table>
-</p>
-
-<h2 id="Dictionary">Dictionary</h2>
-
-<h3>Type name</h3>
-<p>In the following example, the keys are of Type <el-code>Int</el-code>, and the values associated with the keys are of Type <el-code>String</el-code>:</p>
-<el-code>Dictionary&lt;of String, Int&gt;</el-code><br>
-
-<p>For both <el-code>Dictionary</el-code> and <el-code>DictionaryImmutable</el-code> the values can be of any Type, including a specific Type of class, a <el-code>ListImmutable</el-code>, another <el-code>Dictionary</el-code> or some other data structure. However, the key&rsquo;s Type must be one of: <el-code>Int</el-code>, <el-code>Float</el-code>, <el-code>String</el-code>, <el-code>Boolean</el-code>, or a specific Type of <el-code>enum</el-code>.</p>
-
-<h3>Defining a literal Dictionary</h3>
-<p>A literal <el-code>Dictionary</el-code> is defined as a comma-separated list of &lsquo;key:value pairs&rsquo; (key,colon.value) surrounded by square brackets:</p>
-<el-code>variable scrabbleValues set to ["a":1, "b":3, "c":3, "d":2]</el-code><br>
-
-<h3 id="Using_a_Dictionary">Using a Dictionary</h3>
-<p>Try these examples:</p>
-<el-code>variable dict set to new Dictionary&lt;of String, Int&gt;()</el-code><br>
-<el-code>print dict</el-code><br>
-<el-code>call dict.putAtKey("a", 3)</el-code><br>
-<el-code>print dict["a"]</el-code><br>
-<el-code>call dict.removeAtKey("a")</el-code><br>
-<el-code>print dict</el-code><br>
-
-Constraints:
-<p>Key values must be unique within a <el-code>Dictionary</el-code>.</p>
-<p>There is no difference in syntax between adding an entry with a new key, and setting a new value for an existing key: if the key does not exist in the dictionary, it will be added.</p>
-
-<h3>Dot methods on a Dictionary</h3>
-<p>See also <span class="Link">Quick reference</span>.</p>
-<el-code>putAtKey</el-code><br>
-<el-code>removeAtKey</el-code><br>
-<el-code>keys</el-code><br>
-<el-code>values</el-code><br>
-<el-code></el-code><br>
-<!-- #endregion-->
-<!-- #endregion-->
-<!-- #region Immutable data structures -->
-<h1>Immutable data structures</h1>
-<!--   #region Tuple-->
+<!-- #region Tuples-->
 <h2 id="Tuple">Tuples</h2>
 A <el-code>tuple</el-code> is a way of holding a small number of values of different Types together as a single reference. It may be considered a &lsquo;lightweight&rsquo; alternative to defining a specific class for some purposes. Tuples are referred to as 2-tuples, 3-tuples, etc. according to the number of values they hold. Common uses include:
 <ul>
 <li>Holding a pair of x and y coordinates (each of Type <el-code>Float</el-code>) as a single unit.</li>
 <li>Allowing a function to pass back a result comprised of both a message in a <el-code>String</el-code> and a <el-code>Boolean</el-code> indicating whether the operation was successful.</li>
 </ul>
-<h3>Type name</h3>
-<p>Written as a comma-separated list of the Type of each member, surrounded by round brackets:</p>
-<el-code>(Int, Int, Int)</el-code><br>
-<el-code>(String, Boolean)</el-code><br>
-
-<h3>Defining a literal tuple</h3>
-<p>A <el-code>tuple</el-code> is defined, where it is needed, by the keyword <el-code>tuple</el-code> and a number of elements, each being a variable or a literal value, separated by commas and surrounded by round brackets, for example:</p>
-<el-code><br>
-let coords be tuple(x, y)<br>
-let myList be {tuple(1,1), tuple(1, 2)}<br>
-let foo be tuple(3.769, 4.088, true, 5, "correct")<br>
-call proc1(a, coords, tuple(x, y))<br>
-return tuple(3, 4)
-</el-code><br>
-</p>
 
 <h3>Using a tuple</h3>
 <p>You may pass a tuple into a function, or return one from a function, for example:</p>
@@ -435,6 +275,99 @@ Notes:
 <p>You cannot deconstruct a <el-code>tuple</el-code> into a mixture of new and existing variables.</p>
 <p><el-code>tuple</el-code>s may be nested: you can define a <el-code>tuple</el-code> within a <el-code>tuple</el-code>.</p>
 <!-- #endregion-->
+<!-- #region Standard data structures-->
+ <!--  #region Heading & intro-->
+<h1 id="standard_data-structures">Standard data structures</h1>
+
+<p>The four 'standard' data structures defined in the Elan library are summarised in the this table:</p>
+
+<img src="images/standard-data-structure-summary.png"  width="100%" >
+
+<p>All four are 'mutable' - meaning that their contents may be changes directly by calling the various <i>procedure</i> dot-methods that each
+type defines. 
+However, since procedure methods may be called only from within the <el-code><el-kw>main</el-kw></el-code> routine,
+or from within another <el-code><el-kw>procedure</el-kw></el-code>, it is also possible to make changes via 
+<el-code><el-kw>function</el-kw></el-code> dot-methods - which return a copy of the current datastructure, 
+with the specified changes - which is why all such methods have names starting <el-code>with...</el-code>.</p>
+
+<p>All four data structures contain values of a single type - that type either being specified explicitly - for example 
+    <el-code>of &lt;<el-kw>procedure</el-kw>&gt; <el-type>Int</el-type></el-code> - or implictly if the structure
+    is created from its literal definition form. (<el-type>Dictionary</el-type> is defined by two types: one for the 'keys' and one for the 'values').</p>
+</p>
+<!-- #endregion-->
+<!--   #region Array-->
+<h2 id="Array">Array</h2>
+
+<p>An array is a simple data structure. The type for the members of the array must be one of:
+    <el-code><el-type>Int</el-type></el-code>, <el-code><el-type>Float</el-type></el-code>, <el-code><el-type>String</el-type></el-code>, or <el-code><el-type>Boolean</el-type></el-code>.
+The size must also be specified when it is
+created, along with the value (of the specific member type) to which each member is initialised. It is not possible to append
+further items to an array, although it is possible to convert an array to a list using <el-code>.<el-method>asList</el-method>()</el-code> and then to extend or reduce that list.</p>
+
+<p>As in most languages, individual elements may be read 'by index'. However, to modify an element you must either
+    <el-code><el-kw>call</el-kw></el-code> the <el-code><el-method>put</el-method></el-code> procedure-method, or use <thead></thead>
+    either <el-code><el-method>withPut</el-method></el-code> function-method.
+</p>
+<!--   #endregion-->
+<!--   #region Array2D-->
+<h2 id="Array2D">Array2D</h2>
+<p>The <el-code><el-type>Array2D</el-type></el-code> type defines a 2-dimensional arrays of a fixed size. The two
+    dimensions, which are specified when the array is created, may be of the same size (known as a 'square' array)
+     or different ('rectangular'). If you want to create a 'jagged' array, you should use a <el-code><el-type>List</el-type></el-code> of lists.</p>
+      
+    <p>The type for the members is also specified when the array is defined and must be
+     one of: <el-code><el-type>Int</el-type></el-code>, <el-code><el-type>Float</el-type></el-code>, 
+     <el-code><el-type>String</el-type></el-code>, or <el-code><el-type>Boolean</el-type></el-code>.
+     </p>
+
+
+<p>You can read individual elements with a double index, for example:</p>
+<el-code>for col from 0 to 7 step 1</el-code><br>
+<el-code>  for row from 0 to 7 step 1</el-code><br>
+<el-code>    print board[col, row]</el-code><br>
+<el-code>  end for</el-code><br>
+<el-code>end for</el-code><br>
+
+<!--   #endregion-->
+<!--   #region List-->
+<h2 id="List">List</h2>
+<p>An <el-code><el-type>List</el-type></el-code is similar to an array but more flexible because:
+
+    <ul>
+        <li>While the members must all be of one type, that type is not limited to the simple value types: 
+            the member type may also be a user-defined type such as a class or record, or another list, or even an array.
+        </li>
+        <li>The size may be dynamically extended. Indeed a list is either created empty to begin with, or
+            initialised from a literal definition.
+        </li>
+    </ul>
+
+</p>
+<!--   #endregion-->
+<!--   #region Dictionary-->
+<h2 id="Dictionary">Dictionary</h2>
+
+<p>A dictionary works like an array, but instead of requiring a numeric (integer) index, each entry has a 'key'. The type of
+    the key - which must be one of <el-code><el-type>Int</el-type></el-code>, <el-code><el-type>Float</el-type></el-code>, <el-code><el-type>String</el-type></el-code>, or <el-code><el-type>Boolean</el-type></el-code> 
+    <i>or</i> a user-defined <i>record</i> type - is specified when the dictionary is created along with the type
+    for the values, which may be any type.</p>
+</p>
+<!-- #endregion-->
+<!-- #endregion-->
+<!-- #region Immutable data structures -->
+<h1>Immutable data structures</h1>
+
+<p>In constrast to the <a href="#standard_data-structures">standard data structures</a>, <i>immutable</i>
+data structures cannot be modified directly - and hence define no <i>procedure</i> dot-methods. Instead,
+changes are made by using <i>function</i> dot-methods that copy the existing data structure, but with specified 
+differences. Immutable data structures are intended specifically to facilitate the 'functional programming' paradigm,
+ but some are also useful within the procedural or functional programming paradigms.</p> 
+
+ <p>The five immutable data structures defined in the Elan library are summarised in the this table:</p>
+
+ <img src="images/immutable-data-structure-summary.png"  width="100%" >
+
+ <p>More details on each type are given below:</p>
 <!--   #region Set-->
 <h2 id="Set_data">Set</h2>
     <p>A <el-code>Set</el-code> is a standard data structure that works somewhat like a <el-code>ListImmutable</el-code> with the important difference that in a <el-code>Set</el-code> a given element may appear only once. If an item being added to a <el-code>Set</el-code> is identical to an existing item in the <el-code>Set</el-code> then the <el-code>Set</el-code> remains the same length as before. </p>
@@ -704,47 +637,40 @@ which the dot-methods the following methods may be invoked:</p>
 <!-- #endregion-->
 <!--   #region Block Graphics-->
 <h2 id="BlockGraphics">Block graphics</h2>
-<p>Block graphics<el-code> </el-code>provides a simple way to create low resolution graphics, ideal for simple but engaging games for example. The graphics are displayed on a grid that is 40 blocks wide by 30 blocks high.</p>
-<p>Each block may be rendered as a solid colour. Each block may alternatively hold a symbol: either one of the standard text characters or any Unicode symbol and, in each case, with specified foreground and background colours. For specifying colours, see <a href="#Colour">Colour</a>.</p>
+<p>Block graphics<el-code> </el-code>provides a simple way to create low resolution graphics, ideal for simple but engaging games for example.
+     The graphics are displayed on a grid that is 40 blocks wide by 30 blocks high.</p>
+<p>Each block is be rendered as a solid colour.</p>
 <p>An example of block graphics to produce a rapidly changing pattern of coloured blocks:</p>
 
 <el-code-block source="block_graphics.elan">
-<main class="ok multiline" id="main3" tabindex="0">
-<el-top><el-expand>+</el-expand><el-kw>main</el-kw></el-top>
-<el-statement class="ok" id="var5" tabindex="0"><el-kw>variable </el-kw><el-field id="var6" class="ok" tabindex="0"><el-txt><el-id>gr</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr7" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>BlockGraphics</el-type>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-statement class="ok multiline" id="while8" tabindex="0">
-<el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr10" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place></el-field></el-top>
-<el-statement class="ok" id="let14" tabindex="0"><el-kw>let </el-kw><el-field id="var15" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr16" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>39</el-lit>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-statement class="ok" id="let17" tabindex="0"><el-kw>let </el-kw><el-field id="var18" class="ok" tabindex="0"><el-txt><el-id>y</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr19" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>29</el-lit>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-statement class="ok" id="let20" tabindex="0"><el-kw>let </el-kw><el-field id="var21" class="ok" tabindex="0"><el-txt><el-id>colour</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr22" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>2</el-lit>^<el-lit>24</el-lit> - <el-lit>1</el-lit>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-statement class="ok" id="set23" tabindex="0"><el-kw>set </el-kw><el-field id="ident24" class="ok" tabindex="0"><el-txt><el-id>gr</el-id></el-txt><el-place><i>variableName</i></el-place></el-field><el-kw> to </el-kw><el-field id="expr25" class="ok" tabindex="0"><el-txt><el-id>gr</el-id>.<el-method>withBlock</el-method>(<el-id>x</el-id>, <el-id>y</el-id>, <el-id>colour</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-statement class="ok" id="call26" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident27" class="ok" tabindex="0"><el-txt><el-id>gr</el-id>.<el-method>display</el-method></el-txt><el-place><i>procedureName</i></el-place></el-field>(<el-field id="args28" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place></el-field>)</el-top></el-statement>
-<el-kw>end while</el-kw>
-</el-statement>
-<el-kw>end main</el-kw>
-</main>
+    <main class="selected focused ok multiline" id="main1" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+        <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
+        <el-statement class="ok" id="var3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>blocks</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>Array2D</el-type>&lt;<el-kw>of</el-kw> <el-type>Int</el-type>&gt;(<el-lit>40</el-lit>, <el-lit>30</el-lit>, <el-id>white</el-id>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+        <el-statement class="ok multiline" id="while6" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+        <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-top>
+        <el-statement class="ok" id="let9" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var10" class="ok" tabindex="0"><el-txt><el-id>x</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr11" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>39</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>4</el-fr></el-statement>
+        <el-statement class="ok" id="let12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var13" class="ok" tabindex="0"><el-txt><el-id>y</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr14" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-lit>29</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-statement>
+        <el-statement class="ok" id="let15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var16" class="ok" tabindex="0"><el-txt><el-id>colour</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-method>randomInt</el-method>(<el-lit>0</el-lit>, <el-id>white</el-id> - <el-lit>1</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>6</el-fr></el-statement>
+        <el-statement class="ok" id="call18" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident19" class="ok" tabindex="0"><el-txt><el-id>blocks</el-id>.<el-method>put</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args20" class="optional ok" tabindex="0"><el-txt><el-id>x</el-id>, <el-id>y</el-id>, <el-id>colour</el-id></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>7</el-fr></el-top></el-statement>
+        <el-statement class="ok" id="call30" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident31" class="ok" tabindex="0"><el-txt><el-method>displayBlocks</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args32" class="optional ok" tabindex="0"><el-txt><el-id>blocks</el-id></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>8</el-fr></el-top></el-statement>
+        <el-kw>end while</el-kw>
+        </el-statement>
+        <el-kw>end main</el-kw>
+        </main>
 </el-code-block>
 <p>Notes</p>
 <ul>
-<li>Making changes to the instance of <el-code>BlockGraphics</el-code> (<el-code>gr</el-code> above) &#8211; for example by calling <el-code>withBlock </el-code>above &#8211; does not of itself result in anything appearing in the Graphics screen. The Graphics screen changes only when the <el-code>display()</el-code> procedure is called. This is so that you can make many changes to the graphics and then have them appear all at once (when <el-code>display</el-code> is called). It is even possible to create and modify, multiple instances of <el-code>BlockGraphics</el-code>, and switch instantly between them by calling <el-code>display</el-code> on different instances. </li>
-<li>The coordinates must be in the range 0-39 for a column, and 0-29 for a row. Using values outside this range will result in a runtime error.</li>
-<li>Colour is always specified as an integer: see <a href="#Colour">Colour</a>.</li>
-<li>The <el-code>withBlock</el-code> method does not change the instance of <el-code>BlockGraphics</el-code> on which it is called, but returns a new instance of <el-code>BlockGraphics</el-code> based on the original with the change specified. This new instance may, however, be re-assigned to the same variable &#8211; as is the case in the code above.</li>
-<li>In addition to <el-code>withBlock</el-code>, there are these three function methods for updating the graphics:</li>
+<li>The <el-code><el-type>Array2D</el-type></el-code> must be of type <el-code><el-type>Int</el-type></el-code> and of size 40 x 30.</li>
+<li>Colours are specified as an integer value, either using:
+    <ul>
+    <li>the limited colours defined as library constants (see <a href="#Colour">Colour</a>)</li> #
+    <li>an integer in the decimal range 0 (black) to 2<sup>24-1</sup> (white)</li>
+    <li>as a six digit hexadecimal value in the range <el-code>0x000000</el-code> <el-code>0xffffff</el-code>
+    using the same 'RGB' format as used in Html style - for example <el-code>0xff0000</el-code> for red.</li>
 </ul>
-<p>
-<el-code>withText(x as Int, y as Int, text as String, foreground as Int, background as Int) returns BlockGraphics</el-code><br>
-If the text argument is more than one character long, the characters will be placed in successive blocks, wrapping onto the next line if necessary. (If the string is too long to fit, from the starting coordinates specified, you will get a runtime error). Use only ASCII characters with values in the range 32 space) through 254 lower-case thorn).</p>
-<p>
-<el-code>withUnicode(x as Int, y as Int, unicode as Int, foreground as Int, background as Int) returns BlockGraphics</el-code><br>
-is used to specify a single symbol or character using its Unicode codepoint value.</p>
-<p>
-<el-code>withBackground(backgroundColour as Int) returns BlockGraphics</el-code><br>
-will paint the background colour for the whole grid, leaving any existing characters (and their foreground colours) unchanged.</p>
-<p>There are also function methods on a <el-code>BlockGraphics</el-code> instance for reading the existing character and colours of a specified block:</p>
-<el-code>getChar(x as Int, y as Int) returns String </el-code><br>
-<el-code>getForeground(x as Int, y as Int) returns Int</el-code><br>
-<el-code>getBackground x as Int, y as Int) returns Int</el-code><br>
+<li>You may create multiple <el-code><el-type>Array2Ds</el-type></el-code> holding different patterns of blocks, and switch between them
+just by passing the required one as the argyument to the <el-code><el-method>displayBlocks</el-method></el-code> method.</li>
+</ul>
 <!-- #endregion-->
 <!--   #region Turtle Graphics-->
 <h2 id="Turtle_graphics">Turtle graphics</h2>
@@ -824,49 +750,60 @@ will paint the background colour for the whole grid, leaving any existing charac
 <h2 id="VectorGraphics">Vector graphics</h2>
 <p>Example:</p>
 <el-code-block source="VG_circle.elan">
-<main class="ok multiline" id="main3" tabindex="0">
-<el-top><el-expand>+</el-expand><el-kw>main</el-kw></el-top>
-<el-statement class="ok" id="var5" tabindex="0"><el-kw>variable </el-kw><el-field id="var6" class="ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> set to </el-kw><el-field id="expr7" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>VectorGraphics</el-type>()</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-statement class="ok" id="let8" tabindex="0"><el-kw>let </el-kw><el-field id="var9" class="ok" tabindex="0"><el-txt><el-id>circ</el-id></el-txt><el-place><i>name</i></el-place></el-field><el-kw> be </el-kw><el-field id="expr10" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>CircleVG</el-type>()<el-kw> with </el-kw><br><el-id>cx</el-id><el-kw> set to </el-kw><el-lit>20</el-lit>, <br><el-id>cy</el-id><el-kw> set to </el-kw><el-lit>20</el-lit>, <br><el-id>r</el-id><el-kw> set to </el-kw><el-lit>5</el-lit>, <br><el-id>stroke</el-id><el-kw> set to </el-kw><el-id>red</el-id>, <br><el-id>strokeWidth</el-id><el-kw> set to </el-kw><el-lit>2</el-lit>, <br><el-id>fill</el-id><el-kw> set to </el-kw><el-id>green</el-id></el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-statement class="ok" id="set11" tabindex="0"><el-kw>set </el-kw><el-field id="ident12" class="ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>variableName</i></el-place></el-field><el-kw> to </el-kw><el-field id="expr13" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>add</el-method>(<el-id>circ</el-id>)</el-txt><el-place><i>expression</i></el-place></el-field></el-statement>
-<el-statement class="ok" id="call14" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident15" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>display</el-method></el-txt><el-place><i>procedureName</i></el-place></el-field>(<el-field id="args16" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place></el-field>)</el-top></el-statement>
-<el-kw>end main</el-kw>
-</main>
+    <main class="selected focused ok multiline" id="main1" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+        <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
+        <el-statement class="ok" id="var3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>List</el-type>&lt;<el-kw>of</el-kw> <el-type>VectorGraphic</el-type>&gt;()</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+        <el-statement class="ok" id="let6" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var7" class="ok" tabindex="0"><el-txt><el-id>circ</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>CircleVG</el-type>(<el-lit>20</el-lit>, <el-lit>20</el-lit>, <el-lit>5</el-lit>, <el-id>red</el-id>, <el-id>green</el-id>, <el-lit>2</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement>
+        <el-statement class="ok" id="call35" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident36" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>append</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args37" class="optional ok" tabindex="0"><el-txt><el-id>circ</el-id></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>4</el-fr></el-top></el-statement>
+        <el-statement class="ok" id="call12" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident13" class="ok" tabindex="0"><el-txt><el-method>displayVectorGraphics</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args14" class="optional ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>listOfVGs</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>5</el-fr></el-top></el-statement>
+        <el-kw>end main</el-kw>
+        </main>
 </el-code-block>
 <p>Output:</p>
 <p><img src="images/Pic33.png"  align="MIDDLE" width="343" height="253" ></p>
 <p>Notes</p>
 <ul>
-<li>Elan vector graphics are displayed using SVG (Scalable Vector Graphics) that are a part of the Html specification. The names of the shapes broadly correspond to the names of SVG tags: <el-code>CircleVG</el-code> for &lt;<el-code>circle../&gt;</el-code>, <el-code>LineVG</el-code> for <el-code>&lt;line../&gt;</el-code>, and <el-code>RectangleVG</el-code> for <el-code>&lt;rect../&gt;</el-code>. The properties of the Elan VG shapes match the names of the attributes used in the SVG tags, except that the <el-code>stroke-width</el-code> attribute is changed to <el-code>strokeWidth</el-code> to make it a valid <a href="#Identifier">Identifier</a>.</li>
+<li>Elan vector graphics are displayed using SVG (Scalable Vector Graphics) that are a part of the Html specification. The names of the shapes broadly correspond to the names of SVG tags: <el-code>CircleVG</el-code> for &lt;<el-code>circle../&gt;</el-code>, <el-code>LineVG</el-code> for <el-code>&lt;line../&gt;</el-code>, and <el-code>RectangleVG</el-code> for <el-code>&lt;rect../&gt;</el-code>. 
+    The properties of the Elan VG shapes match the names of the attributes used in the SVG tags, except that the <el-code>stroke-width</el-code> attribute is changed to <el-code>strokeWidth</el-code> to make it a valid <a href="#Identifier">Identifier</a>.</li>
 <li>The &#8216;canvas&#8217; on which vector graphics are drawn (the Graphics pane in the user interface) is 100 units wide, by 75 units high .All numeric values specified for attributes of vector graphic shapes may be integer or floating point. </li>
-<li>All Elan .<el-code>.VG</el-code> shapes have default values for all attributes, and so will show up even if no attributes have been specified. You can specify as many of the attributes as you wish when creating the shape using the <el-code>new .. with</el-code> syntax, as shown in the example above.</li>
-<li>As with <span class="Link">Block</span> graphics the screen is not updated until the display method is called, allowing you to make multiple changes before updating the screen. Similarly, the method to add a shape returns a new instance of the <el-code>VectorGraphics</el-code> which must be assigned either to an existing variable, or to a new <el-code>let</el-code>.</li>
-<li>As with the way that SVG works within Html, the shapes are drawn in the order in which they are added into the <el-code>VectorGraphics</el-code> instance, with later shapes positioned over earlier shapes.</li>
-<li>The colour (for <el-code>stroke</el-code> and <el-code>fill</el-code> properties) may be specified as described at <a href="#Colour">Colour</a>. The <el-code>fill</el-code> colour only may also be specified as &#8216;transparent&#8217; by giving it a negative value; we suggest using <el-code>fill to -1</el-code></li>
-<li><el-code>BaseVG</el-code> is the abstract superclass of all <el-code>.VG</el-code> shapes. You would only use if if you wanted to define a method that could work on any shape (using common members defined on <el-code>BaseVG</el-code>) or that could work with a ListImmutable holding different types of shape.</li>
-<li><el-code>VectorGraphics</el-code> also has methods <el-code>removeLast</el-code> (no parameters), <el-code>remove</el-code> (which takes a shape as a parameter, and <el-code>replace</el-code> which takes an existing shape and a new shape as parameters. The new shape may be a modified version of an existing shape (created using <el-code>copy .. with</el-code>), thereby enabling animation. The following simple example creates a circle that changes between red and green every second:</li>
+<li>The constructor for each VG type requires arguments corresponding the Html attributes for the corresponding SVG type.</li>
+<li>As with <span class="Link">Block</span> graphics the screen is not updated until the <el-code><el-method>displayVectorGraphics</el-method> method is called,
+     allowing you to make multiple changes before updating the screen. Similarly, the method to add a shape returns a new instance of the <el-code>VectorGraphics</el-code> which must be assigned either to an existing variable, or to a new <el-code>let</el-code>.</li>
+<li>As with the way that SVG works within Html, the shapes are drawn in the order in which they are added into the list of <el-code><el-type>VectorGraphic</el-type></el-code> instances, with later shapes positioned over earlier shapes.</li>
+<li>The colour (for <el-code>stroke</el-code> and <el-code>fill</el-code> properties) may be specified as described at <a href="#Colour">Colour</a>. 
+    The <el-code>fill</el-code> colour only may also be specified as <el-code><el-id>transparent</el-id></el-method> (which has the value <el-code>-1</el-code>).
+<li><el-code>VectorGraphic</el-code> is the abstract superclass of all <el-code>.VG</el-code> shapes. You would only use if if you wanted to define a method that could work on any shape (using common members defined on <el-code>VectorGraphic</el-code>) or that could work with a List holding different types of shape.</li>
 </ul>
 
 <el-code-block source="VG_2circles.elan">
-<main class="ok multiline" id="main3" tabindex="0">
-<el-top><el-expand>+</el-expand><el-kw>main</el-kw></el-top>
-<el-statement class="ok" id="var5" tabindex="0"><el-kw>variable </el-kw><el-field id="var6" class="ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>name</i></el-place>1000</el-field><el-kw> set to </el-kw><el-field id="expr7" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>VectorGraphics</el-type>()</el-txt><el-place><i>expression</i></el-place>1000</el-field></el-statement>
-<el-statement class="ok" id="let11" tabindex="0"><el-kw>let </el-kw><el-field id="var12" class="ok" tabindex="0"><el-txt><el-id>greenCirc</el-id></el-txt><el-place><i>name</i></el-place>1000</el-field><el-kw> be </el-kw><el-field id="expr13" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>CircleVG</el-type>()<el-kw> with </el-kw><br><el-id>cx</el-id><el-kw> set to </el-kw><el-lit>50</el-lit>, <br><el-id>cy</el-id><el-kw> set to </el-kw><el-lit>37</el-lit>, <br><el-id>r</el-id><el-kw> set to </el-kw><el-lit>30</el-lit>, <br><el-id>fill</el-id><el-kw> set to </el-kw><el-id>green</el-id></el-txt><el-place><i>expression</i></el-place>1000</el-field></el-statement>
-<el-statement class="ok" id="let14" tabindex="0"><el-kw>let </el-kw><el-field id="var15" class="ok" tabindex="0"><el-txt><el-id>redCirc</el-id></el-txt><el-place><i>name</i></el-place>1000</el-field><el-kw> be </el-kw><el-field id="expr16" class="ok" tabindex="0"><el-txt><el-kw>copy</el-kw> <el-id>greenCirc</el-id><el-kw> with </el-kw><br><el-id>fill</el-id><el-kw> set to </el-kw><el-id>red</el-id></el-txt><el-place><i>expression</i></el-place>1000</el-field></el-statement>
-<el-statement class="ok" id="set20" tabindex="0"><el-kw>set </el-kw><el-field id="ident21" class="ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>variableName</i></el-place>1000</el-field><el-kw> to </el-kw><el-field id="expr22" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>add</el-method>(<el-id>greenCirc</el-id>)</el-txt><el-place><i>expression</i></el-place>1000</el-field></el-statement>
-<el-statement class="ok multiline" id="while23" tabindex="0">
-<el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr25" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place>1000</el-field></el-top>
-<el-statement class="ok" id="call26" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident27" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>display</el-method></el-txt><el-place><i>procedureName</i></el-place>1000</el-field>(<el-field id="args28" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place>1000</el-field>)</el-top></el-statement>
-<el-statement class="ok" id="call31" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident32" class="ok" tabindex="0"><el-txt><el-method>pause</el-method></el-txt><el-place><i>procedureName</i></el-place>1000</el-field>(<el-field id="args33" class="optional ok" tabindex="0"><el-txt><el-lit>1000</el-lit></el-txt><el-place><i>milliseconds</i></el-place>1000</el-field>)</el-top></el-statement>
-<el-statement class="ok" id="set40" tabindex="0"><el-kw>set </el-kw><el-field id="ident41" class="ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>variableName</i></el-place>1000</el-field><el-kw> to </el-kw><el-field id="expr42" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>replace</el-method>(<el-id>greenCirc</el-id>, <el-id>redCirc</el-id>)</el-txt><el-place><i>expression</i></el-place>1000</el-field></el-statement>
-<el-statement class="ok" id="call47" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident48" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>display</el-method></el-txt><el-place><i>procedureName</i></el-place>1000</el-field>(<el-field id="args49" class="empty optional ok" tabindex="0"><el-txt></el-txt><el-place><i><i>arguments</i></i></el-place>1000</el-field>)</el-top></el-statement>
-<el-statement class="ok" id="call56" tabindex="0"><el-top><el-kw>call </el-kw><el-field id="ident57" class="ok" tabindex="0"><el-txt><el-method>pause</el-method></el-txt><el-place><i>procedureName</i></el-place>1000</el-field>(<el-field id="args58" class="optional ok" tabindex="0"><el-txt><el-lit>1000</el-lit></el-txt><el-place><i>milliseconds</i></el-place>1000</el-field>)</el-top></el-statement>
-<el-statement class="ok" id="set63" tabindex="0"><el-kw>set </el-kw><el-field id="ident64" class="ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>variableName</i></el-place>1000</el-field><el-kw> to </el-kw><el-field id="expr65" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>replace</el-method>(<el-id>redCirc</el-id>, <el-id>greenCirc</el-id>)</el-txt><el-place><i>expression</i></el-place>1000</el-field></el-statement>
-<el-kw>end while</el-kw>
-</el-statement>
-<el-kw>end main</el-kw>
-</main>
+    <main class="ok multiline" id="main1" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+        <el-top><el-expand>+</el-expand><el-kw>main</el-kw><el-msg></el-msg><el-fr>1</el-fr></el-top>
+        <el-statement class="ok" id="var3" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>variable </el-kw><el-field id="var4" class="ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> set to </el-kw><el-field id="expr5" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>List</el-type>&lt;<el-kw>of</el-kw> <el-type>VectorGraphic</el-type>&gt;()</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>2</el-fr></el-statement>
+        <el-statement class="ok" id="let6" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-kw>let </el-kw><el-field id="var7" class="ok" tabindex="0"><el-txt><el-id>circ</el-id></el-txt><el-place><i>name</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="A variable name must start with a lower-case letter, optionally followed by any letters (lower or upper case), and/or numeric digits, and/or underscores - nothing else. (For'tuple deconstruction' or 'list deconstruction' consult documentation.)">?</el-help></el-field><el-kw> be </el-kw><el-field id="expr8" class="ok" tabindex="0"><el-txt><el-kw>new</el-kw> <el-type>CircleVG</el-type>(<el-lit>50</el-lit>, <el-lit>37</el-lit>, <el-lit>30</el-lit>, <el-id>green</el-id>, <el-id>black</el-id>, <el-lit>1</el-lit>)</el-txt><el-place><i>expression</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>3</el-fr></el-statement>
+        <el-statement class="ok" id="call150" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident151" class="ok" tabindex="0"><el-txt><el-id>vg</el-id>.<el-method>append</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args152" class="optional ok" tabindex="0"><el-txt><el-id>circ</el-id></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>4</el-fr></el-top></el-statement>
+        <el-statement class="ok multiline" id="while15" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu">
+        <el-top><el-expand>+</el-expand><el-kw>while </el-kw><el-field id="expr17" class="ok" tabindex="0"><el-txt><el-id>true</el-id></el-txt><el-place><i>condition</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="Field may contain a literal value, a reference to a variable, or an expression">?</el-help></el-field><el-msg></el-msg><el-fr>5</el-fr></el-top>
+        <el-statement class="ok" id="call18" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident19" class="ok" tabindex="0"><el-txt><el-method>displayVectorGraphics</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args20" class="optional ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>listOfVGs</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>6</el-fr></el-top></el-statement>
+        <el-statement class="selected focused ok" id="call21" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident22" class="ok" tabindex="0"><el-txt><el-method>pause</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args23" class="optional ok" tabindex="0"><el-txt><el-lit>700</el-lit></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>7</el-fr></el-top></el-statement>
+        <el-statement class="ok" id="call313" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident314" class="ok" tabindex="0"><el-txt><el-id>circ</el-id>.<el-method>setFillColour</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args315" class="optional ok" tabindex="0"><el-txt><el-id>red</el-id></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>8</el-fr></el-top></el-statement>
+        <el-statement class="ok" id="call27" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident28" class="ok" tabindex="0"><el-txt><el-method>displayVectorGraphics</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args29" class="optional ok" tabindex="0"><el-txt><el-id>vg</el-id></el-txt><el-place><i>listOfVGs</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>9</el-fr></el-top></el-statement>
+        <el-statement class="ok" id="call30" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident31" class="ok" tabindex="0"><el-txt><el-method>pause</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args32" class="optional ok" tabindex="0"><el-txt><el-lit>700</el-lit></el-txt><el-place><i>arguments</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>10</el-fr></el-top></el-statement>
+        <el-statement class="ok" id="call401" tabindex="0" title="Right-mouse-click or Ctrl-m to show context menu"><el-top><el-kw>call </el-kw><el-field id="ident402" class="ok" tabindex="0"><el-txt><el-id>circ</el-id>.<el-method>setFillColour</el-method></el-txt><el-place><i>procedureName</i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="The name of the procedure to be called (starting lower-case). Alternatively, a 'dotted-call':  the name of a variable or property, followed by a ''' and the name of the procedure method to call on that 'instance'.">?</el-help></el-field>(<el-field id="args403" class="optional ok" tabindex="0"><el-txt><el-id>green</el-id></el-txt><el-place><i><i>arguments</i></i></el-place><el-compl></el-compl><el-msg></el-msg><el-help title="list of zero or more arguments, comma separated. Each argument may be a literal value, variable, or simple expression.">?</el-help></el-field>)<el-msg></el-msg><el-fr>11</el-fr></el-top></el-statement>
+        <el-kw>end while</el-kw>
+        </el-statement>
+        <el-kw>end main</el-kw>
+    </main>
 </el-code-block>
+
+<h4>Notes:</h4>
+<ul>
+    <li>The constructor parameters for <el-code><el-type>CircleVG</el-type></el-code> are: <el-code>centreX, centreY, radius, fillColour, strokeColour, strokeWidth</el-code></li>.
+    <li>The constructor parameters for <el-code><el-type>LineVG</el-type></el-code> are: <el-code>x1, y1, x2, y2, strokeColour, strokeWidth</el-code>, all of type <el-code><el-type>Int</el-type></el-code></li>.
+    <li>The constructor parameters for <el-code><el-type>LineVG</el-type></el-code> are: <el-code>x, y, width, height, fillColour, strokeColour, strokeWidth</el-code></li>.
+    <li>All parameters for the three constructors above are of type <el-code><el-type>Int</el-type></el-code>.</li>
+    <li>Individual properties of any of the VG types may be modified by calling the corresponding <el-code><el-method>set...</el-method></el-code> procedure method,
+    or, if working within a function, by using the corresponding <el-code><el-method>with...</el-method></el-code> function method.</li>
+</ul>
 <!-- #endregion-->
 <!-- #endregion-->
 <!-- #region Other Types -->
@@ -905,6 +842,7 @@ will paint the background colour for the whole grid, leaving any existing charac
     <tr><td><el-code><el-id>yellow</el-id></el-code></td><td style="color:#ffff00">&#x25fc;</td><td>16776960</td><td>&nbsp;255&nbsp;&nbsp;255&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><el-code>0xffff00</el-code></td></tr>
     <tr><td><el-code><el-id>brown</el-id></el-code></td><td style="color:#a52a2a">&#x25fc;</td><td>10824234</td><td>&nbsp;165&nbsp;&nbsp;&nbsp;42&nbsp;&nbsp;&nbsp;42</td><td><el-code>0xa52a2a</el-code></td></tr>
     <tr><td><el-code><el-id>grey</el-id></el-code></td><td style="color:#808080">&#x25fc;</td><td>8421504</td><td>&nbsp;128&nbsp;&nbsp;128&nbsp;&nbsp;128</td><td><el-code>0x808080</el-code></td></tr>
+    <tr><td><el-code><el-id>transparent</el-id></el-code></td><td> </td><td>-1</td><td>none</td><td><el-code></el-code></td></tr>
 </table>
 <!-- #endregion-->
 <!-- #region Standalone functions-->
