@@ -25,16 +25,16 @@
 <h2 id="Int">Integer</h2>
 <p>An integer or whole number, i.e. one that has no fractional component.</p>
 
-<h3>Type name</h3>
+<h3 class="no-TOC">Type name</h3>
 <p><el-code><el-type>Int</el-type></el-code></p>
 
-<h3>Defining a literal integer</h3>
+<h3 class="no-TOC">Defining a literal integer</h3>
 <p><el-code>variable meaningOfLife set to 42</el-code></p>
 
-<h3>Default value</h3>
+<h3 class="no-TOC">Default value</h3>
 <p>0</p>
 
-<h3>Dot methods</h3>
+<h3 class="no-TOC">Dot methods</h3>
 <table>
     <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Description</th></tr>
     <tr><th colspan="4">Functions</th></tr>
@@ -42,12 +42,12 @@
     <tr><td><el-code><el-method>asString</el-method></el-code></td><td><el-code><el-type>String</el-type></el-code></td><td></td><td></td></tr>
 </table>
 
-<h3>Constraints</h3>
+<h3 class="no-TOC">Constraints</h3>
 <ul>
 <li>Maximum value: 2<sup>53</sup> &ndash; 1 which is just over 9 &times; 10<sup>15</sup></li>
 <li>Minimum value: &ndash; (2<sup>53</sup> &ndash; 1)</li>
 </ul>
-<h3>Notes:</h3>
+<h3 class="no-TOC">Notes:</h3>
 <ul>
 <li>If either limit is exceeded the number will automatically be represented as a <el-code>Float</el-code>, with possible loss of precision.</li>
 <li>A value assigned to an <el-code>Int</el-code> may be expressed in decimal or, if preceded by <el-code>0x</el-code>, in hexadecimal. Hexadecimal is useful for defining <a href="#Colour">colours</a> and Unicode codepoint values.</li>
@@ -58,14 +58,14 @@
 <h2 id="Float">Float</h2>
 <p>A &lsquo;floating-point number&rsquo;, i.e. a number that may have both integer and fractional parts.</p>
 
-<h3>Type name</h3>
+<h3 class="no-TOC">Type name</h3>
 <el-code>Float</el-code><br>
 
-<h3>Defining literal floating-point value</h3>
+<h3 class="no-TOC">Defining literal floating-point value</h3>
 <el-code>variable a set to 1.618</el-code><br>
 <el-code>variable b set to 1.1e-10</el-code><br>
 
-<h3>Dot methods</h3>
+<h3 class="no-TOC">Dot methods</h3>
 <table>
     <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Description</th></tr>
     <tr><th colspan="4">Functions</th></tr>
@@ -75,7 +75,7 @@
     <tr><td><el-code><el-method>round</el-method></el-code></td><td><el-code><el-type>Float</el-type></el-code></td><td>places<el-code><el-type>Int</el-type></el-code></td><td>returns the number rounded to the number of decimal places specified as the argument</td></tr>
 </table>
 
-<h3>Constraints</h3>
+<h3 class="no-TOC">Constraints</h3>
 <p>Since Elan compiles to JavaScript, the constraints on floating point numbers are those of JavaScript:</p>
 <ul>
 <li>Maximum value: just over 1 &times; 10<sup>308</sup></li>
@@ -95,17 +95,17 @@ It may, however, be converted into an <el-code>Int</el-code> before passing, usi
 <h2 id="Boolean">Boolean</h2>
 <p>A <el-code>Boolean</el-code> value is either <el-code>true</el-code> or <el-code>false</el-code>.</p>
 
-<h3>Type name</h3>
+<h3 class="no-TOC">Type name</h3>
 <el-code>Boolean</el-code><br>
 
-<h3>Defining a literal Boolean</h3>
+<h3 class="no-TOC">Defining a literal Boolean</h3>
 <p><el-code>variable a set to true</el-code> </p>
 <p><el-code>true</el-code> and <el-code>false</el-code> must be written lower case</p>
 
-<h3>Default value</h3>
+<h3 class="no-TOC">Default value</h3>
 <el-code>false</el-code><br>
 
-<h3>Dot methods</h3>
+<h3 class="no-TOC">Dot methods</h3>
 <table>
     <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Description</th></tr>
     <tr><th colspan="4">Functions</th></tr>
@@ -120,14 +120,14 @@ It may, however, be converted into an <el-code>Int</el-code> before passing, usi
 <h2 id="String">String</h2>
 <p>A <el-code>String</el-code> represents &lsquo;text&rsquo;  i.e. a sequence of zero or more characters.</p>
 
-<h3>Type name</h3>
+<h3 class="no-TOC">Type name</h3>
 <el-code>String</el-code><br>
 
-<h3>Defining a literal string value</h3>
+<h3 class="no-TOC">Defining a literal string value</h3>
 <p><el-code>variable a set to "Hello"</el-code></p>
 <p><el-code>String</el-code>s are always delineated by double-quotes.</p>
 
-<h3>Default value</h3>
+<h3 class="no-TOC">Default value</h3>
 <p><el-code>""</el-code>, known as &lsquo;the empty string&rsquo;.</p>
 <p>Note</p>
 <ul>
@@ -143,7 +143,7 @@ A newline may be inserted within a string as <el-code>\n</el-code>, for example:
 <li>You may insert single-quotes  <el-code>'</el-code>within a string. </li>
 </ul>
 
-<h3>Dot methods</h3>
+<h3 class="no-TOC">Dot methods</h3>
 <table>
     <tr><th>Method</th><th>Returns</th><th>Parameters</th><th>Description</th></tr>
     <tr><th colspan="4">Functions</th></tr>
@@ -204,7 +204,7 @@ A newline may be inserted within a string as <el-code>\n</el-code>, for example:
     <li><el-code><el-method>upperCase</el-method></el-code> returns a new string with the original rendered in upper-case.</li>
 </ul>
 
-<h3 id="Interpolated_string">Interpolated string</h3>
+<h3 class="no-TOC" id="Interpolated_string">Interpolated string</h3>
 <p>
 Elan strings are automatically interpolated. This means that you may insert the values of variables or simple expressions within a string by enclosing them in curly braces. For example (assuming that the variables <el-code>a</el-code> and <el-code>b</el-code> are already defined as integers) :<br>
 <el-code>print "{a} times {b} equals {a*b}"</el-code></p>
@@ -216,7 +216,7 @@ Alternatively, you can insert their Unicode codepoints by means of the <el-code>
 <p>or</p>
 <el-code>print"Here are the curly braces: {unicode(123)} and {unicode(125)}"</el-code><br>
 
-<h3 id="String_method">Dot methods on a String</h3>
+<h3 class="no-TOC" id="String_method">Dot methods on a String</h3>
 <p>There are no &lsquo;substring&rsquo; methods in Elan because you can always use an index range get a substring, e.g. <el-code>s[3..7]</el-code>  gives a <el-code>string</el-code> containing the fourth character to the seventh character inclusive of <el-code>string s</el-code>. Note that the upper bound of the range is <em>exclusive</em>. See<span class="Link"> Indexed Value</span>.</p>
 <el-code>upperCase() returns String </el-code><br>
 <p>returns a new string based on the input with all alpha-characters in upper case.</p>
@@ -284,13 +284,13 @@ Notes:
 <img src="images/standard-data-structure-summary.png"  width="100%" >
 
 <p>All four are 'mutable' - meaning that their contents may be changes directly by calling the various <i>procedure</i> dot-methods that each
-type defines. 
+type defines.
 However, since procedure methods may be called only from within the <el-code><el-kw>main</el-kw></el-code> routine,
-or from within another <el-code><el-kw>procedure</el-kw></el-code>, it is also possible to make changes via 
-<el-code><el-kw>function</el-kw></el-code> dot-methods - which return a copy of the current datastructure, 
+or from within another <el-code><el-kw>procedure</el-kw></el-code>, it is also possible to make changes via
+<el-code><el-kw>function</el-kw></el-code> dot-methods - which return a copy of the current datastructure,
 with the specified changes - which is why all such methods have names starting <el-code>with...</el-code>.</p>
 
-<p>All four data structures contain values of a single type - that type either being specified explicitly - for example 
+<p>All four data structures contain values of a single type - that type either being specified explicitly - for example
     <el-code>of &lt;<el-kw>procedure</el-kw>&gt; <el-type>Int</el-type></el-code> - or implictly if the structure
     is created from its literal definition form. (<el-type>Dictionary</el-type> is defined by two types: one for the 'keys' and one for the 'values').</p>
 </p>
@@ -314,9 +314,9 @@ further items to an array, although it is possible to convert an array to a list
 <p>The <el-code><el-type>Array2D</el-type></el-code> type defines a 2-dimensional arrays of a fixed size. The two
     dimensions, which are specified when the array is created, may be of the same size (known as a 'square' array)
      or different ('rectangular'). If you want to create a 'jagged' array, you should use a <el-code><el-type>List</el-type></el-code> of lists.</p>
-      
+
     <p>The type for the members is also specified when the array is defined and must be
-     one of: <el-code><el-type>Int</el-type></el-code>, <el-code><el-type>Float</el-type></el-code>, 
+     one of: <el-code><el-type>Int</el-type></el-code>, <el-code><el-type>Float</el-type></el-code>,
      <el-code><el-type>String</el-type></el-code>, or <el-code><el-type>Boolean</el-type></el-code>.
      </p>
 
@@ -334,7 +334,7 @@ further items to an array, although it is possible to convert an array to a list
 <p>An <el-code><el-type>List</el-type></el-code is similar to an array but more flexible because:
 
     <ul>
-        <li>While the members must all be of one type, that type is not limited to the simple value types: 
+        <li>While the members must all be of one type, that type is not limited to the simple value types:
             the member type may also be a user-defined type such as a class or record, or another list, or even an array.
         </li>
         <li>The size may be dynamically extended. Indeed a list is either created empty to begin with, or
@@ -348,7 +348,7 @@ further items to an array, although it is possible to convert an array to a list
 <h2 id="Dictionary">Dictionary</h2>
 
 <p>A dictionary works like an array, but instead of requiring a numeric (integer) index, each entry has a 'key'. The type of
-    the key - which must be one of <el-code><el-type>Int</el-type></el-code>, <el-code><el-type>Float</el-type></el-code>, <el-code><el-type>String</el-type></el-code>, or <el-code><el-type>Boolean</el-type></el-code> 
+    the key - which must be one of <el-code><el-type>Int</el-type></el-code>, <el-code><el-type>Float</el-type></el-code>, <el-code><el-type>String</el-type></el-code>, or <el-code><el-type>Boolean</el-type></el-code>
     <i>or</i> a user-defined <i>record</i> type - is specified when the dictionary is created along with the type
     for the values, which may be any type.</p>
 </p>
@@ -359,9 +359,9 @@ further items to an array, although it is possible to convert an array to a list
 
 <p>In constrast to the <a href="#standard_data-structures">standard data structures</a>, <i>immutable</i>
 data structures cannot be modified directly - and hence define no <i>procedure</i> dot-methods. Instead,
-changes are made by using <i>function</i> dot-methods that copy the existing data structure, but with specified 
+changes are made by using <i>function</i> dot-methods that copy the existing data structure, but with specified
 differences. Immutable data structures are intended specifically to facilitate the 'functional programming' paradigm,
- but some are also useful within the procedural or functional programming paradigms.</p> 
+ but some are also useful within the procedural or functional programming paradigms.</p>
 
  <p>The five immutable data structures defined in the Elan library are summarised in the this table:</p>
 
@@ -479,17 +479,17 @@ differences. Immutable data structures are intended specifically to facilitate t
 <p>A <el-code>ListImmutable</el-code> is like a <el-code>List</el-code> but is <i>immutable</i> (like a <el-code>String</el-code>)
 You can still insert, delete, or change elements in a <el-code>ListImmutable</el-code>, but the methods for these operations do not modify the input <el-code>ListImmutable</el-code>: they return a new <el-code>ListImmutable</el-code> based on the input <el-code>ListImmutable</el-code> but with the specified differences. </p>
 
-<h3>Type name</h3>
+<h3 class="no-TOC">Type name</h3>
 <p>The Type is specified in the following way:</p>
 <el-code>ListImmutable&lt;of String&gt;</el-code> for a ListImmutable of Type<el-code>String</el-code><br>
 <el-code>ListImmutable&lt;of Int&gt;</el-code> for a </span>ListImmutable  of Type <el-code>>Int</el-code><br>
 ListImmutable&lt;of ListImmutable&lt;of Int&gt;&gt;</el-code> for a ListImmutable of  Lists of Type </ode>Int</el-code><br>
 
-<h3>Creating a ListImmutable</h3>
+<h3 class="no-TOC">Creating a ListImmutable</h3>
 <p>A <el-code>ListImmutable</el-code> may be defined in &lsquo;literal&rsquo; form, &lsquo;delimited&rsquo; by curly braces, and with all the required elements separated by commas. The elements may be literal values but must all be of the same Type):</p>
 <el-code>variable fruit set to {"apple", "orange", "pear"} </el-code><br>
 
-<h3>Dot methods on a ListImmutable</h3>
+<h3 class="no-TOC">Dot methods on a ListImmutable</h3>
 <p>The dot methods on a list are all functions.</p>
 <el-code>myList.contains(item) returns true or false</el-code><br>
 <el-code>myList.asList() returns a new List with the same contents as myList</el-code><br>
@@ -519,15 +519,15 @@ ListImmutable&lt;of ListImmutable&lt;of Int&gt;&gt;</el-code> for a ListImmutabl
 <h2 id="DictionaryImmutable">DictionaryImmutable</h2>
 <p>An immutable dictionary may be defined in a <el-code>constant</el-code>.</p>
 
-<h3>Type name</h3>
+<h3 class="no-TOC">Type name</h3>
 <p>In the following example, the keys are of Type <el-code>Int</el-code>, and the values associated with the keys are of Type <el-code>String</el-code>:</p>
 <el-code>DictionaryImmutable&lt;of String, Int&gt;</el-code><br>
 
-<h3>Defining a literal DictionaryImmutable</h3>
+<h3 class="no-TOC">Defining a literal DictionaryImmutable</h3>
 <p>A literal<el-code> DictionaryImmutable</el-code> is defined as a comma-separated list of &lsquo;key:value pairs&rsquo; (key,colon.value) surrounded by curly braces:</p>
 <el-code>variable scrabbleValues set to {"a":1, "b":3, "c":3, "d":2}</el-code><br>
 
-<h3>Using an Immutable Dictionary</h3>
+<h3 class="no-TOC">Using an Immutable Dictionary</h3>
 <p>Try these examples:</p>
 <el-code>variable immD set to new DictionaryImmutable&lt;of String,Int&gt;()</el-code><br>
 <el-code>print immD</el-code><br>
@@ -537,7 +537,7 @@ ListImmutable&lt;of ListImmutable&lt;of Int&gt;&gt;</el-code> for a ListImmutabl
 <el-code>print immD</el-code><br>
 <el-code></el-code><br>
 
-<h3>Dot methods on an Immutable Dictionary</h3>
+<h3 class="no-TOC">Dot methods on an Immutable Dictionary</h3>
 <p>See also <span class="Link">Quick reference</span>.</p>
 <el-code>hasKey</el-code><br>
 <el-code>withPutKey</el-code><br>
@@ -763,14 +763,14 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
 <p><img src="images/Pic33.png"  align="MIDDLE" width="343" height="253" ></p>
 <p>Notes</p>
 <ul>
-<li>Elan vector graphics are displayed using SVG (Scalable Vector Graphics) that are a part of the Html specification. The names of the shapes broadly correspond to the names of SVG tags: <el-code>CircleVG</el-code> for &lt;<el-code>circle../&gt;</el-code>, <el-code>LineVG</el-code> for <el-code>&lt;line../&gt;</el-code>, and <el-code>RectangleVG</el-code> for <el-code>&lt;rect../&gt;</el-code>. 
+<li>Elan vector graphics are displayed using SVG (Scalable Vector Graphics) that are a part of the Html specification. The names of the shapes broadly correspond to the names of SVG tags: <el-code>CircleVG</el-code> for &lt;<el-code>circle../&gt;</el-code>, <el-code>LineVG</el-code> for <el-code>&lt;line../&gt;</el-code>, and <el-code>RectangleVG</el-code> for <el-code>&lt;rect../&gt;</el-code>.
     The properties of the Elan VG shapes match the names of the attributes used in the SVG tags, except that the <el-code>stroke-width</el-code> attribute is changed to <el-code>strokeWidth</el-code> to make it a valid <a href="#Identifier">Identifier</a>.</li>
 <li>The &#8216;canvas&#8217; on which vector graphics are drawn (the Graphics pane in the user interface) is 100 units wide, by 75 units high .All numeric values specified for attributes of vector graphic shapes may be integer or floating point. </li>
 <li>The constructor for each VG type requires arguments corresponding the Html attributes for the corresponding SVG type.</li>
 <li>As with <span class="Link">Block</span> graphics the screen is not updated until the <el-code><el-method>displayVectorGraphics</el-method> method is called,
      allowing you to make multiple changes before updating the screen. Similarly, the method to add a shape returns a new instance of the <el-code>VectorGraphics</el-code> which must be assigned either to an existing variable, or to a new <el-code>let</el-code>.</li>
 <li>As with the way that SVG works within Html, the shapes are drawn in the order in which they are added into the list of <el-code><el-type>VectorGraphic</el-type></el-code> instances, with later shapes positioned over earlier shapes.</li>
-<li>The colour (for <el-code>stroke</el-code> and <el-code>fill</el-code> properties) may be specified as described at <a href="#Colour">Colour</a>. 
+<li>The colour (for <el-code>stroke</el-code> and <el-code>fill</el-code> properties) may be specified as described at <a href="#Colour">Colour</a>.
     The <el-code>fill</el-code> colour only may also be specified as <el-code><el-id>transparent</el-id></el-method> (which has the value <el-code>-1</el-code>).
 <li><el-code>VectorGraphic</el-code> is the abstract superclass of all <el-code>.VG</el-code> shapes. You would only use if if you wanted to define a method that could work on any shape (using common members defined on <el-code>VectorGraphic</el-code>) or that could work with a List holding different types of shape.</li>
 </ul>
@@ -795,7 +795,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
     </main>
 </el-code-block>
 
-<h4>Notes:</h4>
+<h4 class="no-TOC">Notes:</h4>
 <ul>
     <li>The constructor parameters for <el-code><el-type>CircleVG</el-type></el-code> are: <el-code>centreX, centreY, radius, fillColour, strokeColour, strokeWidth</el-code></li>.
     <li>The constructor parameters for <el-code><el-type>LineVG</el-type></el-code> are: <el-code>x1, y1, x2, y2, strokeColour, strokeWidth</el-code>, all of type <el-code><el-type>Int</el-type></el-code></li>.
@@ -812,7 +812,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
 <h2 id="Func">Func</h2>
 <p>A <el-code>function</el-code> may be passed as an argument into another <el-code>function</el-code> (or a <el-code>procedure</el-code>), or returned as the result of calling another <el-code>function</el-code>. This pattern is known as &lsquo;Higher order Function&rsquo; (HoF), and is a key idea in the functional programming paradigm. To define a <el-code>function</el-code> that takes in another <el-code>function</el-code> as a parameter, or returns a <el-code>function</el-code>, you need to specify the Type of the <el-code>function</el-code>, just as you would specify the Type of every parameter and the return Type for the <el-code>function</el-code>. </p>
 
-<h3>Type name</h3>
+<h3 class="no-TOC">Type name</h3>
 <p>The Type of any <el-code>function</el-code> starts with the word <el-code>Func</el-code> followed by angle brackets defining the Type of each parameter, and the return Type for that function, following this syntax:</p>
 <el-code>Func&lt;of String, String, Int =&gt; Boolean&gt;</el-code><!-- TODO correct the syntax -->
 <p>This example defines the Type for a function that defines three parameters of Type <el-code>String</el-code>, <el-code>String</el-code>, and <el-code>Int</el-code> respectively, and returns a <el-code>Boolean</el-code> value. This Type would match that of a function definition that started:</p>
@@ -849,7 +849,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
 <h1 id="Standalone_functions">Standalone functions</h1>
     <p>Standalone library functions always return a value and are therefore used in contexts that expect a value, such as in the right-hand side of a variable declaration (variable) or assignment (set), either on their own or within a more complex expression. All standalone library<el-code> function</el-code>s require at least one argument to be passed in brackets, corresponding to the parameters defined for that <el-code>function</el-code>.</p>
 
-<h3>unicode</h3>
+<h3 class="no-TOC">unicode</h3>
 <p>converts a Unicode value (expressed as an integer value in decimal or hexadecimal notation) into a single character string. For example:</p>
 <el-code-block source="unicode_hearts.elan">
 <el-func class="ok multiline" id="func3">
@@ -859,7 +859,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
 </el-func>
 </el-code-block>
 
-<h3>parseAsInt and parseAsFloat</h3>
+<h3 class="no-TOC">parseAsInt and parseAsFloat</h3>
     <p>
     <p><el-code><el-method>parseAsInt</el-method></el-code> attempts to parse the input String as an Int and returns a 2-tuple, the first value of which is Boolean, with true indicating whether or not the parse has succeeded, and the second value being the resulting Int.
         <el-code><el-method>parseAsFloat</el-method></el-code> does the equivalent for floating point. Operation is illustrated with by these tests: </p>
@@ -877,7 +877,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
 </el-test>
 </el-code-block>
 
-<h4>Notes</h4>
+<h4 class="no-TOC">Notes</h4>
 <ul>
     <li>Any string that parses as an <el-code><el-type>Int</el-type></el-code> will also parse as a <el-code><el-type>Float</el-type></el-code>.</li>
     <li>If the parse fails, the second value will become zero, so you should always check the first value to see if the second value is a correct parse or just the default.</li>
@@ -892,7 +892,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
     <div id="ceiling"></div>
     <div id="isNaN"></div>
     <div id="isInfinite"></div>
-<h3>floor, ceiling, round, isNaN, and IsInfinite</h3>
+<h3 class="no-TOC">floor, ceiling, round, isNaN, and IsInfinite</h3>
     <p> All of these functions are called as 'dot methods' on a numeric value  of type <el-code><el-type>Float</el-type></el-code> or <el-code><el-type>Int</el-type></el-code>).
     <el-code>NaN</el-code> is short for 'Not A (Real) Number' Their use is illustrated with the following tests:</p>
 <el-code-block source="">
@@ -909,7 +909,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
             </el-test>
     </el-code-block>
 
-<h3 id="Maths_functions">Maths functions and constants</h3>
+<h3 class="no-TOC" id="Maths_functions">Maths functions and constants</h3>
     <p>
 <table>
 <tr><th>function</th><th>argument<br>Type</th><th>input<br>unit</th><th>returns</th><th>output<br>unit</th></tr>
@@ -957,7 +957,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
 </el-test>
 </el-code-block>
 
-<h3>Regular expressions</h3>
+<h3 class="no-TOC">Regular expressions</h3>
     <p>Elan&#8217;s regular expressions are modelled on those of JavaScript, including the syntax for literal regular expressions. See, for example this <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">Guide to Regular Expressions</a>.</p>
     <p>More functions for using regular expressions will be added in a future release of Elan. For now&#8230;</p>
     <p>The method <el-code>matchesRegExp()</el-code> is applied to a <el-code>String</el-code> using dot syntax and requires a <el-code>RegExp</el-code> parameter specified as a literal or as variable. It returns a Boolean. For example:</p>
@@ -986,7 +986,7 @@ just by passing the required one as the argyument to the <el-code><el-method>dis
 </el-code-block>
     <p>Although it is recommended that literal regular expressions are written with the <el-code>/../</el-code> delimiters, the ability to convert a <el-code>string</el-code> allows you to input a regular expression into a running program.</p>
 
-<h3 id="Bitwise_function">Bitwise functions</h3>
+<h3 class="no-TOC" id="Bitwise_function">Bitwise functions</h3>
     <p>These functions take in an integer value, and manipulate the bit representation of that value.</p>
     <ul>
         <li><el-code><el-method>bitAnd</el-method></el-code></li>
@@ -1179,18 +1179,18 @@ inputFloatBetween(prompt as string, min as Float, max as Float)
     <p>Important: Several of these methods return a <el-code><el-type>ListImmutable</el-type></el-code> but this may be converted to an array using <el-code>.<el-method>asList()</el-method></el-code> at the end of the expression.</p>
     <p>These are not yet fully documented but, for readers familiar with HoFs from another programming language, some examples are shown below.</p>
 
-<h3 id="filter">filter </h3>
+<h3 class="no-TOC" id="filter">filter </h3>
     <p>Usage:</p>
     <el-code><br>
     let matches be rules.filter(lambda r as Rule =&gt; <br>
     &nbsp;&nbsp;(r.currentState is currentState) and (r.currentSymbol is tape[headPosition]))<br>
     </el-code>
 
-<h3 id="map">map</h3>
+<h3 class="no-TOC" id="map">map</h3>
     <p>Usage:</p>
     <el-code>let next be cellRange.map(lambda n as Int =&gt; nextCellValue(cells, n))</el-code><br>
 
-<h3 id="reduce">reduce</h3>
+<h3 class="no-TOC" id="reduce">reduce</h3>
     <p>Usage:</p>
     <el-code><br>
     let d2 be possibleAnswers.reduce(d, <br>
@@ -1198,18 +1198,18 @@ inputFloatBetween(prompt as string, min as Float, max as Float)
     &nbsp;&nbsp;incrementCount(dd, possAnswer, attempt))
     </el-code><br>
 
-<h3 id="maxBy">maxBy and minBy</h3><span id="minBy"></span>
+<h3 class="no-TOC" id="maxBy">maxBy and minBy</h3><span id="minBy"></span>
     <p>Alternative implementations of <el-code>max</el-code> and <el-code>min</el-code>:</p>
     <el-code>variable a set to {33, 4, 0,99, 82, 55}</el-code><br>
     <el-code>print a.maxBy(lambda x as Int =&gt; x mod 10)</el-code><br>
 
-<h3 id="sortBy">sortBy</h3>
+<h3 class="no-TOC" id="sortBy">sortBy</h3>
     <p><el-code>sortBy</el-code> takes a <el-code>lambda</el-code> that takes two arguments (of the same Type as that of the <el-code>ListImmutable</el-code> being sorted) and compares them, returning an integer with one of the values -1, 0, or +1, to indicate whether the first argument should be placed respectively before, adjacent to or after the second argument in the sorted result, where &#8216;adjacent to&#8217; means it does not matter whether before or after):</p>
     <el-code>variable source set to {11, 3, 7, 37, 17, 2, 19, 5, 23, 27, 31, 13}</el-code><br>
     <el-code>print source.sortBy(lambda x as Int, y as Int =&gt; if x &gt; y then 1 else -1).asImmutableList()</el-code><br>
     <p>The following are not HoFs, but are included here because they are most likely to be used with one of the HoFs listed above. </p>
 
-<h3 id="range">range</h3>
+<h3 class="no-TOC" id="range">range</h3>
     <el-code>range(first as Int, last as Int) as ListImmutable&lt;of Int&gt;</el-code><br>
     <p>returns a <el-code><el-type>ListImmutable</el-type></el-code> containing all the integer values between the two argument values.</p>
 <!-- #endregion-->
