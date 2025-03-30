@@ -17,7 +17,6 @@
 
 /* BVB 03-Feb-2025 Case-dependent code at sort_alpha: function(a,b) replaced by case-independent code as advised by Stuart */
 
-
 var stIsIE = /*@cc_on!@*/false;
 
 sorttable = {
@@ -171,7 +170,7 @@ sorttable = {
     for (var i=0; i<table.tBodies[0].rows.length; i++) {
       text = sorttable.getInnerText(table.tBodies[0].rows[i].cells[column]);
       if (text != '') {
-        if (text.match(/^-?[ï¿½$ï¿½]?[\d,.]+%?$/)) {
+        if (text.match(/^-?[£$¤]?[\d,.]+%?$/)) {
           return sorttable.sort_numeric;
         }
         // check for a date: dd/mm/yyyy or dd/mm/yy
@@ -274,7 +273,7 @@ sorttable = {
     return 1;
   },
   */
-  
+
  /* alpha case-independent sort */
   sort_alpha: function(a,b) {
     if (a[0].toLowerCase()==b[0].toLowerCase()) return 0;
@@ -459,8 +458,8 @@ fixEvent.stopPropagation = function() {
 */
 
 // array-like enumeration
-if (!List.forEach) { // mozilla already supports this
-	List.forEach = function(array, block, context) {
+if (!Array.forEach) { // mozilla already supports this
+	Array.forEach = function(array, block, context) {
 		for (var i = 0; i < array.length; i++) {
 			block.call(context, array[i], i, array);
 		}
@@ -478,7 +477,7 @@ Function.prototype.forEach = function(object, block, context) {
 
 // character enumeration
 String.forEach = function(string, block, context) {
-	List.forEach(string.split(""), function(chr, index) {
+	Array.forEach(string.split(""), function(chr, index) {
 		block.call(context, chr, index, string);
 	});
 };
@@ -499,7 +498,7 @@ var forEach = function(object, block, context) {
 			resolve = String;
 		} else if (typeof object.length == "number") {
 			// the object is array-like
-			resolve = List;
+			resolve = Array;
 		}
 		resolve.forEach(object, block, context);
 	}
