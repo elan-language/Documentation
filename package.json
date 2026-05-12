@@ -1,0 +1,23 @@
+{
+  "name": "elan-documentation",
+  "displayName": "Elan Documentation",
+  "description": "Elan language documentation",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elan-language/Documentation.git"
+  },
+  "license": "Apache-2.0",
+  "icon": "images/icon.png",
+  "categories": [
+    "Programming Languages",
+    "Education"
+  ],
+  "scripts": {
+    "update-documentation": "node ./out/src/build-scripts/update-documentation.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
