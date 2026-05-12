@@ -32,4 +32,5 @@ jobs:
           repository: elan-language/LanguageAndIDE
           path: elan-code
 
+      - run: npm ci
       - run: npm --prefix ./elan-code run fast-dev-compile      
