@@ -1,0 +1,53 @@
+# a63831ccf7d26ba5d29e8b934f97329b305382169761122fee7e740e47dfb5f5 Elan 2.0.0-alpha valid
+
+# This code is the start-point for Worksheet 'Merge sort' where the task is to implement the 'sort' function properly, and hence get all tests passing.
+function sort(li as List<of String>) returns List<of String>
+  return ["x"]
+end function
+
+test test_sort
+  # Edge case: empty
+  variable emptyList set to new List<of String>()
+  assert sort(emptyList) is emptyList
+  # Edge case: one item
+  variable li2 set to ["plum"]
+  assert sort(li2) is li2
+  # Happy case: odd number of members
+  variable li3 set to ["plum", "apricot", "lime", "lemon", "melon", "apple", "orange", "strawberry", "pear"]
+  # Happy case: even number of members
+  variable sorted3 set to ["apple", "apricot", "lemon", "lime", "melon", "orange", "pear", "plum", "strawberry"]
+  assert sort(li3) is sorted3
+  variable li4 set to ["plum", "apricot", "lime", "lemon", "melon", "apple", "orange", "strawberry"]
+  variable sorted4 set to ["apple", "apricot", "lemon", "lime", "melon", "orange", "plum", "strawberry"]
+  assert sort(li4) is sorted4
+  # Edge case: already sorted
+  variable li5 set to ["apple", "apricot", "lemon", "lime", "melon", "orange", "pear", "strawberry"]
+  assert sort(li5) is li5
+end test
+
+function merge(a as List<of String>, b as List<of String>) returns List<of String>
+  variable result set to new List<of String>()
+  if a.length() is 0 then
+    set result to b
+  elif b.length() is 0 then
+    set result to a
+  elif a[0].isBefore(b[0]) then
+    set result to .subList(a[0]].withAppendList(merge(a[1, .length()), b))
+  else
+    set result to .subList(b[0]].withAppendList(merge(a, b[1, .length())))
+  end if
+  return result
+end function
+
+test test_merge
+  variable emptyList set to new List<of String>()
+  assert merge(emptyList, emptyList) is emptyList
+  assert merge(["orange"], ["melon"]) is ["melon", "orange"]
+  variable l1 set to ["apple", "lime", "pear"]
+  variable l2 set to ["apricot", "lemon", "plum"]
+  assert merge(l1, l2) is ["apple", "apricot", "lemon", "lime", "pear", "plum"]
+  assert merge(l2, l1) is ["apple", "apricot", "lemon", "lime", "pear", "plum"]
+  assert merge(l1, emptyList) is l1
+  assert merge(emptyList, l2) is l2
+  assert merge(l1, l1) is ["apple", "apple", "lime", "lime", "pear", "pear"]
+end test

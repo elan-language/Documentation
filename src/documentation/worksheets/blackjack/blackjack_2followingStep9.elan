@@ -1,0 +1,474 @@
+# a3a0b378965e0d68ddb6787405a3a88136940e483b805c391b75904d0f2d52cb Elan 2.0.0-alpha valid
+
+main
+  variable points set to 1000
+  variable rounds set to 10000
+  variable game set to new Game(points)
+  call game.addPlayer(new AutomatedPlayer("Player A", strategyA, points))
+  call game.addPlayer(new AutomatedPlayer("Player B", strategyB, points))
+  while rounds > 0
+    call playOneRound(game)
+    call clearKeyBuffer()
+    set rounds to rounds - 1
+  end while
+  call display(game)
+end main
+
+procedure playOneRound(game as Game)
+  call game.newRound()
+  [ghosted] call display(game)
+  variable dealer set to game.dealer
+  for player in game.players
+    call player.startTurn()
+    [ghosted] call display(game)
+    while player.status is Status.active
+      call player.nextAction(dealer.faceCard)
+      [ghosted] call display(game)
+    end while
+  end for
+  call dealer.play()
+  [ghosted] call display(game)
+  while dealer.status is Status.active
+    call dealer.nextAction(dealer.faceCard)
+    [ghosted] call display(game)
+  end while
+  call game.updatePoints()
+end procedure
+
+procedure display(game as Game)
+  variable html set to $"<style>{styleSheet}</style>{htmlForGame(game)}"
+  call displayHtml(html)
+  call sleep(1.5)
+end procedure
+
+function strategyA(p as Player, dealerFaceUp as Card) returns Action
+  variable decision set to Action.stand
+  variable drawLimit set to 17
+  if p.hasSoftAce then
+    set drawLimit to 18
+  end if
+  if p.handTotal < drawLimit then
+    set decision to Action.draw
+  end if
+  return decision
+end function
+
+function strategyB(p as Player, dealerFaceUp as Card) returns Action
+  variable decision set to Action.stand
+  variable drawLimit set to 17
+  if dealerFaceUp.value is 5 then
+    set drawLimit to 12
+  elif p.hasSoftAce then
+    set drawLimit to 18
+  end if
+  if p.handTotal < drawLimit then
+    set decision to Action.draw
+  end if
+  return decision
+end function
+
+procedure updatePoints(dealer as Dealer, player as Player, playerOutcome as Outcome)
+  if playerOutcome is Outcome.winDouble then
+    call player.changePointsBy(2)
+    call dealer.changePointsBy(-2)
+  elif playerOutcome is Outcome.win then
+    call player.changePointsBy(1)
+    call dealer.changePointsBy(-1)
+  elif playerOutcome is Outcome.lose then
+    call player.changePointsBy(-1)
+    call dealer.changePointsBy(1)
+  end if
+end procedure
+
+function determinePlayerOutcome(dealer as Dealer, player as Player) returns Outcome
+  # These 'let' definitions are just to make the logic that follows them simpler to read
+  variable d set to dealer.status
+  variable dTotal set to dealer.handTotal
+  variable p set to player.status
+  variable pTotal set to player.handTotal
+  variable bust set to Status.bust
+  variable bj set to Status.blackjack
+  variable win set to Outcome.win
+  variable winDouble set to Outcome.winDouble
+  variable lose set to Outcome.lose
+  variable draw set to Outcome.draw
+  variable playerOutcome set to draw
+  if p is bust then
+    set playerOutcome to lose
+  elif (p is bj) and (d isnt bj) then
+    set playerOutcome to winDouble
+  elif d is bust then
+    set playerOutcome to win
+  elif (d is bj) and (p is bj) then
+    set playerOutcome to draw
+  elif p is bj then
+    set playerOutcome to winDouble
+  elif d is bj then
+    set playerOutcome to lose
+  elif pTotal > dTotal then
+    set playerOutcome to win
+  elif pTotal < dTotal then
+    set playerOutcome to lose
+  else
+    # strictly, this 'else' clause is redundant - as the variable was initialised to 'draw' - but added for clarity
+    set playerOutcome to draw
+  end if
+  return playerOutcome
+end function
+
+function dealCard(random as Float) returns Card
+  variable number set to (random*52).floor()
+  variable rank set to rankValue.keys()[number div 4]
+  variable suit set to intAsSuit(number mod 4)
+  return new Card(rank, suit)
+end function
+
+function intAsSuit(n as Int) returns Suit
+  variable suit set to Suit.clubs
+  if n is 1 then
+    set suit to Suit.diamonds
+  elif n is 2 then
+    set suit to Suit.hearts
+  elif n is 3 then
+    set suit to Suit.spades
+  end if
+  return suit
+end function
+
+function htmlForGame(game as Game) returns String
+  variable html set to "<div class='game'>"
+  set html to html + htmlForPlayer(game.dealer)
+  for player in game.players
+    set html to html + htmlForPlayer(player)
+  end for
+  set html to html + $"<div class='message'>{game.message}</div>"
+  return html + "</div>"
+end function
+
+function htmlForPlayer(player as Player) returns String
+  variable html set to "<div class='player'>"
+  set html to html + $"<div class='details'>{player.name} - {player.points} points {player.getMessage()}</div>"
+  set html to html + "<div class='hand'>"
+  for card in player.cards
+    variable suit set to card.suit
+    variable rank set to card.rank
+    set html to html + htmlForCard(card)
+  end for
+  return html + "</div></div>"
+end function
+
+function htmlForCard(card as Card) returns String
+  variable html set to ""
+  if card.faceDown then
+    set html to "<div class='card reversed'>"
+  else
+    variable rank set to card.rank
+    variable suit set to card.suit
+    variable colour set to colours[suit]
+    variable symbol set to symbols[suit]
+    set html to $"<div class='card {colour}'>"
+    variable u set to htmlForSpot("u", rank)
+    variable v set to htmlForSpot("v", symbol)
+    variable grid set to ""
+    for location in gridByRank[rank]
+      if location is "royal" then
+        set grid to grid + htmlForSpot(location, rank)
+      else
+        set grid to grid + htmlForSpot(location, symbol)
+      end if
+    end for
+    set html to html + $"{u}{v}{grid}"
+  end if
+  return html + "</div>"
+end function
+
+function htmlForSpot(id as String, content as String) returns String
+  return $"<div class='{id}'>{content}</div>"
+end function
+
+class Game
+  constructor(dealerStartPoints as Int)
+    set this.dealer to new Dealer(dealerStartPoints)
+  end constructor
+
+  property dealer as Dealer
+
+  property players as List<of Player>
+
+  property message as String
+
+  procedure newRound()
+    call this.dealer.newHand()
+    for player in this.players
+      call player.newHand()
+    end for
+  end procedure
+
+  procedure updatePoints()
+    for player in this.players
+      variable playerOutcome set to determinePlayerOutcome(this.dealer, player)
+      call global.updatePoints(this.dealer, player, playerOutcome)
+    end for
+  end procedure
+
+  procedure addPlayer(player as Player)
+    call this.players.append(player)
+  end procedure
+
+  procedure setMessage(message as String)
+    set this.message to message
+  end procedure
+
+end class
+
+class Card
+  constructor(rank as String, suit as Suit)
+    set this.rank to rank
+    set this.suit to suit
+    set this.value to rankValue[rank]
+  end constructor
+
+  property suit as Suit
+
+  property rank as String
+
+  property value as Int
+
+  property faceDown as Boolean
+
+  procedure turnFaceUp()
+    set this.faceDown to false
+  end procedure
+
+  procedure turnFaceDown()
+    set this.faceDown to true
+  end procedure
+
+end class
+
+abstract class Player
+  property name as String
+
+  property points as Int
+
+  property cards as List<of Card>
+
+  property handTotal as Int
+
+  property hasSoftAce as Boolean
+
+  property status as Status
+
+  property hasTurn as Boolean
+
+  procedure startTurn()
+    if this.status is Status.active then
+      set this.hasTurn to true
+    end if
+  end procedure
+
+  procedure evaluateStatus(newCard as Card)
+    if (cardCount() is 2) and (this.handTotal is 21) then
+      set this.status to Status.blackjack
+    elif (this.handTotal > 21) and (this.hasSoftAce) then
+      set this.handTotal to this.handTotal - 10
+      set this.hasSoftAce to false
+    elif this.handTotal > 21 then
+      set this.status to Status.bust
+    elif this.handTotal is 21 then
+      set this.status to Status.standing
+    end if
+    if this.status isnt Status.active then
+      set this.hasTurn to false
+    end if
+  end procedure
+
+  procedure stand()
+    set this.status to Status.standing
+    set this.hasTurn to false
+  end procedure
+
+  procedure draw()
+    variable newCard set to dealCard(random())
+    call this.cards.append(newCard)
+    if newCard.rank is "A" then
+      call addAce()
+    else
+      set this.handTotal to this.handTotal + newCard.value
+    end if
+    call evaluateStatus(newCard)
+  end procedure
+
+  procedure addAce()
+    if this.hasSoftAce then
+      set this.handTotal to this.handTotal + 1
+    else
+      set this.handTotal to this.handTotal + 11
+      set this.hasSoftAce to true
+    end if
+  end procedure
+
+  function cardCount() returns Int
+    return this.cards.length()
+  end function
+
+  procedure changePointsBy(amount as Int)
+    set this.points to this.points + amount
+  end procedure
+
+  abstract procedure newHand()
+
+  procedure newHandHelper()
+    set this.hasTurn to false
+    set this.hasSoftAce to false
+    set this.cards to new List<of Card>()
+    set this.handTotal to 0
+    set this.status to Status.active
+    call draw()
+    call draw()
+  end procedure
+
+  abstract function getMessage() returns String
+
+  function statusAsString() returns String
+    variable msg set to ""
+    variable status set to this.status
+    if this.hasTurn then
+      set msg to msg + " - PLAYING"
+    elif status is Status.standing then
+      set msg to msg + " - STANDING"
+    elif status is Status.blackjack then
+      set msg to msg + " - BLACKJACK"
+    elif status is Status.bust then
+      set msg to msg + " - BUST"
+    end if
+    return msg
+  end function
+
+  abstract procedure nextAction(dealerFaceCard as Card)
+
+end class
+
+class Dealer inherits Player
+  constructor(startingPoints as Int)
+    set this.name to "Dealer"
+    set this.points to startingPoints
+  end constructor
+
+  property faceCard as Card
+
+  property hasPlayed as Boolean
+
+  procedure play()
+    call startTurn()
+    variable hiddenCard set to this.cards[1]
+    call hiddenCard.turnFaceUp()
+    set this.hasPlayed to true
+  end procedure
+
+  procedure newHand()
+    set this.hasPlayed to false
+    call newHandHelper()
+    set this.faceCard to this.cards[0]
+    variable hiddenCard set to this.cards[1]
+    call hiddenCard.turnFaceDown()
+  end procedure
+
+  procedure nextAction(faceCard as Card)
+    if this.handTotal < 17 then
+      call draw()
+    else
+      call stand()
+    end if
+  end procedure
+
+  function getMessage() returns String
+    variable msg set to ""
+    if this.hasPlayed then
+      set msg to statusAsString() + $" - hand total: {this.handTotal}"
+    end if
+    return msg
+  end function
+
+end class
+
+class HumanPlayer inherits Player
+  constructor(name as String, startingPoints as Int)
+    set this.name to name
+    set this.points to startingPoints
+  end constructor
+
+  procedure newHand()
+    call newHandHelper()
+  end procedure
+
+  procedure nextAction(dealerFaceCard as Card)
+    variable key set to ""
+    call clearKeyBuffer()
+    while key is ""
+      set key to waitForKey()
+      if key is "d" then
+        call draw()
+      elif key is "s" then
+        call stand()
+      else
+        set key to ""
+      end if
+    end while
+  end procedure
+
+  function getMessage() returns String
+    variable msg set to statusAsString() + $"- hand total: {this.handTotal}"
+    if this.hasTurn then
+      set msg to msg + " - press 'd' to draw, 's' to stand"
+    end if
+    return msg
+  end function
+
+end class
+
+class AutomatedPlayer inherits Player
+  constructor(name as String, decisionFunc as Func<of Player, Card => Action>, startingPoints as Int)
+    set this.name to name
+    set this.decisionFunc to decisionFunc
+    set this.points to startingPoints
+  end constructor
+
+  property decisionFunc as Func<of Player, Card => Action>
+
+  procedure newHand()
+    call newHandHelper()
+  end procedure
+
+  procedure nextAction(dealerFaceCard as Card)
+    variable act set to decisionFunc(this, dealerFaceCard)
+    if act is Action.draw then
+      call draw()
+    else
+      call stand()
+    end if
+  end procedure
+
+  function getMessage() returns String
+    return statusAsString() + $" - hand total: {this.handTotal}"
+  end function
+
+end class
+
+enum Action stand, draw
+
+enum Outcome undecided, lose, draw, win, winDouble
+
+enum Status active, standing, blackjack, bust
+
+enum Suit clubs, diamonds, hearts, spades
+
+constant symbols set to {Suit.clubs:"&clubs;", Suit.diamonds:"&diams;", Suit.hearts:"&hearts;", Suit.spades:"&spades;"}
+
+constant rankValue set to {"2":2, "3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9, "10":10, "J":10, "Q":10, "K":10, "A":11}
+
+constant gridByRank set to {"A":{"royal"}, "2":{"b", "c"}, "3":{"a", "b", "c"}, "4":{"d", "e", "f", "g"}, "5":{"a", "d", "e", "f", "g"}, "6":{"d", "e", "f", "g", "h", "i"}, "7":{"d", "e", "f", "g", "h", "i", "l"}, "8":{"d", "e", "f", "g", "h", "i", "l", "m"}, "9":{"a", "d", "e", "f", "g", "n", "o", "p", "r"}, "10":{"d", "e", "f", "g", "n", "o", "p", "r", "s", "t"}, "J":{"royal"}, "Q":{"royal"}, "K":{"royal"}}
+
+constant colours set to {Suit.clubs:"black", Suit.diamonds:"red", Suit.hearts:"red", Suit.spades:"black"}
+
+constant styleSheet set to ':root {\n    background-color: darkgreen;\n    padding-left: 5px;\n}\n\n.game {\n    padding: 5px;\n}\n\n.message, .details  {\n    color: white;\n    font-family: Arial, Helvetica, sans-serif;\n}\n\n.hand {\n        margin-top: 5px;\n        height: 150px;\n        padding-bottom: 10px;\n    }\n    \n.card {\n    position: relative;\n    float: left;\n    background-color: white;\n    width: 95px;\n    height:140px;\n    margin-right:10px;\n    padding: 5px;\n    border-radius: 5px;\n    font-family: Helvetica, sans-serif; \n}\n.royal,.a,.b,.c,.d,.e,.f,.g,.h,.i,.j,.k,.l,.m,.n,.o,.p,.q,.r,.s,.t,.u,.v,.w,.x,.y,.z {position: absolute; text-align:center;}\n\n/* Standard spots */ \n    .a,.b,.c,.d,.e,.f,.g,.h,.i,.l,.m,.n,.o,.p,.r,.s,.t  {font-size:  30px;}\n\n    /* columns */\n    .d,.n,.h,.p,.f {left: 18px }\n    .a,.b,.c,.l,.m,.s,.t {left: 43px;}\n    .e,.o,.i,.r,.g {left: 68px}\n\n    /* rows */\n    .d,.b,.e {top: 0px}\n    .s {top: 20px;}\n    .l {top: 28px;}\n    .n,.o {top: 37px;}\n    .h,.a,.i {top: 57px}\n    .p,.r {top: 75px;}\n    .m {top: 86px;}\n    .t {top: 93px;}\n    .f,.c,.g {top: 114px;}\n\n/* royals */\n    .royal {\n        position: absolute;\n        z-index: 1;\n        width: 95px;\n        height: 140px;\n        line-height: 140px;\n        font-size: 100px;\n    }\n\n/* corner summary */\n    .u {font-size: 15px; width: 15px; text-align: center; left: 0px; top: 2px;}\n    .v {font-size: 20px; width: 15px; text-align: center; left: 0px; top: 12px;}\n\n/* suit colors */\n    .red {color: red}\n    .black {color: black}\n\n/* back */\n    .card.reversed { background-color: rgba(0, 0, 255, 0.607);}'

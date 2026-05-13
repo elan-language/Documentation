@@ -1,0 +1,3241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../ide/styles/colourScheme.css">
+<link rel="stylesheet" href="../ide/styles/documentation.css">
+<link rel="stylesheet" href="../ide/styles/elanStyle.css">
+<!-- Font Awesome has external link symbol at U+F08E (in Unicode Private Use Area)    -->
+<!-- See https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-external-link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="favicon.ico">
+<title>Elan Library Reference</title>
+<script type="text/javascript" src="generated_toc.js"></script>
+<script type="text/javascript" src="doc-scripts.js"></script>
+<script type="text/javascript" src="accordion.js"></script>
+</head>
+<body id="top">
+<div class="docTitle">Elan Library Reference</div>
+<div class="docTOC">
+ <div id="generated-toc" class="generate_from_h1 generate_for_page"></div>
+</div>
+
+<h1 id="ValueTypes">Value data Types</h1>
+
+<h2 id="Int">Integer</h2>
+<p>An <b>integer</b> is a whole number, i.e. one that has no fractional part. It may be represented in decimal, hexadecimal or binary:</p>
+<p><el-lit>100</el-lit> (decimal), <el-lit>0x64</el-lit> (hexadecimal) and <el-lit>0b1100100</el-lit> all have the same value.</p>
+<p>Its Type is <code>Int</code>.</p>
+
+<table class="tableType">
+ <tr>
+  <th>name<br>of Type</th>
+  <th>examples of defining<br>a literal value</th>
+</tr><tr>
+  <td><code>Int</code></td>
+  <td><code>constant maxNumber set to 10</code></td>
+</tr><tr>
+  <td><code>Int</code></td>
+  <td><code>variable flags set to 0b1100100</code></td>
+</tr>
+</table>
+
+<h3 class="no-TOC">Function dot methods on an <code>Int</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="asBinary">
+  <td><el-method>asBinary</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>string of binary digits representing the argument's integer value</td>
+ </tr><tr id="equals_Int">
+  <td><el-method>equals</el-method></td>
+  <td><code>Int</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if integer and argument values are equal<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="notEqualTo_Int">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>Int</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if integer and argument values are unequal<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="toString_Int">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a string of decimal digits representing the argument's integer value</td>
+ </tr>
+</table>
+
+<h4 class="no-TOC">Notes</h4>
+<ul>
+ <li>A literal integer or a named value of Type <code>Int</code> may
+always be passed into a <b>function</b> or <b>procedure</b> that is expecting a <code>Float</code>.</li>
+ <li>The <code>Int</code> type is <i>intended</i> to represent whole numbers
+in the range:</li>
+  <li><ul>
+   <li>Maximum: 2<sup>53</sup> &minus; 1 (which is 9,007,199,254,740,991)</li>
+   <li>Minimum value: &minus;(2<sup>53</sup> &minus; 1)</li>
+  </ul></li>
+ <li>If you go greater than the limit given above, the number will be accurate to approximately 17 decimal digits.
+    Larger numbers will be rounded with zeros at the end, unless they are larger than around 2<sup>70</sup>, when they will automatically be shown
+    in exponential (scientific) format, as shown in the example.</li>
+</ul>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Example of large numbers</h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; This code calculates 2 raised to the power of 50 through 72, and its output is shown below:</p>
+<codeblock>
+main
+  for n in range(50, 73)
+    variable s set to lambda n as Int => n.toString().length()
+    variable np set to pow(2, n).floor()
+    call printTab(s(n), $"{n}")
+    call printTab(30 - s(np), $"{np}\n")
+  end for
+end main
+</codeblock>
+<p><img src="images/bigIntegers.png" width="285" height="471" alt="big integers"></p>
+<hr>
+</div></div>
+
+<h2 id="Float">Floating point</h2>
+<p>A <b>floating point number</b> is a decimal number (also known as a <b>Real number</b>) that may have both integer and fractional parts. </p>
+
+<p>It may be written using exponential (scientific) notation, e.g.
+ <el-lit>120.0</el-lit> can be written as  <el-lit>1.20e2</el-lit>, and
+ <el-lit>0.012</el-lit> as <el-lit>1.20e-2</el-lit></p>
+Its Type is <code>Float</code>.
+<table class="tableType">
+ <tr>
+  <th>name<br>of Type</th>
+  <th>examples of defining<br>a literal value</th>
+</tr><tr>
+  <td><code>Float</code></td>
+  <td><code>constant phi set to 1.618033988749895</code></td>
+</tr><tr>
+  <td><code>Float</code></td>
+  <td><code>variable reading set to 1.1e-10</code></td>
+</tr>
+</table>
+
+<h3 class="no-TOC" id="DotMethods_Float">Function dot methods on a <code>Float</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="ceiling_Float">
+  <td><el-method>ceiling</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the first integral value larger than or equal to the argument's<br>floating point value</td>
+ </tr><tr id="equals_Float">
+  <td><el-method>equals</el-method></td>
+  <td><code>Float</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if floating point number and argument values are equal<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="floor_Float">
+  <td><el-method>floor</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the first integral value smaller than or equal to the argument's<br>floating point value</td>
+ </tr><tr id="isInfinite_Float">
+  <td><el-method>isInfinite</el-method></td>
+  <td>(none)</td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if value would be infinite, e.g. after division by zero<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="isNaN_Float">
+  <td><el-method>isNaN</el-method></td>
+  <td>(none)</td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if value is 'NaN', i.e. Not a Number, e.g. 0/0<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="notEqualTo_Float">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>Float</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if floating point number and argument values are unequal<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="round_Float">
+  <td><el-method>round</el-method></td>
+  <td><code>Int</code></td>
+  <td><code>Float</code></td>
+  <td>the value rounded (up or down as appropriate) to the<br>number of decimal places specified in the argument</td>
+ </tr><tr id="toString_Float">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a string representing the argument's floating point value</td>
+ </tr>
+</table>
+
+<h4 class="no-TOC">Notes</h4>
+<ul>
+ <li>The limits on floating point numbers are:
+  <ul>
+   <li>Maximum value: just over 1.0 &times; 10<sup>308</sup></li>
+   <li>Minimum value: approximately 5.0 &times; 10<sup>-324</sup></li>
+  </ul></li>
+ <li>A variable that has been defined as being of Type <code>Float</code> may not be passed as an argument into a method that requires an <code>Int</code>,
+    nor as an index into a <code>List</code>  even if the variable contains no fractional part.
+    It may, however, be converted into an <code>Int</code> before passing, using the <b>function</b> <el-method>floor</el-method> or <el-method>ceiling</el-method>.</li>
+ <li>If you wish to define a variable to be of Type <code>Float</code>, but initialise it with an integer value, then add <el-lit>.0</el-lit> on the end of the whole number, as in:<br>
+ <code>variable hour set to 3.0</code></li>
+ <li>Any variable or expression that evaluates to an <code>Int</code> may always be used where a <code>Float</code> is expected.</li>
+</ul>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples of standalone dot methods on a <code>Float</code></h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Test assertions using dot methods on a <code>Float</code>:</p>
+<codeblock>
+test test_floor
+  variable p set to pi
+  variable mp set to -pi
+  assert p.floor() is 3
+  assert mp.floor() is -4
+  assert p.ceiling() is 4
+  assert mp.ceiling() is -3
+  assert p.round(3) is 3.142
+  assert mp.round(2) is -3.14
+  assert sqrt(-p).isNaN() is true
+  variable q set to divAsInt(1, 0).floor()
+  assert q.isInfinite() is true
+end test
+</codeblock>
+<hr>
+</div></div>
+
+<h2 id="Boolean">Boolean</h2>
+<p>A <b>Boolean</b> value is either <el-id>true</el-id> or <el-id>false</el-id>.</p>
+<p>The keywords <el-id>true</el-id> and <el-id>false</el-id> must be written in lower case.</p>
+<table class="tableType">
+ <tr>
+  <th>name<br>of Type</th>
+  <th>examples of defining<br>a literal value</th>
+</tr><tr>
+  <td><code>Boolean</code></td>
+  <td><code>variable done set to true</code></td>
+</tr>
+</table>
+
+<h3 class="no-TOC">Function dot methods on a <code>Boolean</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot methods</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="equals_Boolean">
+  <td><el-method>equals</el-method></td>
+  <td><code>Boolean</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the truth value and argument are equal<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="notEqualTo_Boolean">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>Boolean</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the truth value and argument are unequal<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="toString_Boolean">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>String "true" if <el-id>true</el-id>,<br>"false" if <el-id>false</el-id></td>
+ </tr>
+ </table>
+
+<h1 id="ReferenceTypes">Reference data Types</h1>
+
+<h2 id="String">String</h2>
+<p>A <code>String</code> represents text,  i.e. a sequence of zero or more characters.</p>
+<table class="tableType">
+ <tr>
+  <th>name<br>of Type</th>
+  <th>examples of defining<br>a literal value</th>
+  <th>details</th>
+</tr><tr>
+  <td><code>String</code></td>
+  <td><code>constant title set to "Ulysses"</code></td>
+  <td>delimited by double quotes</td>
+</tr><tr>
+  <td><code>String</code></td>
+  <td><code>variable quote set to "'Hello', she said"</code></td>
+  <td>' may be used in a string delimited by &quot;</td>
+</tr><tr>
+  <td><code>String</code></td>
+  <td><code>variable emptyString set to ""</code></td>
+  <td>a zero-length, or 'empty', string</td>
+</tr>
+</table>
+
+<h3 class="no-TOC" id="CharacterSets">Character sets</h3>
+<p>When typing from the keyboard into a literal string all the basic ASCII characters (0x20 to 0x7e) and '&pound;' can be input.</p>
+<p>You cannot use Alt+numeric-keypad to enter accented letters or other special characters in the extended ASCII range (0x80 to 0xff).</p>
+<p>You can, however, copy any text from outside Elan and paste it into a string, whether ASCII, extended ASCII or UTF-8 encoded.</p>
+<p>To insert a character from the full range, you use its Unicode (codepoint) value, in decimal or hexadecimal, by means of <b>function</b> <a href="#unicode"><el-method>unicode</el-method></a>:</p>
+
+<table class="tablePlain">
+<tr>
+ <td>
+  <codeblock>call print($"Spanish introduces a question with {unicode(191)}")</codeblock>
+</td>
+<td>&#x27f6;</td><td>Spanish introduces a question with &#191;</td>
+</tr><tr>
+ <td>
+  <codeblock>call print($"This is an up arrow: {unicode(0x2191)}")</codeblock>
+  </td>
+  <td>&#x27f6;</td><td>This is an up arrow: &#x2191;
+ </td>
+</tr>
+</table>
+
+<p>These examples 'interpolate' the output of <b>function</b> <el-method>unicode</el-method> by using a $ before the string and curly braces within it (see <a href="#InterpolatedString">Interpolated fields</a>).</p>
+
+<h3 class="no-TOC">Manipulating strings</h3>
+
+<p>Strings can be built from other strings by concatenation using the plus operator, for example:</p>
+<table class="tablePlain">
+<tr>
+ <td><code>call print("Hello " + "world")</code>
+</td><td>&#x27f6;</td><td>Hello world</td>
+</tr>
+</table>
+
+<p>A newline may be inserted within a string with <el-lit>\n</el-lit>:
+<table class="tablePlain">
+<tr>
+ <td>call print("Hello\nworld")</td><td>&#x27f6;</td><td>Hello<br>world</td>
+</tr>
+</table>
+
+<p>When editing and you leave the field, the newline will be implicitly applied in your code.</p>
+<p>As in most languages, strings are <i>immutable</i>. When you apply any operation or <b>function</b> with the intent of modifying an existing <code>String</code>, the existing <code>String</code> is never changed. Instead, the operation or <b>function</b> will return a new <code>String</code> that is based on the original, but with the specified differences.</p>
+<p>You can loop through a <code>String</code> picking each of its characters sequentially using the <a href="LangRef.html#for"><b>for loop</b></a>.</p>
+
+<h3 class="no-TOC" id="DotMethods_String">Function dot methods on a String</h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="asRegExp">
+  <td><el-method>asRegExp</el-method></td>
+  <td>(none)</td>
+  <td><code>RegExp</code></td>
+  <td>a new string that is a a converted to a regular expression:<br>no check is made of whether the result is a valid regular expression</td>
+ </tr><tr id="asUnicode">
+  <td><el-method>asUnicode</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the Unicode value of the <i>first</i> character of the string<br>
+   (To convert a Unicode value into a string, use <b>function</b> <a href="#unicode"><el-method>unicode</el-method></a>)</td>
+ </tr><tr id="contains_String">
+  <td><el-method>contains</el-method></td>
+  <td>(none)</td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the string contains the substring specified as the argument<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="equals_String">
+  <td><el-method>equals</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the string and argument are equal<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="notEqualTo_String">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the string and argument are unequal<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="indexOf_String">
+  <td><el-method>indexOf</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Int</code></td>
+  <td>index of the first instance of the argument (substring) within the string<br>If it is not present, -1 is returned</td>
+ </tr><tr id="isAfter">
+  <td><el-method>isAfter</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if alphabetic comparison finds the string comes strictly 'after' the argument string<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="isAfterOrSameAs">
+  <td><el-method>isAfterOrSameAs</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if alphabetic comparison finds the string comes 'after' or equals the argument string<br> &ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="isBefore">
+  <td><el-method>isBefore</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if alphabetic comparison finds the string comes strictly 'before' the argument string<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="isBeforeOrSameAs">
+  <td><el-method>isBeforeOrSameAs</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if alphabetic comparison finds the string comes 'before' or equals the argument string<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="length_String">
+  <td><el-method>length</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the number of characters in the string</td>
+ </tr><tr id="lowerCase">
+  <td ><el-method>lowerCase</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a new string with the original rendered in lower case</td>
+ </tr><tr id="matchesRegExp">
+  <td><el-method>matchesRegExp</el-method></td>
+  <td><code>RegExp</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the string matches the regular expression<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="replace">
+  <td><el-method>replace</el-method></td>
+  <td><code>String</code>, <code>String</code></td>
+  <td><code>String</code></td>
+  <td>a new string with <i>all</i> occurrences of the first argument string replaced by the second argument string </td>
+ </tr><tr id="split">
+  <td><el-method>split</el-method></td>
+  <td><code>String</code></td>
+  <td><codeblock>List<of String></codeblock></td>
+  <td>a <code>List</code> of the substrings found between occurrences of the argument string<br>
+  if the argument is the empty string then the list is of all the individual characters</td>
+ </tr><tr id="subString">
+  <td><el-method>subString</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>String</code></td>
+  <td>a new string that is the substring specified by the two positive integers (<i>m,n</i>) where<br>
+  <i>m</i> indexes the first character of the substring required (counting from 0) and<br>
+  <i>n</i> indexes the character <i>after</i> the last character required (exclusive index)<br>
+  if <i>m</i> &ge; <i>n</i> the result is the empty string
+  </td>
+ </tr><tr id="toString_String">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td> the string itself</td>
+ </tr><tr id="trim">
+  <td><el-method>trim</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a new string with leading and trailing spaces removed</td>
+ </tr><tr id="upperCase">
+  <td><el-method>upperCase</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a new string with the original rendered in upper case</td>
+ </tr>
+ </table>
+
+<h3 class="no-TOC" id="InterpolatedString">Interpolated fields in strings</h3>
+<p>Strings support interpolation, that is you can insert the values of variables
+ or simple expressions within the string by enclosing them in curly braces and
+ prefixing the string with a $:</p>
+
+<p>If <code>a</code> and <code>b</code> have values 3 and 17:</p>
+<table class="tablePlain">
+<tr>
+ <td><codeblock>call print($"{a} times {b} equals {a*b}")</codeblock></td>
+ <td>&#x27f6;</td><td>3 times 17 equals 51</td>
+</tr>
+</table>
+
+<p>If <code>velocity</code> and <code>fuel</code> have values 3.0 and 50.4:</p>
+<table class="tablePlain">
+<tr>
+ <td><codeblock>set message to $"LANDED SAFELY AT SPEED {(velocity*100).floor()} FUEL {fuel.floor()}" </codeblock>
+  <codeblock>call print(message) </codeblock>
+ </td>
+ <td><br>&#x27f6;</td>
+ <td><br> LANDED SAFELY AT SPEED 300 FUEL 50</td>
+</tr>
+</table>
+<p>And, for the area of a circle:</p>
+<table class="tablePlain">
+<tr><td>
+<codeblock>
+  variable r set to 2.0
+  call print($"area = {(pi*r*r).round(2)}")
+</codeblock>
+ </td><td><br>&#x27f6;</td>
+ <td><br>area = 12.57<br></td>
+ </tr>
+</table>
+
+<h2 id="StandardDataStructures">Standard data structures</h2>
+
+<p>Elan has two mutable data structure Types <code>List</code> and <code>Dictionary</code>, and
+three immutable data structure Types <code>HashSet</code>, <code>Stack</code> and <code>Queue</code>.</p>
+<p>The contents of these structures are referred to as items (or sometimes elements).</p>
+<p>The values of items in a <i>mutable</i> structure may be changed directly by calling the various procedure dot methods defined for each structure Type.</p>
+<p>The values of items in an <i>immutable</i> structure cannot be changed directly, and so have no procedure dot methods defined for them:
+ rather, the methods called on them create new copies of the structures containing specified changes.</p>
+<p>Since procedure methods may be called only from within the <b>main</b> routine or a <b>procedure</b>,
+it is also possible to make changes via <b>function</b> dot methods,  which return a copy of the data structure
+with specified changes: that is why all such methods have names starting '<el-method>with</el-method>'.</p>
+<p>Immutable data structures are intended specifically to facilitate the Functional Programming paradigm,
+ but some are also useful within other programming paradigms.</p>
+<p id="of">All six  contain values (and keys in the case of a <code>Dictionary</code>) of only a single Type, that Type being specified either explicitly
+ (as in &lt;of <code>Int</code>&gt;), or implicitly if the structure is created using a literal definition.</p>
+<p>This table summarises the creation and reference to these structures. Details of their methods follow.</p>
+
+<table class="tableStructure">
+ <tr>
+  <th></th>
+  <th>List</th>
+  <th>Dictionary</th>
+  <th>HashSet</th>
+  <th>Stack</th>
+  <th>Queue</th>
+ </tr><tr>
+  <td>mutability</td>
+  <td>Mutable</td>
+  <td>Mutable</td>
+  <td>Immutable</td>
+  <td>Immutable</td>
+  <td>Immutable</td>
+ </tr><tr>
+  <td>Type form</td>
+  <td><code>List</code>&lt;of <el-id>Type</el-id>&gt;<br><el-id>Type</el-id> of item can be any, including <code>List</code> for 'jagged' data</td>
+  <td><code>Dictionary</code>&lt;of <el-id>keyType</el-id>, <el-id>valueType</el-id>&gt;<br>
+  <el-id>keyType</el-id> is <code>Int</code>, <code>Float</code>, <code>String</code> or <code>Boolean</code><br>
+  <el-id>valueType</el-id> may be any Type</td>
+  <td><code>HashSet</code>&lt;of <el-id>Type</el-id>&gt;<br><el-id>Type</el-id> of item must be immutable</td>
+  <td><code>Stack</code>&lt;of <el-id>Type</el-id>&gt;<br><el-id>Type</el-id> of item must be immutable</td>
+  <td><code>Queue</code>&lt;of <el-id>Type</el-id>&gt;<br><el-id>Type</el-id> of item must be immutable</td>
+ </tr><tr>
+  <td>size</td><td>Dynamic</td><td>Dynamic</td><td>Dynamic</td><td>Dynamic</td><td>Dynamic</td>
+ </tr><tr>
+  <td>literal definition</td>
+  <td><code>[2, 3, 5, 7, 11]</code></td>
+  <td><code>["a":3, "b":5]</code></td>
+  <td>Only as converted from a literal <code>List</code><br>e.g. <code>["a","b","c"].asSet()</code></td>
+  <td>Not available</td>
+  <td>Not available</td>
+ </tr><tr>              
+  <td>create empty</td>
+  <td>new <code>List</code>&lt;of Type&gt;()</td>
+  <td>new <code>Dictionary</code>&lt;of keyType, valueType&gt;()</td>
+  <td>new <code>HashSet</code>&lt;of Type&gt;()</td>
+  <td>new <code>Stack</code>&lt;of Type&gt;()</td>
+  <td>new <code>Queue</code>&lt;of Type&gt;()</td>
+ </tr><tr>
+  <td>create initialised</td>
+  <td><code>createList(number, value)</code><br>
+  <code>createListOfLists(cols, rows, value)</code>
+  <td>Not available</td>
+  <td>Not available</td>
+  <td>Not available</td>
+  <td>Not available</td>
+ </tr><tr>
+  <td>read by index</td>
+  <td><code>li[2]</code></td>
+  <td><code>d["b"]</code></td>
+  <td>not available</td>
+  <td>not available</td>
+  <td>not available</td>
+ </tr><tr>
+  <td>read by index range</td>
+  <td><code>li.subList(3, 5)</code><br>lower bound is <i>inclusive</i> from 0<br>upper bound is <i>exclusive</i></td>
+  <td>not available</td>
+  <td>not available</td>
+  <td>not available</td>
+  <td>not available</td>
+ </tr><tr>
+  <td>procedure methods to mutate contents</td>
+  <td>see <a href="#List_procedures">Procedure methods on a List</a></td>
+  <td>see <a href="#Dictionary_procedures">Procedure methods on a Dictionary</a></td>
+  <td>not available</td>
+  <td>not available</td>
+  <td>not available</td>
+ </tr><tr>
+  <td>function dot methods</td>
+  <td>see <a href="#List_functions">Function dot methods on a List</a></td>
+  <td>see <a href="#Dictionary_functions">Function dot methods on a Dictionary</a></td>
+  <td>see <a href="#Set_functions">Function dot methods on a Set</a></td>
+  <td>see <a href="#Stack_functions">Function dot methods on a Stack</a></td>
+  <td>see <a href="#Queue_functions">Function dot methods on a Queue</a></td>
+ </tr>
+</table>
+
+<h2 id="List">List</h2>
+<p>The <code>List</code> Type defines a data structure containing <i>n</i> items of any single Type,
+ including basic value Types, structure Types such as <code>List</code>,
+ and user-defined Types such as a Class.</p>
+<p>Items in a List of <i>n</i> items are indexed from <i>0</i> to <i>n-1</i>.</p>
+<p>To create a List, use either of:</p>
+<ul>
+ <li>Method <a href="#createList"><el-method>createList</el-method></a> to define its length and the initial value (and implicitly the Type) of its items:<br>
+  <code>variable aList set to createList(10, "no one")</code></li>
+ <li>Define an empty List of the required type, and use the procedure methods listed below to populate it:<br>
+ <codeblock>variable aList set to new List<of String>()</codeblock><br>
+ <code>call aList.initialise(10, "no one")</code><br>
+ <code>call aList.append("4")</code></li>
+</ul>
+<p>The item at index <el-id>ix</el-id> in List <el-id>aList</el-id> can then be changed using a <b>re-assign variable</b> instruction and a valid index value in square brackets:</p>
+<ul>
+ <li><code>set aList[ix] to "Smith"</code></li>
+</ul>
+<p>A List's size can be dynamically changed using the procedure methods listed below.</p>
+
+<h3 class="no-TOC" id="deconstructList">Deconstructing a List</h3>
+<p>A <code>List</code> may be split (deconstructed) into new named values using indexes and
+ the methods <el-method>head</el-method>, <a href="#tail"><el-method>tail</el-method></a> and <a href="#subList"><el-method>subList</el-method></a>:</p>
+<ul>
+ <li>To extract the first item in a List:<br>
+ <code>variable headItem set to myList[0]</code><br>
+ or<br>
+ <code>set heatItem to myList.head()</code>
+ </li><li>To form a new List of all but the first item in a List:<br>
+ <code>variable  tailList set to myList.tail()</code><br>
+ If the original list contains only one item, the new List will be the empty List.
+ </li><li>To get some other portion of a List, use the method <el-method>subList</el-method>:<br>
+ <code>set shortList to myList.subList(1,5)</code>
+</li>
+</ul>
+<p>In all these cases the items indexed must exist, else a runtime error will stop the program.</p>
+
+<h3 class="no-TOC" id="ListsOfLists">Lists of lists</h3>
+<h4 class="no-TOC">Two dimensional arrays</h4>
+<p>Understood as a grid, a 2D array is a List of 'columns' each of which is a List of 'row' items, i.e. it is a List of Lists in which the column number is the <i>x</i> coordinate, and the row number is the <i>y</i> coordinate.</p>
+<p>To create a 2D array that holds a value of a single Type in every cell, you define such a List of Lists thus:</p>
+<ul>
+ <li>Use method <a href="#createListOfLists"><el-method>createListOfLists</el-method></a> to set the size of, and initial value in, every <i>x,y</i> position:<br>
+   <code>variable array2D set to  createListOfLists(cols, rows, value)</code></li>
+<li>For the special case of <a href="#BlockGraphics">Block graphics</a>, use 40 columns and 30 rows or (more simply):<br>
+   <code>variable grid set to createBlockGraphics(value)</code></li>
+</ul>
+
+<p>The item at index <el-id>ix</el-id>,<el-id>iy</el-id> in a 2D array can be accessed and changed
+ using its two coordinates in square brackets:</p>
+<ul>
+  <li><code>variable value set to  array2D[ix][iy]</code></li>
+  <li><code>set array2D[ix][iy] to 7</code></li>
+</ul>
+
+<h4 class="no-TOC">Higher dimensional arrays</h4>
+<p>For a 3D array, you can, for example, define:</p>
+<ul>
+<li><codeblock>variable array3D set to new List<of List<of List<of Float>>>()</codeblock></li>
+</ul>
+<p>and refer to a cell using three indexes in square brackets.
+
+<h3 class="no-TOC" id="List_procedures">Procedure methods on a <code>List</code></h3>
+<p>Where an argument provides a new value for an item in a List, that value must be of the same Type as defined for the List's items.</p>
+<table class="tableMethod">
+ <tr>
+  <th>procedure<br>method</th>
+  <th>arguments</th>
+  <th>action</th>
+ </tr><tr id="append">
+  <td><el-method>append</el-method></td>
+  <td>value of <code>List</code> item's Type</td>
+  <td>the item is added to the end of the List</td>
+ </tr><tr id="appendList">
+  <td><el-method>appendList</el-method></td>
+  <td><code>List</code></td>
+  <td>the argument List is added to the end of the List</td>
+ </tr><tr id="initialise">
+  <td><el-method>initialise</el-method></td>
+  <td><code>Int</code>,<br>value of <code>List</code> item's Type</td>
+  <td>specify the number (&gt; 0) of items in the List,<br>and an initial value for every item.<br>
+      May be called at any time to redefine the List's size and initial values.</td>
+ </tr><tr id="insert">
+  <td><el-method>insert</el-method></td>
+  <td><code>Int</code>,<br>value of <code>List</code> item's Type</td>
+  <td>the item is inserted at the index given.<br>
+  If the index is negative it is counted from the end<br>
+  If the index is greater than the list's length, the item is inserted at the end</td>
+ </tr><tr id="prepend">
+  <td><el-method>prepend</el-method></td>
+  <td>value of <code>List</code> item's Type</td>
+  <td>the item is is added to the start of the List</td>
+ </tr><tr id="prependList">
+  <td><el-method>prependList</el-method></td>
+  <td><code>List</code></td>
+  <td>the argument List is added to the start of the List</td>
+ </tr><tr id="removeAll">
+  <td><el-method>removeAll</el-method></td>
+  <td>value of <code>List</code> item's Type</td>
+  <td>delete all items equal to the given item</td>
+ </tr><tr id="removeAt_List">
+  <td><el-method>removeAt</el-method></td>
+  <td><code>Int</code></td>
+  <td>delete the item at the argument index</td>
+ </tr><tr id="removeFirst">
+  <td><el-method>removeFirst</el-method></td>
+  <td>value of <code>List</code> item's Type</td>
+  <td>delete the first item equal to the given value</td>
+ </tr>
+</table>
+
+<h3 class="no-TOC" id="List_functions">Function dot methods on a <code>List</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>arguments</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="asSet_List">
+  <td><el-method>asSet</el-method></td>
+  <td>(none)</td>
+  <td><code>HashSet</code></td>
+  <td>a new Set containing all the <i>unique</i> items in the List</td>
+ </tr><tr id="contains_List">
+  <td><el-method>contains</el-method></td>
+  <td>value</td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the List contains the specified item<br>
+  &ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="equals_List">
+  <td><el-method>equals</el-method></td>
+  <td><code>List</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if list and argument are identical<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="filter_List">
+  <td><el-method>filter</el-method></td>
+  <td><code>lambda</code></td>
+  <td><code>List</code></td>
+  <td>a new List obtained from applying a lambda to the input List<br>
+  see <a href="#filter"><el-method>filter</el-method></a> in <a href="#HoFs">HoFs</a></td>
+ </tr><tr id="head_List">
+  <td><el-method>head</el-method></td>
+  <td>(none)</td>
+  <td><code>List</code> item's Type</td>
+  <td>the first item of the List (i.e. index = 0, which must exist)</td>
+ </tr><tr id="indexOf_List">
+  <td><el-method>indexOf</el-method></td>
+  <td>value of <code>List</code> item's Type</td>
+  <td><code>Int</code></td>
+  <td>the index of the first occurrence of the argument value in the List,<br>or -1 if no match is found</td>
+ </tr><tr id="join">
+  <td><el-method>join</el-method></td>
+  <td><code>List<of String></code></td>
+  <td><code>String</code></td>
+  <td>a single String that joins all the items in the list,<br>with the specified String (which can be empty) inserted between the items</td>
+ </tr><tr id="length_List">
+  <td><el-method>length</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the number of items in the List</td>
+ </tr><tr id="map_List">
+  <td><el-method>map</el-method></td>
+  <td><code>lambda</code></td>
+  <td><code>List</code></td>
+  <td>a new List obtained from applying a lambda to the input List<br>
+  see <a href="#map"><el-method>map</el-method></a> in <a href="#HoFs">HoFs</a></td>
+ </tr><tr id="maxBy_List">
+  <td><el-method>maxBy</el-method></td>
+  <td><code>lambda</code></td>
+  <td><code>List</code> item's Type</td>
+  <td>the list item corresponding to the maximum of the values returned by a lambda<br>
+  see <a href="#maxBy"><el-method>maxBy</el-method></a> in <a href="#HoFs">HoFs</a></td>
+ </tr><tr id="minBy_List">
+  <td><el-method>minBy</el-method></td>
+  <td><code>lambda</code></td>
+  <td><code>List</code> item's Type</td>
+  <td>the list item corresponding to the minimum of the values returned by a lambda<br>
+  see <a href="#minBy"><el-method>minBy</el-method></a> in <a href="#HoFs">HoFs</a></td>
+ </tr><tr id="notEqualTo_List">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>List</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if list and argument differ l<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="orderBy_List">
+  <td><el-method>orderBy</el-method></td>
+  <td><code>lambda</code></td>
+  <td><code>List</code></td>
+  <td>a new list with the items ordered according to the value returned by a lambda</td>
+ </tr><tr id="reduce_List">
+  <td><el-method>reduce</el-method></td>
+  <td>item of <code>List</code> item's Type,<br><code>lambda</code></td>
+  <td>return Type of lambda</td>
+  <td>the final value obtained by applying a lambda cumulatively to each item in the input List<br>
+  taking account of the first argument as an initial (and default return) value<br>
+  see <a href="#reduce"><el-method>reduce</el-method></a> in <a href="#HoFs">HoFs</a></td>
+ </tr><tr id="subList">
+  <td><el-method>subList</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>List</code></td>
+  <td>a new list that contains the items specified by the two positive integers (<i>m,n</i>) where<br>
+  <i>m</i> indexes the first item of the list required (counting from 0) and<br>
+  <i>n</i> indexes the item <i>after</i> the last item required (exclusive index)<br>
+  if <i>m</i> &ge; <i>n</i> the result is the empty list
+  </td><tr id="tail">
+  <td><el-method>tail</el-method></td>
+  <td>(none)</td>
+  <td><code>List</code> item's Type</td>
+  <td>all items except the first item in the List (i.e. index = 1..n, which must exist)</td>
+ </tr><tr id="toString_List">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a String that is a comma+space-separated list of the List's items, enclosed in square brackets</td>
+ </tr><tr id="withAppend">
+  <td><el-method>withAppend</el-method></td>
+  <td>item of <code>List</code> item's Type</td>
+  <td><code>List</code></td>
+  <td>a new List lengthened with the item added after the end</td>
+ </tr><tr id="withAppend_List">
+  <td><el-method>withAppendList</el-method></td>
+  <td><code>List</code> of same Type</td>
+  <td><code>List</code></td>
+  <td>a new List lengthened by appending the given List</td>
+ </tr><tr id="withInsert">
+  <td><el-method>withInsert</el-method></td>
+  <td><code>Int</code>,<br>value of <code>List</code> item's Type</td>
+  <td><code>List</code></td>
+  <td>a new List with the item inserted after the item at the given index position</td>
+</tr><tr id="withPrepend">
+  <td><el-method>withPrepend</el-method></td>
+  <td>value of <code>List</code> item's Type</td>
+  <td><code>List</code></td>
+  <td>a new List lengthened with the item added before the beginning</td>
+ </tr><tr id="withPrepend_List">
+  <td><el-method>withPrependList</el-method></td>
+  <td><code>List</code> of same Type</td>
+  <td><code>List</code></td>
+  <td>a new List lengthened by prepending the given List</td>
+ </tr><tr id="withRemoveAll">
+  <td><el-method>withRemoveAll</el-method></td>
+  <td>value of <code>List</code> item's Type</td>
+  <td><code>List</code></td>
+  <td>a new List with items equal to the given item removed</td>
+ </tr><tr id="withRemoveAt_List">
+  <td><el-method>withRemoveAt</el-method></td>
+  <td><code>Int</code></td>
+  <td><code>List</code></td>
+  <td>a new List with the item at the given index removed</td>
+ </tr><tr id="withRemoveFirst">
+  <td><el-method>withRemoveFirst</el-method></td>
+  <td>value of <code>List</code> item's Type</td>
+  <td><code>List</code></td>
+  <td>a new List with the first item equal to the given item removed</td>
+ </tr><tr id="withSet_List">
+  <td><el-method>withSet</el-method></td>
+  <td><code>Int</code>,<br>value of <code>List</code> item's Type</td>
+  <td><code>List</code></td>
+  <td>a new List with the item replacing that at the given index</td>
+ </tr>
+</table>
+
+<h2 id="Dictionary">Dictionary</h2>
+<p>A Dictionary is like a List whose items are pairs but, instead of having a numeric index, each item has a <i>key</i> plus  an  associated <i>value</i>.
+The Dictionary is a set of <i>key:value</i> pairs.</p>
+<p>The key's Type must be one of <code>Int</code>, <code>Float</code>, <code>String</code> or <code>Boolean</code>.
+ The values may be of any Type. The Types of both keys and values are fixed when the Dictionary is created.</p>
+
+<h3 class="no-TOC" id="Dictionary_procedures">Procedure method on a <code>Dictionary</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>procedure<br>method</th>
+  <th>argument<br>Types</th>
+  <th>action</th>
+ </tr><tr id="removeAt_Dictionary">
+  <td><el-method>removeAt</el-method></td>
+  <td>key's Type</td>
+  <td>delete the key:pair at the given key (if it exists)</td>
+ </tr>
+</table>
+
+<h3 class="no-TOC" id="Dictionary_functions">Function dot methods on a <code>Dictionary</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="equals_Dictionary">
+  <td><el-method>equals</el-method></td>
+  <td><code>Dictionary</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if dictionary and argument are identical<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="hasKey_Dictionary">
+  <td><el-method>hasKey</el-method></td>
+  <td>item of Dictionary key's Type</td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the Dictionary contains the given key<br>&ndash; <el-id>false</el-id> otherwise</td>
+</tr><tr id="keys_Dictionary">
+  <td><el-method>keys</el-method></td>
+  <td>(none)</td>
+  <td><code>List</code></td>
+  <td>a List containing the keys</td>
+</tr><tr id="notEqualTo_Dictionary">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>Dictionary</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if dictionary and argument differ <br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="toString_Dictionary">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a string that is a comma+space-separated list of the Dictionary's <i>key:value</i> pairs, enclosed in square brackets</td>
+ </tr><tr id="values_Dictionary">
+  <td><el-method>values</el-method></td>
+  <td>(none)</td>
+  <td><code>List</code></td>
+  <td>a List containing the values</td>
+</tr><tr id="withSet_Dictionary">
+  <td><el-method>withSet</el-method></td>
+  <td>item of Dictionary key's Type,<br>item of Dictionary value's Type</td>
+  <td><code>Dictionary</code></td>
+  <td>a new Dictionary with the value replacing what was at the specified key</td>
+ </tr><tr id="withRemoveAt_Dictionary">
+  <td><el-method>withRemoveAt</el-method></td>
+  <td>item of Dictionary key's Type</td>
+  <td><code>Dictionary</code></td>
+  <td>a new Dictionary with the <i>key:value</i> pair removed from the specified key</td>
+ </tr>
+</table>
+
+<h2 id="HashSet">HashSet</h2>
+<p>A <code>HashSet</code> (also referred to merely as a Set) is a standard data structure containing Set members, that works somewhat like a <code>List</code> with two important differences:</p>
+<ul>
+ <li>The value of a Set member may appear only once: if a member being added to a <code>HashSet</code> has the same value as an existing member in the Set then the Set remains the same as before.</li>
+ <li>The values in a <code>HashSet</code> are not indexed: two Sets with the same contents but defined in a different sequence, can still be compared correctly with methods <el-method>equals</el-method> and <el-method>notEqualTo</el-method>.</li>
+ <li>There are no methods that modify an existing Set but several, e.g. <el-method>add</el-method> and <el-method>remove</el-method>,
+ return a new <code>HashSet</code> that is based on the original Set or Sets with specified differences.</li>
+</ul>
+<p>This enables a Set to work like a mathematical set so that it is possible to perform standard set operations such as <el-method>union</el-method> and <el-method>intersection</el-method>.</p>
+<p>When creating a <code>HashSet</code>, the Type of its members must be specified in the form
+ <code>HashSet</code>&lt;of <code>String</code>&gt;</p>
+<p>You can add members: individually with <el-method>add</el-method>, or multiply with <el-method>addFromList</el-method>.
+And you can create a new <code>HashSet</code> from an existing <code>List</code> by calling <el-method>asSet</el-method> on it.</p>
+<p>Example of creating a Set from a literal List and changing its content:</p>
+
+<table class="tablePlain"><!--source="set.elan"-->
+<tr>
+ <td>
+  <code>variable st set to new HashSet</code>&lt;of <code>Int</code>()<br>
+  <code>set st to st.addFromList([3, 5, 7])</code>
+  <br>call print(st.length())
+  </td><td>
+  <br><br>&#x27f6;
+  </td><td><br><br>3
+ </td>
+</tr><tr>
+ <td>
+  <code>set st to st.add(7)</code><br>
+  <code>call print(st.length())</code>
+ </td><td>
+ <br>&#x27f6;
+ </td><td>
+ <br>3
+ </td>
+</tr><tr>
+ <td>
+  <code>set st to st.remove(3)</code><br>
+  <code>call print(st.length())</code></td>
+<td><br>&#x27f6;</td><td><br>2</td>
+</tr><tr>
+ <td>
+  <code>set st to st.remove(3)</code><br>
+  <code>call print(st.length())</code></td>
+ <td><br>&#x27f6;</td><td><br>2</td>
+</tr><tr>
+ <td><code>call print(st)</code></td>
+ <td>&#x27f6;</td><td>[5, 7]</td>
+</tr>
+</table>
+
+<h3 class="no-TOC" id="Set_functions">Function dot methods on a <code>HashSet</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="add">
+  <td><el-method>add</el-method></td>
+  <td>value<br>(of <code>HashSet</code> members' Type)</td>
+  <td><code>HashSet</code></td>
+  <td>a new Set extended with the item, provided it differs from all of the Set's current members</td>
+ </tr><tr id="addFromList">
+  <td><el-method>addFromList</el-method></td>
+  <td><code>List</code></td>
+  <td><code>HashSet</code></td>
+  <td>a new Set extended with those items from the List that are not already in the Set</td>
+ </tr><tr id="asList">
+  <td><el-method>asList</el-method></td>
+  <td>(none)</td>
+  <td><code>List</code></td>
+  <td>a List containing the Set's members as List items</td>
+ </tr><tr id="contains_Set">
+  <td><el-method>contains</el-method></td>
+  <td>value<br>(of <code>HashSet</code> members' Type)</td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the Set contains the item<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="difference">
+  <td><el-method>difference</el-method></td>
+  <td><code>HashSet</code></td>
+  <td><code>HashSet</code></td>
+  <td>a Set containing those members of the Set that do not occur in the argument Set</td>
+ </tr><tr id="equals_Set">
+  <td><el-method>equals</el-method></td>
+  <td><code>HashSet</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if Set and argument Set contain identical values<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="notEqualTo_Set">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>HashSet</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if Set and argument Set differ in their values<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="intersection">
+  <td><el-method>intersection</el-method></td>
+  <td><code>HashSet</code></td>
+  <td><code>HashSet</code></td>
+  <td>a Set containing those members common to both the Set and the argument Set</td>
+ </tr><tr id="isDisjointFrom">
+  <td><el-method>isDisjointFrom</el-method></td>
+  <td><code>HashSet</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the Set has no items in common with the argument Set<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="isSubsetOf">
+  <td><el-method>isSubsetOf</el-method></td>
+  <td><code>HashSet</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if all the Set's items are also in the argument Set<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="isSupersetOf">
+  <td><el-method>isSupersetOf</el-method></td>
+  <td><code>HashSet</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the Set contains all the  items that are in the argument Set<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="length_Set">
+  <td><el-method>length</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the number of members of the Set</td>
+ </tr><tr id="remove">
+  <td><el-method>remove</el-method></td>
+  <td>value<br>(of <code>HashSet</code> members' Type)</td>
+  <td><code>HashSet</code></td>
+  <td>a new Set with the argument item removed (if present)</td>
+ </tr><tr id="toString_Set">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a string that is a comma+space-separated list of the Set's members, enclosed in brackets</td>
+ </tr><tr id="union">
+  <td><el-method>union</el-method></td>
+  <td><code>HashSet</code></td>
+  <td><code>HashSet</code></td>
+  <td>a Set containing all the unique members of the Set and the argument Set (i.e. no duplicates)</td>
+ </tr>
+ </table>
+
+<div id="Queue"></div>
+<h2 id="Stack">Stack and Queue</h2>
+<ul>
+ <li><code>Stack</code> and <code>Queue</code> are similar data structures except that <code>Stack</code> is 'LIFO' (last in, first out), while <code>Queue</code> is FIFO (first in, first out).
+ The names of the methods for adding and removing items are different, but there are also common methods.</li>
+ <li>Both a <code>Stack</code> and a <code>Queue</code> are defined with the Type of the items that they can contain, similarly to how <code>List</code> has a specified item Type, though with different syntax.
+ The Type is specified in the form shown below e.g. <code>Stack<of String></code>, <code>Queue<of Int></code>.</li>
+ <li>Both <code>Stack </code>and<code> Queue</code> are dynamically extensible, like a <code>List</code>. There is no need (or means) to specify a size limit
+ as they can continue to expand (eventually until the computer's memory limit is reached).</li>
+ <li>The same syntax is used to specify the Type if you want to pass a <code>Stack</code> or <code>Queue</code> into a <b>function</b>, or specify it as the <b>return</b> Type.</li>
+ <li><code>Stack</code> and <code>Queue</code> have two methods in common: <el-method>length</el-method> and <el-method>peek</el-method>.
+ <el-method>peek</el-method> returns the next item to be removed, without actually removing it.</li>
+ <li>The methods for adding and removing an item are different for <code>Stack</code> and <code>Queue</code>, as shown here:</li>
+</ul>
+
+<h3 class="no-TOC" id="Stack_functions">Function dot methods on a <code>Stack</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Types</th>
+  <th>returns</th>
+ </tr><tr id="equals_Stack">
+  <td><el-method>equals</el-method></td>
+  <td><code>Stack</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if stack and argument are identical<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="notEqualTo_Stack">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>Stack</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if stack and argument differ<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="push">
+  <td><el-method>push</el-method></td>
+  <td>value<br>(of <code>Stack</code> item's Type)</td>
+  <td><code>Stack</code></td>
+  <td>the Stack with the value added to its top</td>
+ </tr><tr id="pop">
+  <td><el-method>pop</el-method></td>
+  <td>(none)</td>
+  <td><code>Stack</code> item,<br><code>Stack</code></td>
+  <td>the topmost item of the Stack, and the Stack with the item removed</td>
+ </tr><tr id="peek_Stack">
+  <td><el-method>peek</el-method></td>
+  <td>(none)</td>
+  <td><code>Stack</code> item</td>
+  <td>the topmost item on the Stack (without altering the Stack)</td>
+ </tr><tr id="length_Stack">
+  <td><el-method>length</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the number of items in the Stack</td>
+ </tr><tr id="toString_Stack">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a String that is a comma+space-separated list of the Stack's items, enclosed in square brackets,<br>
+   the last item pushed being the first in the String</td>
+ </tr>
+</table>
+
+<h3 class="no-TOC" id="Queue_functions">Function dot methods on a <code>Queue</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Types</th>
+  <th>returns</th>
+ </tr><tr id="equals_Queue">
+  <td><el-method>equals</el-method></td>
+  <td><code>Queue</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if queue and argument are identical<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="notEqualTo_Queue">
+  <td><el-method>notEqualTo</el-method></td>
+  <td><code>Queue</code></td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if queue and argument differ<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="enqueue">
+  <td><el-method>enqueue</el-method></td>
+  <td>value<br>(of <code>Queue</code> item's Type)</td>
+  <td><code>Queue</code></td>
+  <td>the Queue with the item added to the end of the Queue</td>
+ </tr><tr id="dequeue">
+  <td><el-method>dequeue</el-method></td>
+  <td>(none)</td>
+  <td><code>Queue</code> item,<br><code>Queue</code></td>
+  <td>the next item in the Queue, and the Queue  with the item removed</td>
+ </tr><tr id="peek_Queue">
+  <td><el-method>peek</el-method></td>
+  <td>(none)</td>
+  <td><code>Queue</code> item</td>
+  <td>the next item in the Queue (without altering the Queue)</td>
+ </tr><tr id="length_Queue">
+  <td><el-method>length</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the number of items in the Queue</td>
+ </tr><tr id="toString_Queue">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>a String that is a comma+space-separated list of the Queue's items, enclosed in square brackets,<br>
+   the first item enqueued being the first in the String</td>
+</tr>
+</table>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using <code>Stack</code> and <code>Queue</code></h4>
+<div class="acc-body">
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Results of <el-method>push</el-method> and <el-method>pop</el-method> on strings in a <code>Stack</code>:</p>
+<table class="tablePlain">
+<tr><td>
+<codeblock>
+main
+  variable sk set to new Stack<of String>()
+  call print(sk.length())
+  set sk to sk.push("apple")
+  set sk to sk.push("banana")
+  set sk to sk.push("cherry")
+  call print(sk.length())
+  call print(sk)
+  call print(sk.peek())
+  call print(sk.pop())
+  call print(sk)
+  call print(sk.pop().item_0)
+  call print(sk)
+  set sk to sk.pop().item_1
+  call print(sk)
+end main
+</codeblock>
+</td>
+<td><br><br>&#x27f6;<br><br><br><br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br><br>&#x27f6;</td>
+<td><br><br>0<br><br><br><br>3<br>[cherry, banana, apple]<br>cherry<br>(cherry, [banana, apple])<br>[cherry, banana, apple]<br>cherry<br>[cherry, banana, apple]<br><br>[banana, apple]</td>
+</tr>
+</table>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Results of <el-method>enqueue</el-method> and <el-method>dequeue</el-method> on strings in a <code>Queue</code>:</p>
+<table class="tablePlain">
+<tr><td>
+<codeblock>
+main
+  variable qu set to new Queue<of String>()
+  call print(qu.length())
+  set qu to qu.enqueue("apple")
+  set qu to qu.enqueue("banana")
+  set qu to qu.enqueue("cherry")
+  call print(qu.length())
+  call print(qu)
+  call print(qu.peek())
+  call print(qu.dequeue())
+  call print(qu)
+  call print(qu.dequeue().item_0)
+  call print(qu)
+  set qu to qu.dequeue().item_1
+  call print(qu)
+end main
+</codeblock>
+</td>
+<td><br><br>&#x27f6;<br><br><br><br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br><br>&#x27f6;</td>
+<td><br><br>0<br><br><br><br>3<br>[apple, banana, cherry]<br>apple<br>(apple, [banana, cherry])<br>[apple, banana, cherry]<br>apple<br>[apple, banana, cherry]<br><br>[banana, cherry]</td>
+</tr>
+</table>
+<hr>
+</div></div>
+<h2 id="Tuple">Tuple</h2>
+<p>A Tuple is not a value or data structure Type. Rather, it is a small <i>collection</i> of values
+of differing Types held together and referenced by a single identifier.</p>
+<p>It may be considered a lightweight alternative to defining a Class for some specific purpose.</p>
+<p>The items in a Tuple may be literal or named values.</p>
+<p>Tuples are referred to as 2-Tuples, 3-Tuples, etc. according to the number of values they hold.</p>
+<p>An item within a Tuple may be another Tuple, giving nested Tuples.</p>
+<p>A <b>function</b> may return a <b>Tuple</b>.</p>
+<p>A Tuple differs from a List in that:</p>
+<ul>
+ <li>A Tuple may hold items of <i>different</i> Types.</li>
+ <li>A Tuple is <i>immutable</i>: you may read, but not modify, the values it contains.
+  Once defined, Tuples are effectively read-only.<br>Nor, unlike a <code>List</code>, can you copy a Tuple
+  from an existing one with specified differences except by referencing each of its items (see below).</li>
+</ul>
+<p>Common uses include:</p>
+<ul>
+ <li>Holding a pair of <i>x,y</i> coordinates (each of Type <code>Float</code>) as a single unit.</li>
+ <li>Allowing a <b>function</b> to pass back a result comprised of both a message in a <code>String</code> and a <code>Boolean</code> indicating whether the operation was successful.</li>
+ <li>Returning both an updated copy of a data structure and the value of an item from it, e.g. from method <el-method>pop</el-method> on a <a href="#Stack"><el-method> Stack</el-method></a>.</li>
+</ul>
+
+<h3 class="no-TOC">Defining a Tuple</h3>
+<p>A new Tuple is defined by a list of items separated by commas and  enclosed in round brackets:</p>
+
+<code>variable point set to (3, 4)</code>
+<code>variable t set to (3, "apple", true)</code>
+
+<h3 class="no-TOC" id="deconstructTuple">Accessing items in a Tuple</h3>
+<p id="item_N">The items in a Tuple may be individually addressed by a dot reference and its special properties <el-id>item_</el-id>N, thus:</p>
+<table class="tablePlain">
+<tr>
+ <td>
+<codeblock>
+main
+  variable t set to (3, "apple", true)
+  call print(t)
+  call print(t.item_0)
+  call print(t.item_1)
+  call print(t.item_2)
+end main
+</codeblock>
+ </td>
+ <td><br>&#x27f6;<br>&#x27f6;<br>&#x27f6;<br>&#x27f6;</td>
+ <td><br>(3, apple, true)<br>3<br>apple<br>true</td>
+ </tr>
+</table>
+
+<p>And where p1 and p2 represent points each with 2-Tuples containing two <code>Float</code> values, this <b>function</b> returns the distance between them:</p>
+<codeblock>
+function distanceBetween(p1 as (Float, Float), p2 as (Float, Float)) returns Float
+  return sqrt(pow(p2.item_0 - p1.item_0, 2) + pow(p2.item_1 - p1.item_1, 2))
+end function
+</codeblock>
+<p>Note that the appropriate <el-id>item_</el-id>Ns will be listed in the Editor's drop-down menu options for the referenced Tuple.</p>
+
+<h3 class="no-TOC">Function dot methods on a Tuple</h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot methods</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="equals_Tuple">
+  <td><el-method>equals</el-method></td>
+  <td>Tuple</td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if the Types, item values and order all equal those of the argument,<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="notEqualTo_Tuple">
+  <td><el-method>notEqualTo</el-method></td>
+  <td>Tuple</td>
+  <td><code>Boolean</code></td>
+  <td><el-id>true</el-id> if any of the Types, item values and order differ from those of the argument,<br>&ndash; <el-id>false</el-id> otherwise</td>
+ </tr><tr id="toString_Tuple">
+  <td><el-method>toString</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>String containing Tuple's items surrounded by brackets</td>
+ </tr>
+</table>
+
+<h1 id="Graphics">Graphic Types</h1>
+
+<h2 id="BlockGraphics">Block graphics</h2>
+<p>Block graphics provides a simple way to create low resolution graphics, ideal for simple but engaging games for example.</p>
+<p>The graphics are defined and displayed on a grid that is 40 blocks wide by 30 blocks high.</p>
+<p>Each block is be rendered as a solid colour.</p>
+<p>An example of block graphics to produce a rapidly changing pattern of coloured blocks:</p>
+
+<codeblock>
+main
+  variable grid set to createBlockGraphics(white)
+  while true
+    variable x set to randint(0, 39)
+    variable y set to randint(0, 29)
+    variable colour set to randint(0, white - 1)
+    set grid[x][y] to colour
+    call displayBlocks(grid)
+  end while
+end main
+</codeblock>
+
+<h4 class="no-TOC" id="createBlockGraphics">Notes</h4>
+<ul>
+ <li>The definition of the grid is made using the system method <el-method>createBlockGraphics</el-method> which initialises
+  a <code>List</code>&lt;of <code>List</code>&lt;of <code>Int</code>&gt;&gt; structure
+  containing 40 columns &times; 30 rows.</li>
+ <li>Each cell of the grid is referenced by integers <i>x</i>,<i>y</i> where <i>x</i> is in [0..39] and <i>y</i> is in [0..29].</li>
+ <li><i>x</i>,<i>y</i> is 0,0 at the top left cell of the grid, positive <i>x</i> to the right, positive <i>y</i> downwards.</li>
+ <li>You may create multiple such structures holding different patterns of blocks, and switch between them
+ just by passing the required one as the argument to method <el-method>displayBlocks</el-method>.</li>
+ <li>Any <code>List</code>&lt;of <code>List</code>&lt;of <code>Int</code>&gt;&gt; structure of the same
+ 40 &times; 30 dimensions can be the argument to method <el-method>displayBlocks</el-method>.</li>
+ <li>A colour is specified as an <code>Int</code>, as described under <a href="#Colours">Colours</a>.</li>
+</ul>
+
+<h2 id="TurtleGraphics">Turtle graphics</h2>
+<p>Turtle graphics are implemented with output to the IDE's display pane, i.e. the 'paper' on which the turtle draws.</p>
+<p>The area is 200 turtle units wide by 150 turtle units high, and both integer and floating point values of turtle units can be used.
+ If a turtle is placed or moved outside the 200 &times; 150 area boundary, it will not cause an error,
+ but the turtle and any lines drawn outside the boundary will not be visible.</p>
+<p>The origin for turtle units (0,0) is at the centre of the area: positive <i>x</i> rightwards, positive <i>y</i> upwards.
+So the top left corner of the display is at (-100,75).</p>
+<p>A new turtle's default starting position is at (0,0) facing upwards (<el-id>heading</el-id> is 0), from where a <el-method>move</el-method>  will be  in the <i>y</i> direction.</p>
+<p>You can move and turn a turtle, causing lines to be drawn, whether or not the turtle is showing.</p>
+<h3 class="no-TOC" id="Turtle_procedures">Procedure methods on a Turtle</h3>
+<table class="tableMethod">
+ <tr>
+  <th>procedure<br>method</th>
+  <th>argument<br>Types</th>
+  <th>action</th>
+ </tr><tr id="clearAndReset">
+  <td><el-method>clearAndReset</el-method></td>
+  <td>(none)</td>
+  <td>clears the turtle display and moves the turtle to its starting position and heading</td>
+ </tr><tr id="hide">
+  <td><el-method>hide</el-method></td>
+  <td>(none)</td>
+  <td>makes the turtle invisible in the display</td>
+ </tr><tr id="move">
+  <td><el-method>move</el-method></td>
+  <td><code>Int</code> or <code>Float</code></td>
+  <td>moves the turtle the specified number of turtle units in the direction of its heading or,<br>if negative, in the opposite direction</td>
+ </tr><tr id="moveTo">
+  <td><el-method>moveTo</el-method></td>
+  <td><code>Int</code> or <code>Float</code>,<br>
+      <code>Int</code> or <code>Float</code></td>
+  <td>moves the turtle to the specified <i> x,y</i> position, drawing its path if its pen is down</td>
+ </tr><tr id="penColour">
+  <td><el-method>penColour</el-method></td>
+  <td><code>Int</code></td>
+  <td>changes the <a href="#Colours">colour</a> of its path in the display to the literal or named value specified</td>
+ </tr><tr id="penDown">
+  <td><el-method>penDown</el-method></td>
+  <td>(none)</td>
+  <td>makes the turtle's subsequent moves leave a trace of its path in the display</td>
+ </tr><tr id="penUp">
+  <td><el-method>penUp</el-method></td>
+  <td>(none)</td>
+  <td>makes the turtle's subsequent moves leave no trace of its path in the display</td>
+ </tr><tr id="penWidth">
+  <td><el-method>penWidth</el-method></td>
+  <td><code>Int</code> or <code>Float</code></td>
+  <td>changes the width of the line tracing the turtle's path in the display<br>default (and minimum) is 1 </td>
+ </tr><tr id="placeAt">
+  <td><el-method>placeAt</el-method></td>
+  <td><code>Int</code> or <code>Float</code>,<br>
+      <code>Int</code> or <code>Float</code></td>
+  <td>places or repositions the turtle at the <i>x,y</i> position specified without drawing a path</td>
+ </tr><tr id="show">
+  <td ><el-method>show</el-method></td>
+  <td>(none)</td>
+  <td>makes the turtle visible in the display as a green blob<br>marked with a black radius that indicates its heading</td>
+ </tr><tr id="turn">
+  <td><el-method>turn</el-method></td>
+  <td><code>Int</code> or <code>Float</code></td>
+  <td>turns the turtle through the specified number of degrees clockwise or,<br>if negative, anticlockwise</td>
+ </tr><tr id="turnToHeading">
+  <td><el-method>turnToHeading</el-method></td>
+  <td><code>Int</code> or <code>Float</code></td>
+  <td>turns the turtle to face in the direction specified in degrees<br>where 0 is upward and increasing values go clockwise from there</td>
+ </tr>
+</table>
+<h3 class="no-TOC" id="Turtle_properties">Properties of a Turtle</h3>
+<p>The current location and heading of the turtle may be read using the properties
+  <el-id>x</el-id>, <el-id>y</el-id>, and <el-id>heading</el-id>.</p>
+<table class="tableMethod">
+ <tr>
+  <th colspan="2">Property</th>
+  <th colspan="2"></th>
+ </tr><tr>
+  <th>name</th>
+  <th>Type</th>
+  <th>description</th>
+  <th>default</th>
+ </tr><tr id="heading">
+  <td><el-id>heading</el-id></td>
+  <td><code>Float</code></td>
+  <td>the direction in which the turtle is pointing<br>in degrees clockwise from North</td>
+  <td>0.0 degrees,<br>i.e. upward in the display</td>
+ </tr><tr id="xy_Turtle">
+  <td><el-id>x</el-id>, <el-id>y</el-id></td>
+  <td><code>Float</code>, <code>Float</code></td>
+  <td>the <i>x,y</i> coordinates of the turtle's current position</td>
+  <td>0.0, 0.0</td>
+ </tr>
+</table>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using turtle graphics</h4>
+<div class="acc-body">
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To draw a square:</p>
+<codeblock>
+main
+  variable t set to new Turtle()
+  call t.placeAt(-75, 50)
+  call t.show()
+  for i in range(1, 5)
+    call t.turn(90)
+    call t.move(80)
+    call sleep(0.5)
+  end for
+end main
+</codeblock>
+<p><img src="images/turtleSquare.png" width="270" height="290" alt="Turtle square"></p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To draw a fractal snowflake, using a procedure and recursion:</p>
+<codeblock>
+main
+  variable t set to new Turtle()
+  call t.placeAt(-50, 30)
+  call t.turn(90)
+  call t.show()
+  for i in range(1, 4)
+    call drawSide(side, t)
+    call t.turn(120)
+  end for
+end main
+constant side set to 100
+procedure drawSide(length as Float, t as Turtle)
+  if (length > 1) then
+    variable third set to length/3
+    call drawSide(third, t)
+    call t.turn(-60)
+    call drawSide(third, t)
+    call t.turn(120)
+    call drawSide(third, t)
+    call t.turn(-60)
+    call drawSide(third, t)
+  else
+    call t.move(length)
+  end if
+end procedure
+</codeblock>
+<p><img src="images/turtleSnowflake.png" width="270" height="295" alt="Turtle snowflake"></p>
+<hr>
+</div></div>
+
+<h2 id="VectorGraphics">Vector graphics</h2>
+<p>Vector graphics are implemented using the SVG (Scalable Vector Graphics) Html tag &lt;svg&gt;, and are output to the display pane in the user interface.</p>
+<p>The area is 100 units wide by 75 units high, and both integer and floating point values of the units can be used.</p>
+<p>The origin of the units (0,0) is at the top left corner of the display: positive <i>x</i> rightwards, positive <i>y</i> downwards.
+So for example the centre of the display is at (50, 37.5).</p>
+<p>The names of the shapes broadly correspond to the names of SVG tags:</p>
+<ul>
+ <li id="CircleVG"> <code>CircleVG</code> for &lt;circle../&gt;</li>
+ <li id="ImageVG"><code>ImageVG</code> for &lt;image../&gt;</li>
+ <li id="LineVG"><code>LineVG</code> for &lt;line../&gt;</li>
+ <li id="RectangleVG"><code>RectangleVG</code> for &lt;rect../&gt;</li>
+</ul>
+<p>The properties of these shapes are named to reflect the attributes used in the SVG tags but some names differ. For example, SVG's <code>stroke-width</code>
+ is set with property <el-id>strokeWidth</el-id>, to make it a valid <a href="LangRef.html#Identifier">identifier</a>.
+Also <code>stroke</code> and <code>fill</code> are set by the properties <el-id>strokeColour</el-id> and <el-id>fillColour</el-id>.</p>
+
+<p>In addition, graphics may be displayed from any valid string of SVG tags, as described in <a href="#RawVG"><code>RawVG</code></a>.</p>
+
+<h3 class="no-TOC" id="VectorGraphic">Defining Vector graphic shapes</h3>
+<p>A set of SVG shapes is defined in either a <code>List<of VectorGraphic></code> or a <code>List</code> of any specific Type of <code>VectorGraphic</code>
+ (e.g. <code>List<of CircleVG></code>) by using the <code>List</code> <el-method>append</el-method> method.</p>
+<p><code>VectorGraphic</code> is the abstract superclass of all ..VG shapes. You use it when you want to define a <code>List</code> holding different types of shape.</p>
+<p>Adding a shape returns a new instance of the list which must be assigned to a new or existing variable.</p>
+<p>The constructors for the VG Types require arguments defining the attributes of the relevant SVG tags, so defaults are supplied from the Class properties,
+as shown in the table below.</p>
+<p>To change the value of property 'p..', call the <el-method>setP..</el-method> procedure method on the vector graphic or,
+in a <b>function</b>, use the <el-method>withP..</el-method> dot method on the vector graphic, in either case specifying new values in the arguments.</p>
+<p>The <el-id>fillColour</el-id> and <el-id>strokeColour</el-id> properties may be specified as described under <a href="#Colours">Colours</a>.
+Only <el-id>fillColour</el-id> can be specified as <el-id>transparent</el-id>.</p>
+<p>Note that the <el-id>height</el-id> and <el-id>width</el-id> properties of an image are also dependent on the dimensions of the original graphic file.</p>
+
+<h3 class="no-TOC" id="displayVectorGraphics">Displaying Vector graphic shapes</h3>
+<p>As with <a href="#BlockGraphics">Block</a> graphics, the assembled list of shapes is not displayed until call procedure <el-method>displayVectorGraphics</el-method> with the list as its argument, thus allowing  you to make multiple changes before display.</p>
+<p>And as with using SVG in Html, the shapes are drawn in the order in which they are added to the <code>VectorGraphic</code> instance.
+Later shapes are positioned in front of earlier ones.</p>
+
+<h3 class="no-TOC">Function dot methods on Vector graphic shapes</h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>on<br>Type</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="asHtml">
+  <td><el-method>asHtml</el-method></td>
+  <td><code>ImageVG</code></td>
+  <td>none</td>
+  <td><code>String</code></td>
+  <td>string containing the Html &lt;img&gt; tag filled with the image's URL and attribute values</td>
+ </tr><tr id="asSVG_Circle">
+  <td><el-method>asSVG</el-method></td>
+  <td><code>CircleVG</code></td>
+  <td>none</td>
+  <td><code>String</code></td>
+  <td>string containing the SVG &lt;circle&gt; tag filled with the circle's attribute values</td>
+ </tr><tr id="asSVG_Image">
+  <td><el-method>asSVG</el-method></td>
+  <td><code>ImageVG</code></td>
+  <td>none</td>
+  <td><code>String</code></td>
+  <td>string containing the SVG &lt;image&gt; tag filled with the image's URL and attribute values</td>
+ </tr><tr id="asSVG_Line">
+  <td><el-method>asSVG</el-method></td>
+  <td><code>LineVG</code></td>
+  <td>none</td>
+  <td><code>String</code></td>
+  <td>string containing the SVG &lt;line&gt; tag filled with the line's attribute values</td>
+ </tr><tr id="asSVG_Ractangle">
+  <td><el-method>asSVG</el-method></td>
+  <td><code>RectangleVG</code></td>
+  <td>none</td>
+  <td><code>String</code></td>
+  <td>string containing the SVG &lt;rectangle&gt; tag filled with the rectangle's attribute values</td>
+ </tr>
+</table>
+
+<h3 class="no-TOC" id="VG_properties">Properties of Vector graphic shapes</h3>
+<p>This table lists the properties of the Vector graphic shapes and their default values,
+together with the <b>procedure</b> and <b>function</b> methods provided to alter their values in a given instance.</p>
+<table class="tableProperty">
+ <tr>
+  <th colspan="2">Property</th>
+  <th colspan="4">Vector graphic shape</th>
+  <th colspan="2">Property</th>
+  <th colspan="2">Method</th>
+ </tr><tr>
+  <th>name</th>
+  <th>Type</th>
+  <th>CircleVG</th>
+  <th>ImageVG</th>
+  <th>LineVG</th>
+  <th>RectangleVG</th>
+  <th>description</th>
+  <th>default</th>
+  <th>procedure</th>
+  <th>function</th>
+ </tr><tr>
+  <td id="alt"><el-id>alt</el-id></td>
+  <td><code>String</code></td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td></td>
+  <td>alternate textual description (for accessibility)</td>
+  <td>empty string</td>
+  <td><el-method>setAlt</el-method></td>
+  <td><el-method>withAlt</el-method></td>
+ </tr><tr>
+  <td id="centreX"><el-id>centreX</el-id></td>
+  <td><code>Float</code></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>horizontal position of circle centre</td>
+  <td>50</td>
+  <td><el-method>setCentreX</el-method></td>
+  <td><el-method>withCentreX</el-method></td>
+ </tr><tr>
+  <td id="centreY"><el-id>centreY</el-id></td>
+  <td><code>Float</code></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>vertical position of circle centre</td>
+  <td>37.5</td>
+  <td><el-method>setCentreY</el-method></td>
+  <td><el-method>withCentreY</el-method></td>
+ </tr><tr>
+  <td id="fillColour"><el-id>fillColour</el-id></td>
+  <td><code>Int</code></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td>colour to fill the shape</td>
+  <td><el-id>yellow</el-id></td>
+  <td><el-method>setFillColour</el-method></td>
+  <td><el-method>withFillColour</el-method></td>
+ </tr><tr>
+  <td id="height"><el-id>height</el-id></td>
+  <td><code>Float</code></td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td>height to render the shape or the image</td>
+  <td>Image: 13.2<br>Rectangle: 20</td>
+  <td><el-method>setHeight</el-method></td>
+  <td><el-method>withHeight</el-method></td>
+ </tr><tr>
+  <td id="radius"><el-id>radius</el-id></td>
+  <td><code>Float</code></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>radius of circle</td>
+  <td>10</td>
+  <td id="setRadius"><el-method>setRadius</el-method></td>
+  <td id="withRadius"><el-method>withRadius</el-method></td>
+ </tr><tr>
+  <td id="strokeColour"><el-id>strokeColour</el-id></td>
+  <td><code>Int</code></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td>&#x2714;</td>
+  <td>colour of the strokes in the shape</td>
+  <td><el-id>black</el-id></td>
+  <td><el-method>setStrokeColour</el-method></td>
+  <td><el-method>withStrokeColour</el-method></td>
+ </tr><tr>
+  <td id="strokeWidth"><el-id>strokeWidth</el-id></td>
+  <td><code>Int</code></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td>&#x2714;</td>
+  <td>width of the strokes in the shape</td>
+  <td>1</td>
+  <td><el-method>setStrokeWidth</el-method></td>
+  <td><el-method>withStrokeWidth</el-method></td>
+ </tr><tr>
+  <td id="title"><el-id>title</el-id></td>
+  <td><code>Float</code></td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td></td>
+  <td>title text</td>
+  <td>empty string</td>
+  <td><el-method>setTitle</el-method></td>
+  <td><el-method>withTitle</el-method></td>
+ </tr><tr>
+  <td id="width"><el-id>width</el-id></td>
+  <td><code>Float</code></td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td></td>
+  <td>&#x2714;</td>
+  <td>width to render the shape or the image</td>
+  <td>Image: 13.2<br>Rectangle: 40</td>
+  <td><el-method>setWidth</el-method></td>
+  <td><el-method>withWidth</el-method></td>
+ </tr><tr>
+  <td id="xy_VG"><el-id>x, y</el-id></td>
+  <td><code>Float</code>, <code>Float</code></td>
+  <td></td>
+  <td>&#x2714; &#x2714;</td>
+  <td></td>
+  <td>&#x2714; &#x2714;</td>
+  <td>image's <i>x,y</i> position from top left</td>
+  <td>Image: 0, 0<br>Rectangle: 10, 10</td>
+  <td><el-method>setX</el-method>, <el-method>setY</el-method></td>
+  <td><el-method>withX</el-method>, <el-method>withY</el-method></td>
+ </tr><tr>
+  <td id="x1y1_VG"><el-id>x1, y1</el-id></td>
+  <td><code>Float</code>, <code>Float</code></td>
+  <td></td>
+  <td></td>
+  <td>&#x2714; &#x2714;</td>
+  <td></td>
+  <td>line's starting <i>x,y</i> position from top left</td>
+  <td>10, 10</td>
+  <td><el-method>setX1</el-method>, <el-method>setY1</el-method></td>
+  <td><el-method>withX1</el-method>, <el-method>withY1</el-method></td>
+ </tr><tr>
+  <td id="x2y2_VG"><el-id>x2, y2</el-id></td>
+  <td><code>Float</code>, <code>Float</code></td>
+  <td></td>
+  <td></td>
+  <td>&#x2714; &#x2714;</td>
+  <td></td>
+  <td>line's ending <i>x,y</i> position from top left</td>
+  <td>70, 40</td>
+  <td><el-method>setX2</el-method>, <el-method>setY2</el-method></td>
+  <td><el-method>withX2</el-method>, <el-method>withY2</el-method></td>
+ </tr>
+</table>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using simple SVG graphics</h4>
+<div class="acc-body">
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To draw a circle with a coloured circumference:</p>
+<codeblock>
+main
+  variable vg set to new List<of VectorGraphic>()
+  variable circ set to new CircleVG()
+  call circ.setCentreX(20)
+  call circ.setCentreY(20)
+  call circ.setRadius(5)
+  call circ.setFillColour(green)
+  call circ.setStrokeColour(red)
+  call circ.setStrokeWidth(2)
+  call vg.append(circ)
+  call displayVectorGraphics(vg)
+end main
+</codeblock>
+<p><img src="images/VG_circle.png" width="200" height="200" alt="circle"></p>
+<hr>
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To draw a circle that changes between red and green every second:</p>
+<codeblock>
+main
+  variable vg set to new List<of VectorGraphic>()
+  variable circ set to new CircleVG()
+  call circ.setCentreX(50)
+  call circ.setCentreY(37.5)
+  call circ.setRadius(30)
+  call circ.setFillColour(green)
+  call vg.append(circ)
+  while true
+    call displayVectorGraphics(vg)
+    call sleep(1)
+    call circ.setFillColour(red)
+    call displayVectorGraphics(vg)
+    call sleep(1)
+    call circ.setFillColour(green)
+  end while
+  call displayVectorGraphics(vg)
+end main
+</codeblock>
+<hr>
+</div></div>
+
+<h3 class="no-TOC" id="RawVG"><code>RawVG</code></h3>
+<p>Strings containing raw SVG tags may be assembled and plotted directly using Class <code>RawVG</code>.
+By this means features such as simple SVG animation can be defined.</p>
+<ul>
+ <li>The raw SVG content should be enclosed in double quotes within which the SVG attribute values must be enclosed in single quotes.</li>
+ <li>To include <a href="#InterpolatedString">interpolated</a> values, you precede the string with a $.</li>
+ <li>The raw SVG may define multiple shapes.</li>
+ <li>Multiple instances of <code>RawVG</code> may be added to the collection to be displayed, along with instances of other SVG Types;
+ hence the need for list-defining square brackets in the parameter of method <el-method>displayVectorGraphics</el-method>.</li>
+ <li>Method <el-method>withContent</el-method> is used to specify the property of Class <code>RawVG</code> that must contain the SVG string.</li>
+ <li>The example is of a simple animation in which the repetition defined in the SVG continues after the program has stopped,
+  so you would then use the Clear button to blank the display.</li>
+</ul>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Example using <code>RawVG</code></h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To display a repeating movement of a circle:</p>
+<codeblock>
+main
+  variable movingCircle set to "<circle cx='50' cy='50' r='50' style='fill:red;'>\n<animate attributeName='cx' begin='0s' dur='2s' from='50' to='90%' repeatCount='indefinite' /></circle>"
+  variable raw set to (new RawVG()).withContent(movingCircle)
+  call displayVectorGraphics([raw])
+end main
+</codeblock>
+<hr>
+</div></div>
+
+<h2 id="CombiningGraphics">Combining graphic outputs</h2>
+<p>Program outputs, whether text or graphical, can be combined in the display. In particular, Block graphics and text or Html printing can share the display
+ along with <i>either</i> Vector graphics <i>or</i> Turtle graphics (but not both).</p>
+<p>If you want to share the display in this way, remember that both text and Html print outputs appear sequentially down the display (which can be scrolled), whereas the graphic outputs are positioned in the display using their own absolute coordinate systems.</p>
+<p>The order in which the outputs are displayed (and therefore overwrite) is:</p>
+<ol>
+ <li>Block graphics</li>
+ <li>Vector <i>or</i> Turtle graphics</li>
+ <li>Printed text <i>or</i> Html</li>
+</ol>
+<p>So some care is needed to manage the layout in the display.</p>
+<p>Note that, while vector graphics are being drawn, printed text that exceeds the height of the display does not scroll until the graphic completes.</p>
+
+<h1>Other Types</h1>
+
+<h2 id="Random">Random</h2>
+<h3 class="no-TOC">Generating random numbers within a function</h3>
+<p>It is <i>not</i> possible to use the <a href="#SystemMethods">system methods</a> <el-method>random</el-method> or <el-method>randint</el-method> within a <b>function</b> because they create unseen side effects. You <i>may</i> use those system methods outside the<b> function</b> and pass the resulting random number (as an <code>Int</code> or a <code>Float</code>) as an argument <i>into </i>a <b>function</b>.</p>
+<p>It is, however, possible to create and use random numbers within a <b>function</b>, but it requires a different approach and is a little more complex. You use the special Type <code>Random</code>. (Note the upper case <code>R</code> required for a Type name).</p>
+<p>You start by getting a seed random number in your <<b>main</b> or in a <b>procedure</b> using method <el-method>initialiseFromClock</el-method>:</p>
+<code>variable rand set to new Random()</code><br>
+<code>call rand.initialiseFromClock()</code>
+<p>Then, in a <b>function</b>, you apply the dot method <el-method>next</el-method> or <el-method>nextInt</el-method> to the <code>Random</code> passed in, which returns a 2-Tuple containing both a new random value and a new instance of Type <code>Random</code>.
+If you need another random value, you use the returned <code>Random</code> on which to apply the dot method again.</p>
+<p>Avoid applying <el-method>next</el-method> or <el-method>nextInt</el-method> more than once on the same <code>Random</code> because they will return the same values.</p>
+<p>If the <el-method>initialiseFromClock</el-method> call is absent, the program will still generate a sequence of random values, <i>but the sequence will be exactly the same each time you run the program.</i> Initialising from the clock ensures that you get a different sequence each run. Using <code>Random</code> <i>without</i> so initialising, however, can be extremely useful for testing purposes since the results are repeatable.</p>
+
+<h3 class="no-TOC" id="Random_procedures">Procedure method for random seed</h3>
+<table class="tableMethod">
+ <tr>
+  <th>procedure<br>method</th>
+  <th>argument<br>Type</th>
+  <th>action</th>
+ </tr><tr id="initialiseFromClock">
+  <td><el-method>initialiseFromClock</el-method></td>
+  <td>(none)</td>
+  <td>uses the system clock to provide a seed<br>from which to generate fresh random values</td>
+ </tr>
+</table>
+
+<h3 class="no-TOC" id="Random_functions">Function dot methods on a <code>Random</code></h3>
+<table class="tableMethod">
+ <tr>
+  <th>function<br>dot method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Types</th>
+  <th>returns</th>
+ </tr><tr id="next">
+  <td><el-method>next</el-method></td>
+  <td><code>Float</code>, <code>Float</code></td>
+  <td>2-Tuple:<br>(<code>Float</code>, <code>Random</code>)</td>
+  <td>random <code>Float</code> value in the range of the arguments, and<br>new instance of <code>Random</code> for subsequent use</td>
+ </tr><tr id="nextInt">
+  <td><el-method>nextInt</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td>2-Tuple:<br>(<code>Int</code>, <code>Random</code>)</td>
+  <td>random <code>Int</code> value in the range of the arguments, and<br>new instance of <code>Random</code> for subsequent use</td>
+ </tr>
+</table>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Example using <code>Random</code></h4>
+<div class="acc-body">
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To roll a dice in a function:</p>
+
+<codeblock>
+main
+  variable rnd set to new Random()
+  call rnd.initialiseFromClock()
+  variable dice set to 0
+  for i in range(1, 11)
+    set dice to rollDice(rnd).item_0
+    set rnd to rollDice(rnd).item_1
+    call print(dice)
+  end for
+end main
+
+function rollDice(rnd as Random) returns (Int, Random)
+  return rnd.nextInt(1, 6)
+end function
+</codeblock>
+<hr>
+</div></div>
+
+<h2 id="Func">Func</h2>
+<p>A <b>function</b> may be passed as an argument into another <b>function</b> (or a <b>procedure</b>), or returned as the result of calling another <b>function</b>.
+This pattern is known as <b>Higher-order Function (HoF)</b>, and is a key idea in Functional Programming.</p>
+<p>To define a <b>function</b> that takes in another <b>function</b> as a parameter, or returns a <b>function</b>, you need to specify the Type of the <b>function</b>,
+just as you would specify the Type of every parameter and the return Type for the <b>function</b>. </p>
+
+<h3 class="no-TOC">Type name</h3>
+<p>The Type of any <b>function</b> starts with the word <code>Func</code> followed by angle brackets defining the Type of each parameter,
+    then =&gt; (a 'fat arrow') and the return Type for that <b>function</b>. This <b>property</b> definition shows the syntax:</p>
+
+<codeblock>
+  property matchAt as Func<of String, String, Int => Boolean>
+</codeblock>
+
+<p>This example defines the Type for a <b>function</b> that defines three parameters of Type <code>String</code>, <code>String</code>, and <code>Int</code> respectively, and returns a <code>Boolean</code> value. This Type would match that of a <b>function</b> definition like this:</p>
+
+<codeblock>
+function matchAt(a as String, b as String, p as Int) returns Boolean
+  return if(a[p].equals(b[p]), true, false)
+end function
+</codeblock>
+
+<h1 id="InputOutput">Input/output</h1>
+<p>This section covers a variety of input and output facilities:</p>
+<ul>
+ <li><a href="#KeyboardInput">Keyboard input</a> </li>
+ <li><a href="#FileInputOutput">Text file input/output</a></li>
+ <li><a href="#RenderHtml">Rendering Html in the display</a></li>
+ <li><a href="#DisplayImageURL">Displaying images from URLs</a></li>
+ <li><a href="#Sound">Sound</a></li>
+</ul>
+
+<h2 id="KeyboardInput">Keyboard input</h2>
+<p>soliciting and retrieving keyboard input requires using these system methods:</p>
+<table class="tableMethod">
+ <tr>
+  <th>system<br>method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Types</th>
+  <th>action</th>
+ </tr><tr id="getKey">
+  <td><el-method>getKey</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>returns the last character last pressed on the keyboard during program execution</td>
+ </tr><tr id="getKeyWithModifier">
+  <td><el-method>getKeyWithModifier</el-method></td>
+  <td>(none)</td>
+  <td>2-Tuple:<br>(<code>String</code>, <code>String</code>)</td>
+  <td>returns the last key combination pressed on the keyboard:<br>
+      the key pressed and the modifier key's name (if also pressed)</td>
+ </tr><tr id="getNumericKey">
+  <td><el-method>getNumericKey</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>returns either the numeric key last pressed or, if the last pressed key was not numeric, then <code>"-1"</code></td>
+ </tr><tr id="input">
+  <td><el-method>input</el-method></td>
+  <td><code>String</code></td>
+  <td><code>String</code></td>
+  <td>prints the string as a prompt, and returns the typed input when Enter is pressed</td>
+ </tr><tr id="inputStringWithLimits">
+  <td><el-method>inputStringWithLimits</el-method></td>
+  <td><code>String</code>, <code>Int</code>, <code>Int</code></td>
+  <td><code>String</code></td>
+  <td>prints the string as a prompt and returns the typed input when Enter is pressed<br>
+  provided the length of the response is within the minimum and maximum limits specified.<br>
+  If it is not, the prompt is repeated with the relevant limit displayed</td>
+ </tr><tr id="inputStringFromOptions">
+  <td><el-method>inputStringFromOptions</el-method></td>
+  <td><code>String</code>, <code>List</code>&lt;of <code>String</code>&gt;</td>
+  <td><code>String</code></td>
+  <td>prints the string as a prompt and returns the typed input when Enter is pressed<br>
+  provided it is one of the options in the list.<br>
+  If it is not, the prompt is repeated with the options displayed</td>
+ </tr><tr id="inputInt">
+  <td><el-method>inputInt</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Int</code></td>
+  <td>prints the string as a prompt and returns the value of the typed input when Enter is pressed<br>
+  provided that it is an integer.<br> If it is not, the prompt is repeated with an error message</td>
+ </tr><tr id="inputIntBetween">
+  <td><el-method>inputIntBetween</el-method></td>
+  <td><code>String</code>, <code>Int</code>, <code>Int</code></td>
+  <td><code>Int</code></td>
+  <td>prints the string as a prompt and returns the value of the typed input when Enter is pressed<br>
+  provided that it is an integer with a value in the (inclusive) range.<br> The first range value must be less than or equal to the second</td>
+ </tr><tr id="inputFloat">
+  <td><el-method>inputFloat</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Float</code></td>
+  <td>prints the string as a prompt and returns the value of the typed input when Enter is pressed<br>
+  provided that it is a number.<br> If it is not, the prompt is repeated with an error message</td>
+ </tr><tr id="inputFloatBetween">
+  <td><el-method>inputFloatBetween</el-method></td>
+  <td><code>String</code>, <code>Int</code>, <code>Int</code></td>
+  <td><code>Float</code></td>
+  <td>prints the string as a prompt and returns the value of the typed input when Enter is pressed<br>
+  provided that it is a number with a value in the (inclusive) range.<br> The first range value must be less than or equal to the second</td>
+ </tr><tr id="waitForKey">
+  <td><el-method>waitForKey</el-method></td>
+  <td>(none)</td>
+  <td><code>String</code></td>
+  <td>pauses execution of the program until a key is pressed on the keyboard,<br>
+  and returns either a character or the name of a non-character key</td>
+ </tr>
+</table>
+
+<h3 class="no-TOC"> Reading keys 'on the fly'</h3>
+<p>In some applications &ndash; especially in games, for example &ndash; you want the program to react to a key pressed by the user, but without holding up the program to wait for value to be input. </p>
+<p>Whether your application makes use of graphics, or uses the display  just for text, reading keystrokes 'on the fly' is done via one of the three methods shown here:</p>
+<codeblock>
+main
+  variable key1 set to getKey()
+  variable key2 set to getNumericKey()
+  variable km set to getKeyWithModifier()
+  variable keyCap set to km.item_0
+  variable keyMod set to km.item_1
+end main
+</codeblock>
+<ul>
+ <li>When any of these functions (except<el-method> waitForKey</el-method>) is called, the system <i>does not wait for a response</i>, but immediately returns a <code>String</code> or Tuple.</li>
+ <li><el-method>getKey</el-method> returns a string containing the keyboard character last pressed, possibly shifted, e.g. "z" or "@".</li>
+ <li><el-method>getNumericKey</el-method> returns a string containing either a digit ("0".."9") or, if the last key pressed was not numeric, then "-1".
+ A digit will be returned if the key pressed was either from the main keyboard, or from the numeric keypad when <b>NumLock</b> is on.</li>
+ <li><el-method>getKeyWithModifier</el-method> returns a 2-Tuple of two strings: the key last pressed and the name of <i>one</i> modifier key <code>"Shift"</code>,
+  <code>"Ctrl"</code> or <code>"Alt"</code> if simultaneously pressed.
+  If no modifier had been pressed, the Tuple's second item will be the empty string. Note that a few such modified keys will be acted on by the browser and may not then be passed to your program.</li>
+ <li>Non-printable keys will also be returned as strings, e.g. <code>"Home"</code>, <code>"End"</code>, <code>"Delete"</code>, <code>"Tab"</code>,
+ <code>"Backspace"</code>, <code>"Enter"</code>, <code>"Escape"</code>,
+ <code>"ArrowUp"</code> etc., function key <code>"Fn"</code>, <code>"AltGraph"</code>, <code>"Meta"</code>, <code>"ContextMenu"</code>, as well as most others.</li>
+ <li>Pressing <i>just</i> control keys <b>Shift</b>, <b>Ctrl</b> (<b>&#x2318; Command</b> under macOS) or <b>Alt</b> keys will not be detected by <el-method>getKey</el-method>.</li>
+ <li>If no key has been pressed (since the last time the method was called), it will return the empty string.</li>
+ <li>All these  methods are system methods because they have a dependency on the system and so may be used only within a <b>procedure</b> or in <b>main</b>.</li>
+ <li>Use the procedure method <el-method>clearKeyBuffer</el-method> if you want to enforce that the user cannot get too far ahead of the program by hitting keys in rapid succession.</li>
+ <li>Method <el-method>waitForKey</el-method> waits for a key to be pressed, and returns it.</li>
+ <li>Procedure method<el-method>pressAnyKeyToContinue</el-method> gives an optional prompt and is used when you don't need to know which key was pressed. Its argument is a Boolean value:<br>
+ if <el-id>true</el-id>, the prompt "Press any key to continue" appears,<br>
+ if <el-id>false</el-id>, no prompt appears.
+ </li>
+</ul>
+<codeblock>
+main
+  call pressAnyKeyToContinue()
+  call print("OK, press A or B")
+  variable key set to waitForKey()
+  call print($"That was {key}")
+end main
+</codeblock>
+
+
+<h2 id="FileInputOutput">Text file input/output</h2>
+<p>Reading or writing a text file requires that you <b>open</b> (for reading) or <b>create</b> (for writing) a file using these system methods:</p>
+<table class="tableMethod">
+ <tr>
+  <th>system<br>method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Class</th>
+  <th>action</th>
+ </tr><tr id="createFileForWriting">
+  <td><el-method>createFileForWriting</el-method></td>
+  <td><code>String</code></td>
+  <td><code>TextFileWriter</code></td>
+  <td>sets up a buffer for the data to be output, and specifies a filename (or the empty string)
+  with or without the default filetype of .txt, and returns a file handle<br>
+  see <a href="#TextFileWriter">Writing text files</a></td>
+ </tr><tr id="openFileForReading">
+  <td><el-method>openFileForReading</el-method></td>
+  <td>(none)</td>
+  <td><code>TextFileReader</code></td>
+  <td>opens a file system dialog to choose the filename of filetype .txt to be read,
+  and returns a file handle<br>
+  see <a href="#TextFileReader">Reading text files</a></td>
+ </tr>
+</table>
+
+<h3 class="no-TOC" id="TextFileWriter">Writing text files</h3>
+<p>The <code>TextFileWriter</code> Class is used to write textual data to a file.</p>
+<p>An instance is created by the system method <el-method>createFileForWriting</el-method>.</p>
+<p>The available procedure methods are:</p>
+<table class="tableMethod">
+ <tr>
+  <th>procedure<br>method</th>
+  <th>argument<br>Type</th>
+  <th>action</th>
+ </tr><tr id="writeLine">
+  <td><el-method>writeLine</el-method></td>
+  <td><code>String</code></td>
+  <td>writes the string to the buffer</td>
+ </tr><tr id="writeWholeFile">
+  <td><el-method>writeWholeFile</el-method></td>
+  <td><code>String</code></td>
+  <td>writes the string to the buffer and then outputs the buffer to the file system</td>
+ </tr><tr id="saveAndClose">
+  <td><el-method>saveAndClose</el-method></td>
+  <td>none</td>
+  <td>writes the buffer to the file system</td>
+ </tr>
+</table>
+
+<p>These methods may be used to write a whole file in one go:</p>
+<codeblock>
+main
+  variable file set to createFileForWriting("myFile.txt")
+  call file.writeWholeFile("Text line 1\nText line 2")
+end main
+</codeblock>
+
+<h4 class="no-TOC">Notes</h4>
+<ul>
+<li><code>writeLine</code> adds the string it is passed onto the end of any data previously written, with a newline character (<el-lit>\n</el-lit>) automatically appended.</li>
+<li>When execution reaches <code>saveAndClose</code> you will be presented with a dialog to confirm (or edit) the given filename and location where it is to be saved. It is not therefore strictly necessary to specify a filename when creating the file, since it can be specified by the user in the dialog so, in that case, you might put the empty string <code>""</code> into the parameter of <code>createFileForWriting</code>.</li>
+<li><code>writeWholeFile</code> puts the string it is given into the file and then automatically saves the file, so the user will be presented with the same dialog as if <code>saveAndClose</code> had been called.</li>
+<li>Calling any method on a file that has already been closed (by calling either <code>saveAndClose</code> or by <code>writeWholeFile</code>) will result in a runtime error.</li>
+<li id="tryCatchOnFile">If the user were to click <b>Cancel</b> in the save dialogue, then the program will exit with an error.
+To guard against this possibility (it might mean the loss of important data),  you should perform the save and close within a <b>try</b> instruction like this (where <code>CustomError</code> is a Class provided by Elan for this purpose):
+<codeblock>
+main
+  variable file set to createFileForWriting("squares.txt")
+  for i in range(1, (101))
+    call file.writeLine($"{i*i}")
+  end for
+  try
+    call file.saveAndClose()
+  catch CustomError
+    call print("Save cancelled")
+  end try
+end main
+</codeblock>
+or you could make the code offer the user options: to save again, or to continue without saving.</li>
+</ul>
+
+<h3 class="no-TOC" id="TextFileReader">Reading text files</h3>
+<p>The <code>TextFileReader</code> Class is used to read text data from a file with type extension .txt.</p>
+<p>An instance is created by the system method <el-method>openFileForReading</el-method>.</p>
+<p>The available procedure methods are:</p>
+<table class="tableMethod">
+ <tr>
+  <th>procedure<br>method</th>
+  <th>argument<br>Type</th>
+  <th>action</th>
+ </tr><tr id="readLine">
+  <td><el-method>readLine</el-method></td>
+  <td>(none)</td>
+  <td>reads the next substring from the file that is terminated with a newline</td>
+ </tr><tr id="readWholeFile">
+  <td><el-method>readWholeFile</el-method></td>
+  <td>(none)</td>
+  <td>reads the whole file and closes the file</td>
+ </tr><tr id="endOfFile">
+  <td><el-method>endOfFile</el-method></td>
+  <td>(none)</td>
+  <td>returns <el-id>true</el-id> after the last line has been read<br>
+  &ndash; otherwise <el-id>false</el-id></td>
+ </tr><tr id="close">
+  <td><el-method>close</el-method></td>
+  <td>(none)</td>
+  <td>closes the file</td>
+ </tr>
+</table>
+<p>These methods may be used to read a whole file in one go:</p>
+<codeblock>
+main
+  variable file set to openFileForReading()
+  variable text set to file.readWholeFile()
+  call print(text)
+end main
+</codeblock>
+
+<h4 class="no-TOC">Notes</h4>
+<ul>
+<li><code>openFileForReading</code> will present the user with a dialog to select the file.</li>
+<li><code>readWholeFile</code> returns a <code>String</code> containing every character in the file, without any trimming. It automatically closes the file after the read.</li>
+<li><code>readLine</code> reads as far as the next newline character (\n) and then automatically trims the line to remove any spaces and/or carriage-returns (which some file systems insert after the newline automatically) from the resulting line returned as a <code>String</code>. If this behaviour is not desired, you can use <code>readWholeFile</code>, which does no trimming, and then parse the resulting <code>String</code> into separate lines.</li>
+<li>Calling <code>file.close</code> after reading line by line is strongly recommended to avoid any risk of leaving the file locked. It is not necessary to call it after using <code>readWholeFile</code> because that method automatically closes the file.</li>
+<li>Calling any method on a file that is already closed will result in a runtime error.</li>
+</ul>
+
+
+<h2 id="RenderHtml">Rendering Html in the display</h2>
+<p>If you embed Html code in a string and then attempt to print it, you will see the string displayed literally: the Html tags
+    will not be recognised. This is for security reasons. However, it <i>is</i> possible to display formatted Html in the <b>display</b>.
+    The following code:</p>
+
+<codeblock>
+  call displayHtml("&lt;h1 style='color: blue;'&gt;A heading&lt;/h1&gt;&lt;p&gt;some text&lt;/p&gt;")
+</codeblock>
+
+<p>will produce:</p>
+<p><img src="images/Html_1.png" width="250" height="200" alt="Html 1"></p>
+
+<p>This Html forms another 'layer' in the IDE's display pane. Any plain text that you print
+    (using <b>call procedure</b> <el-method>print</el-method>() or any of the print procedures)
+    will be overlaid on top of this.</p>
+
+<p>You can clear just the Html layer in the display using the procedure <a href="#clearHtml"><el-method>clearHtml</el-method></a>.</p>
+
+<p>For specifying style or other attributes within Html tags, the attribute values should be enclosed in single quotation marks ' as shown above.
+    Html will recognise single or double quotation marks, but entering double quotation marks would terminate the Elan string.
+    Alternatively, you could use the constant <el-id>quotes</el-id> within curly braces as an <a href="LibRef.html#InterpolatedString">interpolated field</a>.</p>
+
+<h3 class="no-TOC">Using an embedded CSS stylesheet</h3>
+<p>You can also specify a &lt;style&gt; tag at the start of your Html string, to apply to the whole Html being displayed. In this case you would put
+the style definition into a named value as a literal but enclosed in <i>single</i> quotes, for example:</p>
+<codeblock>
+main
+  variable style set to "&lt;style&gt; h1 { color: Red; font-size: 24pt; } p { font-family: Serif; } &lt;/style&gt;"
+  call displayHtml($"{style}&lt;h1&gt;New heading&lt;/h1&gt;&lt;p&gt;some new text&lt;/p&gt;")
+end main
+</codeblock>
+
+<p>will produce:</p>
+<p><img src="images/Html_2.png" width="275" height="200" alt="Html 2"></p>
+
+<h2 id="DisplayImageURL">Displaying images from URLs</h2>
+
+<p>An image that can be retrieved with an <b>http</b> or <b>https</b> URL may be sent to the display, though note that other URI schemes,
+such as in <b>file://host/path</b> to access an image from your local file system, are not supported. Here are two techniques:
+
+<ul>
+ <li>put the Html <el-lit>&lt;img&gt;</el-lit> tag into a string and then call the <el-method>displayHtml</el-method> method on it, thus:
+<codeblock>
+main
+  variable pic set to "&lt;img src='https://upload.wikimedia.org/wikipedia/commons/0/08/Corl0207_%2828225976491%29.jpg' width='400' height='200' title='shark' alt='shark'&gt;"
+  call displayHtml(pic)
+end main
+</codeblock>
+   <p>The usual &lt;img&gt; tag attributes are respected, though <code>alt</code> does not give the expected tooltip when hovering over the image, and <code>title</code> is only a descriptive comment.</p>
+
+ <li>put the URL into a Vector Graphics <code>ImageVG</code> definition, set properties by calling <a href="#VG_properties">vector graphic procedures</a>, then call the method <el-method>displayVectorGraphics</el-method> on it, thus:
+<codeblock>
+main
+  variable sharkUrl set to "https://upload.wikimedia.org/wikipedia/commons/0/08/Corl0207_(28225976491).jpg"
+  variable sharkVG set to new ImageVG(sharkUrl)
+  call sharkVG.setWidth(400)
+  call sharkVG.setHeight(200)
+  call sharkVG.setAlt("Shark")
+  call displayVectorGraphics([sharkVG])
+end main
+</codeblock>
+ </li>
+</ul>
+
+<div id="Sound"></div>
+<h2 id="tone">Sound</h2>
+
+<p>The <el-method>tone</el-method> procedure allows the generation of a simple tone. It requires three arguments to be provided:</p>
+<ul>
+ <li>the duration of the generated tone specified in milliseconds (<code>Int</code>)</li>
+ <li>the frequency of the generated tone in Hertz (<code>Int</code>)</li>
+ <li>the volume of the tone (<code>Float</code>)</li>
+</ul>
+<p>Note that the volume parameter is only relative in that the actual volume will be modified by the various sound settings on the output device, and may even be muted.</p>
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Example using <el-method>tone</el-method></h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; An example that plays a C major scale first ascending then descending:</p>
+<codeblock>
+main
+  variable scale set to [262, 294, 330, 349, 392, 440, 494, 523]
+  variable scaleL set to scale.length()
+  variable quaver set to 250
+  variable volume set to 1.5
+  for i in range(0, scaleL)
+    call tone(quaver, scale[i], volume)
+  end for
+  call sleep(1)
+  for i in range(0, scaleL)
+    call tone(quaver, scale[scaleL - 1 - i], volume)
+  end for
+end main
+</codeblock>
+<hr>
+</div></div>
+
+<h1 id="CommonMethods">Common methods</h1>
+<h2 id="CommonDotMethods">Common dot methods</h2>
+
+<p>Click on a Type to go to the Type's function dot methods, or on &#xf08e; to go to the specific method on that Type.</p>
+
+<table>
+ <tr>
+  <th>Dot method</th>
+  <th colspan="3"> Value Type</th>
+  <th colspan="6">Reference Type</th>
+  <th>Tuple</th>
+ </tr><tr><!---->
+  <td></td>
+  <td><a href="#Int"><code>Int</code></a></td>
+  <td><a href="#Float"><code>Float</code></a></td>
+  <td><a href="#Boolean"><code>Boolean</code></a></td>
+  <td><a href="#String"><code>String</code></a></td>
+  <td><a href="#List"><code>List</code></a></td>
+  <td><a href="#Dictionary"><code>Dictionary</code></a></td>
+  <td><a href="#HashSet"><code>HashSet</code></a></td>
+  <td><a href="#Stack"><code>Stack</code></a></td>
+  <td><a href="#Queue"><code>Queue</code></a></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="ceiling"><el-method>ceiling</el-method></td>
+  <td><a href="#ceiling_Float"><i class="fa">&#xf08e;</i></a> note 2.</td>
+  <td><a href="#ceiling_Float"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="contains"><el-method>contains</el-method></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><a href="#contains_String"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#contains_List"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#keys_Dictionary"><i class="fa">&#xf08e;</i></a> note 4.</td>
+  <td><a href="#contains_Set"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="equals"><el-method>equals</el-method></td>
+  <td><a href="#equals_Int"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_Float"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_Boolean"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_String"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_List"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_Dictionary"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_Set"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_Stack"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_Queue"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#equals_Tuple"><i class="fa">&#xf08e;</i></a></td>
+ </tr><tr><!---->
+  <td id="floor"><el-method>floor</el-method></td>
+  <td><a href="#floor_Float"><i class="fa">&#xf08e;</i></a> note 2.</td>
+  <td><a href="#floor_Float"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="indexOf"><el-method>indexOf</el-method></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><a href="#indexOf_String"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#indexOf_List"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="isInfinite"><el-method>isInfinite</el-method></td>
+  <td><a href="#isInfinite_Float"><i class="fa">&#xf08e;</i></a> note 2.</td>
+  <td><a href="#isInfinite_Float"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="isNan"><el-method>isNan</el-method></td>
+  <td><a href="#isNaN_Float"><i class="fa">&#xf08e;</i></a> note 2.</td>
+  <td><a href="#isNaN_Float"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="length"><el-method>length</el-method></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><a href="#length_String"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#length_List"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#keys_Dictionary"><i class="fa">&#xf08e;</i></a> note 3.</td>
+  <td><a href="#length_Set"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#length_Stack"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#length_Queue"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="notEqualTo"><el-method>notEqualTo</el-method></td>
+  <td><a href="#notEqualTo_Int"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_Float"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_Boolean"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_String"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_List"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_Dictionary"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_Set"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_Stack"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_Queue"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#notEqualTo_Tuple"><i class="fa">&#xf08e;</i></a></td>
+ </tr><tr><!---->
+  <td id="peek"><el-method>peek</el-method></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><a href="#peek_Stack"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#peek_Queue"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="round"><el-method>round</el-method></td>
+  <td><a href="#round_Float"><i class="fa">&#xf08e;</i></a> note 2.</td>
+  <td><a href="#round_Float"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="toString"><el-method>toString</el-method> note 1.</td>
+  <td><a href="#toString_Int"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_Float"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_Boolean"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_String"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_List"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_Dictionary"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_Set"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_Stack"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_Queue"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#toString_Tuple"><i class="fa">&#xf08e;</i></a></td>
+ </tr><tr><!---->
+  <td id="withSet"><el-method>withSet</el-method></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><a href="#withSet_List"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#withSet_Dictionary"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr><tr><!---->
+  <td id="withRemoveAt"><el-method>withRemoveAt</el-method></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><a href="#withRemoveAt_List"><i class="fa">&#xf08e;</i></a></td>
+  <td><a href="#withRemoveAt_Dictionary"><i class="fa">&#xf08e;</i></a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+</table>
+
+<h4 class="no-TOC">Notes</h4>
+<ol>
+ <li>The method <el-method>toString</el-method> is so widely applicable because it enables you to print
+ all variables and data structures to the IDE's display pane for debugging purposes.</li>
+ <li>methods <el-method>ceiling</el-method>, <el-method>floor</el-method>, <el-method>isInfinite</el-method>, <el-method>isNaN</el-method> and <el-method>round</el-method> are designed for use on <code>Float</code> values, but they can accept <code>Int</code> values without raising an error.</li>
+ <li>The length of a <code>Dictionary</code> can be found by applying method <el-method>length</el-method> to the list returned by method <el-method>keys</el-method> on the dictionary:<br>
+<table class="tablePlain">
+  <tr><td><code>call print(dict.keys().length())</code></td><td>&#x27f6;</td><td>15</tr>
+</table></li>
+ <li>Checking whether an item is contained in a <code>Dictionary</code> can be
+  done by applying method <el-method>contains</el-method> to the list returned by methods <el-method>keys</el-method> and <el-method>values</el-method> on the dictionary:<br>
+<table class="tablePlain">
+ <tr><td><code>call print (dict.keys().contains("widget"))</code></td><td>&#x27f6;</td><td>true or false</td></tr>
+ <tr><td><code>call print (dict.values().contains(42))</code></td><td>&#x27f6;</td><td>true or false</td></tr>
+</table></li>
+</ol>
+
+<h1 id="LibrayProcedures">Library procedures</h1>
+<p>All procedures are accessed via a <a href="LangRef.html#call"><code>call</code></a> statement.</p>
+
+<h2 id="StandaloneProcedures">Standalone procedures</h2>
+
+<table class="tableMethod"> <tr><th>procedure</th><th>input<br>argument<br>Types</th><th>output<br>argument<br>Types</th><th>action</th>
+ </tr><tr id="clearPrintedText">
+  <td><el-method>clearPrintedText</el-method></td>
+  <td>(none)</td>
+  <td>(none)</td>
+  <td>clears the IDE's display pane</td>
+ </tr><tr id="clearBlocks">
+  <td><el-method>clearBlocks</el-method></td>
+  <td>(none)</td>
+  <td>(none)</td>
+  <td>clears the block graphics layer of the IDE's display pane</td>
+ </tr><tr id="clearVG">
+  <td><el-method>clearVectorGraphics</el-method></td>
+  <td>(none)</td>
+  <td>(none)</td>
+  <td>clears the vector graphics layer of the IDE's display pane</td>
+ </tr><tr id="clearHtml">
+  <td><el-method>clearHtml</el-method></td>
+  <td>(none)</td>
+  <td>(none)</td>
+  <td>clears the Html layer of the IDE's display pane</td>
+ </tr><tr id="clearAllDisplays">
+  <td><el-method>clearAllDisplays</el-method></td>
+  <td>(none)</td>
+  <td>(none)</td>
+  <td>clears display pane as well as the blocks, vector graphics and Html layers</td>
+ </tr><tr id="clearKeyBuffer">
+  <td><el-method>clearKeyBuffer</el-method></td>
+  <td>(none)</td>
+  <td>(none)</td>
+  <td>clears the IDE's keyboard input</td>
+ </tr><tr id="pressAnyKeyToContinue">
+  <td><el-method>pressAnyKeyToContinue</el-method></td>
+  <td><code>Boolean</code></td>
+  <td>(none)</td>
+  <td>pauses execution of the program until a keyboard key is pressed<br>
+  if the argument is <el-id>true</el-id> 'Press any key to continue' is first displayed,<br>
+   if <el-id>false</el-id> nothing is displayed </td>
+ </tr><tr id="print">
+  <td><el-method>print</el-method></td>
+  <td><code>String</code></td>
+  <td>(none)</td>
+  <td>prints the string to the display followed by a newline</td>
+ </tr><tr id="printNoLine">
+  <td><el-method>printNoLine</el-method></td>
+  <td><code>String</code></td>
+  <td>(none)</td>
+  <td>prints the string to the display without appending a newline so<br>
+  a following call will output on the same line.<br>
+  You can put your own <el-lit>\n</el-lit> newlines in the argument string</td>
+ </tr><tr id="printTab">
+  <td><el-method>printTab</el-method></td>
+  <td><code>Int</code>, <code>String</code></td>
+  <td>(none)</td>
+  <td>prints the string to the display starting at the tab position given (from 0)<br> without appending a newline</td>
+ </tr><tr id="sleep">
+  <td><el-method>sleep</el-method></td>
+  <td><code>Int</code></td>
+  <td>(none)</td>
+  <td>pauses the execution of the program for the specified number of seconds,<br> e.g. for a game <code>sleep(1.5)</code> delays execution for 1.5 seconds</td>
+</tr><tr id="sleep_ms">
+  <td><el-method>sleep_ms</el-method></td>
+  <td><code>Int</code></td>
+  <td>(none)</td>
+  <td>pauses the execution of the  program for the specified number of milliseconds,<br> e.g. <code>sleep(100)</code> delays execution for one tenth of a second</td>
+ </tr>
+</table>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using <el-method>print</el-method> and <el-method>printTab</el-method></h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Procedure <el-method>print</el-method> sends text strings to the display pane:</p>
+<table class="tablePlain">
+<tr>
+ <td>
+<codeblock>
+main
+  call print("Hello")
+  variable a set to 3
+  variable b set to 4
+  call print(a*b)
+  call print($"{a} times {b}) equals {a*b}")
+  variable t set to (true, 42)
+  call print(t.item_0)
+  call print(t.item_1)
+end main
+</codeblock>
+ </td>
+ <td>&#x27f6;<br><br><br>&#x27f6;<br>&#x27f6;<br><br>&#x27f6;<br>&#x27f6;</td>
+ <td>Hello<br><br><br>12<br>3 times 4 equals 12 [using <a href="LibRef.html#InterpolatedString">interpolated strings</a>]<br>[defining a <a href="LibRef.html#Tuple">2-Tuple</a>]<br>true<br>42</td>
+ </tr>
+</table>
+<hr>
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Procedure <el-method>printTab</el-method> helps in the layout of information printed to the display, e.g. when printing columns of data:</p>
+<codeblock>
+main
+  call printTab(0, "Number")
+  call printTab(10, "Square")
+  call printTab(20, "Cube\n")
+  for i in range(1, 11)
+    call printTab(0, i.toString())
+    call printTab(10, $"{pow(i, 2)}")
+    call printTab(20, $"{pow(i, 3)}\n")
+  end for
+end main
+</codeblock>
+<hr>
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; For numeric output, it is preferable to right-align the columns, e.g. when listing powers of 9:</p>
+<codeblock>
+main
+  variable tab set to 10
+  for i in range(1, tab)
+    variable j set to pow(9, i).floor()
+    variable f set to (lambda j as Int => j.toString().length())
+    call printTab(tab - f(j), $"{j}\n")
+  end for
+end main
+</codeblock>
+<hr>
+</div></div>
+
+<h2 id="InstanceProcedures">Type instance procedures</h2>
+
+<p>Procedures applicable to standard Reference Types are linked from:</p>
+<ul>
+ <li><a href="#List_procedures">Procedure methods on a <code>List</code></a></li>
+ <li><a href="#Dictionary_procedures">Procedure methods on a <code>Dictionary</code></a></li>
+ <li><a href="#Turtle_procedures">Procedure methods on a <code>Turtle</code></a></li>
+</ul>
+<p>User-defined Classes may have procedures that can be applied to their Class instances.
+
+<h1 id="LibraryMethods">Library methods</h1>
+<p>These methods may be referenced from within a <b>function</b>.</p>
+
+<h2 id="StandaloneFunctions">Standalone functions</h2>
+<p>Standalone library functions always return a value and are therefore used in contexts that expect a value, such as in the right-hand side of a <b>variable definition</b> declaration or a <b>re-assign variable</b>, either on their own or within a more complex expression.</p>
+<p> Standalone library functions require at least one argument to be passed (in round brackets), corresponding to the parameters defined for that function.</p>
+
+<table class="tableMethod">
+ <tr>
+  <th>system<br>method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Types</th>
+  <th>returns</th>
+ </tr><tr id="parseAsFloat">
+  <td><el-method>parseAsFloat</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Boolean</code>, <code>Float</code></td>
+  <td>a 2-Tuple in which the first item is <el-id>true</el-id> if the parse was successful,<br>
+  &ndash; <el-id>false</el-id> otherwise<br>
+  and, if <el-id>true</el-id>, the second item is the <code>Float</code> value, otherwise zero</td>
+ </tr><tr id="parseAsInt">
+  <td><el-method>parseAsInt</el-method></td>
+  <td><code>String</code></td>
+  <td><code>Boolean</code>, <code>Int</code></td>
+  <td>a 2-Tuple in which the first item is <el-id>true</el-id> if the parse was successful,<br>
+  &ndash; <el-id>false</el-id> otherwise<br>
+  and, if <el-id>true</el-id>, the second item is the <code>Int</code> value, otherwise zero</td>
+ </tr><tr id="unicode">
+  <td><el-method>unicode</el-method></td>
+  <td><code>Int</code></td>
+  <td><code>String</code></td>
+  <td>a string containing the one character defined at the given Unicode code point</td>
+ </tr>
+</table>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using standalone functions</h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Deconstructing the 2-Tuple returned by <el-method>parseAsInt</el-method>:</p>
+  <code>variable success set to parseAsInt(s).item_0</code>
+  <code>variable value set to parseAsInt(s).item_1</code>
+<p>Always check the <code>Boolean</code> (<el-id>success</el-id>) before using the returned value (<el-id>value</el-id>) in case the latter is zero only because the parse was unsuccessful.</p>
+
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Test assertions that use methods <el-method>parseAsInt</el-method> and <el-method>parseAsFloat</el-method>:</p>
+<codeblock>
+test test_parse
+  assert parseAsInt("31") is (true, 31)
+  assert parseAsInt("0") is (true, 0)
+  assert parseAsInt("thirty one") is (false, 0)
+  assert parseAsInt("3.1") is (false, 0)
+  assert parseAsFloat("31") is (true, 31)
+  assert parseAsFloat("0") is (true, 0)
+  assert parseAsFloat("3.1") is (true, 3.1)
+end test
+</codeblock>
+<h5 class="no-TOC">Notes</h5>
+<ul>
+ <li>Any string that parses as an <code>Int</code> will also parse as a <code>Float</code>.</li>
+ <li>When validating user input,it may be easier to use the various <a href="#SystemMethods">input methods</a>.</li>
+</ul>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Using method <el-method>unicode</el-method>:</p>
+<table class="tablePlain">
+ <tr>
+  <td><code>call print(unicode(0x2665))</code></td><td>&#x27f6;</td><td>&#x2665</td>
+ </tr>
+</table>
+<hr>
+</div></div>
+
+<h2 id="MathsFunctions">Maths functions</h2>
+<p>All the maths functions expect <code>Float</code> arguments, but <code>Int</code> arguments are accepted.
+They all return a value of Type <code>Float</code>, except for <el-method>divAsInt</el-method> which returns an <code>Int</code>.
+<table class="tableMethod">
+<tr><th>function</th><th>argument<br>Type</th><th>input<br>unit</th><th>returns</th><th>output<br>unit</th></tr>
+<tr id="abs"><td><el-method>abs</el-method></td><td><code>Float</code></td><td></td><td>absolute value of the input</td><td></td></tr>
+<tr id="acos"><td><el-method>acos</el-method></td><td><code>Float</code></td><td></td><td>arccosine of the input</td><td>radians</td></tr>
+<tr id="asin"><td><el-method>asin</el-method></td><td><code>Float</code></td><td></td><td>arcsine of the input</td><td>radians</td></tr>
+<tr id="atan"><td><el-method>atan</el-method></td><td><code>Float</code></td><td></td><td>arctangent of the input</td><td>radians</td></tr>
+<tr id="cos"><td><el-method>cos</el-method></td><td><code>Float</code></td><td>radians</td><td>cosine of the input</td><td></td></tr>
+<tr id="divAsFloat"><td><el-method>divAsFloat</el-method></td><td><code>Float</code>, <code>Float</code></td><td></td><td>first input value divided by second input value</td><td></td></tr>
+<tr id="divAsInt"><td><el-method>divAsInt</el-method></td><td><code>Float</code>, <code>Float</code></td><td></td><td>first input value divided by second input value<br>and result rounded down to integer</td><td></td></tr>
+<tr>
+  <td id="exp"><el-id><el-method>exp</el-method></el-id></td>
+  <td><code>Float</code></td>
+  <td></td>
+  <td>&#x1d452<sup>&#x1d465</sup> where &#x1d465 is the argument and<br>&#x1d452 is Euler's number 2.718281828459045..<br>the base of natural logarithms</td>
+  <td></td>
+</tr>
+<tr id="logE"><td><el-method>logE</el-method></td><td><code>Float</code></td><td></td><td>natural logarithm of the input</td><td></td></tr>
+<tr id="log10"><td><el-method>log10</el-method></td><td><code>Float</code></td><td></td><td>base-10 logarithm of the input</td><td></td></tr>
+<tr id="log2"><td><el-method>log2</el-method></td><td><code>Float</code></td><td></td><td>base-2 logarithm of the input</td><td></td></tr>
+<tr id="sin"><td><el-method>sin</el-method></td><td><code>Float</code></td><td>radians</td><td>sine of the input</td><td></td></tr>
+<tr id="sqrt"><td><el-method>sqrt</el-method></td><td><code>Float</code></td><td></td><td>positive square root of the input</td><td></td></tr>
+<tr id="tan"><td><el-method>tan</el-method></td><td><code>Float</code></td><td>radians</td><td>tangent of the input</td><td></td></tr>
+<tr id="radians"><td><el-method>radians</el-method></td><td><code>Float</code></td><td>degrees</td><td>converts input from degrees to radians</td><td>radians</td></tr>
+<tr id="degrees"><td><el-method>degrees</el-method></td><td><code>Float</code></td><td>radians</td><td>converts input from radians to degrees</td><td>degrees</td></tr>
+</table>
+
+<p>Examples of some maths functions and constants being tested:</p>
+<codeblock>
+test test_maths
+  assert pi is 3.141592653589793
+  assert abs(-3.7) is 3.7
+  assert pow(2, 10) is 1024
+  assert sqrt(2).round(3) is 1.414
+  assert asin(0.5).round(3) is 0.524
+  assert acos(0.5).round(3) is 1.047
+  assert atan(1).round(2) is 0.79
+  assert sin(pi/6).round(2) is 0.5
+  assert cos(pi/4).round(3) is 0.707
+  assert tan(pi/4).round(2) is 1
+  assert exp(2).round(3) is 7.389
+  assert logE(7.389).round(2) is 2
+  assert log10(1000) is 3
+  assert log2(65536) is 16
+  assert log2(0x10000) is 16
+end test
+</codeblock>
+
+<h2 id="BitwiseFunctions">Bitwise functions</h2>
+    <p>These functions take in an integer value, and manipulate the bit representation of that value.</p>
+
+<table class="tableMethod">
+ <tr>
+  <th>function</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Type</th>
+  <th>returns</th>
+ </tr><tr id="bitAnd">
+  <td><el-method>bitAnd</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>Int</code></td>
+  <td>integer whose binary representation is the bitwise AND of the inputs</td>
+ </tr><tr id="bitOr">
+  <td><el-method>bitOr</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>Int</code></td>
+  <td>integer whose binary representation is the bitwise OR of the inputs</td>
+ </tr><tr id="bitNot">
+  <td><el-method>bitNot</el-method></td>
+  <td><code>Int</code></td>
+  <td><code>Int</code></td>
+  <td>integer whose binary representation is the bitwise complement of the input</td>
+ </tr><tr id="bitXor">
+  <td><el-method>bitXor</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>Int</code></td>
+  <td>integer whose binary representation is the bitwise XOR of the inputs</td>
+ </tr><tr id="bitShiftL">
+  <td><el-method>bitShiftL</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>Int</code></td>
+  <td>integer bit shifted to the left by the value of the second argument,<br>i.e. multiplied by 2 to the power of the second argument</td>
+ </tr><tr id="bitShiftR">
+  <td><el-method>bitShiftR</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>Int</code></td>
+  <td>integer bit shifted to the right by the value of the second argument,<br>i.e.  divided by 2 to the power of the second argument</td>
+ </tr>
+</table>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples of the bitwise functions being tested</h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Examples of the bitwise functions being tested</p>
+
+<codeblock>
+test test_bitwise
+  variable a set to 13
+  assert a is 0xd
+  assert a is 0b1101
+  assert a.asBinary() is "1101"
+  variable b set to 30
+  assert b is 0b11110
+  assert bitAnd(a, b) is 0b1100
+  variable aob set to bitOr(a, b)
+  assert aob is 0b11111
+  variable axb set to bitXor(a, b)
+  assert axb is 0b10011
+  variable nota set to bitNot(a)
+  assert nota is -14
+  variable aL set to bitShiftL(a, 2)
+  assert aL is 0b110100
+  assert bitShiftR(a, 2) is 0b11
+end test
+</codeblock>
+
+<p>The result of <el-method>bitNot</el-method>(<el-id>a</el-id>) being <code>-14</code> , when a is <code>13</code>, might be a surprise. But this is because the bitwise functions assume that the arguments are represented as 32-bit signed binary integers. So 13 is represented as<br><code>00000000000000000000000000001101</code>, and applying <el-method>bitNot</el-method> gives<br><code>11111111111111111111111111110010 </code>which is the value <code>-14 </code>in signed two's complement format,<br> the left-most bit being the sign (<code>0</code> positive, <code>1</code> negative).</p>
+<hr>
+</div></div>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Single bit operations
+</h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; A reminder of single bit operations.<br>As noted in the example tests above, these methods act on 32-bit signed integers rather than on values of only one or a few bits,
+so the effect of <el-method>bitNot</el-method> is not just the simple bit reversal shown here:</p>
+<table>
+ <tr><th rowspan="2"></th><th colspan="4">p,q</th></tr>
+ <tr><th></th><th>0,0</th><th>0,1</th><th>1,0</th><th>1,1</th></tr>
+ <tr><td><code>bitAnd(p,q)</code></td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+ <tr><td><code>bitOr(p,q)</code> </td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+ <tr><td><code>bitNot(p)</code>  </td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+ <tr><td><code>bitXor(p,q)</code></td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+</table>
+<hr>
+</div></div>
+
+<h2 id="RegExpFunctions">RegExp functions</h2>
+    <p>Elan's regular expressions are modelled on those of JavaScript, including the syntax for literal regular expressions. See, for example this <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">Guide to Regular Expressions</a>.</p>
+    <p>More functions for using regular expressions will be added in a future release of Elan. For now:</p>
+    <p>The method <el-method>matchesRegExp</el-method> is applied to a <code>String</code> using <a href="LangRef.html#dotSyntax">dot syntax</a> and requires a <code>RegExp</code> parameter specified as a literal or as variable. It returns a <code>Boolean</code>. For example:</p>
+
+<codeblock>
+test test_matchesRegExp
+  variable s1 set to "hello"
+  variable s2 set to "World"
+  variable r set to /^[a-z]*$/
+  assert s1.matchesRegExp(r) is true
+  assert s2.matchesRegExp(r) is false
+end test
+</codeblock>
+
+<p>You can convert a valid string without <code>/../</code> delimiters to a <code>RegExp</code> using function <el-method>asRegExp</el-method>:</p>
+<codeblock>
+test test_matchesRegExp
+  variable s1 set to "hello"
+  variable s2 set to "World"
+  variable r set to "^[a-z]*$".asRegExp()
+  assert s1.matchesRegExp(r) is true
+  assert s2.matchesRegExp(r) is false
+end test
+</codeblock>
+
+<p>Although it is recommended that literal regular expressions are written with <code>/../</code> delimiters, the ability to convert a <code>string</code> allows you to input a regular expression into a running program.</p>
+
+<h1 id="SystemMethods">System methods</h1>
+
+<p>System methods appear to work like functions, because:</p>
+<ul>
+ <li>they may require one or more arguments to be provided</li>
+ <li>they always return a value</li>
+ <li>they can be used in expressions</li>
+</ul>
+<p>They are not, however, pure functions because:</p>
+<ul>
+ <li>they may have a dependency on data that is not provided in an argument</li>
+ <li>they may generate side effects, such as changing the screen display or writing to a file</li>
+</ul>
+<p>Because of these properties, system methods maybe used only within the <b>main</b> routine or a <b>procedure</b>.
+They may not be used inside a <b>function</b> that you have defined, because to do so would prevent the <b>function</b> from being pure.</p>
+<p>You cannot write a system method yourself.</p>
+
+<h2 id="IOMethods">Input/output</h2>
+<ul>
+ <li><a href="#KeyboardInput">Keyboard input</a> </li>
+ <li><a href="#FileInputOutput">Text file input/output</a></li>
+</ul>
+
+<h2 id="MiscMethods">Clock and random numbers</h2>
+Methods <el-method>random</el-method> and <el-method>randint</el-method> cannot be used in a <b>function</b> because
+ of their dependence on external factors, i.e. they are subject to side effects.<br>
+ To obtain random numbers within a <b>function</b>, use Type <a href="#Random"><code>Random</code></a>.
+<table class="tableMethod">
+ <tr>
+  <th>system<br>method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Types</th>
+  <th>returns</th>
+ </tr><tr id="clock">
+  <td><el-method>clock</el-method></td>
+  <td>(none)</td>
+  <td><code>Int</code></td>
+  <td>the current value (in  milliseconds) of a system clock.<br>Useful for measuring elapsed time by comparing the values returned by two calls</td>
+ </tr><tr id="random">
+  <td><el-method>random</el-method></td>
+  <td>(none)</td>
+  <td><code>Float</code></td>
+  <td>a random number in the range [0..1]</td>
+ </tr><tr id="randint">
+  <td><el-method>randint</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>Int</code></td>
+  <td>a random number in the (inclusive) range between the two arguments</td>
+ </tr>
+</table>
+
+<h2 id="SystemFunctions">System functions</h2>
+<p>These  methods are pure functions and so  may be referenced in your functions as well as in procedures:</p>
+<table class="tableMethod">
+ <tr>
+  <th>system<br>method</th>
+  <th>argument<br>Types</th>
+  <th>return<br>Types</th>
+  <th>returns</th>
+ </tr><tr id="copy">
+  <td><el-method>copy</el-method></td>
+  <td>named value of any Type</td>
+  <td>same Type as argument</td>
+  <td>a copy of the named value</td>
+ </tr><tr id="createList">
+  <td><el-method>createList</el-method></td>
+  <td><code>Int</code>,<br> value of <code>List</code> item's Type</td>
+  <td><code>List</code>&lt;of item's Type&gt;</td>
+  <td>a List containing the specified number of items each initialised to the value in the second argument</td>
+ </tr><tr id="createListOfLists">
+  <td><el-method>createListOfLists</el-method></td>
+  <td><code>Int</code>, <code>Int</code>,<br> value of <code>List</code> item's Type</td>
+  <td><code>List</code>&lt;of  <code>List</code>&lt;of item's Type&gt;&gt;</td>
+  <td>a List of length the first argument containing that number of Lists<br>
+  each initialised to a List of length the second argument<br>
+  with each item therein initialised to the value in the third argument</td>
+ </tr><tr id="max">
+  <td><el-method>max</el-method></td>
+  <td><code>List</code>&lt;of <code>Int</code>&gt; or<br> <code>List</code>&lt;of <code>Float</code>&gt;</td>
+  <td><code>Int</code> or<br> <code>Float</code></td>
+  <td>the maximum value found in the List</td>
+ </tr><tr id="min">
+  <td><el-method>min</el-method></td>
+  <td><code>List</code>&lt;of <code>Int</code>&gt; or<br> <code>List</code>&lt;of <code>Float</code>&gt;</td>
+  <td><code>Int</code> or<br> <code>Float</code></td>
+  <td>the minimum value found in the List</td>
+ </tr><tr id="range">
+  <td><el-method>range</el-method></td>
+  <td><code>Int</code>, <code>Int</code></td>
+  <td><code>List</code></td>
+  <td>a List containing the integers from the first argument to one <i>less</i> than the second argument.<br>
+  If the second argument is not greater than the first, then the empty List is returned</td>
+ </tr><tr id="rangeInSteps">
+  <td><el-method>rangeInSteps</el-method></td>
+  <td><code>Int</code>, <code>Int</code>, <code>Int</code></td>
+  <td><code>List</code></td>
+  <td>a List containing the integers from the first argument to one <i>less</i> than the second argument<br>
+   in increments specified by the third argument.<br>
+   If, however, the third argument is negative, the second argument must be less than the first,<br>
+    and the integers returned will run from the first to one <i>more</i> than the second</td>
+ </tr>
+</table>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Example using <el-method>rangeInSteps</el-method></h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; and which uses <a href="#HoFs">Higher-order Functions</a> to print the prime numbers between 2 and 30:</p>
+<codeblock>
+  call print(rangeInSteps(2, 30, 1).filter(lambda n as Int => rangeInSteps(2, sqrt(n).floor(), 1).reduce(true, lambda c as Boolean, m as Int => c and ((n mod m) isnt 0))))
+</codeblock>
+<hr>
+</div></div>
+
+<h1 id="HoFs">Higher-order Functions (HoFs)</h1>
+<p>A <b>higher-order function</b> (HoF) is one that takes in a reference to another <b>function</b> as a parameter, or (less commonly) that returns a reference to another <b>function</b> as its result. </p>
+
+<h2>Standard HoFs</h2>
+<p>The standard library contains several HoFs that are widely recognised and used within functional programming, namely
+<a href="#filter"><el-method>filter</el-method></a>,
+<a href="#map"><el-method>map</el-method></a> and
+<a href="#reduce"><el-method>reduce</el-method></a>, and also provides
+<a href="#maxBy"><el-method>maxBy</el-method></a>,
+<a href="#minBy"><el-method>minBy</el-method></a> and
+<a href="#orderBy"><el-method>orderBy</el-method></a>.</p>
+
+<h2 id="AsRef">Passing a function as a reference</h2>
+<p>To use a higher-order function (HoF), you have to pass in a reference to a <b>function</b>.
+ This can be either a <a href="LangRef.html#lambda"><code>lambda</code></a> or the name of a <b>function</b>.
+ It is also possible to use references to functions not in the context of HoFs.</p>
+
+<p>On most occasions when you write the name of an existing function elsewhere in code your intent is to <i>evaluate</i> the function and, to do so, you write the name of the function followed by round brackets containing such arguments as are required by the function. When passing a <b>function</b>, its name is not followed by round brackets (or arguments), as in this example:
+
+<codeblock>
+class Pupil
+  property mathsPercent as Int
+end class
+
+main
+  variable allPupils set to new List<of Pupil>()
+  variable passes set to allPupils.filter(passedMathsTest)
+end main
+
+function passedMathsTest(p as Pupil) returns Boolean
+  return p.mathsPercent > 35
+end function
+</codeblock>
+
+<h1 id="Constants">System constants</h1>
+
+<p>System constants are unlike values that you define in your <a href="LangRef.html#constant">program <b>constant</b> </a>,
+ in that they are mutable named values, though it would be poor practice to change them.</p>
+
+<h2 id="StringConstants">String constants</h2>
+<p>These constants are of use when the characters { } and " are required within a string.</p>
+<table class="tableType">
+ <tr>
+  <th>name</th><th>Type</th><th >value</th>
+ </tr><tr id="openBrace">
+  <td><el-id>openBrace</el-id></td>
+  <td><code>String</code></td>
+  <td>&nbsp; { </td>
+ </tr><tr id="closeBrace">
+  <td><el-id>closeBrace</el-id></td>
+  <td><code>String</code></td>
+  <td>&nbsp; } </td>
+ </tr><tr id="quotes">
+  <td><el-id>quotes</el-id></td>
+  <td><code>String</code></td>
+  <td>&nbsp; &quot; </td>
+ </tr>
+</table>
+
+<h2 id="MathsConstant">Maths constant</h2>
+<table class="tableType">
+ <tr><th>name</th><th>Type</th><th>value</th></tr>
+<tr id="pi">
+  <td><el-id>pi</el-id></td>
+  <td><code>Float</code></td>
+  <td>&#x1d70b = 3.141592653589793..</td>
+ </tr>
+</table>
+
+<h2 id="BooleanConstants">Boolean constants</h2>
+<table class="tableType">
+ <tr>
+  <th>name</th><th>Type</th><th >value</th>
+ </tr><tr id="true">
+  <td><el-id>true</el-id></td>
+  <td><code>Boolean</code></td>
+  <td><a href="#Boolean"><code>true</code></a></td>
+ </tr><tr id="false">
+  <td><el-id>false</el-id></td>
+  <td><code>Boolean</code></td>
+  <td><a href="#Boolean"><code>false</code></a></td>
+ </tr>
+</table>
+
+<h2 id="Colours">Colour constants</h2>
+<table class="tableColours">
+<tr><th>colour</th><th></th><th>decimal</th><th>decimal<br></th><th>hexadecimal</th></tr>
+<tr><th>name</th><th></th><th>integer</th><th style="font-family:monospace;">&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;B</th><th style="font-family:monospace;">&nbsp;0xrrggbb</th></tr>
+    <tr><td><el-id>black</el-id> </td><td style="color:#000000">&#x25fc;</td><td>0</td><td>&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><code>0x000000</code></td></tr>
+    <tr><td><el-id>white</el-id> </td><td style="color:#ffffff">&#x25fc;</td><td>16777215</td><td>&nbsp;255&nbsp;&nbsp;255&nbsp;&nbsp;255</td><td><code>0xffffff</code></td></tr>
+    <tr><td><el-id>red</el-id>   </td><td style="color:#ff0000">&#x25fc;</td><td>16711680</td><td>&nbsp;255&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><code>0xff0000</code></td></tr>
+    <tr><td><el-id>green</el-id> </td><td style="color:#008000">&#x25fc;</td><td>32768</td><td>&nbsp;&nbsp;0&nbsp;&nbsp;128&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><code>0x008000</code></td></tr>
+    <tr><td><el-id>blue</el-id>  </td><td style="color:#0000ff">&#x25fc;</td><td>255</td><td>&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;255</td><td><code>0x0000ff</code></td></tr>
+    <tr><td><el-id>yellow</el-id></td><td style="color:#ffff00">&#x25fc;</td><td>16776960</td><td>&nbsp;255&nbsp;&nbsp;255&nbsp;&nbsp;&nbsp;&nbsp;0</td><td><code>0xffff00</code></td></tr>
+    <tr><td><el-id>brown</el-id> </td><td style="color:#a52a2a">&#x25fc;</td><td>10824234</td><td>&nbsp;165&nbsp;&nbsp;&nbsp;42&nbsp;&nbsp;&nbsp;42</td><td><code>0xa52a2a</code></td></tr>
+    <tr><td><el-id>grey</el-id>  </td><td style="color:#808080">&#x25fc;</td><td>8421504</td><td>&nbsp;128&nbsp;&nbsp;128&nbsp;&nbsp;128</td><td><code>0x808080</code></td></tr>
+    <tr><td><el-id>transparent</el-id> </td><td style="color:#000000">&#x25fb;</td><td>-1</td><td>n/a</td><td>n/a</td></tr>
+</table>
+<p>A colour is specified as an <code>Int</code> value using one of these methods:</p>
+<ul>
+ <li>the limited colours defined as library constants as in the above table.</li>
+ <li>an integer in the decimal range 0 (<el-id>black</el-id>) to 2<sup>24-1</sup> (<el-id>white</el-id>).</li>
+ <li>a six digit hexadecimal value in the range <el-lit>0x000000</el-lit> &ndash; <el-lit>0xffffff</el-lit>
+    using the same 'RGB' format as used in Html style, for example <el-lit>0xff0000</el-lit> for red.</li>
+ <li id="transparent"><el-id>transparent</el-id> is only used for filling <a href="#VectorGraphics">vector graphics</a> shapes.
+</ul>
+
+<h2>Defining your own HoFs</h2>
+
+<h2>Library functions that process Lists</h2>
+<p>These dot methods are called on any <code>List</code>, or <code>String</code>. As Higher-order Functions they take either a lambda</b></code> or a <b>function</b> reference as one of their arguments: see above.</p>
+<p>These are not yet fully documented but, for readers familiar with HoFs from another programming language, some examples are shown below.</p>
+
+<h3 class="no-TOC" id="filter">filter </h3>
+
+<p>You give a <code>List</code> to the higher-order function <el-method>filter</el-method> in order to return a new <code>List</code> containing a subset of items.
+The subset is chosen by a lambda function that tests list item values and returns a Boolean to specify filtering in or out.</p>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Example using <el-method>filter</el-method></h4>
+<div class="acc-body">
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; Example from demo program <code>pathfinder.elan</code> in which <el-method>filter</el-method> applies the <code>lambda</code> to the <el-id>nodes</el-id> (of Class <code>Node</code>) to find one that contains <el-id>p</el-id> (of Class <code>Point</code>):</p>
+<codeblock>
+function getNodeFor(p as Point) returns Node
+  variable matches set to this.nodes.filter(lambda n as Node => n.point.equals(p))
+  return if matches.length() is 1,  matches.head(), emptyNode()
+end function
+</codeblock>
+<hr>
+</div></div>
+
+<h3 class="no-TOC" id="map">map</h3>
+<p>The function <el-method>map</el-method> is used to apply a <b>function</b> to every item in a <code>List</code>, and return a new List.
+The <b>function</b> to be applied is usually specified as a <code>lambda</code> having a single argument of the Type of the list's items, as in these examples:</p>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using <el-method>map</el-method></h4>
+<div class="acc-body">
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To cube each integer value in a list:</p>
+<codeblock>
+main
+  variable li set to [1, 2, 3, 4, 5]
+  call print(li.map(lambda n as Int => pow(n, 3)))
+end main
+</codeblock>
+&nbsp;&nbsp;&#x27f6; [1, 8, 27, 64, 125]
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To change each string in a list to upper case:</p>
+<codeblock>
+main
+  variable names set to ["Tom", "Dick", "Harriet"]
+  call print(names.map(lambda s as String => s.upperCase()))
+end main
+</codeblock>
+&nbsp;&nbsp;&#x27f6; ["TOM", "DICK", "HARRIET"]
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To reverse each string in the list of names using the function <el-method>reverse</el-method>
+ (from the example of the <a href="LangRef.html#for">for</a> loop):</p>
+<codeblock>
+  call print(names.map(lambda s as String => reverseString(s)))
+</codeblock>
+&nbsp;&nbsp;&#x27f6; ["moT", "kciD", "teirraH"]
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; And this example from demo program <code>maze-generator.elan</code>:</p>
+<codeblock>
+  variable n set to p.neighbouringPoints().map(lambda p as Point => getValue(p, g))
+</codeblock>
+<hr>
+</div></div>
+
+<h3 class="no-TOC" id="reduce">reduce</h3>
+<p>The function <el-method>reduce</el-method> is used to combine the items in a list in some way to produce
+  a single result. This result may be of the same Type as the items in the list, for example to:
+<ul>
+ <li>Find the sum or sum-of-squares of a list of numeric values.</li>
+ <li>Concatenate, or combine in some other way, the items from a List of Strings.</li>
+</ul>
+<p>The result may, however, be of a different Type than the items in the list, and may even  be a data structure, for example to:</p>
+<ul>
+ <li>Generate a <a href="#Tuple">3-Tuple</a> of the sum, sum-of-squares, and count of numerical items.</li>
+ <li>Generate a dictionary of all the unique words in a list, with the number of times each word appears in the input List</li>
+</ul>
+<p>Method <el-method>reduce</el-method> requires two arguments:</p>
+<ol>
+ <li>The initial, or 'seed', value, of the Type that you wish to be returned by the <b>function</b> specified in the second argument..
+ For example, if you were finding the sum of a list of Type <code>Float</code>, the initial seed value
+ would typically be <el-lit>0.0</el-lit>. If you were creating a dictionary of words, the initial seed
+ value would be an empty Dictionary of the correct Types.</li>
+ <li>The <b>function</b> or lambda to be applied, which itself requires two arguments:
+<ol>
+ <li>The accumulating value, which is therefore of the same Type as the initial seed value.
+ (This will be the return value of the <b>function</b> or <code>lambda</code>).</li>
+ <li>The item to which the <b>function</b> is applied, which is therefore of the same Type
+   as the items in the input list.</li>
+ </ol>
+ </li>
+</ol>
+<p>In other words, the specified <b>function</b> or <code>lambda</code> is applied to each itme of the input List in turn, in each case passing in the current value
+  of the result. The <b>function</b> makes use of both to generate a <i>new</i> value for the result, replacing the current one
+  for application to the next item. This is best understood by looking at the examples.</p>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using <el-method>reduce</el-method></h4>
+<div class="acc-body">
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To reduce the floating point values in a <code>List</code> to their sum:</p>
+<codeblock>
+main
+  variable n set to [0.1, 2, 2.5, 0.3, 5.75, 0.29]
+  call print(n.reduce(0.0, lambda sum as Float, m as Float => (sum + m).round(2)))
+end main
+</codeblock>
+&nbsp;&nbsp;&#x27f6; 10.94
+
+<h5 class="no-TOC">&nbsp;&nbsp;&nbsp;Notes</h5>
+<ul>
+ <li>You usually need to round floating point values when outputting them.</li>
+ <li>The inclusion of an integer in a <code>List</code> of floats is valid provided it is not the first value.</li>
+</ul>
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To reverse the order of items in a <code>List</code>:</p>
+<codeblock>
+main
+  variable n set to [2, 3, 5, 7, 11, 13]
+  variable nR set to new List<of Int>()
+  variable eL set to new List<of Int>()
+  call print(n.reduce(eL, lambda nR as List<of Int>, m as Int => nR.withPrepend(m)))
+end main
+</codeblock>
+&nbsp;&nbsp;&#x27f6; [13, 11, 7, 5, 3, 2]
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To reverse the order of the words in a <code>String</code>,
+use <el-method>reduce</el-method> on a <code>List</code> of words (created by <el-method>split</el-method> and then reassembled by <el-method>join</el-method>):</p>
+<codeblock>
+main
+  variable s set to "'Twas brillig and the slithy toves"
+  variable sR set to ""
+  variable eL set to new List<of String>()
+  set sR to s.split(" ").reduce(eL, lambda sR as List<of String>, word as String => sR.withPrepend(word)).join(" ")
+  call print(sR)
+end main
+</codeblock>
+&nbsp;&nbsp;&#x27f6; toves slithy the and brillig 'Twas
+
+<h5 class="no-TOC">&nbsp;&nbsp;&nbsp;Note</h5>
+<ul>
+ <li>In these two examples on Lists, an empty List has to defined for use as the first argument of <el-method>reduce</el-method>.</li>
+</ul>
+<hr>
+</div></div>
+
+<div id="maxBy"></div>
+<div id="minBy"></div>
+<h3 class="no-TOC">maxBy and minBy</h3>
+<p><el-method>maxBy</el-method> and <el-method>minBy</el-method> are dot methods on a <code>List</code>.
+They take a <b>function</b> as an argument, and return the list item corresponding to the maximum or minimum of the values returned by the <b>function</b>.</p>
+<p>For simply finding the maximum or minimum value in a <code>List</code>, you can use
+<a href="#max"><el-method>max</el-method></a>,
+<a href="#min"><el-method>min</el-method></a>.</p>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using <el-method>maxBy</el-method> and <el-method>minBy</el-method></h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To find in a list the integer that has the highest last digit:</p>
+<codeblock>
+main
+  variable a set to [33, 4, 0, 92, 89, 55, 102]
+  call print(a.maxBy(lambda x as Int => x mod 10))
+end main
+</codeblock>
+&nbsp;&nbsp;&#x27f6; 89
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To find in a list the the shortest string:</p>
+<codeblock>
+main
+  variable fruit set to ["apple", "orange", "pear"]
+  call print(fruit.minBy(lambda x as String => x.length()))
+end main
+</codeblock>
+&nbsp;&nbsp;&#x27f6; pear
+<hr>
+</div></div>
+
+<h3 class="no-TOC" id="orderBy">orderBy</h3>
+<p><el-method>orderBy</el-method> takes a <code>lambda</code> that has two arguments of the same Type as that of the <code>List</code> items to be re-ordered
+ and compares them, returning a Boolean value that distinguishes between <i>less than</i> (or <i>greater than</i>) for numerics and <i>before</i> (or <i>after</i>) for strings.</p>
+
+<div class="accordion">
+<h4 class="no-TOC acc-title" tabindex="0">Examples using <el-method>orderBy</el-method></h4>
+<div class="acc-body">
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To  reorder integers in a <code>List</code>, using > for ascending (you would use < for descending):</p>
+<codeblock>
+  variable numbers set to [27, 2, 3, 5, 7, 31, 37, 11, 23, 13, 19, 23]
+  variable ordered set to numbers.orderBy(lambda x as Int, y as Int => x > y)
+  call print(ordered)
+</codeblock>
+&nbsp;&nbsp;&#x27f6; [2, 3, 5, 7, 11, 13, 19, 23, 23, 27, 31, 37]
+
+<p>&nbsp;&nbsp;&nbsp;&#x25cf; To reorder strings in a <code>List</code>, using method <el-method>isBefore</el-method> for descending (you would use <el-method>isAfter</el-method> for ascending):</p>
+<codeblock>
+main
+  variable names set to ["Simon", "Pauline", "Jason", "Zelda", "Edith", "Lance", "Alice", "Paul"]
+  call print(names.orderBy(lambda x as String, y as String => x.isBefore(y)))
+end main
+</codeblock>
+&nbsp;&nbsp;&#x27f6; [Zelda, Simon, Pauline, Paul, Lance, Jason, Edith, Alice]
+<hr>
+</div></div>
+<hr>
+<p><b>Elan Library Reference</b> go to the <a href="#top">top</a></p>
+</body>
+</html>

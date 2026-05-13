@@ -1,0 +1,52 @@
+# 6e90947dbe9738f98f84edfaa5e198453ca66e8d3fdfdbb62a7fe33945b9a0d8 Elan 2.0.0-alpha valid
+
+# REDO on basis that the computer player will be added using 'append' with small mods to your code 
+main
+  variable x1 set to 10
+  variable y1 set to 7
+  variable dir1 set to "d"
+  variable grid set to new Array2D<of Int>(40, 30, white)
+  for i in range(1, 1001)
+    call displayBlocks(grid)
+    call sleep_ms(500)
+  end for
+end main
+
+procedure move(out x as Int, out y as Int, out dir as String)
+  variable k set to getKey()
+  if (k isnt "") and (directions.contains(k)) then
+    set dir to k
+  end if
+  if dir is "d" then
+    set x to x + 1
+  elif dir is "s" then
+    set y to y + 1
+  elif dir is "a" then
+    set x to x - 1
+  elif dir is "w" then
+    set y to y - 1
+  end if
+end procedure
+
+constant directions set to "wasd"
+
+procedure compTurn(out dir as String)
+  variable i set to directions.indexOf(dir)
+  variable rnd set to randint(-1, 1)
+  variable i2 set to (i + rnd) mod 4
+  set dir to directions[i2]
+end procedure
+
+function newDirection(current as String, rnd as Float) returns String
+  variable i set to directions.indexOf(current)
+  if rnd > 0.5 then
+    set i to (i + 1) mod 3
+  else
+    set i to (i - 1) mod 3
+  end if
+  return directions[i]
+end function
+
+test test_newDirection
+
+end test
