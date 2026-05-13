@@ -37,7 +37,7 @@ jobs:
           path: elan-code
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -45,4 +45,9 @@ jobs:
       - run: npm ci
       - run: npm run copy-documentation 
       - run: npm --prefix ./elan-code run fast-dev-compile
-      - run: npm --prefix ./elan-code run update-documentation      
+      - run: npm --prefix ./elan-code run update-documentation
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+        with:
+          path: out/website/
